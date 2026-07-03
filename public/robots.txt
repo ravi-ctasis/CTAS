@@ -1,0 +1,58 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /api/*
+Disallow: /_next/*
+Disallow: /404
+Disallow: /500
+
+# GPTBot
+User-agent: GPTBot
+Allow: /
+
+# ChatGPT-User
+User-agent: ChatGPT-User
+Allow: /
+
+# CCBot
+User-agent: CCBot
+Allow: /
+
+# anthropic-ai
+User-agent: anthropic-ai
+Allow: /
+
+# Claude-Web
+User-agent: Claude-Web
+Allow: /
+
+# PerplexityBot
+User-agent: PerplexityBot
+Allow: /
+
+# YouBot
+User-agent: YouBot
+Allow: /
+
+# Bard
+User-agent: Bard
+Allow: /
+
+# AhrefsBot
+User-agent: AhrefsBot
+Disallow: /
+
+# MJ12bot
+User-agent: MJ12bot
+Disallow: /
+
+# DotBot
+User-agent: DotBot
+Disallow: /
+
+# Host
+Host: https://www.ctasis.com
+
+# Sitemaps
+Sitemap: https://www.ctasis.com/sitemap.xml
