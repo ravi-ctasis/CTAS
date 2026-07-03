@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,10 +20,6 @@ const HeroSection = () => {
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
   useEffect(() => {
@@ -140,38 +136,6 @@ const HeroSection = () => {
               </Link>
             </div>
 
-            {/* Slide controls */}
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                onClick={prevSlide}
-                className="w-10 h-10 rounded-full bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center transition-all duration-200"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="w-5 h-5 text-slate-700" />
-              </button>
-
-              {/* Slide dots */}
-              <div className="flex items-center gap-1.5">
-                {slides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentSlide(i)}
-                    aria-label={`Go to slide ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === currentSlide ? "w-6 bg-blue-600" : "w-1.5 bg-slate-300"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={nextSlide}
-                className="w-10 h-10 rounded-full bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center transition-all duration-200"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="w-5 h-5 text-slate-700" />
-              </button>
-            </div>
           </div>
 
           {/* ── Right: Tech Orbit ── */}
@@ -259,6 +223,28 @@ const HeroSection = () => {
               })}
             </div>
           </div>
+        </div>
+
+        {/* ── Slide indicator dots — full-width center ── */}
+        <div
+          className="flex items-center justify-center gap-2 pb-10"
+          role="tablist"
+          aria-label="Slide indicators"
+        >
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              role="tab"
+              onClick={() => setCurrentSlide(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              aria-selected={i === currentSlide}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === currentSlide
+                  ? "w-8 bg-blue-600"
+                  : "w-2 bg-slate-300 hover:bg-slate-400"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
