@@ -68,47 +68,47 @@ const primaryServices = [
 
 const secondaryServices = [
   {
-    name: "WooCommerce",
-    logo: "/Woo_logo.svg",
-    logoAlt: "WooCommerce integration services",
-    logoWidth: 100,
-    logoHeight: 32,
+    name: "TikTok Shop",
+    logo: "/tiktok.webp",
+    logoAlt: "TikTok Shop marketplace integration",
+    logoWidth: 110,
+    logoHeight: 36,
     description:
-      "Synchronize products, inventory, customers, orders and shipping across WooCommerce stores with real-time automation.",
-    features: ["Product Sync", "Order Import", "Stock Updates", "Pricing Automation"],
-    link: "/services/e-commerce-solutions",
-  },
-  {
-    name: "Rakuten",
-    logo: "/rakuten.webp",
-    logoAlt: "Rakuten marketplace integration",
-    logoWidth: 100,
-    logoHeight: 32,
-    description:
-      "Connect your catalog to Rakuten's global marketplace with automated product listings, order sync, inventory updates, and pricing management.",
-    features: ["Product Listings", "Order Sync", "Inventory Updates", "Pricing Automation"],
+      "Launch and automate your TikTok Shop presence — product listings, live-commerce sync, order management and fulfilment automation for social commerce.",
+    features: ["Product Listings", "Live Commerce Sync", "Order Management", "Fulfilment Automation"],
     link: "/services/marketplace",
   },
   {
     name: "Walmart",
     logo: "/walmart-logo.svg",
     logoAlt: "Walmart marketplace integration",
-    logoWidth: 100,
+    logoWidth: 110,
     logoHeight: 32,
     description:
-      "Manage Walmart listings, inventory, pricing and fulfillment automatically with our certified integration platform.",
+      "Manage Walmart listings, inventory, pricing and fulfilment automatically with our certified integration platform.",
     features: ["Feed Upload", "Order Sync", "Inventory", "Returns Processing"],
     link: "/services/marketplace",
   },
   {
-    name: "eBay",
-    logo: "/ebay-logo.svg",
-    logoAlt: "eBay marketplace integration",
-    logoWidth: 80,
-    logoHeight: 32,
+    name: "Worten",
+    logo: "/worten-logo.webp",
+    logoAlt: "Worten marketplace integration",
+    logoWidth: 110,
+    logoHeight: 36,
     description:
-      "Automate listing management, shipping, orders and pricing updates across eBay's global marketplace network.",
-    features: ["Listing Management", "Order Automation", "Message Handling", "Shipping"],
+      "Integrate with Worten, the leading electronics & home appliance marketplace in Portugal and Spain, with full catalogue and order automation.",
+    features: ["Catalogue Sync", "Order Automation", "Pricing Rules", "Inventory Management"],
+    link: "/services/marketplace",
+  },
+  {
+    name: "Kaufland",
+    logo: "/kaufland.webp",
+    logoAlt: "Kaufland global marketplace integration",
+    logoWidth: 110,
+    logoHeight: 36,
+    description:
+      "Connect to Kaufland's growing global marketplace with automated product feeds, order processing, returns management and pricing sync.",
+    features: ["Product Feed", "Order Processing", "Returns Management", "Pricing Sync"],
     link: "/services/marketplace",
   },
 ];
@@ -116,12 +116,12 @@ const secondaryServices = [
 const ServicesSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-white"
+      className="py-16 sm:py-20 lg:py-24 section-bg-dots"
       aria-label="Marketplace integration and domain solutions"
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">

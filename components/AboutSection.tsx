@@ -58,12 +58,12 @@ const bottomStats = [
 const AboutSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-white"
+      className="py-16 sm:py-20 lg:py-24 section-bg-dots"
       aria-label="About Ctas Info Services LLP"
       itemScope
       itemType="https://schema.org/Organization"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
 
           {/* ── Left: Content ── */}

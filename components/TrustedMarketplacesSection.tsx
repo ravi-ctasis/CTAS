@@ -8,14 +8,22 @@ const marketplaces = [
   { name: "Bol.com", logo: "/bol.webp", width: 70, height: 32 },
   { name: "Etsy", logo: "/etsy-logo.webp", width: 80, height: 32 },
   { name: "Rakuten", logo: "/rakuten.webp", width: 100, height: 32 },
+  { name: "TikTok Shop", logo: "/tiktok.webp", width: 110, height: 36 },
   { name: "Alibaba", logo: "/alibaba_logo.svg", width: 100, height: 32 },
   { name: "AliExpress", logo: "/aliexpress_logo.webp", width: 110, height: 32 },
   { name: "Lazada", logo: "/lazada_logo.svg", width: 90, height: 32 },
   { name: "Catch", logo: "/catch_logo.png", width: 80, height: 32 },
   { name: "Otto", logo: "/otto_logo.jpeg", width: 80, height: 32 },
   { name: "Temu", logo: "/temu_logo.svg", width: 80, height: 32 },
-  { name: "WooCommerce", logo: "/Woo_logo.svg", width: 100, height: 32 },
   { name: "Worten", logo: "/worten-logo.webp", width: 90, height: 32 },
+  { name: "Kaufland", logo: "/kaufland.webp", width: 100, height: 36 },
+  { name: "DHL", logo: "/dhl-3.svg", width: 70, height: 28 },
+  { name: "FedEx", logo: "/fedex.svg", width: 90, height: 28 },
+  { name: "Shopify", logo: "/shopify-logo.svg", width: 90, height: 32 },
+  { name: "QuickBooks", logo: "/quickbooks-logo.svg", width: 110, height: 32 },
+  { name: "OpenAI GPT", logo: "/gpt-logo.webp", width: 36, height: 36 },
+  { name: "Claude", logo: "/claude-logo.svg", width: 36, height: 36 },
+  { name: "Gemini", logo: "/gemini-logo.webp", width: 80, height: 28 },
 ];
 
 const TrustedMarketplacesSection = () => {
@@ -26,7 +34,7 @@ const TrustedMarketplacesSection = () => {
       className="py-16 sm:py-20 bg-white border-y border-slate-100"
       aria-label="Trusted by leading global marketplaces"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Trusted Worldwide

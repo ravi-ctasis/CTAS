@@ -5,10 +5,10 @@ import Image from "next/image";
 
 const hubNodes = [
   { label: "Amazon", logo: "/amazon.svg", x: 50, y: 8, size: 88 },
-  { label: "ERP", logo: null, x: 82, y: 28, size: 88 },
-  { label: "Warehouse", logo: null, x: 82, y: 62, size: 88 },
+  { label: "AliExpress", logo: "/aliexpress_logo.webp", x: 82, y: 28, size: 88 },
+  { label: "FedEx", logo: "/fedex.svg", x: 82, y: 62, size: 88 },
   { label: "Bol.com", logo: "/bol.webp", x: 50, y: 82, size: 60 },
-  { label: "Shipping", logo: null, x: 18, y: 62, size: 88 },
+  { label: "DHL", logo: "/dhl-3.svg", x: 18, y: 62, size: 88 },
   { label: "Shopify", logo: "/shopify-logo.svg", x: 18, y: 28, size: 88 },
 ];
 
@@ -27,7 +27,7 @@ const MarketplaceEcosystemSection = () => {
       className="py-16 sm:py-20 lg:py-24 bg-slate-50 overflow-hidden"
       aria-label="Enterprise marketplace ecosystem platform"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
           {/* Left Content */}
           <div>

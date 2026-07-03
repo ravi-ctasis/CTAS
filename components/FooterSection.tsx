@@ -93,7 +93,7 @@ const FooterSection = () => {
       itemType="https://schema.org/WPFooter"
     >
       {/* ── Main footer content ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16 pb-10">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pt-14 sm:pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-10 lg:gap-12">
 
           {/* Brand column — 2 cols */}
@@ -302,7 +302,7 @@ const FooterSection = () => {
 
       {/* ── Technology bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center">
             <span className="text-xs text-slate-600 uppercase tracking-widest flex-shrink-0">
               Technologies
@@ -318,7 +318,7 @@ const FooterSection = () => {
 
       {/* ── Platform logos scrolling bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
           <div className="flex flex-wrap justify-center gap-3">
             {[
               "Amazon", "Bol.com", "Allegro", "Shopify", "WooCommerce",
@@ -337,7 +337,7 @@ const FooterSection = () => {
 
       {/* ── Bottom bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} Ctas Info Services LLP. All rights reserved.

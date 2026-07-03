@@ -4,11 +4,13 @@ import TrustedMarketplacesSection from "@/components/TrustedMarketplacesSection"
 import AboutSection from "@/components/AboutSection";
 import MarketplaceEcosystemSection from "@/components/MarketplaceEcosystemSection";
 import ServicesSection from "@/components/ServicesSection";
+import IntegrationPartnersSection from "@/components/IntegrationPartnersSection";
 import IndustriesSection from "@/components/IndustriesSection";
 import AISection from "@/components/AISection";
 import BusinessIntelligenceSection from "@/components/BusinessIntelligenceSection";
 import GlobalPresenceSection from "@/components/GlobalPresenceSection";
 import AwardsRecognitionSection from "@/components/AwardsRecognitionSection";
+import ClutchSection from "@/components/ClutchSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import CTABannerSection from "@/components/CTABannerSection";
@@ -39,11 +41,13 @@ const Index = () => {
         <AboutSection />
         <MarketplaceEcosystemSection />
         <ServicesSection />
+        <IntegrationPartnersSection />
         <IndustriesSection />
         <AISection />
         <BusinessIntelligenceSection />
         <GlobalPresenceSection />
         <AwardsRecognitionSection />
+        <ClutchSection />
         <BlogSection />
         <ContactSection />
         <CTABannerSection />

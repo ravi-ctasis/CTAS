@@ -100,7 +100,7 @@ const AwardsRecognitionSection = () => {
       className="py-16 sm:py-20 lg:py-24 bg-white"
       aria-label="Awards, certifications and industry recognition"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
 
         {/* ── Header ── */}
         <div className="text-center mb-12 sm:mb-16">
