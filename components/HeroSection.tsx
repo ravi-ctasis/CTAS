@@ -1,39 +1,86 @@
 "use client";
 
-import { ArrowRight, Play } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { Fraunces } from "next/font/google";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle2,
+  Sparkles,
+  ShieldCheck,
+  Cloud,
+  Award,
+  Globe2,
+  Zap,
+} from "lucide-react";
 
 import { heroSlides } from "@/data/heroSlides";
 
-const ORBIT_SIZE = 500;
-const ORBIT_CENTER = ORBIT_SIZE / 2;
-const ORBIT_RADIUS = 190;
-const ICON_SIZE = 76;
-const ORBIT_SLOTS = 6;
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const AUTOPLAY_MS = 5200;
+
+/* Brand palette — sourced from the CTAS logo (navy #13345A + cyan #249BCA) */
+const NAVY = "#13345A";
+const CYAN = "#249BCA";
+const CYAN_LIGHT = "#6FC3E4";
+const CYAN_HOVER = "#3DAEDA";
+const CYAN_ACTIVE = "#1C7CA1";
+
+const trustBadges = [
+  { icon: ShieldCheck, label: "ISO Certified" },
+  { icon: Cloud, label: "AWS Partner" },
+  { icon: Award, label: "Clutch Top Developer" },
+  { icon: Globe2, label: "18+ Countries" },
+];
+
+const stats = [
+  { v: "35+", l: "Marketplace APIs" },
+  { v: "1.5M+", l: "Orders Synced" },
+  { v: "18+", l: "Countries Served" },
+  { v: "99.9%", l: "API Reliability" },
+];
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const slides = heroSlides;
+  const total = slides.length;
 
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
+  const goTo = useCallback(
+    (i: number) => setCurrentSlide(((i % total) + total) % total),
+    [total]
+  );
+  const nextSlide = useCallback(() => goTo(currentSlide + 1), [goTo, currentSlide]);
+  const prevSlide = useCallback(() => goTo(currentSlide - 1), [goTo, currentSlide]);
 
   useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(nextSlide, 4800);
-      return () => clearInterval(interval);
-    }
-  }, [nextSlide, isHovered]);
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % total);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(interval);
+  }, [isHovered, total]);
 
   const slide = slides[currentSlide];
 
+  const [titleMain, titleHighlight] = useMemo(() => {
+    const parts = slide.title.split(" – ");
+    return parts.length === 2 ? parts : [slide.title, ""];
+  }, [slide.title]);
+
   return (
     <section
-      className="relative bg-[#060D1F] overflow-hidden"
+      className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40]"
       aria-label="Hero section — CTAS Info Services"
       itemScope
       itemType="https://schema.org/Organization"
@@ -43,280 +90,396 @@ const HeroSection = () => {
         Ctas Info Services — Amazon SP-API Integration, AI Automation &amp; E-Commerce Solutions
       </h1>
 
-      {/* ── Background layers ── */}
-      {/* Noise/grid texture */}
+      {/* ── Background atmosphere ── */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        className="absolute inset-0 pointer-events-none opacity-[0.05] mix-blend-overlay"
         aria-hidden="true"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5'%3E%3Cpath d='M60 0 L0 0 0 60'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         }}
       />
-      {/* Gradient glows keyed to active slide */}
       <div
-        key={`glow-${currentSlide}`}
-        className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[140px] pointer-events-none transition-all duration-1000"
-        style={{ background: `radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)` }}
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+          backgroundSize: "34px 34px",
+        }}
+      />
+      <motion.div
+        className="absolute -top-40 -right-24 w-[620px] h-[620px] rounded-full blur-[150px] pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(36,155,202,0.24) 0%, transparent 70%)" }}
+        animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="absolute -bottom-32 -left-24 w-[480px] h-[480px] rounded-full blur-[130px] pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(19,52,90,0.45) 0%, transparent 70%)" }}
+        animate={{ x: [0, -20, 0], y: [0, -15, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden="true"
       />
       <div
-        className="absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: `radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)` }}
+        className="absolute inset-0 pointer-events-none"
+        style={{ boxShadow: "inset 0 -120px 100px -80px rgba(4,10,16,0.6)" }}
         aria-hidden="true"
       />
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div
-          className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center py-16 sm:py-20 lg:py-24"
+          className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center py-16 sm:py-20 lg:py-24"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* ── LEFT: Content ── */}
-          <div className="space-y-7">
-            {/* Live badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-medium">
-              <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+          <div>
+            {/* Eyebrow badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-7">
+              <span className="relative flex h-1.5 w-1.5 flex-shrink-0">
+                <span
+                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60"
+                  style={{ backgroundColor: CYAN }}
+                />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ backgroundColor: CYAN }} />
+              </span>
+              <Sparkles className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
               <span itemProp="name">Ahmedabad&apos;s Leading Tech Experts Since 2019</span>
             </div>
 
-            {/* Slide headline */}
-            <div
-              key={currentSlide}
-              className="animate-in fade-in slide-in-from-bottom-3 duration-600"
-              role="tabpanel"
-              aria-label={`Slide ${currentSlide + 1} of ${slides.length}`}
-            >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-black text-white leading-[1.1] tracking-tight mb-4">
-                {slide.title.includes(" – ") ? (
-                  <>
-                    <span className="block text-white/90">{slide.title.split(" – ")[0]}</span>
-                    <span className={`block text-transparent bg-gradient-to-r ${slide.gradient} bg-clip-text`}>
-                      {slide.title.split(" – ")[1]}
-                    </span>
-                  </>
-                ) : (
-                  <span className={`text-transparent bg-gradient-to-r ${slide.gradient} bg-clip-text`}>
-                    {slide.title}
-                  </span>
-                )}
-              </h2>
-
-              <p className={`text-sm sm:text-base font-semibold text-transparent bg-gradient-to-r ${slide.gradient} bg-clip-text mb-4 tracking-wide`}>
-                {slide.subtitle}
-              </p>
-
-              <p className="text-sm sm:text-base text-white/55 leading-relaxed max-w-xl">
-                {slide.description}
-              </p>
-            </div>
-
-            {/* Feature chips */}
-            <div className="flex flex-wrap gap-2">
-              {slide.features.map((f, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1.5 bg-white/6 border border-white/10 rounded-full text-white/70 text-xs font-medium hover:bg-white/10 hover:border-white/20 transition-colors"
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                role="tabpanel"
+                aria-label={`Slide ${currentSlide + 1} of ${slides.length}`}
+              >
+                {/* Headline */}
+                <h2
+                  className={`${fraunces.className} text-[2.1rem] sm:text-5xl lg:text-[3.4rem] xl:text-[3.75rem] font-medium text-[#F2F6F9] leading-[1.12] tracking-tight mb-5`}
                 >
-                  {f}
-                </span>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 pt-1">
-              <Link
-                href="tel:+917948993409"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-500 active:bg-blue-700 transition-colors duration-200 shadow-lg shadow-blue-600/30"
-                aria-label="Book a free strategy consultation call"
-              >
-                <ArrowRight className="w-4 h-4" />
-                Book a Free Strategy Call
-              </Link>
-              <Link
-                href="/case-studies"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/8 text-white border border-white/15 text-sm font-semibold rounded-xl hover:bg-white/12 hover:border-white/25 transition-colors duration-200"
-                aria-label="Explore CTAS case studies and success stories"
-              >
-                <Play className="w-3.5 h-3.5" />
-                Explore Case Studies
-              </Link>
-            </div>
-
-            {/* Micro-trust row */}
-            <div className="flex flex-wrap items-center gap-5 pt-2 text-white/35 text-xs">
-              <span>ISO Certified</span>
-              <span className="w-px h-3 bg-white/20" />
-              <span>AWS Partner</span>
-              <span className="w-px h-3 bg-white/20" />
-              <span>Clutch Top Developer</span>
-              <span className="w-px h-3 bg-white/20" />
-              <span>18+ Countries</span>
-            </div>
-          </div>
-
-          {/* ── RIGHT: Orbit diagram ── */}
-          <div className="hidden lg:flex items-center justify-center relative">
-            <div
-              className="relative"
-              style={{ width: ORBIT_SIZE, height: ORBIT_SIZE }}
-            >
-              {/* Outer glow ring */}
-              <div
-                className="absolute rounded-full pointer-events-none"
-                style={{
-                  inset: 20,
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  boxShadow: "0 0 60px rgba(59,130,246,0.08) inset",
-                }}
-              />
-              {/* Inner ring */}
-              <div
-                className="absolute rounded-full pointer-events-none"
-                style={{
-                  inset: 70,
-                  border: "1px dashed rgba(255,255,255,0.08)",
-                }}
-              />
-
-              {/* SVG lines */}
-              <svg
-                className="absolute inset-0 w-full h-full pointer-events-none z-[1]"
-                viewBox={`0 0 ${ORBIT_SIZE} ${ORBIT_SIZE}`}
-                aria-hidden="true"
-              >
-                {Array.from({ length: ORBIT_SLOTS }, (_, i) => {
-                  const angle = (i * (360 / ORBIT_SLOTS) * Math.PI) / 180;
-                  const x = ORBIT_CENTER + Math.cos(angle) * ORBIT_RADIUS;
-                  const y = ORBIT_CENTER + Math.sin(angle) * ORBIT_RADIUS;
-                  return (
-                    <line
-                      key={i}
-                      x1={ORBIT_CENTER}
-                      y1={ORBIT_CENTER}
-                      x2={x}
-                      y2={y}
-                      stroke="rgba(255,255,255,0.1)"
-                      strokeWidth="1"
-                      strokeDasharray="4 6"
-                    />
-                  );
-                })}
-              </svg>
-
-              {/* Orbit dots */}
-              {Array.from({ length: ORBIT_SLOTS }, (_, i) => {
-                const deg = i * (360 / ORBIT_SLOTS);
-                return (
-                  <div
-                    key={`dot-${i}`}
-                    className="absolute top-1/2 left-1/2 w-0 h-0 pointer-events-none"
-                    style={{ transform: `rotate(${deg}deg) translateX(${ORBIT_RADIUS}px)` }}
-                  >
-                    <div className="w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/40" />
-                  </div>
-                );
-              })}
-
-              {/* Center hub */}
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div
-                  className={`w-[100px] h-[100px] rounded-[28px] bg-gradient-to-br ${slide.gradient} shadow-2xl flex items-center justify-center transition-all duration-700 ease-out`}
-                  style={{ boxShadow: "0 0 50px rgba(59,130,246,0.3), 0 20px 40px rgba(0,0,0,0.4)" }}
-                >
-                  <slide.icon className="w-12 h-12 text-white drop-shadow-lg" />
-                </div>
-                {/* Pulse */}
-                <div
-                  className="absolute w-[100px] h-[100px] rounded-[28px] border border-blue-400/30 animate-ping"
-                  style={{ animationDuration: "2.5s" }}
-                />
-              </div>
-
-              {/* Tech icons on orbit */}
-              {slide.techStack?.slice(0, ORBIT_SLOTS).map((tech, i) => {
-                const deg = i * (360 / ORBIT_SLOTS);
-                return (
-                  <div
-                    key={`${currentSlide}-${i}`}
-                    className="absolute top-1/2 left-1/2 w-0 h-0 z-[2]"
-                    style={{ transform: `rotate(${deg}deg) translateX(${ORBIT_RADIUS}px)` }}
-                  >
-                    <div
-                      className="bg-[#111827] border border-white/10 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-1.5 overflow-hidden hover:border-white/25 hover:scale-110 transition-all duration-300"
+                  <span className="block">{titleMain}</span>
+                  {titleHighlight && (
+                    <motion.span
+                      className={`${fraunces.className} italic inline`}
                       style={{
-                        width: ICON_SIZE,
-                        height: ICON_SIZE,
-                        transform: `translate(-50%, -50%) rotate(-${deg}deg)`,
+                        color: CYAN_LIGHT,
+                        boxDecorationBreak: "clone",
+                        WebkitBoxDecorationBreak: "clone",
+                        backgroundImage:
+                          "linear-gradient(180deg, transparent 62%, rgba(36,155,202,0.3) 62%)",
+                        paddingInline: "3px",
                       }}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                    >
+                      {titleHighlight}
+                    </motion.span>
+                  )}
+                </h2>
+
+                {/* Subtitle */}
+                <p
+                  className={`${fraunces.className} italic text-base sm:text-lg mb-4 leading-snug`}
+                  style={{ color: CYAN_LIGHT }}
+                >
+                  {slide.subtitle}
+                </p>
+
+                {/* Description */}
+                <p className="text-sm sm:text-[0.95rem] text-[#93A3AF] leading-relaxed max-w-xl mb-7">
+                  {slide.description}
+                </p>
+
+                {/* Feature checklist */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8 max-w-xl">
+                  {slide.features.map((f, i) => (
+                    <div key={i} className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
+                      <span className="text-sm text-[#C7D2D9]">{f}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mobile-only compact tech strip */}
+                <div className="flex lg:hidden items-center gap-2.5 overflow-x-auto pb-1 mb-8 -mx-1 px-1">
+                  {slide.techStack?.map((tech, i) => (
+                    <div
+                      key={i}
+                      className="flex-shrink-0 w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center"
                     >
                       <Image
                         src={tech.image}
                         alt={tech.label}
-                        width={44}
-                        height={44}
-                        className="w-9 h-9 object-contain"
-                        priority={i < 3}
-                        sizes="44px"
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 object-contain"
+                        sizes="24px"
                       />
                     </div>
-                    {/* Label below icon */}
-                    <div
-                      className="absolute text-[9px] font-medium text-white/40 whitespace-nowrap"
-                      style={{
-                        top: "calc(50% + 44px)",
-                        left: "50%",
-                        transform: `translateX(-50%) rotate(-${deg}deg)`,
-                      }}
-                    >
-                      {tech.label}
-                    </div>
-                  </div>
-                );
-              })}
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* CTAs — static */}
+            <div className="flex flex-wrap gap-3.5 mb-9">
+              <Link
+                href="tel:+917948993409"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 text-[#08141F] text-sm font-semibold rounded-full transition-all duration-200 shadow-lg"
+                style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = CYAN_HOVER)}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = CYAN)}
+                onMouseDown={(e) => (e.currentTarget.style.backgroundColor = CYAN_ACTIVE)}
+                onMouseUp={(e) => (e.currentTarget.style.backgroundColor = CYAN_HOVER)}
+                aria-label="Book a free strategy consultation call"
+              >
+                Book a Free Strategy Call
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/case-studies"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-transparent text-[#F2F6F9] border border-white/15 text-sm font-semibold rounded-full hover:bg-white/[0.05] hover:border-white/25 transition-all duration-200"
+                aria-label="Explore CTAS case studies and success stories"
+              >
+                Explore Case Studies
+              </Link>
+            </div>
+
+            {/* Trust row */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              {trustBadges.map((t, i) => (
+                <div key={i} className="flex items-center gap-2 text-[#7A8B97] text-xs font-medium">
+                  <t.icon className="w-3.5 h-3.5 text-[#5B6C78]" />
+                  <span>{t.label}</span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* ── Slide dots ── */}
-        <div
-          className="flex items-center justify-center gap-2 pb-12"
-          role="tablist"
-          aria-label="Slide indicators"
-        >
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              role="tab"
-              onClick={() => setCurrentSlide(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              aria-selected={i === currentSlide}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === currentSlide ? "w-8 bg-blue-500" : "w-1.5 bg-white/20 hover:bg-white/40"
-              }`}
-            />
-          ))}
+          {/* ── RIGHT: Capability showcase card ── */}
+          <div className="hidden lg:flex flex-col items-center relative">
+            <div className="relative w-full max-w-[440px]">
+              {/* Decorative dashed ring */}
+              <div
+                className="absolute -inset-8 rounded-[2.5rem] pointer-events-none"
+                style={{ border: "1px dashed rgba(255,255,255,0.08)" }}
+                aria-hidden="true"
+              />
+
+              {/* Floating stat badges */}
+              <motion.div
+                className="hidden xl:flex absolute -top-7 -left-10 items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-[#12283C]/90 border border-white/10 shadow-xl backdrop-blur-sm z-20"
+                animate={{ y: [0, -9, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: `${CYAN}26` }}
+                >
+                  <Zap className="w-4 h-4" style={{ color: CYAN }} />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-[#F2F6F9] leading-none">1.5M+</div>
+                  <div className="text-[10px] text-[#7A8B97] mt-1">Orders Synced</div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="hidden xl:flex absolute -bottom-7 -right-9 items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-[#12283C]/90 border border-white/10 shadow-xl backdrop-blur-sm z-20"
+                animate={{ y: [0, 9, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              >
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: `${NAVY}55` }}
+                >
+                  <ShieldCheck className="w-4 h-4" style={{ color: CYAN_LIGHT }} />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-[#F2F6F9] leading-none">99.9%</div>
+                  <div className="text-[10px] text-[#7A8B97] mt-1">API Uptime</div>
+                </div>
+              </motion.div>
+
+              {/* Main card */}
+              <div className="relative rounded-[2rem] bg-gradient-to-b from-[#12283C]/90 to-[#0C1B29]/90 border border-white/10 shadow-2xl backdrop-blur-xl p-7 xl:p-8 overflow-hidden">
+                <div
+                  className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-[80px] pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(36,155,202,0.22) 0%, transparent 70%)" }}
+                  aria-hidden="true"
+                />
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative"
+                  >
+                    {/* Header row */}
+                    <div className="flex items-start justify-between mb-5">
+                      <div
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg"
+                        style={{
+                          backgroundImage: `linear-gradient(135deg, ${NAVY}, ${CYAN})`,
+                          boxShadow: `0 8px 24px -6px ${CYAN}55`,
+                        }}
+                      >
+                        <slide.icon className="w-6 h-6 text-[#F2F6F9]" />
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          onClick={prevSlide}
+                          aria-label="Previous specialty"
+                          className="w-8 h-8 rounded-full border border-white/10 hover:bg-white/[0.06] flex items-center justify-center transition-colors"
+                        >
+                          <ChevronLeft className="w-4 h-4 text-[#A9B7C2]" />
+                        </button>
+                        <button
+                          onClick={nextSlide}
+                          aria-label="Next specialty"
+                          className="w-8 h-8 rounded-full border border-white/10 hover:bg-white/[0.06] flex items-center justify-center transition-colors"
+                        >
+                          <ChevronRight className="w-4 h-4 text-[#A9B7C2]" />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-semibold uppercase tracking-widest text-[#7A8B97]">
+                        Now Automating
+                      </span>
+                      <span className="text-[10px] font-mono text-[#5B6C78]">
+                        {String(currentSlide + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg font-semibold text-[#F2F6F9] leading-snug mb-5">
+                      {slide.subtitle}
+                    </h3>
+
+                    {/* Feature checklist (compact) */}
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-5">
+                      {slide.features.slice(0, 6).map((f, i) => (
+                        <div key={i} className="flex items-center gap-2 min-w-0">
+                          <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: CYAN }} />
+                          <span className="text-xs text-[#A9B7C2] truncate">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="border-t border-white/[0.07] mb-5" />
+
+                    {/* Tech logos */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {slide.techStack?.map((tech, i) => (
+                        <div
+                          key={i}
+                          title={tech.label}
+                          className="w-18 h-18 rounded-xl bg-[#0B1A26]/60 border border-white/10 flex items-center justify-center hover:border-white/25 hover:scale-105 transition-all duration-200"
+                        >
+                          <Image
+                            src={tech.image}
+                            alt={tech.label}
+                            width={24}
+                            height={24}
+                            className="max-w-[56px] max-h-[28px] w-auto h-auto object-contain"
+                            sizes="24px"
+                            priority={i < 3}
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Autoplay progress bar */}
+                    <div className="h-1 rounded-full bg-white/[0.07] overflow-hidden">
+                      <div
+                        key={`bar-${currentSlide}`}
+                        className="h-full rounded-full"
+                        style={{
+                          backgroundImage: `linear-gradient(90deg, ${NAVY}, ${CYAN})`,
+                          animation: `heroProgress ${AUTOPLAY_MS}ms linear forwards`,
+                          animationPlayState: isHovered ? "paused" : "running",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Dot indicators */}
+            <div
+              className="flex items-center justify-center gap-2 mt-8"
+              role="tablist"
+              aria-label="Specialty indicators"
+            >
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  role="tab"
+                  onClick={() => goTo(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  aria-selected={i === currentSlide}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === currentSlide ? "w-8" : "w-1.5 bg-white/15 hover:bg-white/30"
+                  }`}
+                  style={i === currentSlide ? { backgroundColor: CYAN } : undefined}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* ── Bottom stats bar ── */}
-      <div className="relative z-10 border-t border-white/5">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {[
-              { v: "35+", l: "Marketplace APIs" },
-              { v: "1.5M+", l: "Orders Synced" },
-              { v: "18+", l: "Countries Served" },
-              { v: "99.9%", l: "API Reliability" },
-            ].map((s) => (
-              <div key={s.l} className="text-center sm:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-white">{s.v}</div>
-                <div className="text-xs text-white/35 mt-0.5">{s.l}</div>
-              </div>
+      <div className="relative z-10 border-t border-white/[0.06]">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.l}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`text-center sm:text-left px-2 sm:px-6 ${
+                  i !== 0 ? "sm:border-l sm:border-white/[0.06]" : ""
+                }`}
+              >
+                <div className={`${fraunces.className} text-xl sm:text-2xl font-medium text-[#F2F6F9]`}>
+                  {s.v}
+                </div>
+                <div className="text-xs text-[#7A8B97] mt-0.5">{s.l}</div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes heroProgress {
+          from {
+            width: 0%;
+          }
+          to {
+            width: 100%;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

@@ -92,14 +92,14 @@ const ContactFormSection = () => {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 -mt-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-6 h-full">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#F6F8FA]">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col h-full">
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8 flex flex-col h-full">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">Send us a message</h2>
-              <p className="text-gray-600 text-sm">
+              <h2 className="text-2xl font-semibold text-slate-900 mb-3">Send us a message</h2>
+              <p className="text-slate-500 text-sm">
                 Fill out the form below and we&apos;ll get back to you within 24 hours.
               </p>
             </div>
@@ -107,24 +107,24 @@ const ContactFormSection = () => {
             <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col h-full">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">First Name</label>
                   <Input
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
                     placeholder="Enter your first name"
-                    className="h-10 text-sm border border-gray-200 focus:border-blue-500 rounded-lg"
+                    className="h-10 text-sm border border-slate-200 focus:border-[#13345A] rounded-lg"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
                   <Input
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
                     placeholder="Enter your last name"
-                    className="h-10 text-sm border border-gray-200 focus:border-blue-500 rounded-lg"
+                    className="h-10 text-sm border border-slate-200 focus:border-[#13345A] rounded-lg"
                     required
                   />
                 </div>
@@ -132,7 +132,7 @@ const ContactFormSection = () => {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
                     Email Address
                   </label>
                   <Input
@@ -141,12 +141,12 @@ const ContactFormSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Enter your email address"
-                    className="h-10 text-sm border border-gray-200 focus:border-blue-500 rounded-lg"
+                    className="h-10 text-sm border border-slate-200 focus:border-[#13345A] rounded-lg"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
                     Phone Number
                   </label>
                   <Input
@@ -155,31 +155,31 @@ const ContactFormSection = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="Enter your phone number"
-                    className="h-10 text-sm border border-gray-200 focus:border-blue-500 rounded-lg"
+                    className="h-10 text-sm border border-slate-200 focus:border-[#13345A] rounded-lg"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Company</label>
                 <Input
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
                   placeholder="Enter your company name"
-                  className="h-10 text-sm border border-gray-200 focus:border-blue-500 rounded-lg"
+                  className="h-10 text-sm border border-slate-200 focus:border-[#13345A] rounded-lg"
                 />
               </div>
 
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
                 <Textarea
                   name="projectDetails"
                   value={formData.projectDetails}
                   onChange={handleInputChange}
                   rows={3}
                   placeholder="Tell us about your project or how we can help you..."
-                  className="text-sm border border-gray-200 focus:border-blue-500 rounded-lg resize-none h-full"
+                  className="text-sm border border-slate-200 focus:border-[#13345A] rounded-lg resize-none h-full"
                   required
                 />
               </div>
@@ -213,7 +213,7 @@ const ContactFormSection = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 text-sm rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#13345A] hover:bg-[#0E2843] text-white font-medium py-3 text-sm rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
@@ -232,61 +232,52 @@ const ContactFormSection = () => {
           </div>
 
           {/* Other Ways to Reach Us */}
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col h-full">
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8 flex flex-col h-full">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">Other Ways to Reach Us</h2>
-              <p className="text-gray-600 text-sm">Choose the method that works best for you</p>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-3">Other Ways to Reach Us</h2>
+              <p className="text-slate-500 text-sm">Choose the method that works best for you</p>
             </div>
 
             <div className="space-y-4 flex-1">
-              {/* Email */}
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-[#F6F8FA] rounded-xl p-4 border border-slate-100">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center">
+                  <div className="w-11 h-11 bg-[#13345A] text-white rounded-xl flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">Email Us</h3>
-                    <p className="text-gray-600 text-sm mb-1">Send us an email anytime</p>
-                    <a
-                      href="mailto:info@ctasis.com"
-                      className="text-gray-800 font-medium hover:text-gray-700 text-sm"
-                    >
+                    <h3 className="text-base font-semibold text-slate-900 mb-1">Email Us</h3>
+                    <p className="text-slate-500 text-sm mb-1">Send us an email anytime</p>
+                    <a href="mailto:info@ctasis.com" className="text-[#13345A] font-medium hover:text-[#249BCA] text-sm">
                       info@ctasis.com
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* Phone */}
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-[#F6F8FA] rounded-xl p-4 border border-slate-100">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center">
+                  <div className="w-11 h-11 bg-[#249BCA] text-white rounded-xl flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">Call Us</h3>
-                    <p className="text-gray-600 text-sm mb-1">Mon-Fri from 10am to 8pm</p>
-                    <a
-                      href="tel:+917948993409"
-                      className="text-gray-800 font-medium hover:text-gray-700 text-sm"
-                    >
+                    <h3 className="text-base font-semibold text-slate-900 mb-1">Call Us</h3>
+                    <p className="text-slate-500 text-sm mb-1">Mon-Fri from 10am to 8pm</p>
+                    <a href="tel:+917948993409" className="text-[#13345A] font-medium hover:text-[#249BCA] text-sm">
                       +91 7948993409
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* Location */}
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-[#F6F8FA] rounded-xl p-4 border border-slate-100">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center flex-nowrap shrink-0">
-                    <MapPin className="w-5 h-5 " />
+                  <div className="w-11 h-11 bg-[#13345A] text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">Visit Us</h3>
-                    <p className="text-gray-600 text-sm mb-1">Our office location</p>
-                    <p className="text-gray-800 font-medium text-sm">
+                    <h3 className="text-base font-semibold text-slate-900 mb-1">Visit Us</h3>
+                    <p className="text-slate-500 text-sm mb-1">Our office location</p>
+                    <p className="text-slate-700 font-medium text-sm">
                       A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy,
                       near BSNL Office, Gota, Ahmedabad, Gujarat 382470
                     </p>
@@ -294,16 +285,15 @@ const ContactFormSection = () => {
                 </div>
               </div>
 
-              {/* Business Hours */}
-              <div className="bg-gray-50 rounded-xl p-4">
+              <div className="bg-[#F6F8FA] rounded-xl p-4 border border-slate-100">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center">
+                  <div className="w-11 h-11 bg-[#249BCA] text-white rounded-xl flex items-center justify-center flex-shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">Business Hours</h3>
-                    <p className="text-gray-600 text-sm mb-1">When we&apos;re available</p>
-                    <p className="text-gray-800 font-medium text-sm">Mon-Fri: 10AM-8PM</p>
+                    <h3 className="text-base font-semibold text-slate-900 mb-1">Business Hours</h3>
+                    <p className="text-slate-500 text-sm mb-1">When we&apos;re available</p>
+                    <p className="text-slate-700 font-medium text-sm">Mon-Fri: 10AM-8PM</p>
                   </div>
                 </div>
               </div>

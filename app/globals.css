@@ -11,7 +11,7 @@
   --brand-orange: 35 100% 55%;
 
   /* Professional Design System Colors - HSL Values */
-  --background: 0 0% 100%;
+  --background: 210 20% 97%;
   --foreground: 220 13% 18%;
   --card: 0 0% 100%;
   --card-foreground: 220 13% 18%;
@@ -532,16 +532,15 @@
     animation: hub-pulse 2.5s ease-in-out infinite;
   }
 
-
   /* Subtle dot-grid background for white sections — inspired by myboeken.nl */
   .bg-dot-pattern {
     background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
-  /* Section background utility combining white + subtle pattern */
+  /* Section background utility combining off-white + subtle pattern */
   .section-bg-dots {
-    background-color: #ffffff;
+    background-color: #f6f8fa;
     background-image: radial-gradient(circle, rgba(148, 163, 184, 0.25) 1px, transparent 1px);
     background-size: 28px 28px;
   }

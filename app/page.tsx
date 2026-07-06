@@ -10,7 +10,6 @@ import AISection from "@/components/AISection";
 import BusinessIntelligenceSection from "@/components/BusinessIntelligenceSection";
 import GlobalPresenceSection from "@/components/GlobalPresenceSection";
 import AwardsRecognitionSection from "@/components/AwardsRecognitionSection";
-import ClutchSection from "@/components/ClutchSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import CTABannerSection from "@/components/CTABannerSection";
@@ -20,7 +19,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F6F8FA]">
       {/* Skip to main content for accessibility */}
       <a
         href="#main-content"
@@ -47,7 +46,6 @@ const Index = () => {
         <BusinessIntelligenceSection />
         <GlobalPresenceSection />
         <AwardsRecognitionSection />
-        <ClutchSection />
         <BlogSection />
         <ContactSection />
         <CTABannerSection />

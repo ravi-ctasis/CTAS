@@ -45,19 +45,33 @@ interface PartnerLogo {
   wide: boolean;
 }
 
-const LogoChip = ({ p }: { p: PartnerLogo }) => (
-  <div className="flex items-center justify-center bg-white border border-slate-200 rounded-xl px-5 py-3.5 h-[60px] hover:border-blue-200 hover:shadow-sm transition-all duration-200">
-    <Image
-      src={p.logo}
-      alt={`${p.name} integration partner`}
-      width={p.wide ? 100 : 52}
-      height={p.wide ? 28 : 36}
-      className={`object-contain ${p.wide ? "max-w-[96px] max-h-[28px]" : "max-w-[48px] max-h-[34px]"} w-auto h-auto`}
-      loading="lazy"
-      sizes="100px"
-    />
-  </div>
-);
+const LogoChip = ({ p }: { p: PartnerLogo }) => {
+  const imgClass =
+    p.name === "Shiprocket"
+      ? "object-contain max-w-[110px] max-h-[30px] w-auto h-auto"
+      : `object-contain ${
+          p.wide ? "max-w-[96px] max-h-[28px]" : "max-w-[48px] max-h-[34px]"
+        } w-auto h-auto`;
+
+  return (
+    <div className="flex items-center justify-center bg-white border border-slate-200 rounded-xl px-1.5 py-1.5 h-[60px] min-w-[72px] hover:border-blue-200 hover:shadow-sm transition-all duration-200">
+      {p.logo.endsWith(".svg") ? (
+        // Native img avoids Next.js SVG optimizer stripping embedded <style> blocks
+        <img src={p.logo} alt={`${p.name} integration partner`} className={imgClass} />
+      ) : (
+        <Image
+          src={p.logo}
+          alt={`${p.name} integration partner`}
+          width={p.wide ? 100 : 52}
+          height={p.wide ? 28 : 36}
+          className={imgClass}
+          loading="lazy"
+          sizes="100px"
+        />
+      )}
+    </div>
+  );
+};
 
 const IntegrationPartnersSection = () => {
   return (

@@ -169,8 +169,8 @@ const Navigation = () => {
                         onMouseEnter={() => setActiveTab(index)}
                         onClick={() => setActiveTab(index)}
                         className={`px-4 py-2 text-sm font-medium transition-colors duration-300 ${activeTab === index
-                          ? "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400"
-                          : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                          ? "text-[#13345A] dark:text-[#6FC3E4] border-b-2 border-[#13345A] dark:border-[#6FC3E4]"
+                          : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                           }`}
                       >
                         {category.category}
@@ -185,16 +185,16 @@ const Navigation = () => {
                         key={idx}
                         href={getHref(item)}
                         className={`group/item flex items-center space-x-3 p-2 rounded-lg transition-all duration-200 ${isActivePath(getHref(item))
-                          ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                          : "hover:bg-blue-50 dark:hover:bg-gray-700"
+                          ? "bg-[#EAF3F8] dark:bg-[#13345A]/20 text-[#13345A] dark:text-[#6FC3E4]"
+                        : "hover:bg-[#EAF3F8] dark:hover:bg-gray-700"
                           }`}
                         aria-label={item.name}
                       >
                         {item.icon && (
-                          <item.icon className="w-5 h-5 flex-shrink-0 text-blue-600 dark:text-blue-400 group-hover/item:text-orange-500" />
+                          <item.icon className="w-5 h-5 flex-shrink-0 text-[#13345A] dark:text-[#6FC3E4] group-hover/item:text-orange-500" />
                         )}
                         <div>
-                          <div className="font-medium text-sm text-gray-900 dark:text-white group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400">
+                          <div className="font-medium text-sm text-gray-900 dark:text-white group-hover/item:text-[#13345A] dark:group-hover/item:text-[#6FC3E4]">
                             {item.name}
                           </div>
                         </div>
@@ -213,8 +213,8 @@ const Navigation = () => {
                       <Link
                         key={index}
                         href={getHref(item)}
-                        className={`flex items-center space-x-2 text-sm text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 rounded-lg p-1 ${isActivePath(getHref(item))
-                          ? "font-semibold bg-blue-50 dark:bg-blue-900/20"
+                        className={`flex items-center space-x-2 text-sm text-gray-900 dark:text-white hover:text-[#13345A] dark:hover:text-[#6FC3E4] transition-colors duration-200 rounded-lg p-1 ${isActivePath(getHref(item))
+                          ? "font-semibold bg-[#EAF3F8] dark:bg-[#13345A]/20"
                           : ""
                           }`}
                       >
@@ -250,25 +250,25 @@ const Navigation = () => {
                       <li key={iIndex}>
                         <Link
                           href={getHref(item)}
-                          className={`group/item flex items-start space-x-3 p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 ${isActivePath(getHref(item))
-                            ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                            : "hover:bg-blue-50 dark:hover:bg-gray-700"
+                          className={`group/item flex items-start space-x-3 p-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#6FC3E4] focus:ring-offset-2 ${isActivePath(getHref(item))
+                            ? "bg-[#EAF3F8] dark:bg-[#13345A]/20 text-[#13345A] dark:text-[#6FC3E4]"
+                        : "hover:bg-[#EAF3F8] dark:hover:bg-gray-700"
                             }`}
                           aria-label={`${item.name} - ${item.description}`}
                         >
                           {item.icon && (
                             <item.icon
                               className={`w-5 h-5 mt-0.5 flex-shrink-0 transition-colors ${isActivePath(getHref(item))
-                                ? "text-blue-600 dark:text-blue-400"
-                                : "text-blue-600 dark:text-blue-400 group-hover/item:text-orange-500"
+                                ? "text-[#13345A] dark:text-[#6FC3E4]"
+                                : "text-[#13345A] dark:text-[#6FC3E4] group-hover/item:text-orange-500"
                                 }`}
                             />
                           )}
                           <div>
                             <div
                               className={`font-medium text-sm transition-colors ${isActivePath(getHref(item))
-                                ? "text-blue-600 dark:text-blue-400"
-                                : "text-gray-900 dark:text-white group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400"
+                                ? "text-[#13345A] dark:text-[#6FC3E4]"
+                                : "text-gray-900 dark:text-white group-hover/item:text-[#13345A] dark:group-hover/item:text-[#6FC3E4]"
                                 }`}
                             >
                               {item.name}
@@ -307,7 +307,7 @@ const Navigation = () => {
     <>
       <header className="sticky top-0 w-full z-50">
         {/* Top Contact Bar - Responsive */}
-        <div className="bg-slate-800 text-white py-2 px-4 hidden lg:block">
+        <div className="bg-[#13345A] text-white py-2 px-4 hidden lg:block">
           <div className="px-9 sm:px-9 mx-auto flex justify-between items-center">
             <div className="flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
               {contactInfo.slice(0, 3).map((contact, index) => (
@@ -393,14 +393,14 @@ const Navigation = () => {
                 <Link
                   href="/"
                   className={`px-2 xl:px-2 2xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isActivePath("/")
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[#13345A] dark:text-[#6FC3E4]"
+                    : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                     }`}
                   aria-current={isActivePath("/") ? "page" : undefined}
                 >
                   Home
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isActivePath("/")
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isActivePath("/")
                       ? "w-full opacity-100"
                       : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                       }`}
@@ -417,8 +417,8 @@ const Navigation = () => {
                     <Link
                       href={data.href}
                       className={`w-max flex items-center px-2 xl:px-2 2xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isMainMenuActive(data.href, key)
-                        ? "text-blue-600 dark:text-blue-400"
-                        : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                        ? "text-[#13345A] dark:text-[#6FC3E4]"
+                        : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                         }`}
                       aria-current={isMainMenuActive(data.href, key) ? "page" : undefined}
                     >
@@ -428,7 +428,7 @@ const Navigation = () => {
                           }`}
                       />
                       <span
-                        className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isMainMenuActive(data.href, key)
+                        className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isMainMenuActive(data.href, key)
                           ? "w-full opacity-100"
                           : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                           }`}
@@ -440,14 +440,14 @@ const Navigation = () => {
                 <Link
                   href="/case-studies"
                   className={`w-max px-2 xl:px-2 2xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isActivePath("/case-studies")
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[#13345A] dark:text-[#6FC3E4]"
+                    : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                     }`}
                   aria-current={isActivePath("/case-studies") ? "page" : undefined}
                 >
                   Case Studies
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isActivePath("/case-studies")
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isActivePath("/case-studies")
                       ? "w-full opacity-100"
                       : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                       }`}
@@ -456,14 +456,14 @@ const Navigation = () => {
                 <Link
                   href="/portfolios"
                   className={`px-2 xl:px-2 2xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isActivePath("/portfolios")
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[#13345A] dark:text-[#6FC3E4]"
+                    : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                     }`}
                   aria-current={isActivePath("/portfolios") ? "page" : undefined}
                 >
                   Portfolios
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isActivePath("/portfolios")
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isActivePath("/portfolios")
                       ? "w-full opacity-100"
                       : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                       }`}
@@ -472,14 +472,14 @@ const Navigation = () => {
                 <Link
                   href="/blog"
                   className={`px-2 xl:px-2 2xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isActivePath("/blog")
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[#13345A] dark:text-[#6FC3E4]"
+                    : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                     }`}
                   aria-current={isActivePath("/blog") ? "page" : undefined}
                 >
                   Blog
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isActivePath("/blog")
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isActivePath("/blog")
                       ? "w-full opacity-100"
                       : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                       }`}
@@ -496,7 +496,7 @@ const Navigation = () => {
               {/* Mobile menu button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+                className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4] hover:bg-[#EAF3F8] dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#6FC3E4] focus:ring-offset-2"
                 aria-label="Toggle mobile menu"
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
@@ -518,13 +518,13 @@ const Navigation = () => {
                 <Link
                   href="/"
                   className={`px-3 xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isActivePath("/")
-                    ? "text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[#13345A] dark:text-[#6FC3E4]"
+                    : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                     }`}
                 >
                   Home
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isActivePath("/")
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isActivePath("/")
                       ? "w-full opacity-100"
                       : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                       }`}
@@ -536,8 +536,8 @@ const Navigation = () => {
                     <button
                       onClick={() => toggleMobileDropdown(key)}
                       className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg ${isMainMenuActive(data.href, key)
-                        ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-gray-700 border-l-4 border-blue-600 dark:border-blue-400"
-                        : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700"
+                        ? "text-[#13345A] dark:text-[#6FC3E4] bg-[#EAF3F8] dark:bg-gray-700 border-l-4 border-[#13345A] dark:border-[#6FC3E4]"
+                        : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4] hover:bg-[#EAF3F8] dark:hover:bg-gray-700"
                         }`}
                     >
                       <span>{data.title}</span>
@@ -563,8 +563,8 @@ const Navigation = () => {
                                   key={itemIndex}
                                   href={item.href}
                                   className={`flex items-center space-x-3 px-4 py-2 text-sm rounded-lg transition-colors ${isActivePath(item.href)
-                                    ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-gray-700"
-                                    : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700"
+                                    ? "text-[#13345A] dark:text-[#6FC3E4] bg-[#EAF3F8] dark:bg-gray-700"
+                                    : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4] hover:bg-[#EAF3F8] dark:hover:bg-gray-700"
                                     }`}
                                   onClick={() => setIsMenuOpen(false)}
                                 >
@@ -608,8 +608,8 @@ const Navigation = () => {
                     key={href}
                     href={href}
                     className={`px-3 xl:px-4 py-2 text-sm xl:text-base font-medium transition-all duration-300 relative group overflow-hidden ${isActivePath(href)
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "text-[#13345A] dark:text-[#6FC3E4]"
+                      : "text-gray-700 dark:text-gray-300 hover:text-[#13345A] dark:hover:text-[#6FC3E4]"
                       }`}
                   >
                     {href === "/case-studies"
@@ -618,7 +618,7 @@ const Navigation = () => {
                         ? "Portfolios"
                         : "Blog"}
                     <span
-                      className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-400 dark:to-blue-300 transition-all duration-500 ease-out ${isActivePath(href)
+                      className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#13345A] to-[#249BCA] dark:from-[#6FC3E4] dark:to-[#249BCA] transition-all duration-500 ease-out ${isActivePath(href)
                         ? "w-full opacity-100"
                         : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                         }`}

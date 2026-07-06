@@ -31,7 +31,7 @@ const TrustedMarketplacesSection = () => {
 
   return (
     <section
-      className="py-16 sm:py-20 bg-white border-y border-slate-100"
+      className="py-16 sm:py-20 bg-[#F6F8FA] border-y border-slate-100"
       aria-label="Trusted by leading global marketplaces"
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
@@ -68,8 +68,8 @@ const TrustedMarketplacesSection = () => {
 
         {/* Marquee */}
         <div className="relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-[#F6F8FA] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-[#F6F8FA] to-transparent z-10 pointer-events-none" />
           <div
             className="flex gap-8 sm:gap-12"
             style={{
