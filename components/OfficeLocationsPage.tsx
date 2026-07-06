@@ -31,6 +31,9 @@ const office = {
     "Our main headquarters houses our core team of developers, designers, and project managers, ensuring excellence in every project.",
   teamSize: "20+ Members",
   established: "2019",
+  mapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14677.863503494289!2d72.5370109!3d23.1166406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83dd203973ad%3A0x5cc3fba7c64241c7!2sCtas%20Info%20Services%20LLP!5e0!3m2!1sen!2sin!4v1783348770725!5m2!1sen!2sin",
+  mapsLink: "https://www.google.com/maps/place/Ctas+Info+Services+LLP/@23.1166406,72.5370109,17z",
 };
 
 const globalReach = [
@@ -103,58 +106,97 @@ const OfficeLocationsPage = () => (
             description="Visit our office for in-person consultations, project discussions, or to meet our talented team."
           />
 
-          <motion.div
-            {...fadeUp}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto bg-white border border-slate-200/80 rounded-[1.75rem] p-7 sm:p-9 shadow-sm"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
-              <div>
-                <h3 className={`${fraunces.className} text-xl sm:text-2xl font-medium text-slate-900 mb-2`}>
-                  {office.name}
-                </h3>
-                <div className="flex items-center text-slate-500 text-sm">
-                  <span className="text-xl mr-2" aria-label="India flag">
-                    {office.flag}
-                  </span>
-                  {office.city}, {office.country}
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.5 }}
+              className="bg-white border border-slate-200/80 rounded-[1.75rem] p-7 sm:p-9 shadow-sm h-full"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
+                <div>
+                  <h3 className={`${fraunces.className} text-xl sm:text-2xl font-medium text-slate-900 mb-2`}>
+                    {office.name}
+                  </h3>
+                  <div className="flex items-center text-slate-500 text-sm">
+                    <span className="text-xl mr-2" aria-label="India flag">
+                      {office.flag}
+                    </span>
+                    {office.city}, {office.country}
+                  </div>
+                </div>
+                <div className="text-left sm:text-right">
+                  <div className="text-xs text-slate-400 uppercase tracking-wider">Established</div>
+                  <div className="font-semibold text-slate-900">{office.established}</div>
                 </div>
               </div>
-              <div className="text-left sm:text-right">
-                <div className="text-xs text-slate-400 uppercase tracking-wider">Established</div>
-                <div className="font-semibold text-slate-900">{office.established}</div>
-              </div>
-            </div>
 
-            <div className="space-y-5 mb-8">
-              <InfoRow icon={MapPin} label="Address">
-                {office.address}
-              </InfoRow>
-              <InfoRow icon={Phone} label="Phone">
-                <Link href={`tel:${office.phone}`} className="hover:text-[#13345A] transition-colors">
-                  {office.phone}
-                </Link>
-              </InfoRow>
-              <InfoRow icon={Mail} label="Email">
-                <Link href={`mailto:${office.email}`} className="hover:text-[#13345A] transition-colors">
-                  {office.email}
-                </Link>
-              </InfoRow>
-              <InfoRow icon={Clock} label="Business Hours">
-                {office.hours}
-              </InfoRow>
-            </div>
-
-            <div className="pt-6 border-t border-slate-100">
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-semibold text-slate-900 text-sm">Team Size</span>
-                <span className="text-sm font-semibold" style={{ color: CYAN }}>
-                  {office.teamSize}
-                </span>
+              <div className="space-y-5 mb-8">
+                <InfoRow icon={MapPin} label="Address">
+                  {office.address}
+                </InfoRow>
+                <InfoRow icon={Phone} label="Phone">
+                  <Link href={`tel:${office.phone}`} className="hover:text-[#13345A] transition-colors">
+                    {office.phone}
+                  </Link>
+                </InfoRow>
+                <InfoRow icon={Mail} label="Email">
+                  <Link href={`mailto:${office.email}`} className="hover:text-[#13345A] transition-colors">
+                    {office.email}
+                  </Link>
+                </InfoRow>
+                <InfoRow icon={Clock} label="Business Hours">
+                  {office.hours}
+                </InfoRow>
               </div>
-              <p className="text-sm text-slate-500 leading-relaxed">{office.description}</p>
-            </div>
-          </motion.div>
+
+              <div className="pt-6 border-t border-slate-100">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-semibold text-slate-900 text-sm">Team Size</span>
+                  <span className="text-sm font-semibold" style={{ color: CYAN }}>
+                    {office.teamSize}
+                  </span>
+                </div>
+                <p className="text-sm text-slate-500 leading-relaxed">{office.description}</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex flex-col bg-white border border-slate-200/80 rounded-[1.75rem] overflow-hidden shadow-sm h-full min-h-[320px] lg:min-h-0"
+            >
+              <div className="px-6 sm:px-7 py-5 border-b border-slate-100">
+                <h3 className={`${fraunces.className} text-lg sm:text-xl font-medium text-slate-900`}>
+                  Office Location
+                </h3>
+                <p className="text-sm text-slate-500 mt-1">Ctas Info Services LLP, Gota, Ahmedabad</p>
+              </div>
+              <div className="relative flex-1 min-h-[280px] sm:min-h-[360px] lg:min-h-[420px]">
+                <iframe
+                  src={office.mapEmbedUrl}
+                  title="Ctas Info Services LLP office location on Google Maps"
+                  className="absolute inset-0 w-full h-full border-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  // Required when parent page sets Cross-Origin-Embedder-Policy
+                  {...({ credentialless: "" } as React.IframeHTMLAttributes<HTMLIFrameElement>)}
+                />
+              </div>
+              <div className="px-6 sm:px-7 py-4 border-t border-slate-100 bg-[#F6F8FA]">
+                <Link
+                  href={office.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
+                  style={{ color: NAVY }}
+                >
+                  <MapPin className="w-4 h-4" style={{ color: CYAN }} />
+                  Open in Google Maps
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

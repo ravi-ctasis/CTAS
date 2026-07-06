@@ -10,13 +10,14 @@ export function middleware(request: NextRequest) {
   // Content Security Policy
   const csp = [
     "default-src 'self'",
-    "img-src 'self' https://lifeatctas.s3.ap-south-1.amazonaws.com https://*.s3.ap-south-1.amazonaws.com",
+    "img-src 'self' https://lifeatctas.s3.ap-south-1.amazonaws.com https://*.s3.ap-south-1.amazonaws.com https://*.googleapis.com https://*.gstatic.com https://maps.googleapis.com https://maps.gstatic.com",
     "media-src 'self' https://lifeatctas.s3.ap-south-1.amazonaws.com https://*.s3.ap-south-1.amazonaws.com",
     "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com https://www.googletagmanager.com https://vercel.live",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
-    "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://vercel.live",
-    "frame-src 'self' https://www.google.com",
+    "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://vercel.live https://maps.googleapis.com https://*.googleapis.com",
+    "frame-src 'self' https://www.google.com https://maps.google.com https://*.google.com",
+    "child-src 'self' https://www.google.com https://maps.google.com https://*.google.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
