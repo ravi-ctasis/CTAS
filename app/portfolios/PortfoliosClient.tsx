@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Navigation from "@/components/Navigation";
+import { PageShell, PageCTA } from "@/components/page-design";
 import FooterSection from "@/components/FooterSection";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -37,6 +38,15 @@ import { portfoliosData } from "@/data/portfoliosData";
 import Link from "next/link";
 
 const PortfoliosClient = () => {
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Portfolio | Ctas Info Services LLP",
+        description: "Explore our portfolio of successful web development, mobile app, and e-commerce projects.",
+        url: "https://www.ctasis.com/portfolios",
+        provider: { "@type": "Organization", name: "Ctas Info Services LLP", url: "https://www.ctasis.com" },
+    };
+
     const router = useRouter();
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -157,8 +167,10 @@ const PortfoliosClient = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50">
+        <PageShell>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
             <Navigation />
+            <main>
 
             {/* Hero Section */}
             <section className="relative py-16 lg:py-24 overflow-hidden">
@@ -478,31 +490,17 @@ const PortfoliosClient = () => {
                     </div>
                 </div>
             </section>
-
-            {/* CTA Section */}
-            <section className="py-16 bg-gradient-to-r from-green-600 to-blue-700 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
-                    <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-                        Let&apos;s discuss how we can bring your vision to life with our expertise and
-                        innovative solutions.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact-us">
-                            <Button
-                                size="lg"
-                                variant="secondary"
-                                className="bg-white text-blue-600 hover:bg-gray-100"
-                            >
-                                Get Free Consultation
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
+            <PageCTA
+                title="Ready to Start Your Project?"
+                description="Let's discuss how we can bring your vision to life with our expertise and innovative solutions."
+                primaryLabel="Get Free Consultation"
+                primaryHref="/contact-us"
+                secondaryLabel="Explore Services"
+                secondaryHref="/services"
+            />
+            </main>
             <FooterSection />
-        </div>
+        </PageShell>
     );
 };
 

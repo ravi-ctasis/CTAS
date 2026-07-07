@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
+import { PageShell, PageCTA } from "@/components/page-design";
 import FooterSection from "@/components/FooterSection";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,15 @@ interface BlogListClientProps {
 }
 
 export default function BlogListClient({ initialPosts }: BlogListClientProps) {
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        name: "Ctas Info Services LLP Blog",
+        description: "Insights, tutorials, and best practices in technology and business.",
+        url: "https://www.ctasis.com/blog",
+        publisher: { "@type": "Organization", name: "Ctas Info Services LLP", url: "https://www.ctasis.com" },
+    };
+
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [sortBy, setSortBy] = useState("newest");
@@ -81,8 +91,10 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+        <PageShell>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
             <Navigation />
+            <main>
 
             {/* Hero Section */}
             <section className="relative py-20 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white">
@@ -286,7 +298,16 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                 </div>
             </section>
 
+            <PageCTA
+                title="Ready to Transform Your Business?"
+                description="Explore our services or get in touch to discuss how we can help you achieve your technology goals."
+                primaryLabel="Explore Services"
+                primaryHref="/services"
+                secondaryLabel="Contact Us"
+                secondaryHref="/contact-us"
+            />
+            </main>
             <FooterSection />
-        </div>
+        </PageShell>
     );
 }

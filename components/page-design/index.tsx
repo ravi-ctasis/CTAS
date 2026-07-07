@@ -83,6 +83,8 @@ export const PageHero = ({
   description,
   stats,
   ariaLabel,
+  primaryCta,
+  secondaryCta,
 }: {
   badge: string;
   title: string;
@@ -90,6 +92,8 @@ export const PageHero = ({
   description: string;
   stats?: HeroStat[];
   ariaLabel?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
 }) => (
   <section
     className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
@@ -166,6 +170,35 @@ export const PageHero = ({
             </motion.div>
           ))}
         </div>
+      )}
+
+      {(primaryCta || secondaryCta) && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className={`flex flex-col sm:flex-row gap-3 justify-center ${
+            stats && stats.length > 0 ? "mt-10 sm:mt-12" : "mt-8 sm:mt-10"
+          }`}
+        >
+          {primaryCta && (
+            <Link
+              href={primaryCta.href}
+              className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+              style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
+            >
+              {primaryCta.label}
+            </Link>
+          )}
+          {secondaryCta && (
+            <Link
+              href={secondaryCta.href}
+              className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
+            >
+              {secondaryCta.label}
+            </Link>
+          )}
+        </motion.div>
       )}
     </div>
   </section>
