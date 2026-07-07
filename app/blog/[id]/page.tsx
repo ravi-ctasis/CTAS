@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export async function generateStaticParams() {
   const blogs = getAllBlogs();
   return blogs.map((blog) => ({
-    id: blog.id,
+    id: blog.slug,
   }));
 }
 
@@ -74,7 +74,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
   if (!blog) return notFound();
 
   const relatedPosts = getAllBlogs()
-    .filter((b) => b.category === blog.category && b.id !== blog.id)
+    .filter((b) => b.category === blog.category && b.slug !== blog.slug)
     .slice(0, 3);
 
   return <BlogClient blog={blog} relatedPosts={relatedPosts} />;

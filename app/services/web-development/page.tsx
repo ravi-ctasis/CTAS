@@ -37,72 +37,89 @@ import {
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Professional Web Development Services",
-  description:
-    "Expert web development services including custom websites, web applications, React, Next.js, Node.js solutions.",
-  provider: {
-    "@type": "Organization",
-    name: "Ctas Info Services LLP",
-    url: "https://www.ctasis.com",
-    logo: "https://www.ctasis.com/assets/images/ctas-logo.png",
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+917948993409",
-      contactType: "customer service",
-      areaServed: "IN",
-      availableLanguage: "English",
-    },
-  },
-  serviceType: "Web Development",
-  areaServed: {
-    "@type": "Country",
-    name: "India",
-  },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Professional Web Development Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Custom Web Development",
-          description:
-            "Professional custom web development services with tailored web applications",
-          provider: {
-            "@type": "Organization",
-            name: "Ctas Info Services LLP",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Professional Web Development Services",
+      description:
+        "Expert web development services including custom websites, web applications, React, Next.js, Node.js solutions.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+        logo: "https://www.ctasis.com/assets/images/ctas-logo.png",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+917948993409",
+          contactType: "customer service",
+          areaServed: "IN",
+          availableLanguage: "English",
+        },
+      },
+      serviceType: "Web Development",
+      areaServed: {
+        "@type": "Country",
+        name: "India",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Professional Web Development Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Custom Web Development",
+              description:
+                "Professional custom web development services with tailored web applications",
+              provider: {
+                "@type": "Organization",
+                name: "Ctas Info Services LLP",
+              },
+            },
           },
-        },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "eCommerce Development",
+              description:
+                "Professional eCommerce development services with complete online store solutions including payment processing and inventory management",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Enterprise Web Applications",
+              description:
+                "Scalable web applications designed for large organizations and complex business processes",
+            },
+          },
+        ],
       },
-      {
+      offers: {
         "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "eCommerce Development",
-          description:
-            "Professional eCommerce development services with complete online store solutions including payment processing and inventory management",
-        },
+        description:
+          "Professional web development services including custom websites, web applications, React, Next.js, Node.js solutions.",
+        images: ["https://www.ctasis.com/assets/images/web-dev-twitter-card.jpg"],
+        site: "@ctasinfoservices",
       },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Enterprise Web Applications",
-          description:
-            "Scalable web applications designed for large organizations and complex business processes",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Web Development",
+          item: "https://www.ctasis.com/services/web-development",
         },
-      },
-    ],
-  },
-  offers: {
-    "@type": "Offer",
-    description:
-      "Professional web development services including custom websites, web applications, React, Next.js, Node.js solutions.",
-    images: ["https://www.ctasis.com/assets/images/web-dev-twitter-card.jpg"],
-    site: "@ctasinfoservices",
-  },
+      ],
+    },
+  ],
 };
 
 const services = [
@@ -315,6 +332,7 @@ export default function WebDevelopmentPage() {
         sections: [
           {
             type: "cards",
+            variant: "bento",
             header: {
               badge: "Our Professional Web Development Services",
               title: "Comprehensive",
@@ -338,6 +356,7 @@ export default function WebDevelopmentPage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Development",
@@ -349,6 +368,7 @@ export default function WebDevelopmentPage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose Us",
               title: "Key",

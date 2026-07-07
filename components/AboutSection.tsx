@@ -64,7 +64,7 @@ const AboutSection = () => {
       itemScope
       itemType="https://schema.org/Organization"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
 
           {/* ── Left: Content ── */}

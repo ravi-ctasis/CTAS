@@ -241,7 +241,7 @@ const CareersPage = () => {
         />
 
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Openings"
               title="Open"
@@ -353,7 +353,7 @@ const CareersPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader badge="Benefits" title="Benefits &" highlight="Perks" description="We offer competitive benefits and a supportive environment that promotes growth and professional development." />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {companyBenefits.map((benefit, i) => (
@@ -364,7 +364,7 @@ const CareersPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader badge="Values" title="Company" highlight="Culture" description="We believe in creating an inclusive, supportive, and innovative work environment where everyone can thrive." />
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {companyValues.map((value, i) => (
@@ -375,7 +375,7 @@ const CareersPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader badge="How to Apply" title="Application" highlight="Process" description="Our streamlined application process ensures a smooth experience from application to onboarding." />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
               {applicationProcess.map((process, i) => (

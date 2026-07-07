@@ -321,11 +321,44 @@ const process = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "AI & ML Development Services",
+      description:
+        "AI/ML solutions from Ctas: custom models, data pipelines, LLM/RAG, computer vision, and analytics tailored to your business.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Artificial Intelligence and Machine Learning",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "AI & ML",
+          item: "https://www.ctasis.com/services/ai-ml",
+        },
+      ],
+    },
+  ],
+};
+
 export default function AIMLPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "AI/ML Solutions",
+        structuredData,
         hero: {
           badge: "AI/ML Solutions",
           title: "Transform Your Business",
@@ -356,7 +389,8 @@ export default function AIMLPage() {
             items: keyFeatures,
           },
           {
-            type: "cards",
+            type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Key Benefits",
               title: "Why Choose",
@@ -365,10 +399,10 @@ export default function AIMLPage() {
                 "Our AI/ML solutions deliver measurable results and competitive advantages",
             },
             items: inlineBenefits,
-            columns: 2,
           },
           {
             type: "cards",
+            variant: "bento",
             header: {
               badge: "Our Services",
               title: "Our AI/ML",
@@ -392,6 +426,7 @@ export default function AIMLPage() {
           },
           {
             type: "tech-grid",
+            variant: "scroll",
             header: {
               badge: "Technologies",
               title: "Technologies",
@@ -403,6 +438,7 @@ export default function AIMLPage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Our AI/ML Development",

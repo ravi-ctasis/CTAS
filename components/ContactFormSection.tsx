@@ -93,7 +93,7 @@ const ContactFormSection = () => {
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-[#F6F8FA]">
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8 flex flex-col h-full">

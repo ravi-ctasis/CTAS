@@ -1,12 +1,9 @@
 "use client";
 
 import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import Navigation from "@/components/Navigation";
-import FooterSection from "@/components/FooterSection";
 import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
   MessageCircle,
@@ -20,983 +17,635 @@ import {
   Code,
   Database,
   Cloud,
-  Smartphone as MobileIcon,
-  Globe as WebIcon,
+  Smartphone,
+  Monitor,
   Server,
+  CheckCircle2,
 } from "lucide-react";
-import Link from "next/link";
 
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  gradient: string;
-}
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
+import {
+  PageShell,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
 
-interface TechStackProps {
-  icon: React.ReactNode;
-  name: string;
-  description: string;
-}
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
 
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
 
+const heroBenefits = [
+  { icon: Zap, text: "Launch in 8-12 weeks" },
+  { icon: Shield, text: "100% Custom Design" },
+  { icon: Users, text: "AI Matching Engine" },
+  { icon: Globe, text: "Multi-Platform" },
+];
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, gradient }) => {
-  return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-      {/* Background Pattern */}
-      <div className="absolute top-0 right-0 w-24 h-24 opacity-5">
-        <div className={`w-full h-full ${gradient} rounded-full blur-2xl`}></div>
-      </div>
+const stats = [
+  { number: "50+", label: "Dating Apps Built" },
+  { number: "2M+", label: "Users Connected" },
+  { number: "98%", label: "Client Satisfaction" },
+  { number: "24/7", label: "Support Available" },
+];
 
-      {/* Icon Container */}
-      <div className="relative z-10">
-        <div
-          className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl ${gradient} text-white mb-6 shadow-lg border-2 border-white/20`}
-        >
-          {icon ? (
-            <div className="text-white">{icon}</div>
-          ) : (
-            <Heart className="w-8 h-8 text-white" />
-          )}
-        </div>
+const features = [
+  {
+    icon: Heart,
+    title: "Smart Matching Algorithm",
+    description:
+      "AI-powered compatibility matching using advanced algorithms and user behavior analysis.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Real-time Chat & Video",
+    description: "Seamless messaging, voice calls, and video chat with end-to-end encryption.",
+  },
+  {
+    icon: Shield,
+    title: "Privacy & Security",
+    description: "Advanced privacy controls, location masking, and verified user profiles.",
+  },
+  {
+    icon: Users,
+    title: "Community Features",
+    description: "Group events, shared interests, and community building tools.",
+  },
+  {
+    icon: Zap,
+    title: "Instant Notifications",
+    description: "Push notifications for matches, messages, and important updates.",
+  },
+  {
+    icon: Star,
+    title: "Premium Features",
+    description: "Advanced filters, unlimited likes, and premium matching options.",
+  },
+];
 
-        {/* Title */}
-        <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{title}</h3>
+const featureHighlights = ["100% Customizable", "Scalable Architecture", "AI-Powered"];
 
-        {/* Description */}
-        <p className="text-gray-600 leading-relaxed text-base">{description}</p>
-      </div>
+const keyFeatures = [
+  {
+    icon: Heart,
+    title: "AI-Powered Matching",
+    description:
+      "Advanced machine learning algorithms for intelligent compatibility matching based on user preferences and behavior patterns.",
+  },
+  {
+    icon: Shield,
+    title: "Enterprise Security",
+    description:
+      "Bank-level security with end-to-end encryption, GDPR compliance, and advanced privacy controls for user data protection.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning Fast Performance",
+    description:
+      "Optimized for speed with real-time updates, instant messaging, and seamless user experience across all devices.",
+  },
+  {
+    icon: Users,
+    title: "Scalable Architecture",
+    description:
+      "Built to handle millions of users with cloud-native architecture, load balancing, and auto-scaling capabilities.",
+  },
+];
 
-      {/* Corner Decoration */}
-      <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-r from-pink-200 to-purple-200 rounded-full opacity-60"></div>
-    </div>
-  );
+const successMetrics = [
+  { label: "User Engagement", value: "75%", progress: 75 },
+  { label: "Match Success", value: "87%", progress: 87 },
+  { label: "Retention Rate", value: "62%", progress: 62 },
+];
+
+const scrollImages = [
+  { src: "/dating-app-scroll.webp", alt: "Dating App Mockup 1" },
+  { src: "/dating-app-scroll-img.webp", alt: "Dating App Mockup 2" },
+  { src: "/dating-app-scroll-demo.webp", alt: "Dating App Mockup 3" },
+];
+
+const techCategories = [
+  {
+    id: "all",
+    title: "All",
+    items: [] as { name: string; description: string; icon: React.ElementType }[],
+  },
+  {
+    id: "frontend",
+    title: "Frontend",
+    items: [
+      { name: "React Native", description: "Cross-platform mobile development", icon: Smartphone },
+      { name: "Next.js", description: "Modern web framework", icon: Monitor },
+      { name: "TypeScript", description: "Type-safe development", icon: Code },
+      { name: "React.js", description: "Modern UI library", icon: Code },
+      { name: "Vue.js", description: "Progressive framework", icon: Code },
+      { name: "Angular", description: "Enterprise framework", icon: Code },
+      { name: "Flutter", description: "Google's UI toolkit", icon: Code },
+      { name: "Swift", description: "iOS development", icon: Code },
+      { name: "Kotlin", description: "Android development", icon: Code },
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend",
+    items: [
+      { name: "Node.js", description: "Scalable backend services", icon: Server },
+      { name: "Python", description: "FastAPI & Django", icon: Server },
+      { name: "Java", description: "Spring Boot framework", icon: Server },
+      { name: "Go", description: "High-performance backend", icon: Server },
+      { name: "PHP", description: "Laravel framework", icon: Server },
+      { name: "Ruby", description: "Ruby on Rails", icon: Server },
+      { name: "C#", description: ".NET Core framework", icon: Server },
+    ],
+  },
+  {
+    id: "database",
+    title: "Database",
+    items: [
+      { name: "MongoDB", description: "NoSQL database", icon: Database },
+      { name: "PostgreSQL", description: "Advanced SQL database", icon: Database },
+      { name: "MySQL", description: "Reliable SQL database", icon: Database },
+      { name: "Elasticsearch", description: "Search & analytics", icon: Database },
+      { name: "Firebase", description: "Google's backend service", icon: Database },
+      { name: "Supabase", description: "Open source Firebase", icon: Database },
+    ],
+  },
+  {
+    id: "cloud",
+    title: "Cloud & DevOps",
+    items: [
+      { name: "AWS", description: "Cloud infrastructure", icon: Cloud },
+      { name: "Google Cloud", description: "Google's cloud platform", icon: Cloud },
+      { name: "Azure", description: "Microsoft's cloud", icon: Cloud },
+      { name: "Docker", description: "Containerization", icon: Cloud },
+      { name: "Kubernetes", description: "Container orchestration", icon: Cloud },
+      { name: "Terraform", description: "Infrastructure as code", icon: Cloud },
+      { name: "Jenkins", description: "CI/CD automation", icon: Cloud },
+      { name: "GitHub Actions", description: "GitHub CI/CD", icon: Cloud },
+      { name: "Vercel", description: "Deployment platform", icon: Cloud },
+      { name: "Netlify", description: "Web deployment", icon: Cloud },
+    ],
+  },
+];
+
+techCategories[0].items = techCategories.slice(1).flatMap((c) => c.items);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Dating App Development Services",
+      description:
+        "Custom dating app development services including matchmaking algorithms, real-time chat, secure authentication, and modern UI/UX for high-engagement social platforms.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Dating App Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: "https://www.ctasis.com/solutions" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Dating App",
+          item: "https://www.ctasis.com/solutions/dating-app",
+        },
+      ],
+    },
+  ],
 };
 
-const TechStack: React.FC<TechStackProps> = ({ icon, name, description }) => {
-  return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100">
-      {/* Background Pattern */}
-      <div className="absolute top-0 right-0 w-20 h-20 opacity-5">
-        <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-2xl"></div>
-      </div>
-
-      {/* Icon Container */}
-      <div className="relative z-10">
-        <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg border-2 border-white/20">
-          <div className="text-white text-2xl">
-            {icon || <Code className="w-8 h-8 text-white" />}
+const DatingAppMockup = () => (
+  <div className="relative mx-auto max-w-lg">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4">
+      <div className="rounded-[1.75rem] border border-slate-200/80 bg-white p-2 shadow-xl">
+        <div className="rounded-[1.5rem] overflow-hidden bg-[#F6F8FA] p-4">
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-8 h-8 rounded-full" style={{ backgroundColor: CYAN }} />
+            <span className="text-xs text-slate-500 font-medium">Dating App</span>
+            <div className="w-6 h-6 rounded-full bg-slate-200" />
+          </div>
+          <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden mb-3">
+            <Image
+              src="/dating-app-scroll.webp"
+              alt="Profile mockup"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 40vw, 200px"
+              priority
+            />
+            <div className="absolute top-2 right-2 bg-white/90 rounded-full p-1">
+              <Heart className="w-4 h-4" style={{ color: CYAN }} />
+            </div>
+          </div>
+          <div className="space-y-2 mb-3">
+            <div className="h-3 bg-slate-200 rounded w-3/4" />
+            <div className="h-2 bg-slate-200 rounded w-1/2" />
+          </div>
+          <div className="flex gap-2">
+            <div className="flex-1 h-8 rounded-lg bg-red-400/80" />
+            <div className="flex-1 h-8 rounded-lg bg-emerald-400/80" />
           </div>
         </div>
-
-        {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 mb-3 text-center group-hover:text-purple-600 transition-colors duration-300">
-          {name}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm text-gray-600 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-          {description}
-        </p>
       </div>
-
-      {/* Hover Effect Line */}
-      <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500 group-hover:w-full"></div>
-
-      {/* Corner Decoration */}
-      <div className="absolute top-3 right-3 w-2 h-2 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full opacity-60"></div>
+      <div className="rounded-[1.75rem] border border-slate-200/80 bg-white p-2 shadow-xl overflow-hidden">
+        <div className="relative h-[340px] sm:h-[380px] overflow-hidden rounded-[1.5rem] bg-[#F6F8FA]">
+          <motion.div
+            className="space-y-4 p-2"
+            animate={{ y: [0, -600] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          >
+            {[...scrollImages, ...scrollImages].map((img, i) => (
+              <div key={`${img.src}-${i}`} className="relative w-full h-[280px] rounded-xl overflow-hidden">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 40vw, 200px"
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
     </div>
-  );
-};
+
+    <motion.div
+      {...fadeUp}
+      className="absolute -top-3 -right-2 sm:-right-4 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-lg max-w-[160px]"
+    >
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: CYAN }}>
+          <Heart className="w-5 h-5 text-white" />
+        </div>
+        <div>
+          <div className={`${fraunces.className} text-lg font-medium text-slate-900`}>2.5M+</div>
+          <div className="text-xs text-slate-500">Matches Made</div>
+        </div>
+      </div>
+      <div className="h-1 bg-slate-100 rounded-full overflow-hidden">
+        <div className="h-full w-4/5 rounded-full" style={{ backgroundColor: CYAN }} />
+      </div>
+    </motion.div>
+
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.1 }}
+      className="absolute -bottom-3 -left-2 sm:-left-4 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-lg max-w-[160px]"
+    >
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: NAVY }}>
+          <MessageCircle className="w-5 h-5 text-white" />
+        </div>
+        <div>
+          <div className={`${fraunces.className} text-lg font-medium text-slate-900`}>98%</div>
+          <div className="text-xs text-slate-500">Success Rate</div>
+        </div>
+      </div>
+      <div className="h-1 bg-slate-100 rounded-full overflow-hidden">
+        <div className="h-full w-full rounded-full" style={{ backgroundColor: NAVY }} />
+      </div>
+    </motion.div>
+
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.15 }}
+      className="absolute top-1/2 -right-6 sm:-right-10 rounded-xl border border-slate-200/80 bg-white p-3 shadow-md text-center hidden sm:block"
+    >
+      <div className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-1" style={{ backgroundColor: `${CYAN}18` }}>
+        <Users className="w-4 h-4" style={{ color: NAVY }} />
+      </div>
+      <div className="text-xs font-semibold text-slate-800">Live Users</div>
+      <div className="text-xs text-slate-500">Online Now</div>
+    </motion.div>
+  </div>
+);
 
 const DatingAppPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const features = [
-    {
-      icon: <Heart className="w-8 h-8 text-red-500" />,
-      title: "Smart Matching Algorithm",
-      description:
-        "AI-powered compatibility matching using advanced algorithms and user behavior analysis.",
-      gradient: "from-pink-500 to-rose-500",
-    },
-    {
-      icon: <MessageCircle className="w-8 h-8 text-blue-500" />,
-      title: "Real-time Chat & Video",
-      description: "Seamless messaging, voice calls, and video chat with end-to-end encryption.",
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: <Shield className="w-8 h-8 text-green-500" />,
-      title: "Privacy & Security",
-      description: "Advanced privacy controls, location masking, and verified user profiles.",
-      gradient: "from-green-500 to-emerald-500",
-    },
-    {
-      icon: <Users className="w-8 h-8 text-yellow-500" />,
-      title: "Community Features",
-      description: "Group events, shared interests, and community building tools.",
-      gradient: "from-purple-500 to-indigo-500",
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-red-500" />,
-      title: "Instant Notifications",
-      description: "Push notifications for matches, messages, and important updates.",
-      gradient: "from-yellow-500 to-orange-500",
-    },
-    {
-      icon: <Star className="w-8 h-8 text-pink-500" />,
-      title: "Premium Features",
-      description: "Advanced filters, unlimited likes, and premium matching options.",
-      gradient: "from-indigo-500 to-purple-500",
-    },
-  ];
-
-  const techStack = [
-    // Frontend Technologies
-    {
-      icon: <MobileIcon className="w-6 h-6" />,
-      name: "React Native",
-      description: "Cross-platform mobile development",
-      category: "Frontend",
-    },
-    {
-      icon: <WebIcon className="w-6 h-6" />,
-      name: "Next.js",
-      description: "Modern web framework",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "TypeScript",
-      description: "Type-safe development",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "React.js",
-      description: "Modern UI library",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "Vue.js",
-      description: "Progressive framework",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "Angular",
-      description: "Enterprise framework",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "Flutter",
-      description: "Google's UI toolkit",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "Swift",
-      description: "iOS development",
-      category: "Frontend",
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      name: "Kotlin",
-      description: "Android development",
-      category: "Frontend",
-    },
-
-    // Backend Technologies
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "Node.js",
-      description: "Scalable backend services",
-      category: "Backend",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "Python",
-      description: "FastAPI & Django",
-      category: "Backend",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "Java",
-      description: "Spring Boot framework",
-      category: "Backend",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "Go",
-      description: "High-performance backend",
-      category: "Backend",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "PHP",
-      description: "Laravel framework",
-      category: "Backend",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "Ruby",
-      description: "Ruby on Rails",
-      category: "Backend",
-    },
-    {
-      icon: <Server className="w-6 h-6" />,
-      name: "C#",
-      description: ".NET Core framework",
-      category: "Backend",
-    },
-
-    // Database Technologies
-    {
-      icon: <Database className="w-6 h-6" />,
-      name: "MongoDB",
-      description: "NoSQL database",
-      category: "Database",
-    },
-    {
-      icon: <Database className="w-6 h-6" />,
-      name: "PostgreSQL",
-      description: "Advanced SQL database",
-      category: "Database",
-    },
-    {
-      icon: <Database className="w-6 h-6" />,
-      name: "MySQL",
-      description: "Reliable SQL database",
-      category: "Database",
-    },
-
-    {
-      icon: <Database className="w-6 h-6" />,
-      name: "Elasticsearch",
-      description: "Search & analytics",
-      category: "Database",
-    },
-    {
-      icon: <Database className="w-6 h-6" />,
-      name: "Firebase",
-      description: "Google's backend service",
-      category: "Database",
-    },
-    {
-      icon: <Database className="w-6 h-6" />,
-      name: "Supabase",
-      description: "Open source Firebase",
-      category: "Database",
-    },
-
-    // Cloud & DevOps Technologies
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "AWS",
-      description: "Cloud infrastructure",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Google Cloud",
-      description: "Google's cloud platform",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Azure",
-      description: "Microsoft's cloud",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Docker",
-      description: "Containerization",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Kubernetes",
-      description: "Container orchestration",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Terraform",
-      description: "Infrastructure as code",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Jenkins",
-      description: "CI/CD automation",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "GitHub Actions",
-      description: "GitHub CI/CD",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Vercel",
-      description: "Deployment platform",
-      category: "Cloud & DevOps",
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      name: "Netlify",
-      description: "Web deployment",
-      category: "Cloud & DevOps",
-    },
-  ];
-
-  // Filter tech stack based on selected category
-  const filteredTechStack =
-    selectedCategory === "All"
-      ? techStack
-      : techStack.filter((tech) => tech.category === selectedCategory);
+  const [activeTech, setActiveTech] = useState(0);
+  const currentTech = techCategories[activeTech];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navigation />
-      {/* Hero Section */}
-      <section
-        className="relative overflow-hidden bg-gradient-to-br from-pink-400 via-purple-500 to-indigo-600 text-white py-24 px-4 sm:px-6 lg:px-8"
-      // ref={ref}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="text-left contents">
-              <div className="mb-6">
-                <Badge
-                  variant="secondary"
-                  className="bg-white/20 text-white border-white/30 mb-4 backdrop-blur-sm"
-                >
-                  <Heart className="w-4 h-4 mr-2" />
+      <main>
+        {/* Split hero with app mockup */}
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="Dating App Development"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                  <Heart className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
                   #1 Dating App Development Company
-                </Badge>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                  Build Your
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-pink-200 via-yellow-200 to-orange-200">
+                </div>
+                <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                  Build Your{" "}
+                  <span className="italic" style={{ color: CYAN_LIGHT }}>
                     Modern
-                  </span>
-                  <span className="block text-white">Dating App</span>
+                  </span>{" "}
+                  Dating App
                 </h1>
-                <p className="text-lg sm:text-xl mb-8 opacity-95 leading-relaxed max-w-2xl">
-                  Create a visually stunning dating app that combines beautiful design with powerful
-                  matching algorithms. AI-powered compatibility, real-time chat, and scalable
-                  architecture ready for millions of users.
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-8 max-w-xl">
+                  Create a visually stunning dating app that combines beautiful design with powerful matching
+                  algorithms. AI-powered compatibility, real-time chat, and scalable architecture ready for millions
+                  of users.
                 </p>
-
-                {/* Key Benefits */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {[
-                    {
-                      icon: <Zap className="w-5 h-5" />,
-                      text: "Launch in 8-12 weeks",
-                    },
-                    {
-                      icon: <Shield className="w-5 h-5" />,
-                      text: "100% Custom Design",
-                    },
-                    {
-                      icon: <Users className="w-5 h-5" />,
-                      text: "AI Matching Engine",
-                    },
-                    {
-                      icon: <Globe className="w-5 h-5" />,
-                      text: "Multi-Platform",
-                    },
-                  ].map((benefit, index) => (
-                    <div key={index} className="flex items-center space-x-2 text-sm">
-                      <div className="text-pink-200">{benefit.icon}</div>
-                      <span className="opacity-90">{benefit.text}</span>
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  {heroBenefits.map((benefit) => (
+                    <div key={benefit.text} className="flex items-center gap-2 text-sm text-[#C7D2D9]">
+                      <benefit.icon className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
+                      <span>{benefit.text}</span>
                     </div>
                   ))}
                 </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/portfolios">
-                    <Button
-                      size="lg"
-                      className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      <Play className="w-5 h-5 mr-2" />
-                      Portfolios
-                    </Button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/portfolios"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
+                  >
+                    <Play className="w-4 h-4" />
+                    Portfolios
                   </Link>
-                  <Link href="/contact-us">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      Get Free Quote
-                    </Button>
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
+                  >
+                    Get Free Quote
                   </Link>
                 </div>
-              </div>
-
-              {/* Right Visual Content */}
-              <div className="relative">
-                {/* Floating App Mockup */}
-                <div className="relative">
-                  {/* Main Phone Mockup */}
-                  <div className="relative bg-white rounded-3xl p-2 shadow-2xl transform rotate-3 flex items-center justify-center gap-2">
-                    <div className="w-64 h-96 bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl p-4 overflow-hidden">
-                      {/* App Header */}
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full"></div>
-                        <div className="text-xs text-gray-600 font-medium">Dating App</div>
-                        <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
-                      </div>
-
-                      {/* Main Profile Card */}
-                      <div className="bg-white rounded-xl p-4 shadow-lg mb-4 relative overflow-hidden">
-                        {/* Profile Image */}
-                        <div className="w-full h-32 bg-gradient-to-r from-pink-200 to-purple-200 rounded-lg mb-3 relative">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent">
-                            <Image
-                              src="/dating-app-scroll.webp"
-                              alt="Profile mockup"
-                              fill
-                              className="object-cover"
-                              unoptimized
-                            />
-                          </div>
-                          <div className="absolute top-2 right-2 bg-white/90 rounded-full p-1">
-                            <Heart className="w-4 h-4 text-pink-500" />
-                          </div>
-                        </div>
-
-                        {/* Profile Info */}
-                        <div className="space-y-2 mb-3">
-                          <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                          <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-                        </div>
-
-                        {/* Interest Tags */}
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          <div className="w-12 h-2 bg-pink-200 rounded-full"></div>
-                          <div className="w-16 h-2 bg-purple-200 rounded-full"></div>
-                          <div className="w-14 h-2 bg-blue-200 rounded-full"></div>
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex space-x-2">
-                          <div className="flex-1 h-8 bg-red-400 rounded-lg"></div>
-                          <div className="flex-1 h-8 bg-green-400 rounded-lg"></div>
-                        </div>
-                      </div>
-
-                      {/* Second Profile Card */}
-                      <div className="bg-white rounded-xl p-3 shadow-sm relative overflow-hidden">
-                        <div className="w-full h-20 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-lg mb-2 relative">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                          <div className="absolute top-1 right-1 bg-white/90 rounded-full p-1">
-                            <MessageCircle className="w-3 h-3 text-blue-500" />
-                          </div>
-                        </div>
-                        <div className="h-3 bg-gray-200 rounded w-2/3 mb-1"></div>
-                        <div className="h-2 bg-gray-200 rounded w-1/3"></div>
-                      </div>
-
-                      {/* Floating Elements Inside App */}
-                      <div className="absolute top-16 right-2 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
-                        <Star className="w-4 h-4 text-white" />
-                      </div>
-
-                      <div className="absolute bottom-20 left-2 w-6 h-6 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex items-center justify-center">
-                        <Users className="w-3 h-3 text-white" />
-                      </div>
-                    </div>
-
-                    <div className="w-64 h-96 bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl p-4 overflow-hidden">
-                      <section className="max-w-7xl mx-auto ">
-                        <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-pink-50 to-purple-50">
-                          <div className="absolute w-full animate-scroll-vertical space-y-6">
-                            {[
-                              "/dating-app-scroll.webp", // demo 1
-                              "/dating-app-scroll-img.webp", // demo 2
-                              "/dating-app-scroll-demo.webp", // demo 3
-                              "/dating-app-scroll.webp", // demo 4 (reuse for variety)
-                              "/dating-app-scroll-img.webp", // demo 5 (reuse for variety)
-                              "/dating-app-scroll-demo.webp", // demo 6 (reuse for variety)
-                            ].map((img, i) => (
-                              <div
-                                key={i}
-                                className="w-full h-[350px] flex items-center justify-center"
-                              >
-                                <Image
-                                  src={img}
-                                  alt={`Dating App Mockup ${i + 1}`}
-                                  width={400}
-                                  height={700}
-                                  className="rounded-2xl shadow-lg object-cover h-full"
-                                  unoptimized
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <style jsx>{`
-                          @keyframes scroll-vertical {
-                            0% {
-                              transform: translateY(0);
-                            }
-                            100% {
-                              transform: translateY(-100%);
-                            }
-                          }
-                          .animate-scroll-vertical {
-                            animation: scroll-vertical 25s linear infinite;
-                          }
-                        `}</style>
-                      </section>
-                    </div>
-                  </div>
-
-                  {/* Floating Elements */}
-                  <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-4 shadow-xl border border-gray-100">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
-                        <Heart className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-gray-800">2.5M+</div>
-                        <div className="text-xs text-gray-500">Matches Made</div>
-                      </div>
-                    </div>
-                    {/* Progress Bar */}
-                    <div className="mt-2 w-full bg-gray-200 rounded-full h-1">
-                      <div className="bg-gradient-to-r from-pink-400 to-purple-500 h-1 rounded-full w-4/5"></div>
-                    </div>
-                  </div>
-
-                  <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-gray-100">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center">
-                        <MessageCircle className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-gray-800">98%</div>
-                        <div className="text-xs text-gray-500">Success Rate</div>
-                      </div>
-                    </div>
-                    {/* Progress Bar */}
-                    <div className="mt-2 w-full bg-gray-200 rounded-full h-1">
-                      <div className="bg-gradient-to-r from-blue-400 to-indigo-500 h-1 rounded-full w-full"></div>
-                    </div>
-                  </div>
-
-                  {/* Additional Floating Element */}
-                  <div className="absolute top-1/2 -right-8 bg-white rounded-xl p-3 shadow-lg border border-gray-100">
-                    <div className="text-center">
-                      <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                        <Users className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="text-xs font-semibold text-gray-800">Live Users</div>
-                      <div className="text-xs text-gray-500">Online Now</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+              >
+                <DatingAppMockup />
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-          // variants={containerVariants}
-          // initial="hidden"
-          // animate={controls}
-          >
-            {[
-              { number: "50+", label: "Dating Apps Built" },
-              { number: "2M+", label: "Users Connected" },
-              { number: "98%", label: "Client Satisfaction" },
-              { number: "24/7", label: "Support Available" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                // variants={itemVariants}
-                className="text-center"
+        {/* Stats — animated counter grid */}
+        <SectionWrap>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" role="list" aria-label="Dating app statistics">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="text-center rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 hover:shadow-md transition-shadow"
+                role="listitem"
               >
-                <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">
-                  {stat.number}
+                <div className={`${fraunces.className} text-3xl sm:text-4xl font-medium mb-2`} style={{ color: NAVY }}>
+                  {stat.number.match(/^[\d.]+/) ? <AnimatedStat value={stat.number} /> : stat.number}
                 </div>
-                <div className="text-gray-600">{stat.label}</div>
-              </div>
+                <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Features Section */}
-      <section
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white"
-      // ref={ref}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <Badge
-              variant="secondary"
-              className="bg-purple-100 text-purple-700 border-purple-200 mb-4"
-            >
-              <Zap className="w-4 h-4 mr-2" />
-              Core Features
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Dating App Features
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Dating apps need more than just swipes. Our innovative design creates engaging, visual
-              experiences that keep users coming back.
-            </p>
-          </div>
-
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          // variants={containerVariants}
-          // initial="hidden"
-          // animate={controls}
-          >
-            {features && features.length > 0 ? (
-              features.map((feature, index) => (
-                <div key={index}>
-                  <FeatureCard {...feature} />
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full text-center text-gray-500">No features available</div>
-            )}
-          </div>
-
-          {/* Feature Highlights */}
-          <div
-            className="mt-16 text-center"
-          // initial={{ opacity: 0, y: 30 }}
-          // animate={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="inline-flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-8 bg-white rounded-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-4 shadow-lg border border-gray-100">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <span className="text-sm font-medium text-gray-700">100% Customizable</span>
-              </div>
-              <div className="hidden sm:block w-px h-6 bg-gray-200"></div>
-              <div className="sm:hidden w-full h-px bg-gray-200"></div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                <span className="text-sm font-medium text-gray-700">Scalable Architecture</span>
-              </div>
-              <div className="hidden sm:block w-px h-6 bg-gray-200"></div>
-              <div className="sm:hidden w-full h-px bg-gray-200"></div>
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
-                <span className="text-sm font-medium text-gray-700">AI-Powered</span>
-              </div>
+        {/* Core features — horizontal scroll */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Core Features"
+            title="Dating App"
+            highlight="Features"
+            description="Dating apps need more than just swipes. Our innovative design creates engaging, visual experiences that keep users coming back."
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {features.map((feature, i) => (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.05 }}
+                  className="flex-shrink-0 w-[300px] sm:w-[340px] snap-start"
+                >
+                  <div className="h-full bg-white border border-slate-200/80 rounded-[1.5rem] p-6 sm:p-7 hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] transition-all">
+                    <IconBox icon={feature.icon} />
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-2`}>
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
+                  </div>
+                </motion.article>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Key Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className="text-center mb-16"
-          // initial={{ opacity: 0, y: 30 }}
-          // whileInView={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.6 }}
-          // viewport={{ once: true }}
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
           >
-            <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-blue-200 mb-4">
-              <Zap className="w-4 h-4 mr-2" />
-              Key Highlights
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Our Dating App Development?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We deliver cutting-edge dating apps with proven technology stacks and innovative
-              features that drive user engagement.
-            </p>
-          </div>
+            {featureHighlights.map((highlight, i) => (
+              <div key={highlight} className="flex items-center gap-2">
+                {i > 0 && <span className="hidden sm:block w-px h-5 bg-slate-200" aria-hidden="true" />}
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: CYAN }} aria-hidden="true" />
+                <span className="text-sm font-medium text-slate-700">{highlight}</span>
+              </div>
+            ))}
+          </motion.div>
+        </SectionWrap>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Key Features List */}
-            <div
-              // initial={{ opacity: 0, x: -50 }}
-              // whileInView={{ opacity: 1, x: 0 }}
-              // transition={{ duration: 0.8 }}
-              // viewport={{ once: true }}
-              className="space-y-6"
-            >
-              {[
-                {
-                  icon: <Heart className="w-6 h-6" />,
-                  title: "AI-Powered Matching",
-                  description:
-                    "Advanced machine learning algorithms for intelligent compatibility matching based on user preferences and behavior patterns.",
-                  color: "text-pink-500",
-                },
-                {
-                  icon: <Shield className="w-6 h-6" />,
-                  title: "Enterprise Security",
-                  description:
-                    "Bank-level security with end-to-end encryption, GDPR compliance, and advanced privacy controls for user data protection.",
-                  color: "text-green-500",
-                },
-                {
-                  icon: <Zap className="w-6 h-6" />,
-                  title: "Lightning Fast Performance",
-                  description:
-                    "Optimized for speed with real-time updates, instant messaging, and seamless user experience across all devices.",
-                  color: "text-yellow-500",
-                },
-                {
-                  icon: <Users className="w-6 h-6" />,
-                  title: "Scalable Architecture",
-                  description:
-                    "Built to handle millions of users with cloud-native architecture, load balancing, and auto-scaling capabilities.",
-                  color: "text-purple-500",
-                },
-              ].map((feature, index) => (
-                <div
-                  key={index}
-                  // initial={{ opacity: 0, y: 20 }}
-                  // whileInView={{ opacity: 1, y: 0 }}
-                  // transition={{ duration: 0.6, delay: index * 0.1 }}
-                  // viewport={{ once: true }}
-                  className="flex items-start space-x-4 group"
+        {/* Key highlights — split with success metrics */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Key Highlights"
+            title="Why Choose Our"
+            highlight="Dating App Development?"
+            description="We deliver cutting-edge dating apps with proven technology stacks and innovative features that drive user engagement."
+          />
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            <div className="space-y-8">
+              {keyFeatures.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.06 }}
+                  className="flex gap-4 sm:gap-5"
                 >
                   <div
-                    className={`flex-shrink-0 w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${feature.color}`}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${CYAN}18` }}
                   >
-                    {feature.icon}
+                    <feature.icon className="w-6 h-6" style={{ color: NAVY }} />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-500 leading-relaxed">{feature.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-
-            {/* Right Side - Visual Element */}
-            <div
-              // initial={{ opacity: 0, x: 50 }}
-              // whileInView={{ opacity: 1, x: 0 }}
-              // transition={{ duration: 0.8 }}
-              // viewport={{ once: true }}
-              className="relative"
+            <motion.div
+              {...fadeUp}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-6 scale-105 opacity-20"></div>
-                <div className="relative bg-white rounded-3xl shadow-2xl p-8">
-                  <div className="text-center mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Heart className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">Success Metrics</h3>
-                    <p className="text-gray-600">Track your app&apos;s performance</p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg">
-                      <span className="text-sm font-medium text-gray-700">User Engagement</span>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-16 h-2 bg-gray-200 rounded-full">
-                          <div className="w-12 h-2 bg-pink-400 rounded-full"></div>
-                        </div>
-                        <span className="text-sm font-semibold text-gray-800">75%</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
-                      <span className="text-sm font-medium text-gray-700">Match Success</span>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-16 h-2 bg-gray-200 rounded-full">
-                          <div className="w-14 h-2 bg-blue-400 rounded-full"></div>
-                        </div>
-                        <span className="text-sm font-semibold text-gray-800">87%</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg">
-                      <span className="text-sm font-medium text-gray-700">Retention Rate</span>
-                      <div className="flex items-center space-x-2">
-                        <div className="w-16 h-2 bg-gray-200 rounded-full">
-                          <div className="w-10 h-2 bg-green-400 rounded-full"></div>
-                        </div>
-                        <span className="text-sm font-semibold text-gray-800">62%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Stack */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div
-            className="text-center mb-16"
-          // initial={{ opacity: 0, y: 30 }}
-          // whileInView={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.6 }}
-          // viewport={{ once: true }}
-          >
-            <Badge
-              variant="secondary"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 mb-4 shadow-lg"
-            >
-              <Code className="w-4 h-4 mr-2" />
-              Technology Stack
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Powered by Cutting-Edge Technologies
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We leverage the latest technologies to build fast, secure, and scalable dating
-              applications that deliver exceptional user experiences.
-            </p>
-          </div>
-
-          {/* Tech Categories */}
-          <div className="mb-12">
-            <div
-              className="flex flex-wrap justify-center gap-4 mb-8"
-            // initial={{ opacity: 0, y: 20 }}
-            // whileInView={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.6 }}
-            // viewport={{ once: true }}
-            >
-              {["Frontend", "Backend", "Database", "Cloud & DevOps"].map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full border-2 font-medium transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md ${selectedCategory === category
-                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-purple-500 shadow-lg"
-                    : "bg-white text-gray-700 border-gray-200 hover:border-purple-300 hover:text-purple-600"
-                    }`}
+              <div className="text-center mb-6">
+                <div
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: `${CYAN}18` }}
                 >
-                  {category}
+                  <Heart className="w-8 h-8" style={{ color: NAVY }} />
+                </div>
+                <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-1`}>Success Metrics</h3>
+                <p className="text-sm text-slate-500">Track your app&apos;s performance</p>
+              </div>
+              <div className="space-y-5">
+                {successMetrics.map((metric) => (
+                  <div key={metric.label}>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium text-slate-700">{metric.label}</span>
+                      <span className="text-sm font-bold" style={{ color: NAVY }}>
+                        <AnimatedStat value={metric.value} />
+                      </span>
+                    </div>
+                    <div className="h-1.5 bg-[#EAF3F8] rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: CYAN }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${metric.progress}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2 }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </SectionWrap>
+
+        {/* Technology stack — tabbed sidebar */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Technology Stack"
+            title="Powered by"
+            highlight="Cutting-Edge Technologies"
+            description="We leverage the latest technologies to build fast, secure, and scalable dating applications that deliver exceptional user experiences."
+          />
+          <div className="grid lg:grid-cols-[minmax(0,200px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Technology categories">
+              {techCategories.map((cat, ci) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveTech(ci)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeTech === ci
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeTech === ci ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeTech === ci ? "true" : undefined}
+                >
+                  {cat.title}
                 </button>
               ))}
-            </div>
-
-            {/* Category Count */}
-            <div
-              className="text-center text-gray-600 mb-8"
-            // initial={{ opacity: 0 }}
-            // animate={{ opacity: 1 }}
-            // transition={{ duration: 0.3 }}
-            >
-              <span className="font-medium">
-                {filteredTechStack.length} technology
-                {filteredTechStack.length !== 1 ? "s" : ""}
-                {selectedCategory !== "All" && ` in ${selectedCategory}`}
-              </span>
-            </div>
-          </div>
-
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          // variants={containerVariants}
-          // initial="hidden"
-          // whileInView="visible"
-          // viewport={{ once: true }}
-          >
-            {filteredTechStack.map((tech) => (
-              <div key={tech.name}>
-                <TechStack {...tech} />
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Tech Info */}
-          <div
-            className="mt-16 text-center"
-          // initial={{ opacity: 0, y: 30 }}
-          // whileInView={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.8 }}
-          // viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center space-x-2 bg-white px-6 py-3 rounded-full shadow-lg border border-gray-200">
-              <Zap className="w-5 h-5 text-yellow-500" />
-              <span className="text-gray-700 font-medium">
+            </nav>
+            <div>
+              <p className="text-sm text-slate-500 mb-6">
+                {currentTech.items.length} technolog{currentTech.items.length !== 1 ? "ies" : "y"}
+                {activeTech > 0 && ` in ${currentTech.title}`}
+              </p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTech.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  {currentTech.items.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="rounded-2xl border border-slate-200/80 bg-white p-5 hover:border-[#13345A]/20 hover:shadow-md transition-all"
+                    >
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                        style={{ backgroundColor: `${CYAN}18` }}
+                      >
+                        <tech.icon className="w-5 h-5" style={{ color: NAVY }} />
+                      </div>
+                      <h3 className="text-sm font-semibold text-slate-900 mb-1">{tech.name}</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed">{tech.description}</p>
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+              <motion.p
+                {...fadeUp}
+                className="mt-8 inline-flex items-center gap-2 text-sm text-slate-600"
+              >
+                <Zap className="w-4 h-4" style={{ color: CYAN }} />
                 All technologies are production-ready and battle-tested
-              </span>
+              </motion.p>
             </div>
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <div
-          // initial={{ opacity: 0, y: 30 }}
-          // whileInView={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.6 }}
-          // viewport={{ once: true }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Build Your Dating App?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Join the ranks of successful dating apps built by Ctas. Get started with a free
-              consultation and project estimate.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact-us">
-                <Button
-                  size="lg"
-                  className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg"
-                >
-                  Start Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
-              <Link href="/portfolios">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg"
-                >
-                  View Portfolio
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
+        <PageCTA
+          title="Ready to Build Your Dating App?"
+          description="Join the ranks of successful dating apps built by Ctas. Get started with a free consultation and project estimate."
+          primaryLabel="Start Free Consultation"
+          primaryHref="/contact-us"
+          secondaryLabel="View Portfolio"
+          secondaryHref="/portfolios"
+        />
+      </main>
       <FooterSection />
-    </div>
+    </PageShell>
   );
 };
 

@@ -362,7 +362,7 @@ const AboutUsPage = () => {
             aria-hidden="true"
           />
 
-          <div className="relative max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -413,7 +413,7 @@ const AboutUsPage = () => {
 
         {/* ── Our Story ── */}
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
                 <SectionBadge>Our Story</SectionBadge>
@@ -487,7 +487,7 @@ const AboutUsPage = () => {
 
         {/* ── Core Values ── */}
         <section className="py-16 sm:py-20 lg:py-24 section-bg-dots">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Our Values"
               title="Core Values That"
@@ -518,7 +518,7 @@ const AboutUsPage = () => {
 
         {/* ── Services ── */}
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Our Services"
               title="Comprehensive"
@@ -535,7 +535,7 @@ const AboutUsPage = () => {
 
         {/* ── Development Process ── */}
         <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Our Process"
               title="AI-Augmented"
@@ -579,7 +579,7 @@ const AboutUsPage = () => {
 
         {/* ── Industries ── */}
         <section className="py-16 sm:py-20 lg:py-24 section-bg-dots">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Industries"
               title="Industries We"
@@ -615,7 +615,7 @@ const AboutUsPage = () => {
 
         {/* ── Marketplaces ── */}
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Marketplace Expertise"
               title="Global"
@@ -632,7 +632,7 @@ const AboutUsPage = () => {
 
         {/* ── CTA ── */}
         <section className="py-16 sm:py-20">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.5 }}

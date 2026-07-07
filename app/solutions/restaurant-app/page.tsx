@@ -1,10 +1,8 @@
+"use client";
 
-;
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import Navigation from "@/components/Navigation";
-import FooterSection from "@/components/FooterSection";
-
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChefHat,
   Star,
@@ -24,7 +22,7 @@ import {
   Smartphone,
   Monitor,
   Server,
-  CheckCircle,
+  CheckCircle2,
   Sparkles,
   Rocket,
   Menu,
@@ -33,644 +31,569 @@ import {
   Receipt,
   Truck,
 } from "lucide-react";
-import Link from "next/link";
 
-const RestaurantAppPage = () => {
-  const restaurantFeatures = [
-    {
-      icon: <ChefHat className="w-12 h-12" />,
-      title: "Kitchen Management",
-      description: "Real-time order tracking & prep",
-      color: "from-orange-400 to-red-500",
-      metric: "40% faster service",
-    },
-    {
-      icon: <Receipt className="w-12 h-12" />,
-      title: "Smart POS System",
-      description: "Integrated payment & inventory",
-      color: "from-green-400 to-emerald-500",
-      metric: "99.9% accuracy",
-    },
-    {
-      icon: <Users className="w-12 h-12" />,
-      title: "Customer Engagement",
-      description: "Loyalty programs & feedback",
-      color: "from-blue-400 to-indigo-500",
-      metric: "3x customer retention",
-    },
-    {
-      icon: <BarChart3 className="w-12 h-12" />,
-      title: "Analytics Dashboard",
-      description: "Real-time business insights",
-      color: "from-purple-400 to-pink-500",
-      metric: "25% revenue increase",
-    },
-  ];
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
+import {
+  PageShell,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
 
-  const techStack = [
-    {
-      category: "Frontend",
-      items: [
-        {
-          name: "React Native",
-          icon: <Code className="w-6 h-6" />,
-          color: "bg-blue-100 text-blue-600",
-        },
-        {
-          name: "TypeScript",
-          icon: <Code className="w-6 h-6" />,
-          color: "bg-blue-100 text-blue-600",
-        },
-        {
-          name: "Tailwind CSS",
-          icon: <Palette className="w-6 h-6" />,
-          color: "bg-cyan-100 text-cyan-600",
-        },
-        {
-          name: "Redux Toolkit",
-          icon: <Database className="w-6 h-6" />,
-          color: "bg-purple-100 text-purple-600",
-        },
-      ],
-    },
-    {
-      category: "Backend",
-      items: [
-        {
-          name: "Node.js",
-          icon: <Server className="w-6 h-6" />,
-          color: "bg-green-100 text-green-600",
-        },
-        {
-          name: "Express.js",
-          icon: <Server className="w-6 h-6" />,
-          color: "bg-gray-100 text-gray-600",
-        },
-        {
-          name: "PostgreSQL",
-          icon: <Database className="w-6 h-6" />,
-          color: "bg-blue-100 text-blue-600",
-        },
-      ],
-    },
-    {
-      category: "Cloud & DevOps",
-      items: [
-        {
-          name: "AWS",
-          icon: <Cloud className="w-6 h-6" />,
-          color: "bg-orange-100 text-orange-600",
-        },
-        {
-          name: "Docker",
-          icon: <Package className="w-6 h-6" />,
-          color: "bg-blue-100 text-blue-600",
-        },
-        {
-          name: "Kubernetes",
-          icon: <Server className="w-6 h-6" />,
-          color: "bg-blue-100 text-blue-600",
-        },
-        {
-          name: "CI/CD",
-          icon: <Zap className="w-6 h-6" />,
-          color: "bg-green-100 text-green-600",
-        },
-      ],
-    },
-    {
-      category: "Restaurant Specific",
-      items: [
-        {
-          name: "POS Integration",
-          icon: <Receipt className="w-6 h-6" />,
-          color: "bg-green-100 text-green-600",
-        },
-        {
-          name: "Kitchen Display",
-          icon: <Monitor className="w-6 h-6" />,
-          color: "bg-orange-100 text-orange-600",
-        },
-        {
-          name: "Inventory Management",
-          icon: <Package className="w-6 h-6" />,
-          color: "bg-purple-100 text-purple-600",
-        },
-        {
-          name: "Loyalty System",
-          icon: <Star className="w-6 h-6" />,
-          color: "bg-yellow-100 text-yellow-600",
-        },
-      ],
-    },
-  ];
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
 
-  const restaurantModules = [
-    {
-      title: "Order Management",
-      icon: <Menu className="w-10 h-10" />,
-      description: "Streamlined ordering process with real-time updates",
-      features: [
-        "Table reservations",
-        "Online ordering",
-        "Kitchen notifications",
-        "Order tracking",
-      ],
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      title: "Kitchen Operations",
-      icon: <ChefHat className="w-10 h-10" />,
-      description: "Efficient kitchen workflow and staff management",
-      features: ["Recipe management", "Prep lists", "Cooking timers", "Staff scheduling"],
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      title: "Customer Experience",
-      icon: <Users className="w-10 h-10" />,
-      description: "Enhanced dining experience and customer satisfaction",
-      features: ["Digital menus", "Table service", "Feedback system", "Loyalty rewards"],
-      color: "from-blue-500 to-indigo-500",
-    },
-    {
-      title: "Business Intelligence",
-      icon: <BarChart3 className="w-10 h-10" />,
-      description: "Data-driven insights for business growth",
-      features: [
-        "Sales analytics",
-        "Inventory reports",
-        "Customer insights",
-        "Performance metrics",
-      ],
-      color: "from-purple-500 to-pink-500",
-    },
-  ];
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
 
-  const integrations = [
+const restaurantFeatures = [
+  {
+    icon: ChefHat,
+    title: "Kitchen Management",
+    description: "Real-time order tracking & prep",
+    metric: "40% faster service",
+  },
+  {
+    icon: Receipt,
+    title: "Smart POS System",
+    description: "Integrated payment & inventory",
+    metric: "99.9% accuracy",
+  },
+  {
+    icon: Users,
+    title: "Customer Engagement",
+    description: "Loyalty programs & feedback",
+    metric: "3x customer retention",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Dashboard",
+    description: "Real-time business insights",
+    metric: "25% revenue increase",
+  },
+];
+
+const restaurantModules = [
+  {
+    icon: Menu,
+    title: "Order Management",
+    description: "Streamlined ordering process with real-time updates",
+    features: ["Table reservations", "Online ordering", "Kitchen notifications", "Order tracking"],
+  },
+  {
+    icon: ChefHat,
+    title: "Kitchen Operations",
+    description: "Efficient kitchen workflow and staff management",
+    features: ["Recipe management", "Prep lists", "Cooking timers", "Staff scheduling"],
+  },
+  {
+    icon: Users,
+    title: "Customer Experience",
+    description: "Enhanced dining experience and customer satisfaction",
+    features: ["Digital menus", "Table service", "Feedback system", "Loyalty rewards"],
+  },
+  {
+    icon: BarChart3,
+    title: "Business Intelligence",
+    description: "Data-driven insights for business growth",
+    features: ["Sales analytics", "Inventory reports", "Customer insights", "Performance metrics"],
+  },
+];
+
+const integrations = [
+  {
+    icon: CreditCard,
+    name: "Payment Gateways",
+    items: ["Stripe", "Square", "PayPal", "Apple Pay"],
+  },
+  {
+    icon: Receipt,
+    name: "POS Systems",
+    items: ["Toast", "Square POS", "Lightspeed", "Shopify POS"],
+  },
+  {
+    icon: Truck,
+    name: "Delivery Partners",
+    items: ["Uber Eats", "DoorDash", "Grubhub", "Postmates"],
+  },
+  {
+    icon: Target,
+    name: "Marketing Tools",
+    items: ["Mailchimp", "HubSpot", "Google Ads", "Facebook Ads"],
+  },
+];
+
+const whyChoose = [
+  {
+    icon: Zap,
+    title: "Lightning Fast Setup",
+    description:
+      "Get your restaurant up and running in under 24 hours with our streamlined onboarding process.",
+  },
+  {
+    icon: Shield,
+    title: "Enterprise Security",
+    description:
+      "Bank-level security with end-to-end encryption and PCI DSS compliance for all transactions.",
+  },
+  {
+    icon: Globe,
+    title: "Global Support",
+    description:
+      "24/7 customer support in multiple languages with dedicated account managers for enterprise clients.",
+  },
+  {
+    icon: BarChart3,
+    title: "Advanced Analytics",
+    description:
+      "Real-time insights into sales, inventory, customer behavior, and operational efficiency.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile-First Design",
+    description:
+      "Optimized for mobile devices with offline capabilities and push notifications for real-time updates.",
+  },
+  {
+    icon: Rocket,
+    title: "Scalable Architecture",
+    description:
+      "Built to grow with your business, supporting from single locations to multi-chain operations.",
+  },
+];
+
+const techStack = [
+  { icon: Code, title: "React Native", description: "Cross-platform mobile apps", category: "Frontend" },
+  { icon: Code, title: "TypeScript", description: "Type-safe development", category: "Frontend" },
+  { icon: Palette, title: "Tailwind CSS", description: "Utility-first styling", category: "Frontend" },
+  { icon: Database, title: "Redux Toolkit", description: "State management", category: "Frontend" },
+  { icon: Server, title: "Node.js", description: "JavaScript runtime for backend", category: "Backend" },
+  { icon: Server, title: "Express.js", description: "Web application framework", category: "Backend" },
+  { icon: Database, title: "PostgreSQL", description: "Relational database system", category: "Backend" },
+  { icon: Cloud, title: "AWS", description: "Cloud infrastructure and services", category: "Cloud & DevOps" },
+  { icon: Package, title: "Docker", description: "Containerization platform", category: "Cloud & DevOps" },
+  { icon: Server, title: "Kubernetes", description: "Container orchestration", category: "Cloud & DevOps" },
+  { icon: Zap, title: "CI/CD", description: "Continuous integration and deployment", category: "Cloud & DevOps" },
+  { icon: Receipt, title: "POS Integration", description: "Point-of-sale system integration", category: "Restaurant Specific" },
+  { icon: Monitor, title: "Kitchen Display", description: "Kitchen display system", category: "Restaurant Specific" },
+  { icon: Package, title: "Inventory Management", description: "Stock and inventory tracking", category: "Restaurant Specific" },
+  { icon: Star, title: "Loyalty System", description: "Customer loyalty and rewards", category: "Restaurant Specific" },
+];
+
+const techCategories = [
+  { id: "all", title: "All", items: [] as typeof techStack },
+  ...Array.from(new Set(techStack.map((t) => t.category))).map((cat) => ({
+    id: cat.toLowerCase().replace(/[^a-z]/g, "-"),
+    title: cat,
+    items: techStack.filter((t) => t.category === cat),
+  })),
+];
+
+techCategories[0].items = techStack;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      name: "Payment Gateways",
-      icon: <CreditCard className="w-8 h-8" />,
-      items: ["Stripe", "Square", "PayPal", "Apple Pay"],
-      color: "from-green-500 to-emerald-500",
+      "@type": "Service",
+      name: "Restaurant App Development Services",
+      description:
+        "Advanced restaurant apps with online ordering, table management, kitchen display systems, and seamless dining experiences.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Restaurant App Development",
     },
     {
-      name: "POS Systems",
-      icon: <Receipt className="w-8 h-8" />,
-      items: ["Toast", "Square POS", "Lightspeed", "Shopify POS"],
-      color: "from-blue-500 to-cyan-500",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: "https://www.ctasis.com/solutions" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Restaurant App",
+          item: "https://www.ctasis.com/solutions/restaurant-app",
+        },
+      ],
     },
-    {
-      name: "Delivery Partners",
-      icon: <Truck className="w-8 h-8" />,
-      items: ["Uber Eats", "DoorDash", "Grubhub", "Postmates"],
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      name: "Marketing Tools",
-      icon: <Target className="w-8 h-8" />,
-      items: ["Mailchimp", "HubSpot", "Google Ads", "Facebook Ads"],
-      color: "from-purple-500 to-pink-500",
-    },
-  ];
+  ],
+};
+
+const recentOrders = [
+  { id: "1247", detail: "Table 5 • 2 items", amount: "$32", time: "5 min ago", bg: "bg-emerald-50" },
+  { id: "1248", detail: "Delivery • 3 items", amount: "$45", time: "3 min ago", bg: "bg-teal-50" },
+  { id: "1249", detail: "Takeaway • 1 item", amount: "$18", time: "1 min ago", bg: "bg-cyan-50" },
+];
+
+const GourmetDelightsMockup = () => (
+  <div className="relative hidden sm:block">
+    <div className="mx-auto w-[280px] sm:w-[300px] rounded-[1.5rem] border-[6px] border-slate-800 bg-slate-900 p-2 shadow-2xl">
+      <div className="rounded-[2rem] overflow-hidden bg-white p-5">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <ChefHat className="w-6 h-6" style={{ color: CYAN }} />
+            <div>
+              <div className="font-bold text-sm text-slate-900">Gourmet Delights</div>
+              <div className="text-[10px] text-slate-500">Restaurant Management</div>
+            </div>
+          </div>
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold" style={{ backgroundColor: `${CYAN}18`, color: NAVY }}>
+            Online
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 mb-4">
+          {[
+            { value: "24", label: "Orders Today" },
+            { value: "$1,247", label: "Revenue" },
+            { value: "4.8★", label: "Rating" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-base font-bold" style={{ color: NAVY }}>{stat.value}</div>
+              <div className="text-[9px] text-slate-500">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-2">
+          {recentOrders.map((order) => (
+            <div key={order.id} className={`${order.bg} rounded-lg p-2.5`}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-semibold text-slate-900 text-xs">Order #{order.id}</p>
+                  <p className="text-[10px] text-slate-600">{order.detail}</p>
+                </div>
+                <div className="text-right">
+                  <div className="font-bold text-xs" style={{ color: NAVY }}>{order.amount}</div>
+                  <div className="text-[10px] text-slate-500">{order.time}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <motion.div
+      {...fadeUp}
+      className="absolute -top-3 -right-3 rounded-xl border border-slate-200/80 bg-white p-2.5 shadow-lg hidden md:flex items-center gap-1.5"
+    >
+      <Star className="w-4 h-4 text-amber-400 fill-current" />
+      <span className="text-xs font-medium text-slate-700">4.8★ Rating</span>
+    </motion.div>
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.1 }}
+      className="absolute -bottom-2 -left-2 rounded-xl px-3 py-2 shadow-lg text-white text-xs font-medium flex items-center gap-1.5"
+      style={{ backgroundColor: NAVY }}
+    >
+      <TrendingUp className="w-3.5 h-3.5" />
+      24 Orders Today
+    </motion.div>
+  </div>
+);
+
+export default function RestaurantAppPage() {
+  const [activeModule, setActiveModule] = useState(0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navigation />
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Badge className="mb-6 bg-white/20 text-white border-white/30">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Complete Restaurant Tech Stack
-              </Badge>
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                Restaurant App
-                <span className="block text-cyan-300">Solutions</span>
-              </h1>
-              <p className="text-xl lg:text-2xl mb-8 text-emerald-100 leading-relaxed">
-                Transform your restaurant with our comprehensive digital platform. From kitchen
-                management to customer engagement, we&apos;ve got everything covered.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact-us">
-                  <Button
-                    size="lg"
-                    className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-4 text-lg font-semibold"
+      <main>
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="Restaurant App Development"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                  <Sparkles className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
+                  Complete Restaurant Tech Stack
+                </div>
+                <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                  Restaurant App{" "}
+                  <span className="italic" style={{ color: CYAN_LIGHT }}>
+                    Solutions
+                  </span>
+                </h1>
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-8 max-w-xl">
+                  Transform your restaurant with our comprehensive digital platform. From kitchen management to
+                  customer engagement, we&apos;ve got everything covered.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
                   >
                     Get Free Quote
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-                <Link href="/portfolios">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 text-lg font-semibold"
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/portfolios"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
                   >
-                    <Play className="mr-2 w-5 h-5" />
+                    <Play className="w-4 h-4" />
                     View Portfolios
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Restaurant Visual */}
-            <div className="flex items-center justify-center mt-8 lg:mt-0">
-              <div className="relative">
-                {/* Main Restaurant App Interface */}
-                <div className="relative w-64 h-80 sm:w-72 sm:h-88 md:w-80 md:h-96 bg-white rounded-3xl shadow-2xl p-4 sm:p-6 transform rotate-1">
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-4 sm:mb-6">
-                    <div className="flex items-center">
-                      <ChefHat className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600 mr-2 sm:mr-3" />
-                      <div>
-                        <h3 className="text-base sm:text-lg font-bold text-gray-800">
-                          Gourmet Delights
-                        </h3>
-                        <p className="text-xs sm:text-sm text-gray-500">Restaurant Management</p>
-                      </div>
-                    </div>
-                    <div className="bg-emerald-100 px-2 py-1 sm:px-3 sm:py-1 rounded-full">
-                      <span className="text-emerald-700 text-xs sm:text-sm font-semibold">
-                        Online
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Stats Row */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
-                    <div className="text-center">
-                      <div className="text-lg sm:text-2xl font-bold text-emerald-600">24</div>
-                      <div className="text-xs text-gray-500">Orders Today</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg sm:text-2xl font-bold text-teal-600">$1,247</div>
-                      <div className="text-xs text-gray-500">Revenue</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg sm:text-2xl font-bold text-cyan-600">4.8★</div>
-                      <div className="text-xs text-gray-500">Rating</div>
-                    </div>
-                  </div>
-
-                  {/* Recent Orders */}
-                  <div className="space-y-2 sm:space-y-3">
-                    <div className="bg-emerald-50 rounded-lg p-2 sm:p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-800 text-sm sm:text-base">
-                            Order #1247
-                          </p>
-                          <p className="text-xs sm:text-sm text-gray-600">Table 5 • 2 items</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-emerald-600 font-bold text-sm sm:text-base">$32</div>
-                          <div className="text-xs text-gray-500">5 min ago</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-teal-50 rounded-lg p-2 sm:p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-800 text-sm sm:text-base">
-                            Order #1248
-                          </p>
-                          <p className="text-xs sm:text-sm text-gray-600">Delivery • 3 items</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-teal-600 font-bold text-sm sm:text-base">$45</div>
-                          <div className="text-xs text-gray-500">3 min ago</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-cyan-50 rounded-lg p-2 sm:p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-semibold text-gray-800 text-sm sm:text-base">
-                            Order #1249
-                          </p>
-                          <p className="text-xs sm:text-sm text-gray-600">Takeaway • 1 item</p>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-cyan-600 font-bold text-sm sm:text-base">$18</div>
-                          <div className="text-xs text-gray-500">1 min ago</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </Link>
                 </div>
-
-                {/* Floating Elements */}
-                <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 bg-yellow-400 p-2 sm:p-4 rounded-full shadow-lg sm:shadow-xl">
-                  <Star className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-blue-500 p-2 sm:p-4 rounded-full shadow-lg sm:shadow-xl">
-                  <TrendingUp className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <div className="absolute top-1/2 -left-6 sm:-left-8 bg-green-500 p-2 sm:p-4 rounded-full shadow-lg sm:shadow-xl">
-                  <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <div className="absolute top-1/2 -right-6 sm:-right-8 bg-purple-500 p-2 sm:p-4 rounded-full shadow-lg sm:shadow-xl">
-                  <Users className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-                </div>
-              </div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+                <GourmetDelightsMockup />
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Complete Restaurant Management
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to run a modern, efficient restaurant operation
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {restaurantFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-emerald-200"
+        <SectionWrap>
+          <SectionHeader
+            badge="Core Features"
+            title="Complete"
+            highlight="Restaurant Management"
+            description="Everything you need to run a modern, efficient restaurant operation"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+            {restaurantFeatures.map((feature, i) => (
+              <motion.article
+                key={feature.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 hover:shadow-lg transition-all text-center sm:text-left"
               >
-                <div
-                  className={`inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-r ${feature.color} mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {feature.icon}
+                <IconBox icon={feature.icon} />
+                <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-4 mb-2`}>{feature.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed mb-3">{feature.description}</p>
+                <div className="text-xs font-semibold" style={{ color: CYAN }}>
+                  {feature.metric.match(/^[\d.]+/) ? (
+                    <>
+                      <AnimatedStat value={feature.metric.match(/^[\d.]+/)![0]} />
+                      {feature.metric.replace(/^[\d.]+/, "")}
+                    </>
+                  ) : (
+                    feature.metric
+                  )}
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
-                  {feature.description}
-                </p>
-                <div className="text-xs sm:text-sm font-semibold text-emerald-600">
-                  {feature.metric}
-                </div>
-              </div>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Restaurant Modules */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Restaurant-Specific Modules
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Specialized features designed specifically for restaurant operations
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-            {restaurantModules.map((module, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-orange-200"
-              >
-                <div
-                  className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${module.color} mb-6 group-hover:scale-110 transition-transform duration-300`}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Modules"
+            title="Restaurant-Specific"
+            highlight="Modules"
+            description="Specialized features designed specifically for restaurant operations"
+          />
+          <div className="grid lg:grid-cols-[minmax(0,240px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Restaurant modules">
+              {restaurantModules.map((mod, i) => (
+                <button
+                  key={mod.title}
+                  type="button"
+                  onClick={() => setActiveModule(i)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeModule === i
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeModule === i ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeModule === i ? "true" : undefined}
                 >
-                  {module.icon}
+                  {mod.title}
+                </button>
+              ))}
+            </nav>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={restaurantModules[activeModule].title}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8"
+              >
+                <div className="flex items-start gap-4 mb-5">
+                  <IconBox icon={restaurantModules[activeModule].icon} />
+                  <div>
+                    <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-2`}>
+                      {restaurantModules[activeModule].title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{restaurantModules[activeModule].description}</p>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{module.title}</h3>
-                <p className="text-gray-600 mb-6">{module.description}</p>
-                <ul className="space-y-2">
-                  {module.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-gray-700">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      {feature}
+                <ul className="grid sm:grid-cols-2 gap-2.5">
+                  {restaurantModules[activeModule].features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
+                      {f}
                     </li>
                   ))}
                 </ul>
-              </div>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Integrations Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-50 to-teal-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Seamless Integrations
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Connect with your existing tools and services effortlessly
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {integrations.map((integration, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div
-                  className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${integration.color} mb-6`}
+        <SectionWrap>
+          <SectionHeader
+            badge="Integrations"
+            title="Seamless"
+            highlight="Integrations"
+            description="Connect with your existing tools and services effortlessly"
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {integrations.map((integration, i) => (
+                <motion.article
+                  key={integration.name}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.04 }}
+                  className="flex-shrink-0 w-[260px] sm:w-[280px] snap-start"
                 >
-                  {integration.icon}
+                  <div className="h-full bg-white border border-slate-200/80 rounded-[1.5rem] p-6 hover:shadow-lg transition-all">
+                    <IconBox icon={integration.icon} />
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-4`}>{integration.name}</h3>
+                    <ul className="space-y-2">
+                      {integration.items.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-sm text-slate-600">
+                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: CYAN }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </SectionWrap>
+
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Why Choose Us"
+            title="Why Choose"
+            highlight="Our Platform?"
+            description="Comprehensive features designed specifically for restaurant success"
+          />
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            {whyChoose.map((item, i) => (
+              <motion.article
+                key={item.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className="flex items-start gap-4"
+              >
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${CYAN}18` }}>
+                  <item.icon className="w-6 h-6" style={{ color: NAVY }} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{integration.name}</h3>
-                <div className="space-y-2">
-                  {integration.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="flex items-center text-gray-600">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
-                      {item}
-                    </div>
-                  ))}
+                <div>
+                  <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mb-2`}>{item.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
                 </div>
-              </div>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Features Comparison Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Our Platform?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive features designed specifically for restaurant success
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-emerald-600" />
+        <SectionWrap>
+          <SectionHeader
+            badge="Technology Stack"
+            title="Complete"
+            highlight="Tech Stack"
+            description="Built with modern technologies for scalability, performance, and reliability"
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
+            {techCategories.slice(1).map((cat, ci) => (
+              <motion.article
+                key={cat.id}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: ci * 0.06 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8 hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <h3 className={`${fraunces.className} text-xl font-medium text-slate-900`}>{cat.title}</h3>
+                  <span className="h-0.5 flex-1 max-w-[48px] rounded-full" style={{ backgroundColor: CYAN }} aria-hidden="true" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Lightning Fast Setup</h3>
-                  <p className="text-gray-600">
-                    Get your restaurant up and running in under 24 hours with our streamlined
-                    onboarding process.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mr-4">
-                  <Shield className="w-6 h-6 text-teal-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Enterprise Security</h3>
-                  <p className="text-gray-600">
-                    Bank-level security with end-to-end encryption and PCI DSS compliance for all
-                    transactions.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
-                  <Globe className="w-6 h-6 text-cyan-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Global Support</h3>
-                  <p className="text-gray-600">
-                    24/7 customer support in multiple languages with dedicated account managers for
-                    enterprise clients.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                  <BarChart3 className="w-6 h-6 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Advanced Analytics</h3>
-                  <p className="text-gray-600">
-                    Real-time insights into sales, inventory, customer behavior, and operational
-                    efficiency.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mr-4">
-                  <Smartphone className="w-6 h-6 text-pink-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mobile-First Design</h3>
-                  <p className="text-gray-600">
-                    Optimized for mobile devices with offline capabilities and push notifications
-                    for real-time updates.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-                  <Rocket className="w-6 h-6 text-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Scalable Architecture</h3>
-                  <p className="text-gray-600">
-                    Built to grow with your business, supporting from single locations to
-                    multi-chain operations.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Tech Stack Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-emerald-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Complete Tech Stack
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Built with modern technologies for scalability, performance, and reliability
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {techStack.map((category, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
-                  {category.category}
-                  <div className="ml-3 w-6 sm:w-8 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  {category.items.map((item, itemIndex) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {cat.items.map((tech) => (
                     <div
-                      key={itemIndex}
-                      className={`flex items-center p-3 sm:p-4 rounded-xl ${item.color} hover:scale-105 transition-transform duration-200`}
+                      key={tech.title}
+                      className="flex items-center gap-3 rounded-xl border border-slate-100 bg-[#F6F8FA] p-3.5 hover:border-[#13345A]/15 transition-colors"
                     >
-                      {item.icon}
-                      <span className="ml-2 sm:ml-3 font-semibold text-sm sm:text-base">
-                        {item.name}
-                      </span>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${CYAN}18` }}>
+                        <tech.icon className="w-4 h-4" style={{ color: NAVY }} />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-sm font-semibold text-slate-900">{tech.title}</h4>
+                        <p className="text-xs text-slate-500 truncate">{tech.description}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+          <motion.p {...fadeUp} className="mt-8 inline-flex items-center gap-2 text-sm text-slate-600">
+            <ChefHat className="w-4 h-4" style={{ color: CYAN }} />
+            See our{" "}
+            <Link href="/industries/food-beverage" className="font-semibold hover:underline" style={{ color: NAVY }}>
+              food & beverage industry
+            </Link>{" "}
+            and{" "}
+            <Link href="/solutions/food-delivery-app" className="font-semibold hover:underline" style={{ color: NAVY }}>
+              food delivery app
+            </Link>{" "}
+            solutions
+          </motion.p>
+        </SectionWrap>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-blue-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Transform Your Restaurant?
-          </h2>
-          <p className="text-xl mb-8 text-emerald-100 max-w-3xl mx-auto">
-            Join thousands of restaurants that have modernized their operations with our
-            comprehensive solution.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact-us">
-              <Button
-                size="lg"
-                className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg"
-              >
-                Start Free Consultation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/portfolios">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg"
-              >
-                View Portfolio
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
+        <PageCTA
+          title="Ready to Transform Your Restaurant?"
+          description="Join thousands of restaurants that have modernized their operations with our comprehensive solution."
+          primaryLabel="Start Free Consultation"
+          primaryHref="/contact-us"
+          secondaryLabel="View Portfolio"
+          secondaryHref="/portfolios"
+        />
+      </main>
       <FooterSection />
-    </div>
+    </PageShell>
   );
-};
-
-export default RestaurantAppPage;
+}

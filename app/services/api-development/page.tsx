@@ -375,11 +375,44 @@ const topicalGuideTabs = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "API Development Services",
+      description:
+        "Ctas builds scalable and secure APIs for web, mobile, and enterprise applications using REST, GraphQL, and microservices architecture.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "API Development",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "API Development",
+          item: "https://www.ctasis.com/services/api-development",
+        },
+      ],
+    },
+  ],
+};
+
 export default function APIDevelopmentPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "API Development Services",
+        structuredData,
         hero: {
           badge: "API Development Services",
           title: "Enterprise",
@@ -398,6 +431,7 @@ export default function APIDevelopmentPage() {
         sections: [
           {
             type: "cards",
+            variant: "scroll",
             header: {
               badge: "API Types",
               title: "Enterprise",
@@ -421,6 +455,7 @@ export default function APIDevelopmentPage() {
           },
           {
             type: "process",
+            variant: "horizontal",
             header: {
               badge: "Our Process",
               title: "API Development",
@@ -432,6 +467,7 @@ export default function APIDevelopmentPage() {
           },
           {
             type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Why Choose Us",
               title: "Key",
@@ -443,6 +479,7 @@ export default function APIDevelopmentPage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose API Development?",
               title: "Benefits of",

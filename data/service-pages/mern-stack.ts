@@ -25,6 +25,37 @@ import type { ServicePageConfig } from "@/types/service-page";
 
 export const mernStackConfig: ServicePageConfig = {
   ariaLabel: "MERN Stack Development Services",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: "MERN Stack Development Services",
+        description:
+          "Build modern, scalable, and high-performance web applications with Ctas MERN Stack Development. Expert in MongoDB, Express.js, React, and Node.js.",
+        provider: {
+          "@type": "Organization",
+          name: "Ctas Info Services LLP",
+          url: "https://www.ctasis.com",
+        },
+        serviceType: "MERN Stack Development",
+        areaServed: { "@type": "Country", name: "India" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "MERN Stack",
+            item: "https://www.ctasis.com/services/mern-stack",
+          },
+        ],
+      },
+    ],
+  },
   hero: {
     badge: "MERN Stack",
     title: "Full-Stack Development",
@@ -37,6 +68,7 @@ export const mernStackConfig: ServicePageConfig = {
   sections: [
     {
       type: "cards",
+      variant: "bento",
       header: {
         badge: "Technology Stack",
         title: "The MERN",
@@ -234,6 +266,7 @@ export const mernStackConfig: ServicePageConfig = {
     },
     {
       type: "benefits",
+      variant: "zigzag",
       header: {
         badge: "Benefits",
         title: "Why Choose",

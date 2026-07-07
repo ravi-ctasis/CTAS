@@ -1,5 +1,8 @@
+"use client";
 
-;
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone,
   MessageCircle,
@@ -15,734 +18,616 @@ import {
   Stethoscope,
   Play,
   ArrowRight,
-  CheckCircle,
-  Star,
+  CheckCircle2,
   Code,
-  WebcamIcon,
+  Monitor,
   Palette,
   Database,
   Server,
 } from "lucide-react";
+
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
-import Link from "next/link";
+import {
+  PageShell,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
+
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
+
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
+
+const heroStats = [
+  { number: "99.9%", label: "Uptime" },
+  { number: "50M+", label: "Users" },
+  { number: "150+", label: "Countries" },
+];
+
+const features = [
+  {
+    icon: Phone,
+    title: "Crystal Clear Voice Calls",
+    description:
+      "HD voice quality with noise cancellation and echo suppression for professional-grade communication.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Real-time Messaging",
+    description:
+      "Instant text messages with read receipts, typing indicators, and message encryption.",
+  },
+  {
+    icon: Video,
+    title: "Video Conferencing",
+    description:
+      "High-definition video calls with screen sharing, virtual backgrounds, and recording capabilities.",
+  },
+  {
+    icon: Users,
+    title: "Group Communication",
+    description:
+      "Create channels, manage teams, and organize conversations with advanced moderation tools.",
+  },
+  {
+    icon: Shield,
+    title: "Enterprise Security",
+    description:
+      "End-to-end encryption, compliance features, and secure authentication for business use.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    description:
+      "Optimized for low latency with global server infrastructure and intelligent routing.",
+  },
+];
+
+const keyBenefits = [
+  "99.9% uptime guarantee with global CDN",
+  "End-to-end encryption for maximum security",
+  "Global server network for low latency",
+  "24/7 customer support worldwide",
+];
+
+const useCases = [
+  {
+    icon: Building,
+    title: "Business Communication",
+    description:
+      "Seamless team collaboration with integrated project management and file sharing.",
+  },
+  {
+    icon: Headphones,
+    title: "Customer Support",
+    description:
+      "Multi-channel support with AI-powered chatbots and seamless handoff to human agents.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Education & Training",
+    description:
+      "Virtual classrooms with interactive whiteboards, breakout rooms, and progress tracking.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Healthcare",
+    description:
+      "Secure telemedicine solutions with HIPAA compliance and medical record integration.",
+  },
+];
+
+const techCategories = [
+  {
+    id: "frontend",
+    title: "Frontend Development",
+    items: [
+      { name: "React Native", description: "Cross-platform mobile development", icon: Smartphone },
+      { name: "React.js", description: "Web application framework", icon: Globe },
+      { name: "TypeScript", description: "Type-safe JavaScript", icon: Code },
+      { name: "Next.js", description: "React framework for production", icon: Monitor },
+      { name: "Tailwind CSS", description: "Utility-first CSS framework", icon: Palette },
+      { name: "Redux", description: "State management", icon: Database },
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend Development",
+    items: [
+      { name: "Node.js", description: "JavaScript runtime", icon: Server },
+      { name: "Express.js", description: "Web application framework", icon: Zap },
+      { name: "Python", description: "Backend programming", icon: Code },
+      { name: "Django", description: "Python web framework", icon: Shield },
+      { name: "PostgreSQL", description: "Relational database", icon: Database },
+      { name: "MongoDB", description: "NoSQL database", icon: Database },
+    ],
+  },
+  {
+    id: "infrastructure",
+    title: "Infrastructure & DevOps",
+    items: [
+      { name: "AWS", description: "Cloud infrastructure", icon: Globe },
+      { name: "Docker", description: "Containerization", icon: Server },
+      { name: "Nginx", description: "Web server", icon: Zap },
+      { name: "Git", description: "Version control", icon: Code },
+      { name: "CI/CD", description: "Automated deployment", icon: Zap },
+    ],
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Voice Chat App Development Services",
+      description:
+        "Custom voice chat app development: real-time audio communication, group calls, and moderation tools.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Voice Chat App Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: "https://www.ctasis.com/solutions" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Voice Chat App",
+          item: "https://www.ctasis.com/solutions/voice-chat-app",
+        },
+      ],
+    },
+  ],
+};
+
+const VoiceChatMockup = ({ compact = false }: { compact?: boolean }) => (
+  <div
+    className={`rounded-[1.5rem] border border-slate-200/80 bg-white shadow-xl overflow-hidden ${
+      compact ? "p-5 sm:p-6" : "p-6 sm:p-8"
+    }`}
+    aria-hidden={compact ? undefined : true}
+  >
+    <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center gap-1.5">
+        <div className="w-2.5 h-2.5 bg-red-500 rounded-full" />
+        <div className="w-2.5 h-2.5 bg-amber-400 rounded-full" />
+        <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full" />
+      </div>
+      <span className="text-sm text-slate-500 font-medium">VoiceChat Pro</span>
+    </div>
+
+    <div className="space-y-3">
+      <div className="rounded-2xl p-4 border border-blue-200/80 bg-[#EAF3F8]/60">
+        <div className="flex items-center gap-3">
+          <div className="relative flex-shrink-0">
+            <div
+              className="w-11 h-11 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: NAVY }}
+            >
+              <Phone className="w-5 h-5 text-white" />
+            </div>
+            <div className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-slate-900">Team Meeting</div>
+            <div className="text-sm text-slate-500">5 participants • 45 min</div>
+            {!compact && (
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-xs text-slate-500">Live</span>
+              </div>
+            )}
+          </div>
+          {!compact && (
+            <span className="px-2.5 py-1 bg-red-500 text-white text-xs font-medium rounded-lg">End</span>
+          )}
+        </div>
+      </div>
+
+      <div className="rounded-2xl p-4 border border-emerald-200/80 bg-emerald-50/50">
+        <div className="flex items-center gap-3">
+          <div
+            className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ backgroundColor: CYAN }}
+          >
+            <MessageCircle className="w-5 h-5 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-slate-900">Project Updates</div>
+            <div className="text-sm text-slate-500">12 new messages</div>
+            {!compact && (
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-xs text-slate-500">Unread</span>
+              </div>
+            )}
+          </div>
+          {!compact && (
+            <span
+              className="w-6 h-6 rounded-full text-white text-xs font-bold flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: CYAN }}
+            >
+              12
+            </span>
+          )}
+        </div>
+      </div>
+
+      <div className="rounded-2xl p-4 border border-violet-200/80 bg-violet-50/40">
+        <div className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-full bg-violet-600 flex items-center justify-center flex-shrink-0">
+            <Video className="w-5 h-5 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-slate-900">Client Call</div>
+            <div className="text-sm text-slate-500">Scheduled in 15 min</div>
+            {!compact && (
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
+                <span className="text-xs text-slate-500">Upcoming</span>
+              </div>
+            )}
+          </div>
+          {!compact && (
+            <span className="px-2.5 py-1 bg-violet-600 text-white text-xs font-medium rounded-lg">Join</span>
+          )}
+        </div>
+      </div>
+    </div>
+
+    {!compact && (
+      <div className="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+          Connected
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: CYAN }} />
+          HD Audio
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-violet-500 rounded-full" />
+          Encrypted
+        </div>
+      </div>
+    )}
+  </div>
+);
 
 const VoiceChatAppPage = () => {
-  const features = [
-    {
-      icon: Phone,
-      title: "Crystal Clear Voice Calls",
-      description:
-        "HD voice quality with noise cancellation and echo suppression for professional-grade communication.",
-      color: "from-emerald-500 to-teal-600",
-      gradient: "from-emerald-400/20 to-teal-500/20",
-    },
-    {
-      icon: MessageCircle,
-      title: "Real-time Messaging",
-      description:
-        "Instant text messages with read receipts, typing indicators, and message encryption.",
-      color: "from-violet-500 to-purple-600",
-      gradient: "from-violet-400/20 to-purple-500/20",
-    },
-    {
-      icon: Video,
-      title: "Video Conferencing",
-      description:
-        "High-definition video calls with screen sharing, virtual backgrounds, and recording capabilities.",
-      color: "from-rose-500 to-pink-600",
-      gradient: "from-rose-400/20 to-pink-500/20",
-    },
-    {
-      icon: Users,
-      title: "Group Communication",
-      description:
-        "Create channels, manage teams, and organize conversations with advanced moderation tools.",
-      color: "from-amber-500 to-orange-600",
-      gradient: "from-amber-400/20 to-orange-500/20",
-    },
-    {
-      icon: Shield,
-      title: "Enterprise Security",
-      description:
-        "End-to-end encryption, compliance features, and secure authentication for business use.",
-      color: "from-sky-500 to-blue-600",
-      gradient: "from-sky-400/20 to-blue-500/20",
-    },
-    {
-      icon: Zap,
-      title: "Lightning Fast",
-      description:
-        "Optimized for low latency with global server infrastructure and intelligent routing.",
-      color: "from-yellow-500 to-amber-600",
-      gradient: "from-yellow-400/20 to-amber-500/20",
-    },
-  ];
-
-  const useCases = [
-    {
-      title: "Business Communication",
-      description:
-        "Seamless team collaboration with integrated project management and file sharing.",
-      icon: Building,
-      color: "from-blue-500 to-indigo-600",
-    },
-    {
-      title: "Customer Support",
-      description:
-        "Multi-channel support with AI-powered chatbots and seamless handoff to human agents.",
-      icon: Headphones,
-      color: "from-emerald-500 to-teal-600",
-    },
-    {
-      title: "Education & Training",
-      description:
-        "Virtual classrooms with interactive whiteboards, breakout rooms, and progress tracking.",
-      icon: GraduationCap,
-      color: "from-violet-500 to-purple-600",
-    },
-    {
-      title: "Healthcare",
-      description:
-        "Secure telemedicine solutions with HIPAA compliance and medical record integration.",
-      icon: Stethoscope,
-      color: "from-rose-500 to-pink-600",
-    },
-  ];
+  const [activeTech, setActiveTech] = useState(0);
+  const currentTech = techCategories[activeTech];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navigation />
       <main id="main-content">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,rgba(59,130,246,0.1)_0%,transparent_50%)]"></div>
-            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_75%_75%,rgba(139,92,246,0.1)_0%,transparent_50%)]"></div>
-          </div>
-
-          {/* Floating Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-            <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-          </div>
-
-          {/* Main Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              {/* Left Column - Text Content */}
-              <div className="text-left space-y-8">
-                {/* Badge */}
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg">
-                  <div className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
-                  <span className="text-sm font-medium">Next-Gen Communication</span>
+        {/* Split hero with VoiceChat Pro mockup */}
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="Voice Chat App Development"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                  <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                  Next-Gen Communication
                 </div>
-
-                {/* Main Heading */}
-                <div className="space-y-6">
-                  <h1 className="text-4xl md:text-7xl font-bold leading-tight text-slate-900">
-                    Transform Your
-                    <br />
-                    <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                      Communication
-                    </span>
-                  </h1>
-
-                  <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-2xl">
-                    Experience the future of real-time communication with our cutting-edge platform
-                    featuring
-                    <span className="text-blue-600 font-semibold"> crystal-clear voice</span>,
-                    <span className="text-indigo-600 font-semibold"> instant messaging</span>, and
-                    <span className="text-purple-600 font-semibold"> professional video calls</span>
-                    .
-                  </p>
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link href="/contact-us">
-                    <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl font-semibold text-lg text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                      <span className="flex items-center">
-                        Start Free Consultation
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                      </span>
-                    </button>
+                <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                  Transform Your{" "}
+                  <span className="italic" style={{ color: CYAN_LIGHT }}>
+                    Communication
+                  </span>
+                </h1>
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-8 max-w-xl">
+                  Experience the future of real-time communication with our cutting-edge platform featuring{" "}
+                  <span className="font-semibold text-[#C7D2D9]">crystal-clear voice</span>,{" "}
+                  <span className="font-semibold text-[#C7D2D9]">instant messaging</span>, and{" "}
+                  <span className="font-semibold text-[#C7D2D9]">professional video calls</span>.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
+                  >
+                    Start Free Consultation
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <Link href="/contact-us">
-                    <button className="px-8 py-4 border-2 border-slate-300 rounded-2xl font-semibold text-lg text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-all duration-300 transform hover:-translate-y-1">
-                      <span className="flex items-center">
-                        <Play className="w-5 h-5 mr-2" />
-                        Portfolios
-                      </span>
-                    </button>
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
+                  >
+                    <Play className="w-4 h-4" />
+                    Portfolios
                   </Link>
                 </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-6 pt-8">
-                  <div className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-slate-900">99.9%</div>
-                    <div className="text-sm text-slate-600">Uptime</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-slate-900">50M+</div>
-                    <div className="text-sm text-slate-600">Users</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-slate-900">150+</div>
-                    <div className="text-sm text-slate-600">Countries</div>
-                  </div>
+                <div className="grid grid-cols-3 gap-4 sm:gap-6" role="list" aria-label="Voice chat statistics">
+                  {heroStats.map((stat, i) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
+                      className="text-center"
+                      role="listitem"
+                    >
+                      <div className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-[#F2F6F9] mb-1`}>
+                        <AnimatedStat value={stat.number} />
+                      </div>
+                      <div className="text-xs sm:text-sm text-[#93A3AF]">{stat.label}</div>
+                    </motion.div>
+                  ))}
                 </div>
-              </div>
-
-              {/* Right Column - Visual Elements */}
-              <div className="relative hidden lg:block">
-                <div className="relative">
-                  {/* Main App Mockup */}
-                  <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-200 relative overflow-hidden">
-                    {/* Header Bar */}
-                    <div className="flex items-center justify-between mb-8">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      </div>
-                      <div className="text-sm text-slate-600 font-medium">VoiceChat Pro</div>
-                    </div>
-
-                    {/* Chat Interface Mockup */}
-                    <div className="space-y-4">
-                      {/* Active Call */}
-                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-200">
-                        <div className="flex items-center space-x-3">
-                          <div className="relative">
-                            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                              <Phone className="w-6 h-6 text-white" />
-                            </div>
-                            <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-                          </div>
-                          <div className="flex-1">
-                            <div className="font-bold text-slate-900 text-lg">Team Meeting</div>
-                            <div className="text-slate-600 text-sm">5 participants • 45 min</div>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                              <span className="text-xs text-slate-600">Live</span>
-                            </div>
-                          </div>
-                          <button className="px-3 py-1 bg-red-500 hover:bg-red-600 rounded-lg text-white text-xs font-medium transition-colors duration-200">
-                            End
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Message Notifications */}
-                      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-4 border border-emerald-200">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-lg">
-                            <MessageCircle className="w-6 h-6 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <div className="font-bold text-slate-900 text-lg">Project Updates</div>
-                            <div className="text-slate-600 text-sm">12 new messages</div>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                              <span className="text-xs text-slate-600">Unread</span>
-                            </div>
-                          </div>
-                          <div className="bg-emerald-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
-                            12
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Scheduled Call */}
-                      <div className="bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-4 border border-violet-200">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                            <Video className="w-6 h-6 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <div className="font-bold text-slate-900 text-lg">Client Call</div>
-                            <div className="text-slate-600 text-sm">Scheduled in 15 min</div>
-                            <div className="flex items-center space-x-2 mt-1">
-                              <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
-                              <span className="text-xs text-slate-600">Upcoming</span>
-                            </div>
-                          </div>
-                          <button className="px-3 py-1 bg-violet-500 hover:bg-violet-600 rounded-lg text-white text-xs font-medium transition-colors duration-200">
-                            Join
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Status Bar */}
-                    <div className="mt-6 pt-4 border-t border-slate-200">
-                      <div className="flex items-center justify-between text-xs text-slate-500">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          <span>Connected</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          <span>HD Audio</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                          <span>Encrypted</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="hidden lg:block"
+              >
+                <VoiceChatMockup />
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium mb-6">
-                <Star className="w-4 h-4 mr-2" />
-                Powerful Features
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                Everything You Need for
-                <br />
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Modern Communication
-                </span>
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Discover the tools that will revolutionize how you connect, collaborate, and
-                communicate.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-slate-200 transform hover:-translate-y-2"
+        {/* Features — horizontal scroll */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Powerful Features"
+            title="Everything You Need for"
+            highlight="Modern Communication"
+            description="Discover the tools that will revolutionize how you connect, collaborate, and communicate."
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {features.map((feature, i) => (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.05 }}
+                  className="flex-shrink-0 w-[300px] sm:w-[340px] snap-start"
                 >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                  ></div>
-                  <div className="relative z-10">
-                    <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                    >
-                      <feature.icon className="w-8 h-8" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-slate-800 transition-colors duration-300">
+                  <div className="h-full bg-white border border-slate-200/80 rounded-[1.5rem] p-6 sm:p-7 hover:shadow-xl transition-all">
+                    <IconBox icon={feature.icon} />
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-2`}>
                       {feature.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
-                      {feature.description}
-                    </p>
+                    <p className="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
                   </div>
-                </div>
+                </motion.article>
               ))}
             </div>
           </div>
-        </section>
+        </SectionWrap>
 
-        {/* Interactive Demo Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-medium mb-6">
-                <Play className="w-4 h-4 mr-2" />
-                See It In Action
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                Experience Real-time
-                <br />
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  Communication
-                </span>
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Get a hands-on feel for how our platform transforms your daily communication needs.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-200">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div className="text-sm text-slate-500">VoiceChat Pro</div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-2xl border border-blue-200">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
-                        <Users className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900">Team Meeting</div>
-                        <div className="text-sm text-slate-600">5 participants • 45 min</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-3 p-4 bg-emerald-50 rounded-2xl border border-emerald-200">
-                      <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-                        <MessageCircle className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900">Project Updates</div>
-                        <div className="text-sm text-slate-600">12 new messages</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-3 p-4 bg-violet-50 rounded-2xl border border-violet-200">
-                      <div className="w-10 h-10 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center">
-                        <Video className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900">Client Call</div>
-                        <div className="text-sm text-slate-600">Scheduled in 15 min</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-slate-200">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Key Benefits</h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-emerald-500 mt-0.5" />
-                      <span className="text-slate-700">99.9% uptime guarantee with global CDN</span>
+        {/* Interactive demo — split screen */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="See It In Action"
+            title="Experience Real-time"
+            highlight="Communication"
+            description="Get a hands-on feel for how our platform transforms your daily communication needs."
+          />
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
+              <VoiceChatMockup compact />
+            </motion.div>
+            <div className="space-y-6">
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: 0.06 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8"
+              >
+                <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-5`}>Key Benefits</h3>
+                <ul className="space-y-3">
+                  {keyBenefits.map((benefit) => (
+                    <li key={benefit} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
+                      <span className="text-slate-600 leading-relaxed">{benefit}</span>
                     </li>
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-emerald-500 mt-0.5" />
-                      <span className="text-slate-700">
-                        End-to-end encryption for maximum security
-                      </span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-emerald-500 mt-0.5" />
-                      <span className="text-slate-700">Global server network for low latency</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <CheckCircle className="w-6 h-6 text-emerald-500 mt-0.5" />
-                      <span className="text-slate-700">24/7 customer support worldwide</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 text-white shadow-2xl">
-                  <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-                  <p className="text-blue-100 mb-6">
+                  ))}
+                </ul>
+              </motion.div>
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: 0.12 }}
+                className="rounded-[1.5rem] p-6 sm:p-8 text-white overflow-hidden relative"
+                style={{ backgroundImage: `linear-gradient(135deg, ${NAVY}, #0E2233)` }}
+              >
+                <div
+                  className="absolute -top-12 -right-12 w-40 h-40 rounded-full blur-[60px] pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(36,155,202,0.35) 0%, transparent 70%)" }}
+                  aria-hidden="true"
+                />
+                <div className="relative">
+                  <h3 className={`${fraunces.className} text-xl font-medium mb-3`}>Ready to Get Started?</h3>
+                  <p className="text-white/60 text-sm leading-relaxed mb-5">
                     Join thousands of teams already using our platform for seamless communication.
                   </p>
-                  <Link href="/contact-us">
-                    <button className="w-full bg-white text-blue-600 py-4 px-6 rounded-2xl font-semibold hover:bg-slate-50 transition-colors duration-300 transform hover:-translate-y-1">
-                      Start Free Consultation
-                    </button>
+                  <Link
+                    href="/contact-us"
+                    className="block w-full text-center px-6 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200"
+                    style={{ backgroundColor: CYAN }}
+                  >
+                    Start Free Consultation
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </SectionWrap>
 
-        {/* Use Cases Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-violet-500 to-purple-600 text-white text-sm font-medium mb-6">
-                <Globe className="w-4 h-4 mr-2" />
-                Industry Solutions
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                Perfect for Every
-                <br />
-                <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
-                  Industry
-                </span>
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                From startups to enterprise, our platform adapts to your unique communication needs.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {useCases.map((useCase, index) => (
+        {/* Use cases — zigzag alternating */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Industry Solutions"
+            title="Perfect for Every"
+            highlight="Industry"
+            description="From startups to enterprise, our platform adapts to your unique communication needs."
+          />
+          <div className="space-y-6 lg:space-y-8">
+            {useCases.map((useCase, i) => (
+              <motion.article
+                key={useCase.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className={`flex flex-col sm:flex-row gap-6 sm:gap-10 items-center rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8 ${
+                  i % 2 === 1 ? "sm:flex-row-reverse" : ""
+                }`}
+              >
                 <div
-                  key={index}
-                  className="group text-center bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-slate-200 transform hover:-translate-y-2"
+                  className="w-full sm:w-1/3 flex flex-col items-center justify-center text-center py-4"
                 >
                   <div
-                    className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-r ${useCase.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
+                    style={{ backgroundColor: `${CYAN}18` }}
                   >
-                    <useCase.icon className="w-10 h-10" />
+                    <useCase.icon className="w-8 h-8" style={{ color: NAVY }} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-slate-800 transition-colors duration-300">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
-                    {useCase.description}
-                  </p>
+                  <h3 className={`${fraunces.className} text-xl font-medium text-slate-900`}>{useCase.title}</h3>
                 </div>
+                <div className="w-full sm:w-2/3">
+                  <p className="text-slate-500 leading-relaxed">{useCase.description}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </SectionWrap>
+
+        {/* Tech stack — tabbed sidebar */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Tech Stack"
+            title="Built with Modern"
+            highlight="Technologies"
+            description="Our platform leverages cutting-edge technologies for optimal performance and scalability."
+          />
+          <div className="grid lg:grid-cols-[minmax(0,220px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Technology layers">
+              {techCategories.map((cat, ci) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveTech(ci)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeTech === ci
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeTech === ci ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeTech === ci ? "true" : undefined}
+                >
+                  {cat.title}
+                </button>
               ))}
-            </div>
-          </div>
-        </section>
-        {/* Technologies Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-indigo-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-medium mb-6">
-                <Zap className="w-4 h-4 mr-2" />
-                Tech Stack
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                Built with Modern
-                <br />
-                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  Technologies
-                </span>
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Our platform leverages cutting-edge technologies for optimal performance and
-                scalability.
+            </nav>
+            <div>
+              <p className="text-sm text-slate-500 mb-6">
+                {currentTech.items.length} technolog{currentTech.items.length !== 1 ? "ies" : "y"} in{" "}
+                {currentTech.title}
               </p>
-            </div>
-
-            {/* Frontend Technologies */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
-                Frontend Development
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {[
-                  {
-                    name: "React Native",
-                    icon: <Smartphone className="w-8 h-8" />,
-                    color: "from-blue-500 to-cyan-600",
-                    description: "Cross-platform mobile development",
-                  },
-                  {
-                    name: "React.js",
-                    icon: <Globe className="w-8 h-8" />,
-                    color: "from-blue-600 to-indigo-700",
-                    description: "Web application framework",
-                  },
-                  {
-                    name: "TypeScript",
-                    icon: <Code className="w-8 h-8" />,
-                    color: "from-blue-700 to-indigo-800",
-                    description: "Type-safe JavaScript",
-                  },
-                  {
-                    name: "Next.js",
-                    icon: <WebcamIcon className="w-8 h-8" />,
-                    color: "from-slate-600 to-gray-700",
-                    description: "React framework for production",
-                  },
-                  {
-                    name: "Tailwind CSS",
-                    icon: <Palette className="w-8 h-8" />,
-                    color: "from-cyan-500 to-blue-600",
-                    description: "Utility-first CSS framework",
-                  },
-                  {
-                    name: "Redux",
-                    icon: <Database className="w-8 h-8" />,
-                    color: "from-purple-500 to-pink-600",
-                    description: "State management",
-                  },
-                ].map((tech, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-                  >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTech.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  {currentTech.items.map((tech) => (
                     <div
-                      className={`w-16 h-16 bg-gradient-to-br ${tech.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                      key={tech.name}
+                      className="rounded-2xl border border-slate-200/80 bg-white p-5 hover:border-[#13345A]/20 hover:shadow-md transition-all"
                     >
-                      <div className="text-white">{tech.icon}</div>
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                        style={{ backgroundColor: `${CYAN}18` }}
+                      >
+                        <tech.icon className="w-5 h-5" style={{ color: NAVY }} />
+                      </div>
+                      <h3 className="text-sm font-semibold text-slate-900 mb-1">{tech.name}</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed">{tech.description}</p>
                     </div>
-                    <h4 className="text-lg font-bold text-slate-800 text-center mb-2">
-                      {tech.name}
-                    </h4>
-                    <p className="text-slate-600 text-xs text-center leading-relaxed">
-                      {tech.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Backend Technologies */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
-                Backend Development
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {[
-                  {
-                    name: "Node.js",
-                    icon: <Server className="w-8 h-8" />,
-                    color: "from-green-500 to-emerald-600",
-                    description: "JavaScript runtime",
-                  },
-                  {
-                    name: "Express.js",
-                    icon: <Zap className="w-8 h-8" />,
-                    color: "from-gray-500 to-slate-600",
-                    description: "Web application framework",
-                  },
-                  {
-                    name: "Python",
-                    icon: <Code className="w-8 h-8" />,
-                    color: "from-blue-500 to-indigo-600",
-                    description: "Backend programming",
-                  },
-                  {
-                    name: "Django",
-                    icon: <Shield className="w-8 h-8" />,
-                    color: "from-green-600 to-emerald-700",
-                    description: "Python web framework",
-                  },
-                  {
-                    name: "PostgreSQL",
-                    icon: <Database className="w-8 h-8" />,
-                    color: "from-blue-600 to-indigo-700",
-                    description: "Relational database",
-                  },
-                  {
-                    name: "MongoDB",
-                    icon: <Database className="w-8 h-8" />,
-                    color: "from-green-600 to-emerald-700",
-                    description: "NoSQL database",
-                  },
-                ].map((tech, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-                  >
-                    <div
-                      className={`w-16 h-16 bg-gradient-to-br ${tech.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                    >
-                      <div className="text-white">{tech.icon}</div>
-                    </div>
-                    <h4 className="text-lg font-bold text-slate-800 text-center mb-2">
-                      {tech.name}
-                    </h4>
-                    <p className="text-slate-600 text-xs text-center leading-relaxed">
-                      {tech.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Infrastructure & DevOps */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">
-                Infrastructure & DevOps
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {[
-                  {
-                    name: "AWS",
-                    icon: <Globe className="w-8 h-8" />,
-                    color: "from-orange-500 to-red-600",
-                    description: "Cloud infrastructure",
-                  },
-                  {
-                    name: "Docker",
-                    icon: <Server className="w-8 h-8" />,
-                    color: "from-blue-500 to-indigo-600",
-                    description: "Containerization",
-                  },
-                  {
-                    name: "Nginx",
-                    icon: <Zap className="w-8 h-8" />,
-                    color: "from-green-500 to-emerald-600",
-                    description: "Web server",
-                  },
-
-                  {
-                    name: "Git",
-                    icon: <Code className="w-8 h-8" />,
-                    color: "from-orange-500 to-red-600",
-                    description: "Version control",
-                  },
-                  {
-                    name: "CI/CD",
-                    icon: <Zap className="w-8 h-8" />,
-                    color: "from-purple-500 to-pink-600",
-                    description: "Automated deployment",
-                  },
-                ].map((tech, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-                  >
-                    <div
-                      className={`w-16 h-16 bg-gradient-to-br ${tech.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                    >
-                      <div className="text-white">{tech.icon}</div>
-                    </div>
-                    <h4 className="text-lg font-bold text-slate-800 text-center mb-2">
-                      {tech.name}
-                    </h4>
-                    <p className="text-slate-600 text-xs text-center leading-relaxed">
-                      {tech.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+              <motion.p {...fadeUp} className="mt-8 inline-flex items-center gap-2 text-sm text-slate-600">
+                <Phone className="w-4 h-4" style={{ color: CYAN }} />
+                See our{" "}
+                <Link href="/industries/healthcare" className="font-semibold hover:underline" style={{ color: NAVY }}>
+                  healthcare
+                </Link>{" "}
+                and{" "}
+                <Link href="/services/custom-software" className="font-semibold hover:underline" style={{ color: NAVY }}>
+                  custom software
+                </Link>{" "}
+                expertise
+              </motion.p>
             </div>
           </div>
-        </section>
+        </SectionWrap>
 
-        {/* CTA Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-600 to-blue-700 text-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Transform Your
-              <br />
-              <span className="bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
-                Communication Today
-              </span>
-            </h2>
-            <p className="text-xl text-slate-300 mb-8">
-              Join the future of real-time communication and experience seamless collaboration like
-              never before.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-              <Link href="/contact-us">
-                <button className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg">
-                  Start Free Consultation
-                  {/* <ArrowRight className="w-5 h-5 ml-2" /> */}
-                </button>
-              </Link>
-              <Link href="/portfolios">
-                <button className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg">
-                  View Portfolio
-                </button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <PageCTA
+          title="Transform Your Communication Today"
+          description="Join the future of real-time communication and experience seamless collaboration like never before."
+          primaryLabel={
+            <>
+              Start Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </>
+          }
+          primaryHref="/contact-us"
+          secondaryLabel="View Portfolio"
+          secondaryHref="/portfolios"
+        />
       </main>
       <FooterSection />
-    </div>
+    </PageShell>
   );
 };
 

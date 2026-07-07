@@ -124,7 +124,7 @@ const OurStoryPage = () => (
       />
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF3F8] border border-[#13345A]/15 text-[#13345A] text-xs font-semibold uppercase tracking-widest">
@@ -161,7 +161,7 @@ const OurStoryPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Beliefs" title="What We" highlight="Believe" description="The principles that guide every project, partnership, and product we build." />
           <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
             {values.map((v, i) => (
@@ -172,7 +172,7 @@ const OurStoryPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Timeline" title="Our" highlight="Journey" description="Key milestones that shaped who we are today." />
           <div className="relative max-w-4xl mx-auto">
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-[#13345A]/20 via-[#249BCA]/40 to-[#13345A]/20 hidden md:block" />
@@ -222,7 +222,7 @@ const OurStoryPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Impact" title="Global" highlight="Presence" description="Numbers that reflect our commitment to excellence and client success." />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
             {globalStats.map((stat, i) => (

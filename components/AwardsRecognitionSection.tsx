@@ -193,7 +193,7 @@ const AwardsRecognitionSection = () => {
         aria-hidden="true"
       />
 
-      <div className="relative max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* ── Header ── */}
         <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="text-center mb-12 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF3F8] border border-[#13345A]/15 text-[#13345A] text-xs font-semibold uppercase tracking-widest mb-4">

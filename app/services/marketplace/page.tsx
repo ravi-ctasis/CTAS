@@ -221,11 +221,44 @@ const marketplaceServices = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Multi-Marketplace Management Services",
+      description:
+        "Marketplace setup, optimization, and integration services from Ctas for Amazon, eBay, Walmart, and more.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Marketplace Management",
+      areaServed: { "@type": "Country", name: "Worldwide" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Marketplace Services",
+          item: "https://www.ctasis.com/services/marketplace",
+        },
+      ],
+    },
+  ],
+};
+
 export default function MarketplaceServicesPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Marketplace Services",
+        structuredData,
         hero: {
           badge: "Trusted by 1000+ Businesses",
           title: "Marketplace",
@@ -244,6 +277,7 @@ export default function MarketplaceServicesPage() {
         sections: [
           {
             type: "marketplace-grid",
+            variant: "alternating",
             header: {
               badge: "Our Services",
               title: "Marketplace",

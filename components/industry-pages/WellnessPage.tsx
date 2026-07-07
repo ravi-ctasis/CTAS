@@ -1,6 +1,7 @@
 "use client";
-import React, { useMemo } from "react";
-import Navigation from "@/components/Navigation";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Activity,
   Apple,
@@ -25,73 +26,300 @@ import {
   Star,
   Award,
   CheckCircle,
-  ArrowRight,
+  CheckCircle2,
   BarChart3,
   Container,
 } from "lucide-react";
+
+import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
-import { PageShell, PageHero, PageCTA } from "@/components/page-design";
-import Link from "next/link";
+import {
+  PageShell,
+  PageHero,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+} from "@/components/page-design";
 
-export default function WellnessHealthPage() {
-  const wellnessTechnologies = useMemo(
-    () => [
-      // Frontend
-      { name: "React Native", icon: Zap, category: "Mobile" },
-      { name: "Flutter", icon: Rocket, category: "Mobile" },
-      { name: "Swift", icon: Star, category: "iOS" },
-      { name: "Kotlin", icon: Target, category: "Android" },
-      { name: "TypeScript", icon: Code, category: "Frontend" },
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
 
-      // Backend / Runtime
-      { name: "Node.js", icon: Cpu, category: "Backend" },
-      { name: "Python", icon: Brain, category: "Backend" },
-      { name: "Django", icon: Server, category: "Backend" },
-      { name: "FastAPI", icon: Zap, category: "Backend" },
-      { name: "Firebase", icon: Cloud, category: "Backend" },
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
 
-      // Databases
-      { name: "PostgreSQL", icon: Database, category: "Database" },
-      { name: "MongoDB", icon: HardDrive, category: "Database" },
-      { name: "SQLite", icon: Layers, category: "Local" },
+const Pill = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-[#EAF3F8] text-[#13345A] border border-[#13345A]/10">
+    {children}
+  </span>
+);
 
-      // Cloud & Infra
-      { name: "AWS", icon: Globe, category: "Cloud" },
-      { name: "Google Cloud", icon: Cloud, category: "Cloud" },
-      { name: "Apple HealthKit", icon: Apple, category: "Health" },
-      { name: "Google Fit", icon: Activity, category: "Health" },
-      { name: "Docker", icon: Container, category: "Containerization" },
+const platformFeatures = [
+  {
+    icon: Rocket,
+    title: "Multi-Platform Development",
+    description:
+      "Native iOS and Android apps with seamless cross-platform synchronization and responsive web interfaces.",
+    highlight: "Cross-Platform Sync",
+  },
+  {
+    icon: Shield,
+    title: "Enterprise Security",
+    description:
+      "Bank-level encryption, HIPAA compliance, and secure user authentication for healthcare applications.",
+    highlight: "HIPAA Compliant",
+  },
+  {
+    icon: BarChart3,
+    title: "Advanced Analytics",
+    description:
+      "Real-time health metrics, customizable dashboards, and predictive health insights powered by AI.",
+    highlight: "AI-Powered Insights",
+  },
+  {
+    icon: Target,
+    title: "Device Integration",
+    description:
+      "Seamless integration with fitness trackers, smartwatches, and health monitoring devices.",
+    highlight: "Wearable Support",
+  },
+];
 
-      // Health & Fitness APIs
-      { name: "Strava API", icon: TrendingUp, category: "Fitness" },
-      { name: "Fitbit API", icon: Watch, category: "Fitness" },
-      { name: "MyFitnessPal API", icon: Heart, category: "Nutrition" },
-      { name: "Garmin API", icon: Target, category: "Fitness" },
+const healthFeatures = [
+  {
+    icon: Zap,
+    title: "Cross-Platform Apps",
+    description:
+      "Native iOS and Android apps with seamless web synchronization and wearable device integration.",
+    features: ["iOS & Android Native", "Wearable Integration", "Web Dashboard"],
+  },
+  {
+    icon: BarChart3,
+    title: "Health Analytics",
+    description:
+      "Advanced analytics and insights with customizable dashboards and progress visualization.",
+    features: ["Real-time Metrics", "Custom Dashboards", "Progress Reports"],
+  },
+  {
+    icon: Target,
+    title: "Device Integration",
+    description:
+      "Seamless integration with fitness trackers, smartwatches, and health monitoring devices.",
+    features: ["Apple Watch", "Fitbit Integration", "Garmin Connect"],
+  },
+  {
+    icon: Shield,
+    title: "Privacy & Security",
+    description:
+      "HIPAA-compliant data handling with end-to-end encryption and secure user authentication.",
+    features: ["HIPAA Compliance", "Data Encryption", "Secure Authentication"],
+  },
+  {
+    icon: Brain,
+    title: "AI-Powered Insights",
+    description:
+      "Machine learning algorithms that provide personalized recommendations and predictive health insights.",
+    features: ["Smart Recommendations", "Predictive Analytics", "Personalized Plans"],
+  },
+  {
+    icon: Users,
+    title: "Social Features",
+    description:
+      "Community features, challenges, and social sharing to boost motivation and engagement.",
+    features: ["Community Challenges", "Social Sharing", "Friend Connections"],
+  },
+];
 
-      // Security & Privacy
-      { name: "OAuth 2.0", icon: Shield, category: "Security" },
-      { name: "JWT", icon: Lock, category: "Security" },
-      { name: "HIPAA", icon: CheckCircle, category: "Compliance" },
-      { name: "GDPR", icon: Award, category: "Compliance" },
+const useCases = [
+  {
+    icon: Target,
+    title: "Fitness Applications",
+    description:
+      "Workout tracking, exercise libraries, and personalized training programs for all fitness levels.",
+    features: ["Workout Plans", "Exercise Library", "Progress Tracking"],
+  },
+  {
+    icon: Heart,
+    title: "Nutrition Platforms",
+    description:
+      "Meal planning, calorie tracking, and dietary recommendations for healthy eating habits.",
+    features: ["Meal Planning", "Calorie Tracking", "Dietary Guidance"],
+  },
+  {
+    icon: Brain,
+    title: "Mental Wellness",
+    description:
+      "Meditation, stress management, and mental health tools for holistic wellness.",
+    features: ["Meditation Guides", "Stress Relief", "Sleep Support"],
+  },
+  {
+    icon: Shield,
+    title: "Healthcare Solutions",
+    description:
+      "Patient monitoring, health records, and telemedicine solutions for healthcare providers.",
+    features: ["Patient Monitoring", "Health Records", "Telemedicine"],
+  },
+  {
+    icon: Users,
+    title: "Senior Health",
+    description:
+      "Age-appropriate fitness programs, health monitoring, and social engagement features.",
+    features: ["Senior Fitness", "Health Monitoring", "Social Features"],
+  },
+  {
+    icon: Star,
+    title: "Family Wellness",
+    description:
+      "Family health tracking, child health monitoring, and shared wellness goals.",
+    features: ["Family Dashboard", "Child Health", "Shared Goals"],
+  },
+];
 
-      // AI & Analytics
-      { name: "TensorFlow", icon: Brain, category: "AI/ML" },
-      { name: "Core ML", icon: Zap, category: "AI/ML" },
-      { name: "Health Analytics", icon: BarChart3, category: "Analytics" },
-      { name: "Predictive Models", icon: TrendingUp, category: "AI/ML" },
+const techCategories = [
+  {
+    id: "mobile",
+    title: "Mobile",
+    technologies: [
+      { name: "React Native", icon: Zap },
+      { name: "Flutter", icon: Rocket },
+      { name: "Swift", icon: Star },
+      { name: "Kotlin", icon: Target },
+      { name: "TypeScript", icon: Code },
     ],
-    []
-  );
+  },
+  {
+    id: "backend",
+    title: "Backend / Runtime",
+    technologies: [
+      { name: "Node.js", icon: Cpu },
+      { name: "Python", icon: Brain },
+      { name: "Django", icon: Server },
+      { name: "FastAPI", icon: Zap },
+      { name: "Firebase", icon: Cloud },
+    ],
+  },
+  {
+    id: "databases",
+    title: "Databases",
+    technologies: [
+      { name: "PostgreSQL", icon: Database },
+      { name: "MongoDB", icon: HardDrive },
+      { name: "SQLite", icon: Layers },
+    ],
+  },
+  {
+    id: "cloud",
+    title: "Cloud & Infra",
+    technologies: [
+      { name: "AWS", icon: Globe },
+      { name: "Google Cloud", icon: Cloud },
+      { name: "Apple HealthKit", icon: Apple },
+      { name: "Google Fit", icon: Activity },
+      { name: "Docker", icon: Container },
+    ],
+  },
+  {
+    id: "fitness",
+    title: "Health & Fitness APIs",
+    technologies: [
+      { name: "Strava API", icon: TrendingUp },
+      { name: "Fitbit API", icon: Watch },
+      { name: "MyFitnessPal API", icon: Heart },
+      { name: "Garmin API", icon: Target },
+    ],
+  },
+  {
+    id: "security",
+    title: "Security & Privacy",
+    technologies: [
+      { name: "OAuth 2.0", icon: Shield },
+      { name: "JWT", icon: Lock },
+      { name: "HIPAA", icon: CheckCircle },
+      { name: "GDPR", icon: Award },
+    ],
+  },
+  {
+    id: "ai",
+    title: "AI & Analytics",
+    technologies: [
+      { name: "TensorFlow", icon: Brain },
+      { name: "Core ML", icon: Zap },
+      { name: "Health Analytics", icon: BarChart3 },
+      { name: "Predictive Models", icon: TrendingUp },
+    ],
+  },
+];
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Wellness & Health App Development",
-    description: "Digital health and wellness application development with AI, IoT, and wearable device integration.",
-    provider: { "@type": "Organization", name: "Ctas Info Services LLP", url: "https://www.ctasis.com" },
-    areaServed: "Worldwide",
-    serviceType: "Health & Wellness App Development",
-  };
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Wellness & Health App Development",
+      description:
+        "Digital health and wellness application development with AI, IoT, and wearable device integration.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Health & Wellness App Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.ctasis.com/industries" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Wellness",
+          item: "https://www.ctasis.com/industries/wellness",
+        },
+      ],
+    },
+  ],
+};
+
+const WellnessMockup = () => (
+  <div className="rounded-[1.5rem] border border-slate-200/80 bg-white p-8 sm:p-10 text-center shadow-sm">
+    <div
+      className="w-16 h-16 rounded-2xl mx-auto mb-5 flex items-center justify-center"
+      style={{ backgroundColor: `${CYAN}18` }}
+      aria-hidden="true"
+    >
+      <Heart className="w-8 h-8" style={{ color: NAVY }} />
+    </div>
+    <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-2`}>
+      Digital Health Solutions
+    </h3>
+    <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
+      Comprehensive wellness and healthcare technology platform
+    </p>
+  </div>
+);
+
+const WellnessPage = () => {
+  const [activeTech, setActiveTech] = useState(0);
+  const currentTech = techCategories[activeTech];
 
   return (
     <PageShell>
@@ -104,355 +332,190 @@ export default function WellnessHealthPage() {
           title="Revolutionize"
           highlight="Digital Health"
           description="Create cutting-edge health applications that leverage AI, IoT, and cloud technologies to deliver personalized healthcare experiences that transform lives."
-          stats={[{ number: "200+", label: "Apps Delivered", icon: Rocket }, { number: "2M+", label: "Active Users", icon: Users }, { number: "50+", label: "Health Metrics", icon: TrendingUp }, { number: "99.9%", label: "Uptime", icon: CheckCircle }]}
+          stats={[
+            { number: "200+", label: "Apps Delivered", icon: Rocket },
+            { number: "2M+", label: "Active Users", icon: Users },
+            { number: "50+", label: "Health Metrics", icon: TrendingUp },
+            { number: "99.9%", label: "Uptime", icon: CheckCircle },
+          ]}
           primaryCta={{ label: "Start Your Project", href: "/contact-us" }}
           secondaryCta={{ label: "View Portfolio", href: "/portfolios" }}
         />
-{/* KEY FEATURES SECTION */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full blur-3xl opacity-30"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-pink-100 to-purple-100 rounded-full blur-3xl opacity-30"></div>
-          </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-bold mb-6 shadow-lg">
-                Core Capabilities
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Why Choose Our Health Platform?
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Discover the essential features that make our health and fitness applications stand
-                out in the competitive digital health market.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Left Column - Main Features */}
-              <div className="space-y-8">
-                {[
-                  {
-                    icon: Rocket,
-                    title: "Multi-Platform Development",
-                    description:
-                      "Native iOS and Android apps with seamless cross-platform synchronization and responsive web interfaces.",
-                    highlight: "Cross-Platform Sync",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Enterprise Security",
-                    description:
-                      "Bank-level encryption, HIPAA compliance, and secure user authentication for healthcare applications.",
-                    highlight: "HIPAA Compliant",
-                  },
-                  {
-                    icon: BarChart3,
-                    title: "Advanced Analytics",
-                    description:
-                      "Real-time health metrics, customizable dashboards, and predictive health insights powered by AI.",
-                    highlight: "AI-Powered Insights",
-                  },
-                  {
-                    icon: Target,
-                    title: "Device Integration",
-                    description:
-                      "Seamless integration with fitness trackers, smartwatches, and health monitoring devices.",
-                    highlight: "Wearable Support",
-                  },
-                ].map((feature, index) => {
-                  const Icon = feature.icon;
-                  return (
-                    <div key={index} className="flex items-start space-x-4 group">
-                      <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-8 h-8" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-300">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 mb-3 leading-relaxed">{feature.description}</p>
-                        <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 text-sm font-semibold rounded-full">
-                          {feature.highlight}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Right Column - Feature Stats & Benefits */}
-              <div className="space-y-8">
-                <div className="w-full h-auto rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 p-8">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🏥</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Digital Health Solutions
-                    </h3>
-                    <p className="text-gray-600">
-                      Comprehensive wellness and healthcare technology platform
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION */}
-        <section className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50 relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-pink-200 to-purple-200 rounded-full blur-2xl opacity-20"></div>
-            <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-indigo-200 to-blue-200 rounded-full blur-2xl opacity-20"></div>
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Comprehensive Health Features
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our platform combines cutting-edge technology with intuitive design to create
-                powerful health and fitness applications that users love.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Zap,
-                  title: "Cross-Platform Apps",
-                  description:
-                    "Native iOS and Android apps with seamless web synchronization and wearable device integration.",
-                  features: ["iOS & Android Native", "Wearable Integration", "Web Dashboard"],
-                  gradient: "from-blue-500 to-indigo-600",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Health Analytics",
-                  description:
-                    "Advanced analytics and insights with customizable dashboards and progress visualization.",
-                  features: ["Real-time Metrics", "Custom Dashboards", "Progress Reports"],
-                  gradient: "from-emerald-500 to-teal-600",
-                },
-                {
-                  icon: Target,
-                  title: "Device Integration",
-                  description:
-                    "Seamless integration with fitness trackers, smartwatches, and health monitoring devices.",
-                  features: ["Apple Watch", "Fitbit Integration", "Garmin Connect"],
-                  gradient: "from-purple-500 to-pink-600",
-                },
-                {
-                  icon: Shield,
-                  title: "Privacy & Security",
-                  description:
-                    "HIPAA-compliant data handling with end-to-end encryption and secure user authentication.",
-                  features: ["HIPAA Compliance", "Data Encryption", "Secure Authentication"],
-                  gradient: "from-red-500 to-orange-600",
-                },
-                {
-                  icon: Brain,
-                  title: "AI-Powered Insights",
-                  description:
-                    "Machine learning algorithms that provide personalized recommendations and predictive health insights.",
-                  features: ["Smart Recommendations", "Predictive Analytics", "Personalized Plans"],
-                  gradient: "from-yellow-500 to-orange-600",
-                },
-                {
-                  icon: Users,
-                  title: "Social Features",
-                  description:
-                    "Community features, challenges, and social sharing to boost motivation and engagement.",
-                  features: ["Community Challenges", "Social Sharing", "Friend Connections"],
-                  gradient: "from-indigo-500 to-purple-600",
-                },
-              ].map((feature, i) => {
-                const Icon = feature.icon;
-                return (
+        {/* Core capabilities — split-screen with wellness mockup */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Core Capabilities"
+            title="Why Choose Our"
+            highlight="Health Platform?"
+            description="Discover the essential features that make our health and fitness applications stand out in the competitive digital health market."
+          />
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            <div className="space-y-8">
+              {platformFeatures.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.06 }}
+                  className="flex gap-4 sm:gap-5"
+                >
                   <div
-                    key={i}
-                    className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 overflow-hidden"
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${CYAN}18` }}
                   >
-                    {/* Background gradient overlay */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                    ></div>
+                    <feature.icon className="w-6 h-6" style={{ color: NAVY }} />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-3">{feature.description}</p>
+                    <Pill>{feature.highlight}</Pill>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }}>
+              <WellnessMockup />
+            </motion.div>
+          </div>
+        </SectionWrap>
 
-                    {/* Icon with gradient background */}
-                    <div
-                      className={`relative mb-6 p-4 rounded-2xl bg-gradient-to-br ${feature.gradient} w-16 h-16 flex items-center justify-center shadow-lg`}
-                    >
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors duration-300">
+        {/* Comprehensive features — horizontal scroll */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Platform Features"
+            title="Comprehensive"
+            highlight="Health Features"
+            description="Our platform combines cutting-edge technology with intuitive design to create powerful health and fitness applications that users love."
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {healthFeatures.map((feature, i) => (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.05 }}
+                  className="flex-shrink-0 w-[300px] sm:w-[340px] snap-start"
+                >
+                  <div className="h-full bg-white border border-slate-200/80 rounded-[1.5rem] p-6 sm:p-7 hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] transition-all flex flex-col">
+                    <IconBox icon={feature.icon} />
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-2`}>
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      {feature.description}
-                    </p>
-
-                    {/* Features list with improved styling */}
-                    <ul className="space-y-3">
-                      {feature.features.map((f, j) => (
-                        <li
-                          key={j}
-                          className="flex items-center text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300"
-                        >
-                          <div
-                            className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.gradient} mr-3 flex-shrink-0`}
-                          ></div>
+                    <p className="text-sm text-slate-500 leading-relaxed mb-4 flex-1">{feature.description}</p>
+                    <ul className="space-y-2">
+                      {feature.features.map((f) => (
+                        <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
+                          <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
                           {f}
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </SectionWrap>
 
-                    {/* Hover effect indicator */}
+        {/* Use cases — bento grid */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Use Cases"
+            title="Health App"
+            highlight="Use Cases"
+            description="From fitness enthusiasts to healthcare providers, our platform serves diverse health needs across multiple industries and use cases."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 auto-rows-fr">
+            {useCases.map((useCase, i) => (
+              <motion.article
+                key={useCase.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className={`bg-white border border-slate-200/80 rounded-[1.5rem] p-6 sm:p-7 hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col ${
+                  i === 0 ? "md:col-span-2 lg:row-span-2" : ""
+                }`}
+              >
+                <div className="flex justify-center mb-5">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: `${CYAN}18` }}
+                  >
+                    <useCase.icon className="w-6 h-6" style={{ color: NAVY }} />
+                  </div>
+                </div>
+                <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mb-2 text-center`}>
+                  {useCase.title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed mb-4 text-center flex-1">{useCase.description}</p>
+                <ul className="space-y-2">
+                  {useCase.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: CYAN }} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </motion.article>
+            ))}
+          </div>
+        </SectionWrap>
+
+        {/* Technologies — tabbed sidebar */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Technology"
+            title="Health Technology"
+            highlight="Stack"
+            description="Cutting-edge technologies and frameworks that power modern health and fitness applications."
+          />
+          <div className="grid lg:grid-cols-[minmax(0,240px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Technology layers">
+              {techCategories.map((cat, ci) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveTech(ci)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeTech === ci
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeTech === ci ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeTech === ci ? "true" : undefined}
+                >
+                  {cat.title}
+                </button>
+              ))}
+            </nav>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentTech.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4"
+              >
+                {currentTech.technologies.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 hover:border-[#13345A]/20 hover:shadow-md transition-all"
+                  >
                     <div
-                      className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${feature.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
-                    ></div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* USE CASES SECTION */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0">
-            <div className="absolute top-20 right-20 w-48 h-48 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full blur-2xl opacity-30"></div>
-            <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full blur-2xl opacity-30"></div>
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Health App Use Cases</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From fitness enthusiasts to healthcare providers, our platform serves diverse health
-                needs across multiple industries and use cases.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Target,
-                  title: "Fitness Applications",
-                  description:
-                    "Workout tracking, exercise libraries, and personalized training programs for all fitness levels.",
-                  features: ["Workout Plans", "Exercise Library", "Progress Tracking"],
-                },
-                {
-                  icon: Heart,
-                  title: "Nutrition Platforms",
-                  description:
-                    "Meal planning, calorie tracking, and dietary recommendations for healthy eating habits.",
-                  features: ["Meal Planning", "Calorie Tracking", "Dietary Guidance"],
-                },
-                {
-                  icon: Brain,
-                  title: "Mental Wellness",
-                  description:
-                    "Meditation, stress management, and mental health tools for holistic wellness.",
-                  features: ["Meditation Guides", "Stress Relief", "Sleep Support"],
-                },
-                {
-                  icon: Shield,
-                  title: "Healthcare Solutions",
-                  description:
-                    "Patient monitoring, health records, and telemedicine solutions for healthcare providers.",
-                  features: ["Patient Monitoring", "Health Records", "Telemedicine"],
-                },
-                {
-                  icon: Users,
-                  title: "Senior Health",
-                  description:
-                    "Age-appropriate fitness programs, health monitoring, and social engagement features.",
-                  features: ["Senior Fitness", "Health Monitoring", "Social Features"],
-                },
-                {
-                  icon: Star,
-                  title: "Family Wellness",
-                  description:
-                    "Family health tracking, child health monitoring, and shared wellness goals.",
-                  features: ["Family Dashboard", "Child Health", "Shared Goals"],
-                },
-              ].map((useCase, i) => {
-                const Icon = useCase.icon;
-                return (
-                  <div
-                    key={i}
-                    className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-indigo-100 group hover:scale-105"
-                  >
-                    <div className="text-4xl mb-4 flex justify-center">
-                      <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl text-white">
-                        <Icon className="w-8 h-8" />
-                      </div>
+                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                      style={{ backgroundColor: `${CYAN}18` }}
+                    >
+                      <tech.icon className="w-5 h-5" style={{ color: NAVY }} />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
-                      {useCase.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed text-center">
-                      {useCase.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {useCase.features.map((feature, j) => (
-                        <li key={j} className="flex items-center text-sm text-gray-600">
-                          <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full mr-3"></div>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                    <span className="text-sm font-semibold text-slate-900">{tech.name}</span>
                   </div>
-                );
-              })}
-            </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </section>
-
-        {/* Technologies Section */}
-        <section className="py-12 lg:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                Health Technology
-                <span className="block text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text">
-                  Stack
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Cutting-edge technologies and frameworks that power modern health and fitness
-                applications.
-              </p>
-            </div>
-
-            {/* Technologies Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
-              {wellnessTechnologies.map((tech, index) => {
-                const Icon = tech.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-md hover:scale-105"
-                  >
-                    <div className="text-center">
-                      <Icon className="w-8 h-8 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
-                      <div className="text-sm font-medium text-gray-900">{tech.name}</div>
-                      <div className="text-xs text-gray-500">{tech.category}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        </SectionWrap>
 
         <PageCTA
           title="Ready to Build Your Health App?"
@@ -466,4 +529,6 @@ export default function WellnessHealthPage() {
       <FooterSection />
     </PageShell>
   );
-}
+};
+
+export default WellnessPage;

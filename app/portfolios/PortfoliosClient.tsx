@@ -1,507 +1,458 @@
 "use client";
+
 import React, { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Navigation from "@/components/Navigation";
-import { PageShell, PageCTA } from "@/components/page-design";
-import FooterSection from "@/components/FooterSection";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
+import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
 import {
-    Search,
-    Grid,
-    List,
-    ExternalLink,
-    Star,
-    Award,
-    ShoppingCart,
-    Heart,
-    Building,
-    CreditCard,
-    GraduationCap,
-    Stethoscope,
-    Car,
-    X,
-    Grid3X3,
-    Package,
-    Zap,
-    Settings,
-    Smartphone,
-    Home,
-    Plane,
-    Coffee,
-    Dumbbell,
+  PageShell,
+  PageCTA,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
+import {
+  Search,
+  Grid,
+  List,
+  ExternalLink,
+  Star,
+  Award,
+  ShoppingCart,
+  Heart,
+  Building,
+  CreditCard,
+  GraduationCap,
+  Stethoscope,
+  Car,
+  X,
+  Grid3X3,
+  Package,
+  Zap,
+  Settings,
+  Smartphone,
+  Home,
+  Plane,
+  Coffee,
+  Dumbbell,
+  Sparkles,
 } from "lucide-react";
 import { portfoliosData } from "@/data/portfoliosData";
-import Link from "next/link";
+
+const SectionWrap = ({ children, alt = false }: { children: React.ReactNode; alt?: boolean }) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
 
 const PortfoliosClient = () => {
-    const structuredData = {
-        "@context": "https://schema.org",
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "ItemList",
         name: "Portfolio | Ctas Info Services LLP",
         description: "Explore our portfolio of successful web development, mobile app, and e-commerce projects.",
         url: "https://www.ctasis.com/portfolios",
         provider: { "@type": "Organization", name: "Ctas Info Services LLP", url: "https://www.ctasis.com" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+          { "@type": "ListItem", position: 2, name: "Portfolios", item: "https://www.ctasis.com/portfolios" },
+        ],
+      },
+    ],
+  };
+
+  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedTechnology, setSelectedTechnology] = useState("All");
+  const [selectedIndustry, setSelectedIndustry] = useState("All");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
+  const portfolios = portfoliosData;
+
+  const categories = useMemo(() => ["All", ...Array.from(new Set(portfolios.map((p) => p.category)))], [portfolios]);
+  const technologies = useMemo(() => {
+    const allTechs = portfolios.flatMap((p) => p.technologies);
+    return ["All", ...Array.from(new Set(allTechs))];
+  }, [portfolios]);
+  const industries = useMemo(() => {
+    const uniqueIndustries = Array.from(new Set(portfolios.map((p) => p.industry).filter(Boolean))) as string[];
+    return ["All", ...uniqueIndustries];
+  }, [portfolios]);
+
+  const filteredPortfolios = useMemo(() => {
+    return portfolios.filter((portfolio) => {
+      const matchesSearch =
+        portfolio.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        portfolio.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        portfolio.technologies.some((tech) => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+      const matchesCategory = selectedCategory === "All" || portfolio.category === selectedCategory;
+      const matchesTechnology = selectedTechnology === "All" || portfolio.technologies.includes(selectedTechnology);
+      const matchesIndustry = selectedIndustry === "All" || portfolio.industry === selectedIndustry;
+      return matchesSearch && matchesCategory && matchesTechnology && matchesIndustry;
+    });
+  }, [portfolios, searchTerm, selectedCategory, selectedTechnology, selectedIndustry]);
+
+  const sortedPortfolios = useMemo(() => {
+    const sorted = [...filteredPortfolios];
+    const featured = sorted.filter((p) => p.featured);
+    const rest = sorted.filter((p) => !p.featured);
+    return [...featured, ...rest];
+  }, [filteredPortfolios]);
+
+  const getCategoryIcon = (category: string) => {
+    const categoryIcons: Record<string, React.ElementType> = {
+      "Marketplace Solutions": Package,
+      "E-Commerce": ShoppingCart,
+      "E-commerce Automation": Zap,
+      "E-commerce": ShoppingCart,
+      "Multi-Seller Marketplace": ShoppingCart,
+      Manufacturing: Settings,
+      Healthcare: Stethoscope,
+      FinTech: CreditCard,
+      "Education Solutions": GraduationCap,
+      "Property Solutions": Home,
+      "Mobile Apps": Smartphone,
+      "Travel Solutions": Plane,
+      "Food & Beverage": Coffee,
+      "Health & Fitness": Dumbbell,
+      "Logistics & Supply Chain": Car,
+      "Banking & Finance": CreditCard,
+      "Real Estate": Home,
+      Enterprise: Building,
+      Retail: ShoppingCart,
+      Transportation: Car,
+      Wellness: Heart,
+      Gaming: Zap,
     };
+    return categoryIcons[category] || Grid3X3;
+  };
 
-    const router = useRouter();
-    const [searchTerm, setSearchTerm] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("All");
-    const [selectedTechnology, setSelectedTechnology] = useState("All");
-    const [selectedIndustry, setSelectedIndustry] = useState("All");
-    const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-    const [sortBy] = useState("featured"); // Changed from "newest" to "featured"
-
-    const [showFilters] = useState(false);
-
-    // Use shared portfolio data
-    const portfolios = portfoliosData;
-
-    // Get unique categories, technologies, and industries from shared data
-    const categories = useMemo(() => {
-        const uniqueCategories = Array.from(new Set(portfolios.map((p) => p.category)));
-        return ["All", ...uniqueCategories];
-    }, [portfolios]);
-
-    const technologies = useMemo(() => {
-        const allTechs = portfolios.flatMap((p) => p.technologies);
-        const uniqueTechs = Array.from(new Set(allTechs));
-        return ["All", ...uniqueTechs];
-    }, [portfolios]);
-
-    const industries = useMemo(() => {
-        const uniqueIndustries = Array.from(new Set(portfolios.map((p) => p.industry).filter(Boolean)));
-        return ["All", ...uniqueIndustries];
-    }, [portfolios]);
-
-    const filteredPortfolios = useMemo(() => {
-        return portfolios.filter((portfolio) => {
-            const matchesSearch =
-                portfolio.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                portfolio.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                portfolio.technologies.some((tech) =>
-                    tech.toLowerCase().includes(searchTerm.toLowerCase())
-                );
-
-            const matchesCategory = selectedCategory === "All" || portfolio.category === selectedCategory;
-            const matchesTechnology =
-                selectedTechnology === "All" || portfolio.technologies.includes(selectedTechnology);
-            const matchesIndustry = selectedIndustry === "All" || portfolio.industry === selectedIndustry;
-
-            return matchesSearch && matchesCategory && matchesTechnology && matchesIndustry;
-        });
-    }, [portfolios, searchTerm, selectedCategory, selectedTechnology, selectedIndustry]);
-
-    const sortedPortfolios = useMemo(() => {
-        const sorted = [...filteredPortfolios];
-        switch (sortBy) {
-            case "newest":
-                return sorted.sort((a, b) => parseInt(b.year) - parseInt(a.year));
-            case "popular":
-                return sorted.sort((a, b) => b.title.localeCompare(a.title));
-            case "featured":
-                return sorted.filter((p) => p.featured).concat(sorted.filter((p) => !p.featured));
-            default:
-                return sorted;
-        }
-    }, [filteredPortfolios, sortBy]);
-
-    // Enhanced category icon mapping
-    const getCategoryIcon = (category: string) => {
-        const categoryIcons: { [key: string]: any } = {
-            "Marketplace Solutions": Package,
-            "E-Commerce": ShoppingCart,
-            "E-commerce Automation": Zap,
-            "E-commerce": ShoppingCart,
-            "Multi-Seller Marketplace": ShoppingCart,
-            Manufacturing: Settings,
-            Healthcare: Stethoscope,
-            FinTech: CreditCard,
-            "Education Solutions": GraduationCap,
-            "Property Solutions": Home,
-            "Mobile Apps": Smartphone,
-            "Travel Solutions": Plane,
-            "Food & Beverage": Coffee,
-            "Health & Fitness": Dumbbell,
-            "Logistics & Supply Chain": Car,
-            "Banking & Finance": CreditCard,
-            "Real Estate": Home,
-            Enterprise: Building,
-            Retail: ShoppingCart,
-            Transportation: Car,
-            Wellness: Heart,
-            Gaming: Zap,
-        };
-        const IconComponent = categoryIcons[category] || Grid3X3;
-        return <IconComponent className="w-4 h-4" />;
+  const getIndustryIcon = (industry?: string) => {
+    const industryIcons: Record<string, React.ElementType> = {
+      "E-commerce": ShoppingCart,
+      "Amazon FBA/FBM & Multi-Marketplace": ShoppingCart,
+      "Global E-Commerce": ShoppingCart,
+      "Ceramic & Tiles": Building,
+      Healthcare: Stethoscope,
+      FinTech: CreditCard,
+      Education: GraduationCap,
+      "Real Estate": Home,
+      "Mobile Apps": Smartphone,
+      Travel: Plane,
+      "Food & Beverage": Coffee,
+      "Health & Fitness": Dumbbell,
+      Logistics: Car,
+      "Banking & Finance": CreditCard,
+      Enterprise: Building,
+      Retail: ShoppingCart,
+      Transportation: Car,
+      Wellness: Heart,
+      Gaming: Zap,
     };
+    return industryIcons[industry || ""] || Grid3X3;
+  };
 
-    // Enhanced industry icon mapping
-    const getIndustryIcon = (industry?: string) => {
-        const industryIcons: { [key: string]: any } = {
-            "E-commerce": ShoppingCart,
-            "Amazon FBA/FBM & Multi-Marketplace": ShoppingCart,
-            "Global E-Commerce": ShoppingCart,
-            "Ceramic & Tiles": Building,
-            Healthcare: Stethoscope,
-            FinTech: CreditCard,
-            Education: GraduationCap,
-            "Real Estate": Home,
-            "Mobile Apps": Smartphone,
-            Travel: Plane,
-            "Food & Beverage": Coffee,
-            "Health & Fitness": Dumbbell,
-            Logistics: Car,
-            "Banking & Finance": CreditCard,
-            Enterprise: Building,
-            Retail: ShoppingCart,
-            Transportation: Car,
-            Wellness: Heart,
-            Gaming: Zap,
-        };
-        const IconComponent = industryIcons[industry || ""] || Grid3X3;
-        return <IconComponent className="w-4 h-4" />;
-    };
+  const clearFilters = () => {
+    setSelectedCategory("All");
+    setSelectedTechnology("All");
+    setSelectedIndustry("All");
+    setSearchTerm("");
+  };
 
-    return (
-        <PageShell>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-            <Navigation />
-            <main>
+  const FilterPills = ({
+    label,
+    options,
+    selected,
+    onSelect,
+    accent,
+  }: {
+    label: string;
+    options: string[];
+    selected: string;
+    onSelect: (v: string) => void;
+    accent?: "navy" | "cyan";
+  }) => (
+    <div className="mb-3">
+      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">{label}</p>
+      <div className="flex gap-2 overflow-x-auto pb-1 snap-x">
+        {options.map((opt) => (
+          <button
+            key={opt}
+            type="button"
+            onClick={() => onSelect(opt)}
+            className={`flex-shrink-0 snap-start px-3 py-1.5 rounded-full text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+              selected === opt ? "text-white" : "bg-[#F6F8FA] text-slate-600 border border-slate-200"
+            }`}
+            style={
+              selected === opt
+                ? { backgroundColor: accent === "cyan" ? CYAN : NAVY, color: accent === "cyan" ? "#08141F" : "#fff" }
+                : undefined
+            }
+          >
+            {opt}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
-            {/* Hero Section */}
-            <section className="relative py-16 lg:py-24 overflow-hidden">
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-sky-600/5 to-indigo-600/10"></div>
-                <div className="absolute top-20 left-10 w-32 h-32 bg-blue-300/20 rounded-full blur-3xl animate-pulse"></div>
-                <div
-                    className="absolute bottom-20 right-10 w-40 h-40 bg-sky-300/20 rounded-full blur-3xl animate-pulse"
-                    style={{ animationDelay: "1s" }}
-                ></div>
-                <div
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-300/10 rounded-full blur-3xl animate-pulse"
-                    style={{ animationDelay: "2s" }}
-                ></div>
-
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                    <div className="text-center">
-                        <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-sky-100 text-blue-700 text-sm font-bold border border-blue-200 mb-8 shadow-lg">
-                            <Award className="w-5 h-5 mr-2 animate-bounce" />
-                            Our Portfolio
-                        </div>
-
-                        <h1 className="text-5xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight">
-                            Showcasing{" "}
-                            <span className="text-transparent bg-gradient-to-r from-blue-600 via-sky-600 to-indigo-600 bg-clip-text animate-pulse">
-                                Innovation
-                            </span>
-                            <br />
-                            <span className="text-transparent bg-gradient-to-r from-sky-600 via-blue-600 to-cyan-600 bg-clip-text">
-                                & Excellence
-                            </span>
-                        </h1>
-
-                        <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto mb-10 leading-relaxed font-medium">
-                            Discover our diverse portfolio of cutting-edge projects that demonstrate our expertise
-                            across industries and technologies. Each project represents our commitment to quality,
-                            innovation, and client success.
-                        </p>
-
-                        <div className="flex flex-wrap justify-center gap-6 mb-10">
-                            <div className="flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-                                <Star className="w-5 h-5 text-sky-500" />
-                                <span className="text-base font-semibold text-gray-700">98% Success Rate</span>
-                            </div>
-                            <div className="flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-                                <Award className="w-5 h-5 text-indigo-600" />
-                                <span className="text-base font-semibold text-gray-700">15+ Awards</span>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <Navigation />
+      <main>
+        {/* Hero */}
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="Our Portfolio"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                <Award className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
+                Our Portfolio
+              </div>
+              <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                Showcasing{" "}
+                <span className="italic" style={{ color: CYAN_LIGHT }}>
+                  Innovation
+                </span>{" "}
+                &amp; Excellence
+              </h1>
+              <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed max-w-3xl mx-auto mb-10">
+                Discover our diverse portfolio of cutting-edge projects that demonstrate our expertise across industries
+                and technologies. Each project represents our commitment to quality, innovation, and client success.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/10">
+                  <Star className="w-4 h-4" style={{ color: CYAN }} />
+                  <span className="text-sm font-semibold text-[#C7D2D9]">
+                    <AnimatedStat value="98%" /> Success Rate
+                  </span>
                 </div>
-            </section>
-
-            {/* Search and Filters */}
-            <section className="py-8 bg-white border-b border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-                        {/* Search */}
-                        <div className="relative w-full lg:w-96">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                            <Input
-                                type="text"
-                                placeholder="Search projects, technologies..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="pl-10 pr-4 py-2 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                            />
-                        </div>
-
-                        {/* View Mode and Sort */}
-                        <div className="flex items-center space-x-4">
-                            <div className="flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
-                                <Button
-                                    variant={viewMode === "grid" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setViewMode("grid")}
-                                    className="px-3 py-1"
-                                >
-                                    <Grid className="w-4 h-4" />
-                                </Button>
-                                <Button
-                                    variant={viewMode === "list" ? "default" : "ghost"}
-                                    size="sm"
-                                    onClick={() => setViewMode("list")}
-                                    className="px-3 py-1"
-                                >
-                                    <List className="w-4 h-4" />
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Filter Options */}
-                    {showFilters && (
-                        <div className="mt-6 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {/* Category Filter */}
-                                <div>
-                                    <h3 className="text-sm font-semibold text-gray-900 mb-3">Category</h3>
-                                    <div className="space-y-2">
-                                        {categories.map((category) => (
-                                            <label key={category} className="flex items-center space-x-2 cursor-pointer">
-                                                <input
-                                                    type="radio"
-                                                    name="category"
-                                                    value={category}
-                                                    checked={selectedCategory === category}
-                                                    onChange={(e) => setSelectedCategory(e.target.value)}
-                                                    className="text-blue-600 focus:ring-blue-500"
-                                                />
-                                                <span className="text-sm text-gray-700">{category}</span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Technology Filter */}
-                                <div>
-                                    <h3 className="text-sm font-semibold text-gray-900 mb-3">Technology</h3>
-                                    <div className="space-y-2">
-                                        {technologies.map((tech) => (
-                                            <label key={tech} className="flex items-center space-x-2 cursor-pointer">
-                                                <input
-                                                    type="radio"
-                                                    name="technology"
-                                                    value={tech}
-                                                    checked={selectedTechnology === tech}
-                                                    onChange={(e) => setSelectedTechnology(e.target.value)}
-                                                    className="text-blue-600 focus:ring-blue-500"
-                                                />
-                                                <span className="text-sm text-gray-700">{tech}</span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Industry Filter */}
-                                <div>
-                                    <h3 className="text-sm font-semibold text-gray-900 mb-3">Industry</h3>
-                                    <div className="space-y-2">
-                                        {industries.map((industry) => (
-                                            <label key={industry} className="flex items-center space-x-2 cursor-pointer">
-                                                <input
-                                                    type="radio"
-                                                    name="industry"
-                                                    value={industry}
-                                                    checked={selectedIndustry === industry}
-                                                    onChange={(e) => setSelectedIndustry(e.target.value)}
-                                                    className="text-blue-600 focus:ring-blue-500"
-                                                />
-                                                <span className="text-sm text-gray-700">{industry}</span>
-                                            </label>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Clear Filters */}
-                            <div className="mt-6 pt-4 border-t border-gray-200">
-                                <Button
-                                    variant="outline"
-                                    onClick={() => {
-                                        setSelectedCategory("All");
-                                        setSelectedTechnology("All");
-                                        setSelectedIndustry("All");
-                                        setSearchTerm("");
-                                    }}
-                                    className="flex items-center space-x-2"
-                                >
-                                    <X className="w-4 h-4" />
-                                    <span>Clear All Filters</span>
-                                </Button>
-                            </div>
-                        </div>
-                    )}
+                <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/10">
+                  <Award className="w-4 h-4" style={{ color: CYAN_LIGHT }} />
+                  <span className="text-sm font-semibold text-[#C7D2D9]">15+ Awards</span>
                 </div>
-            </section>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-            {/* Portfolio Grid */}
-            <section className="py-12 lg:py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Results Count */}
-                    <div className="flex items-center justify-between mb-8">
-                        <p className="text-gray-600">
-                            Showing <span className="font-semibold text-gray-900">{sortedPortfolios.length}</span>{" "}
-                            of <span className="font-semibold text-gray-900">{portfolios.length}</span> projects
-                        </p>
-                    </div>
+        {/* Filters toolbar */}
+        <section className="sticky top-0 z-30 bg-white border-b border-slate-200/80 py-5 shadow-sm">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-start justify-between mb-4">
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" aria-hidden="true" />
+                <input
+                  type="search"
+                  placeholder="Search projects, technologies..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA]"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center rounded-xl border border-slate-200 p-1">
+                  <button
+                    type="button"
+                    onClick={() => setViewMode("grid")}
+                    className={`p-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                      viewMode === "grid" ? "text-white" : "text-slate-500 hover:bg-[#F6F8FA]"
+                    }`}
+                    style={viewMode === "grid" ? { backgroundColor: NAVY } : undefined}
+                    aria-label="Grid view"
+                    aria-pressed={viewMode === "grid"}
+                  >
+                    <Grid className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setViewMode("list")}
+                    className={`p-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                      viewMode === "list" ? "text-white" : "text-slate-500 hover:bg-[#F6F8FA]"
+                    }`}
+                    style={viewMode === "list" ? { backgroundColor: NAVY } : undefined}
+                    aria-label="List view"
+                    aria-pressed={viewMode === "list"}
+                  >
+                    <List className="w-4 h-4" />
+                  </button>
+                </div>
+                {(selectedCategory !== "All" || selectedTechnology !== "All" || selectedIndustry !== "All" || searchTerm) && (
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-[#F6F8FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA]"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                    Clear All Filters
+                  </button>
+                )}
+              </div>
+            </div>
+            <FilterPills label="Category" options={categories} selected={selectedCategory} onSelect={setSelectedCategory} />
+            <FilterPills label="Technology" options={technologies} selected={selectedTechnology} onSelect={setSelectedTechnology} accent="cyan" />
+            <FilterPills label="Industry" options={industries} selected={selectedIndustry} onSelect={setSelectedIndustry} />
+          </div>
+        </section>
 
-                    {/* Portfolio Cards */}
+        {/* Portfolio grid/list */}
+        <SectionWrap>
+          <p className="text-sm text-slate-500 mb-8">
+            Showing <span className="font-semibold text-slate-900">{sortedPortfolios.length}</span> of{" "}
+            <span className="font-semibold text-slate-900">{portfolios.length}</span> projects
+          </p>
+
+          {sortedPortfolios.length === 0 ? (
+            <div className="text-center py-16">
+              <Search className="w-12 h-12 mx-auto text-slate-300 mb-4" />
+              <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-2`}>No projects found</h3>
+              <p className="text-slate-500 mb-6">
+                Try adjusting your search terms or filters to find what you&apos;re looking for.
+              </p>
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="px-6 py-2.5 rounded-full border border-slate-200 text-sm font-semibold text-slate-700 hover:bg-[#F6F8FA]"
+              >
+                Clear All Filters
+              </button>
+            </div>
+          ) : (
+            <div
+              className={
+                viewMode === "grid"
+                  ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  : "space-y-5"
+              }
+            >
+              {sortedPortfolios.map((portfolio, index) => {
+                const CategoryIcon = getCategoryIcon(portfolio.category);
+                const IndustryIcon = getIndustryIcon(portfolio.industry);
+                return (
+                  <motion.article
+                    key={portfolio.id}
+                    {...fadeUp}
+                    transition={{ delay: index * 0.03 }}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => portfolio.link && portfolio.link !== "#" && router.push(portfolio.link)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && portfolio.link && portfolio.link !== "#") router.push(portfolio.link);
+                    }}
+                    className={`group cursor-pointer rounded-[1.5rem] border border-slate-200/80 bg-white overflow-hidden hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                      viewMode === "list" ? "flex flex-col md:flex-row" : "flex flex-col"
+                    }`}
+                  >
                     <div
-                        className={
-                            viewMode === "grid"
-                                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                                : "space-y-6"
-                        }
+                      className={`relative overflow-hidden bg-[#F6F8FA] ${
+                        viewMode === "list" ? "w-full md:w-72 h-52 md:h-auto shrink-0" : "aspect-[16/10] w-full"
+                      }`}
                     >
-                        {sortedPortfolios.length === 0 ? (
-                            <div className="col-span-full text-center py-16">
-                                <div className="flex justify-center mb-4">
-                                    <Search className="w-16 h-16 text-gray-400" />
-                                </div>
-                                <h3 className="text-2xl font-semibold text-gray-900 mb-2">No projects found</h3>
-                                <p className="text-gray-600 mb-6">
-                                    Try adjusting your search terms or filters to find what you&apos;re looking for.
-                                </p>
-                                <Button
-                                    variant="outline"
-                                    onClick={() => {
-                                        setSelectedCategory("All");
-                                        setSelectedTechnology("All");
-                                        setSelectedIndustry("All");
-                                        setSearchTerm("");
-                                    }}
-                                >
-                                    Clear All Filters
-                                </Button>
-                            </div>
-                        ) : (
-                            sortedPortfolios.map((portfolio, index) => (
-                                <Card
-                                    key={portfolio.id}
-                                    className={`group relative overflow-hidden bg-white border border-gray-100 rounded-2xl cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${viewMode === "list" ? "flex flex-col md:flex-row" : "flex flex-col"
-                                        }`}
-                                    onClick={() => {
-                                        if (portfolio.link && portfolio.link !== "#") {
-                                            router.push(portfolio.link);
-                                        }
-                                    }}
-                                >
-                                    {/* Portfolio Image */}
-                                    <div
-                                        className={`relative overflow-hidden bg-gray-50 border-b border-gray-100 ${viewMode === "list" ? "w-full md:w-85 h-56 md:h-auto shrink-0" : "h-60 w-full"
-                                            }`}
-                                    >
-                                        <Image
-                                            src={portfolio.image}
-                                            alt={portfolio.title}
-                                            fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            priority={index < 6}
-                                        />
-
-                                        {/* Badge Overlay */}
-                                        <div className="absolute top-3 left-3 z-10">
-                                            <Badge className="bg-white/95 backdrop-blur-sm text-gray-900 hover:bg-white shadow-sm border border-gray-200/50 flex items-center gap-1.5 px-3 py-1">
-                                                {getCategoryIcon(portfolio.category)}
-                                                {portfolio.category}
-                                            </Badge>
-                                        </div>
-
-                                        {/* View Details Overlay */}
-                                        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                                        </div>
-                                    </div>
-
-                                    {/* Portfolio Content */}
-                                    <div className="flex flex-col flex-1 p-6">
-                                        <div className="flex items-center justify-between mb-3 text-xs">
-                                            <div className="flex items-center gap-1.5 text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full font-medium">
-                                                {getIndustryIcon(portfolio.industry)}
-                                                <span>{portfolio.industry}</span>
-                                            </div>
-                                            <span className="text-gray-400 font-mono">{portfolio.year}</span>
-                                        </div>
-
-                                        <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                                            {portfolio.title}
-                                        </h3>
-
-                                        <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
-                                            {portfolio.description}
-                                        </p>
-
-                                        {/* Stats / Metrics */}
-                                        <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-50 text-xs text-gray-500">
-                                            <div>
-                                                <span className="block text-gray-400 mb-0.5">Duration</span>
-                                                <span className="font-medium text-gray-700">{portfolio.duration || 'N/A'}</span>
-                                            </div>
-                                            <div>
-                                                <span className="block text-gray-400 mb-0.5">Team Size</span>
-                                                <span className="font-medium text-gray-700">{portfolio.teamSize || 'N/A'} Members</span>
-                                            </div>
-                                        </div>
-
-                                        {/* Technologies */}
-                                        <div className="mt-auto">
-                                            <div className="flex flex-wrap gap-1.5 mb-4">
-                                                {portfolio.technologies.slice(0, 3).map((tech) => (
-                                                    <span
-                                                        key={tech}
-                                                        className="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-md"
-                                                    >
-                                                        {tech}
-                                                    </span>
-                                                ))}
-                                                {portfolio.technologies.length > 3 && (
-                                                    <span className="px-2 py-1 text-xs text-gray-500 bg-gray-50 rounded-md border border-gray-100">
-                                                        +{portfolio.technologies.length - 3}
-                                                    </span>
-                                                )}
-                                            </div>
-
-                                            <Button
-                                                className="w-full bg-gray-900 text-white hover:bg-blue-600 hover:shadow-lg transition-all duration-300"
-                                                size="sm"
-                                            >
-                                                View Project Details <ExternalLink className="w-3 h-3 ml-2" />
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </Card>
-                            ))
-                        )}
+                      <Image
+                        src={portfolio.image}
+                        alt={portfolio.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes={viewMode === "list" ? "288px" : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
+                        loading={index < 6 ? "eager" : "lazy"}
+                      />
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-xs font-semibold text-slate-800 shadow-sm">
+                        <CategoryIcon className="w-3.5 h-3.5" style={{ color: CYAN }} />
+                        {portfolio.category}
+                      </div>
                     </div>
-                </div>
-            </section>
-            <PageCTA
-                title="Ready to Start Your Project?"
-                description="Let's discuss how we can bring your vision to life with our expertise and innovative solutions."
-                primaryLabel="Get Free Consultation"
-                primaryHref="/contact-us"
-                secondaryLabel="Explore Services"
-                secondaryHref="/services"
-            />
-            </main>
-            <FooterSection />
-        </PageShell>
-    );
+                    <div className="flex flex-col flex-1 p-5 sm:p-6">
+                      <div className="flex items-center justify-between mb-3 text-xs">
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EAF3F8] font-medium" style={{ color: NAVY }}>
+                          <IndustryIcon className="w-3.5 h-3.5" />
+                          <span>{portfolio.industry}</span>
+                        </div>
+                        <span className="text-slate-400 font-mono">{portfolio.year}</span>
+                      </div>
+                      <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mb-2 line-clamp-2 group-hover:text-[#13345A] transition-colors`}>
+                        {portfolio.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 mb-4 line-clamp-2 leading-relaxed flex-1">{portfolio.description}</p>
+                      <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-slate-100 text-xs">
+                        <div>
+                          <span className="block text-slate-400 mb-0.5">Duration</span>
+                          <span className="font-medium text-slate-700">{portfolio.duration || "N/A"}</span>
+                        </div>
+                        <div>
+                          <span className="block text-slate-400 mb-0.5">Team Size</span>
+                          <span className="font-medium text-slate-700">{portfolio.teamSize || "N/A"} Members</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {portfolio.technologies.slice(0, 3).map((tech) => (
+                          <span key={tech} className="px-2 py-0.5 text-xs font-medium rounded-md bg-[#F6F8FA] text-slate-600">
+                            {tech}
+                          </span>
+                        ))}
+                        {portfolio.technologies.length > 3 && (
+                          <span className="px-2 py-0.5 text-xs text-slate-500 bg-[#F6F8FA] rounded-md">
+                            +{portfolio.technologies.length - 3}
+                          </span>
+                        )}
+                      </div>
+                      <span
+                        className="inline-flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold rounded-xl text-white transition-all group-hover:opacity-90"
+                        style={{ backgroundColor: NAVY }}
+                      >
+                        View Project Details
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          )}
+          <motion.p {...fadeUp} className="mt-10 inline-flex items-center gap-2 text-sm text-slate-600">
+            <Sparkles className="w-4 h-4" style={{ color: CYAN }} />
+            Read our{" "}
+            <Link href="/case-studies" className="font-semibold hover:underline" style={{ color: NAVY }}>
+              case studies
+            </Link>{" "}
+            for detailed success stories
+          </motion.p>
+        </SectionWrap>
+
+        <PageCTA
+          title="Ready to Start Your Project?"
+          description="Let's discuss how we can bring your vision to life with our expertise and innovative solutions."
+          primaryLabel="Get Free Consultation"
+          primaryHref="/contact-us"
+          secondaryLabel="Explore Services"
+          secondaryHref="/services"
+        />
+      </main>
+      <FooterSection />
+    </PageShell>
+  );
 };
 
 export default PortfoliosClient;

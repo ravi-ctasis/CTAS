@@ -18,57 +18,74 @@ import type { ServicePageConfig } from "@/types/service-page";
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Amazon SP API Integration Services",
-  description:
-    "Done-for-you Amazon Selling Partner API integrations for pricing, catalog, finance, FBA, and vendor workflows.",
-  provider: {
-    "@type": "Organization",
-    name: "Ctas Info Services LLP",
-    url: "https://www.ctasis.com",
-    logo: "https://www.ctasis.com/assets/images/og-image.jpg",
-  },
-  areaServed: ["US", "UK", "EU", "IN", "AE", "AU"],
-  serviceType: "Amazon SP API Integration",
-  offers: {
-    "@type": "Offer",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      priceCurrency: "USD",
-      price: "0",
-      description: "Free discovery call and tailored quote",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Amazon SP API Integration Services",
+      description:
+        "Done-for-you Amazon Selling Partner API integrations for pricing, catalog, finance, FBA, and vendor workflows.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+        logo: "https://www.ctasis.com/assets/images/og-image.jpg",
+      },
+      areaServed: ["US", "UK", "EU", "IN", "AE", "AU"],
+      serviceType: "Amazon SP API Integration",
+      offers: {
+        "@type": "Offer",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "USD",
+          price: "0",
+          description: "Free discovery call and tailored quote",
+        },
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Amazon SP API Automation Modules",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Catalog & Listings Automation",
+              description: "Sync ASIN data, variations, and rich content across regions.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Pricing & Repricing Engine",
+              description: "Dynamic rule-based and AI-powered repricing connected to Amazon datasets.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Finance & Settlement Reporting",
+              description: "Match SP API finance reports with ERP and BI systems.",
+            },
+          },
+        ],
+      },
     },
-  },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Amazon SP API Automation Modules",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Catalog & Listings Automation",
-          description: "Sync ASIN data, variations, and rich content across regions.",
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Amazon SP API Integration",
+          item: "https://www.ctasis.com/services/amazon-sp-api-integration",
         },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Pricing & Repricing Engine",
-          description: "Dynamic rule-based and AI-powered repricing connected to Amazon datasets.",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Finance & Settlement Reporting",
-          description: "Match SP API finance reports with ERP and BI systems.",
-        },
-      },
-    ],
-  },
+      ],
+    },
+  ],
 };
 
 const techStack = [
@@ -150,7 +167,8 @@ export const amazonSpApiConfig: ServicePageConfig = {
       variant: "horizontal",
     },
     {
-      type: "cards",
+      type: "benefits",
+      variant: "icon-strip",
       header: {
         badge: "Why Sellers Choose Ctas",
         title: "Built for Compliance,",
@@ -182,7 +200,6 @@ export const amazonSpApiConfig: ServicePageConfig = {
           icon: Link2,
         },
       ],
-      columns: 2,
     },
     {
       type: "process-sidebar",

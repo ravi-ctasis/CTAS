@@ -1,11 +1,7 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
-import { PageShell, PageHero, PageCTA } from "@/components/page-design";
-import FooterSection from "@/components/FooterSection";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   Globe,
   Smartphone,
@@ -14,7 +10,7 @@ import {
   Shield,
   Target,
   Award,
-  CheckCircle,
+  CheckCircle2,
   Clock,
   DollarSign,
   Rocket,
@@ -22,7 +18,6 @@ import {
   Settings,
   Search,
   ShoppingCart,
-  Phone,
   Users,
   ArrowUpRight,
   FileText,
@@ -34,1371 +29,736 @@ import {
   BarChart3,
   MessageSquare,
   Star,
-  Mail,
+  type LucideIcon,
 } from "lucide-react";
-import Link from "next/link";
 
-;
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
+import {
+  PageShell,
+  PageHero,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  AnimatedStat,
+} from "@/components/page-design";
 
-const ServicesListingPage = () => {
-  const whyChooseUs = [
+const whyChooseUs = [
+  {
+    icon: Award,
+    title: "Expert Team",
+    description: "Certified professionals with 5+ years of experience",
+  },
+  {
+    icon: Clock,
+    title: "Fast Delivery",
+    description: "Quick turnaround times without compromising quality",
+  },
+  {
+    icon: DollarSign,
+    title: "Competitive Pricing",
+    description: "Affordable rates with transparent pricing structure",
+  },
+  {
+    icon: Shield,
+    title: "Quality Assurance",
+    description: "Rigorous testing and quality control processes",
+  },
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Discovery & Planning",
+    description: "Understanding your requirements and creating a detailed project plan",
+    icon: Search,
+  },
+  {
+    step: "02",
+    title: "Design & Prototyping",
+    description: "Creating wireframes, mockups, and interactive prototypes",
+    icon: Palette,
+  },
+  {
+    step: "03",
+    title: "Development",
+    description: "Building your website with modern technologies and best practices",
+    icon: Code,
+  },
+  {
+    step: "04",
+    title: "Testing & QA",
+    description: "Comprehensive testing across all devices and browsers",
+    icon: CheckCircle2,
+  },
+  {
+    step: "05",
+    title: "Launch & Support",
+    description: "Deployment, monitoring, and ongoing maintenance support",
+    icon: Rocket,
+  },
+];
+
+const featuredServices = [
+  {
+    title: "Web Design",
+    href: "/services/web-design",
+    cta: "Learn How We Did It",
+    icon: Palette,
+    span: "md:col-span-1",
+  },
+  {
+    title: "CMS E-commerce Development",
+    href: "/services/e-commerce-solutions",
+    cta: "Learn How We Did It",
+    icon: ShoppingCart,
+    span: "md:col-span-1",
+  },
+  {
+    title: "Web Development",
+    href: "/services/web-development",
+    cta: "Learn How We Did It",
+    icon: Globe,
+    span: "md:col-span-1",
+  },
+  {
+    title: "Amazon Seller Account Setup & Optimization",
+    href: "/services/amazon-services",
+    cta: "Boost Your Sales",
+    icon: ShoppingCart,
+    span: "md:col-span-2 lg:row-span-2",
+    featured: true,
+    badge: "HOT SERVICE",
+  },
+  {
+    title: "Cloud Services",
+    href: "/services/cloud-solutions",
+    cta: "Learn How We Did It",
+    icon: Cloud,
+    span: "md:col-span-1",
+  },
+  {
+    title: "Mobile App Development",
+    href: "/services/mobile-apps",
+    cta: "Learn How We Did It",
+    icon: Smartphone,
+    span: "md:col-span-1",
+  },
+];
+
+const digitalServices = [
+  {
+    title: "Multi-Marketplace Management",
+    href: "/services/marketplace",
+    description:
+      "Manage stock, pricing, and orders across Amazon, Walmart, eBay, Shopify, Etsy, TikTok Shop, and more from a single platform.",
+    icon: Globe,
+    features: ["Unified Dashboard", "Cross-Platform Sync", "Centralized Inventory", "Automated Pricing"],
+  },
+  {
+    title: "Amazon Seller Account Setup",
+    href: "/services/amazon-services",
+    description:
+      "Complete Amazon seller account setup and optimization for maximum sales and visibility.",
+    icon: TrendingUp,
+    features: ["Account Setup", "Listing Optimization", "PPC Management", "Sales Analytics"],
+  },
+  {
+    title: "Web Design",
+    href: "/services/web-design",
+    description:
+      "Creative and modern website designs that capture your brand essence and engage your audience.",
+    icon: Palette,
+    features: ["Responsive Design", "UI/UX Design", "Brand Integration", "SEO Optimized"],
+  },
+  {
+    title: "CMS Development",
+    href: "/services/e-commerce-solutions",
+    description:
+      "Custom content management systems that make website management easy and efficient.",
+    icon: FileText,
+    features: ["WordPress Development", "Custom CMS", "Content Management", "Admin Panel"],
+  },
+  {
+    title: "E-commerce Development",
+    href: "/services/e-commerce-solutions",
+    description:
+      "Complete online store solutions with payment integration and inventory management.",
+    icon: ShoppingCart,
+    features: ["Online Store", "Payment Gateway", "Inventory Management", "Order Processing"],
+  },
+  {
+    title: "Web Development",
+    href: "/services/web-development",
+    description:
+      "Custom web applications and websites built with modern technologies and best practices.",
+    icon: Globe,
+    features: ["Custom Websites", "Web Applications", "API Development", "Performance Optimization"],
+  },
+  {
+    title: "Cloud Services",
+    href: "/services/cloud-solutions",
+    description:
+      "Cloud infrastructure and services for scalable, secure, and reliable applications.",
+    icon: Cloud,
+    features: ["AWS Services", "Azure Solutions", "Server Management", "Backup & Recovery"],
+  },
+  {
+    title: "Mobile App Development",
+    href: "/services/mobile-apps",
+    description: "Native and cross-platform mobile applications for iOS and Android platforms.",
+    icon: Smartphone,
+    features: ["iOS Development", "Android Development", "React Native", "Flutter Apps"],
+  },
+];
+
+const industries = [
+  {
+    title: "SME Business Solutions",
+    href: "/industries/enterprise",
+    description:
+      "Custom software solutions tailored for small and medium enterprises to streamline operations and boost productivity.",
+    icon: Users,
+  },
+  {
+    title: "Finance and FinTech",
+    href: "/industries/banking-finance",
+    description:
+      "Innovative financial technology solutions including payment systems, banking apps, and fintech platforms.",
+    icon: DollarSign,
+  },
+  {
+    title: "E-commerce and Retail",
+    href: "/industries/retail",
+    description:
+      "Complete e-commerce solutions including online stores, inventory management, and retail automation systems.",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Healthcare & Fitness",
+    href: "/industries/healthcare",
+    description:
+      "Healthcare management systems, telemedicine platforms, and fitness tracking applications for better health outcomes.",
+    icon: Heart,
+  },
+  {
+    title: "Gaming/Entertainment",
+    href: "/industries/gaming",
+    description:
+      "Interactive gaming platforms, entertainment apps, and immersive digital experiences for engaging user interactions.",
+    icon: Gamepad2,
+  },
+  {
+    title: "Travel and Hospitality",
+    href: "/industries/transportation",
+    description:
+      "Travel booking platforms, hotel management systems, and hospitality solutions for seamless guest experiences.",
+    icon: Globe,
+  },
+  {
+    title: "Real Estate",
+    href: "/industries/real-estate",
+    description:
+      "Property management systems, real estate platforms, and digital solutions for modern real estate businesses.",
+    icon: Home,
+  },
+  {
+    title: "EdTech",
+    href: "/industries/education",
+    description:
+      "Educational technology platforms, learning management systems, and digital learning solutions for modern education.",
+    icon: GraduationCap,
+  },
+];
+
+const amazonServices = [
+  {
+    title: "Account Setup",
+    icon: ShoppingCart,
+    items: [
+      "Professional seller account creation",
+      "Business verification & documentation",
+      "Tax information setup",
+      "Payment method configuration",
+    ],
+  },
+  {
+    title: "Listing Optimization",
+    icon: TrendingUp,
+    items: [
+      "SEO-optimized product titles",
+      "Compelling product descriptions",
+      "High-quality image optimization",
+      "Keyword research & implementation",
+    ],
+  },
+  {
+    title: "Performance Analytics",
+    icon: BarChart3,
+    items: [
+      "Sales performance tracking",
+      "Competitor analysis",
+      "ROI optimization strategies",
+      "Monthly performance reports",
+    ],
+  },
+  {
+    title: "Compliance & Security",
+    icon: Shield,
+    items: [
+      "Amazon policy compliance",
+      "Account security setup",
+      "Fraud prevention measures",
+      "Regular security audits",
+    ],
+  },
+  {
+    title: "Customer Support",
+    icon: MessageSquare,
+    items: [
+      "Review management",
+      "Customer inquiry handling",
+      "Return & refund management",
+      "24/7 support availability",
+    ],
+  },
+  {
+    title: "Ongoing Management",
+    icon: Settings,
+    items: [
+      "Inventory management",
+      "Pricing strategy optimization",
+      "Campaign management",
+      "Regular account maintenance",
+    ],
+  },
+];
+
+const amazonStats = [
+  { number: "500+", label: "Seller Accounts", icon: TrendingUp },
+  { number: "₹50M+", label: "Revenue Generated", icon: DollarSign },
+  { number: "4.8★", label: "Average Rating", icon: Star },
+  { number: "24/7", label: "Support Available", icon: Clock },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      icon: Award,
-      title: "Expert Team",
-      description: "Certified professionals with 5+ years of experience",
-      color: "from-blue-500 to-cyan-500",
+      "@type": "ItemList",
+      name: "IT Services | Ctas Info Services LLP",
+      description:
+        "Comprehensive IT services including web development, mobile apps, AI/ML, cloud computing, DevOps, and e-commerce solutions.",
+      url: "https://www.ctasis.com/services",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
     },
     {
-      icon: Clock,
-      title: "Fast Delivery",
-      description: "Quick turnaround times without compromising quality",
-      color: "from-green-500 to-emerald-500",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+      ],
     },
-    {
-      icon: DollarSign,
-      title: "Competitive Pricing",
-      description: "Affordable rates with transparent pricing structure",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: Shield,
-      title: "Quality Assurance",
-      description: "Rigorous testing and quality control processes",
-      color: "from-orange-500 to-red-500",
-    },
-  ];
-
-  const process = [
-    {
-      step: "01",
-      title: "Discovery & Planning",
-      description: "Understanding your requirements and creating a detailed project plan",
-      icon: Search,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      step: "02",
-      title: "Design & Prototyping",
-      description: "Creating wireframes, mockups, and interactive prototypes",
-      icon: Palette,
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      step: "03",
-      title: "Development",
-      description: "Building your website with modern technologies and best practices",
-      icon: Code,
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      step: "04",
-      title: "Testing & QA",
-      description: "Comprehensive testing across all devices and browsers",
-      icon: CheckCircle,
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      step: "05",
-      title: "Launch & Support",
-      description: "Deployment, monitoring, and ongoing maintenance support",
-      icon: Rocket,
-      color: "from-indigo-500 to-purple-500",
-    },
-  ];
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "IT Services | Ctas Info Services LLP",
-    description: "Comprehensive IT services including web development, mobile apps, AI/ML, cloud computing, DevOps, and e-commerce solutions.",
-    url: "https://www.ctasis.com/services",
-    provider: { "@type": "Organization", name: "Ctas Info Services LLP", url: "https://www.ctasis.com" },
-  };
-
-  return (
-    <PageShell>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <Navigation />
-      <main>
-        <PageHero
-          ariaLabel="Our Services"
-          badge="Our Services"
-          title="Comprehensive"
-          highlight="E-commerce & IT Solutions"
-          description="From web development to mobile apps, custom software to e-commerce solutions - we deliver cutting-edge digital solutions that drive business growth and success."
-          stats={[
-            { number: "100+", label: "Projects Delivered", icon: Target, description: "Successfully Completed" },
-            { number: "20+", label: "Team Members", icon: Users, description: "Expert Professionals" },
-            { number: "7+", label: "Years Experience", icon: Award, description: "Industry Expertise" },
-            { number: "15+", label: "Technologies", icon: Code, description: "Modern Stack" },
-          ]}
-          primaryCta={{ label: "View Our Work", href: "/portfolios" }}
-          secondaryCta={{ label: "Schedule a Call", href: "/contact-us" }}
-        />
-{/* Featured Services */}
-        <section className="py-12">
-          <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-white mb-10">Featured Services</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Web Design */}
-              <div className="relative rounded-2xl overflow-hidden group shadow-lg bg-gradient-to-br from-blue-900 to-cyan-900">
-                <div className="relative h-80 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-cyan-400/10"></div>
-
-                  {/* Animated Background Elements */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-8 left-8 w-16 h-16 bg-blue-400/20 rounded-full animate-pulse"></div>
-                    <div
-                      className="absolute bottom-8 right-8 w-12 h-12 bg-cyan-400/20 rounded-full animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                    <div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-blue-300/10 rounded-full animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                  </div>
-
-                  {/* Top-Left Icon */}
-                  <div className="absolute top-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center relative">
-                      <Palette className="w-5 h-5 text-white" />
-                      {/* Sparkles */}
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-300 rounded-full animate-ping"></div>
-                      <div
-                        className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-ping"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Central Icon */}
-                  <div className="relative z-10">
-                    <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                      <div className="w-24 h-24 bg-gradient-to-br from-blue-400/40 to-cyan-400/40 rounded-full flex items-center justify-center border border-white/30">
-                        <div className="w-16 h-16 bg-gradient-to-br from-blue-400/60 to-cyan-400/60 rounded-full flex items-center justify-center">
-                          <Palette className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Floating Elements */}
-                    <div className="absolute inset-0">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-3 h-3 bg-white/30 rounded-full animate-bounce"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Overlays */}
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-3 text-center">Web Design</h3>
-                  <Link href="/services/web-design">
-                    <div className="flex items-center justify-center text-sm font-medium hover:underline cursor-pointer group-hover:text-blue-200 transition-colors">
-                      Learn How We Did It{" "}
-                      <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* CMS Ecommerce Development */}
-              <div className="relative rounded-2xl overflow-hidden group shadow-lg bg-gradient-to-br from-green-900 to-emerald-900">
-                <div className="relative h-80 bg-gradient-to-br from-green-600/30 to-emerald-600/30 flex items-center justify-center overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-400/10"></div>
-
-                  {/* Animated Background Elements */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-8 left-8 w-16 h-16 bg-green-400/20 rounded-full animate-pulse"></div>
-                    <div
-                      className="absolute bottom-8 right-8 w-12 h-12 bg-emerald-400/20 rounded-full animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                    <div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-green-300/10 rounded-full animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                  </div>
-
-                  {/* Top-Left Icon */}
-                  <div className="absolute top-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center relative">
-                      <ShoppingCart className="w-5 h-5 text-white" />
-                      {/* Sparkles */}
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-300 rounded-full animate-ping"></div>
-                      <div
-                        className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-emerald-300 rounded-full animate-ping"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Central Icon */}
-                  <div className="relative z-10">
-                    <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                      <div className="w-24 h-24 bg-gradient-to-br from-green-400/40 to-emerald-400/40 rounded-full flex items-center justify-center border border-white/30">
-                        <div className="w-16 h-16 bg-gradient-to-br from-green-400/60 to-emerald-400/60 rounded-full flex items-center justify-center">
-                          <ShoppingCart className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Floating Elements */}
-                    <div className="absolute inset-0">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-3 h-3 bg-white/30 rounded-full animate-bounce"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Overlays */}
-                <div className="absolute bottom-3 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-3 text-center">CMS E-commerce Development</h3>
-                  <Link href="/services/e-commerce-solutions">
-                    <div className="flex items-center justify-center text-sm font-medium hover:underline cursor-pointer group-hover:text-green-200 transition-colors">
-                      Learn How We Did It{" "}
-                      <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Web Development */}
-              <div className="relative rounded-2xl overflow-hidden group shadow-lg bg-gradient-to-br from-purple-900 to-pink-900">
-                <div className="relative h-80 bg-gradient-to-br from-purple-600/30 to-pink-600/30 flex items-center justify-center overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10"></div>
-
-                  {/* Animated Background Elements */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-8 left-8 w-16 h-16 bg-purple-400/20 rounded-full animate-pulse"></div>
-                    <div
-                      className="absolute bottom-8 right-8 w-12 h-12 bg-pink-400/20 rounded-full animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                    <div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-purple-300/10 rounded-full animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                  </div>
-
-                  {/* Top-Left Icon */}
-                  <div className="absolute top-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center relative">
-                      <Code className="w-5 h-5 text-white" />
-                      {/* Sparkles */}
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-pink-300 rounded-full animate-ping"></div>
-                      <div
-                        className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-pink-300 rounded-full animate-ping"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Central Icon */}
-                  <div className="relative z-10">
-                    <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                      <div className="w-24 h-24 bg-gradient-to-br from-purple-400/40 to-pink-400/40 rounded-full flex items-center justify-center border border-white/30">
-                        <div className="w-16 h-16 bg-gradient-to-br from-purple-400/60 to-pink-400/60 rounded-full flex items-center justify-center">
-                          <Globe className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Floating Elements */}
-                    <div className="absolute inset-0">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-3 h-3 bg-white/30 rounded-full animate-bounce"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Overlays */}
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-3 text-center">Web Development</h3>
-                  <Link href="/services/web-development">
-                    <div className="flex items-center justify-center text-sm font-medium hover:underline cursor-pointer group-hover:text-purple-200 transition-colors">
-                      Learn How We Did It{" "}
-                      <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Amazon Seller Services - HIGHLIGHTED */}
-              <div className="relative rounded-2xl overflow-hidden group shadow-2xl bg-gradient-to-br from-orange-900 via-red-900 to-pink-900 transform hover:scale-105 transition-all duration-500 border-2 border-orange-400/30">
-                {/* Special Highlight Badge */}
-                <div className="absolute top-4 right-4 z-20">
-                  <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
-                    HOT SERVICE
-                  </div>
-                </div>
-
-                {/* Animated Border Glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-400/20 via-red-400/20 to-pink-400/20 rounded-2xl animate-pulse"></div>
-
-                <div className="relative h-80 bg-gradient-to-br from-orange-600/40 via-red-600/40 to-pink-600/40 flex items-center justify-center overflow-hidden">
-                  {/* Enhanced Background Pattern */}
-                  <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-400/15 via-red-400/15 to-pink-400/15"></div>
-                    {/* Amazon Logo Pattern */}
-                    <div className="absolute top-4 left-4 w-8 h-8 text-orange-300/30 text-2xl">
-                      📦
-                    </div>
-                    <div className="absolute top-4 right-12 w-8 h-8 text-red-300/30 text-2xl">
-                      🚀
-                    </div>
-                    <div className="absolute bottom-4 left-12 w-8 h-8 text-pink-300/30 text-2xl">
-                      💰
-                    </div>
-                    <div className="absolute bottom-4 right-4 w-8 h-8 text-orange-300/30 text-2xl">
-                      📈
-                    </div>
-                  </div>
-
-                  {/* Enhanced Animated Background Elements */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-8 left-8 w-20 h-20 bg-orange-400/25 rounded-full animate-pulse"></div>
-                    <div
-                      className="absolute bottom-8 right-8 w-16 h-16 bg-red-400/25 rounded-full animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                    <div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-pink-300/20 rounded-full animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                    {/* Additional floating elements */}
-                    <div className="absolute top-1/4 right-1/4 w-12 h-12 bg-orange-300/20 rounded-full animate-bounce"></div>
-                    <div
-                      className="absolute bottom-1/4 left-1/4 w-10 h-10 bg-red-300/20 rounded-full animate-bounce"
-                      style={{ animationDelay: "0.5s" }}
-                    ></div>
-                  </div>
-
-                  {/* Enhanced Top-Left Icon */}
-                  <div className="absolute top-6 left-6 w-16 h-16 bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-xl border border-orange-200/50">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 rounded-lg flex items-center justify-center relative">
-                      <ShoppingCart className="w-6 h-6 text-white" />
-                      {/* Enhanced Sparkles */}
-                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-300 rounded-full animate-ping"></div>
-                      <div
-                        className="absolute -bottom-1 -left-1 w-2 h-2 bg-yellow-300 rounded-full animate-ping"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                      <div
-                        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping"
-                        style={{ animationDelay: "1s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Enhanced Central Icon */}
-                  <div className="relative z-10">
-                    <div className="w-36 h-36 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30 shadow-2xl">
-                      <div className="w-28 h-28 bg-gradient-to-br from-orange-400/50 via-red-400/50 to-pink-400/50 rounded-full flex items-center justify-center border-2 border-white/40">
-                        <div className="w-20 h-20 bg-gradient-to-br from-orange-400/80 via-red-400/80 to-pink-400/80 rounded-full flex items-center justify-center border border-white/50">
-                          <div className="text-4xl">📦</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Enhanced Floating Elements */}
-                    <div className="absolute inset-0">
-                      {Array.from({ length: 8 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-4 h-4 bg-white/40 rounded-full animate-bounce"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Enhanced Text Overlays */}
-                <div className="absolute bottom-1 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-1 text-center text-white">
-                    Amazon Seller Account Setup & Optimization
-                  </h3>
-                  <Link href="/services/amazon-services">
-                    <div className="flex items-center justify-center text-sm font-medium hover:underline cursor-pointer group-hover:text-orange-200 transition-colors">
-                      <span className="mr-2">Boost Your Sales</span>
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </Link>
-                </div>
-
-                {/* Corner Decorations */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-orange-400/50 rounded-tl-2xl"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-red-400/50 rounded-tr-2xl"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-pink-400/50 rounded-bl-2xl"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-orange-400/50 rounded-br-2xl"></div>
-              </div>
-
-              {/* Cloud Services */}
-              <div className="relative rounded-2xl overflow-hidden group shadow-lg bg-gradient-to-br from-cyan-900 to-blue-900">
-                <div className="relative h-80 bg-gradient-to-br from-cyan-600/30 to-blue-600/30 flex items-center justify-center overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-400/10"></div>
-
-                  {/* Animated Background Elements */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-8 left-8 w-16 h-16 bg-cyan-400/20 rounded-full animate-pulse"></div>
-                    <div
-                      className="absolute bottom-8 right-8 w-12 h-12 bg-blue-400/20 rounded-full animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                    <div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-cyan-300/10 rounded-full animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                  </div>
-
-                  {/* Top-Left Icon */}
-                  <div className="absolute top-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center relative">
-                      <Cloud className="w-5 h-5 text-white" />
-                      {/* Sparkles */}
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-300 rounded-full animate-ping"></div>
-                      <div
-                        className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Central Icon */}
-                  <div className="relative z-10">
-                    <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                      <div className="w-24 h-24 bg-gradient-to-br from-cyan-400/40 to-blue-400/40 rounded-full flex items-center justify-center border border-white/30">
-                        <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/60 to-blue-400/60 rounded-full flex items-center justify-center">
-                          <Cloud className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Floating Elements */}
-                    <div className="absolute inset-0">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-3 h-3 bg-white/30 rounded-full animate-bounce"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Overlays */}
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-3 text-center">Cloud Services</h3>
-                  <Link href="/services/cloud-solutions">
-                    <div className="flex items-center justify-center text-sm font-medium hover:underline cursor-pointer group-hover:text-cyan-200 transition-colors">
-                      Learn How We Did It{" "}
-                      <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Mobile App Development */}
-              <div className="relative rounded-2xl overflow-hidden group shadow-lg bg-gradient-to-br from-indigo-900 to-purple-900">
-                <div className="relative h-80 bg-gradient-to-br from-indigo-600/30 to-purple-600/30 flex items-center justify-center overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-400/10 to-purple-400/10"></div>
-
-                  {/* Animated Background Elements */}
-                  <div className="absolute inset-0">
-                    <div className="absolute top-8 left-8 w-16 h-16 bg-indigo-400/20 rounded-full animate-pulse"></div>
-                    <div
-                      className="absolute bottom-8 right-8 w-12 h-12 bg-purple-400/20 rounded-full animate-pulse"
-                      style={{ animationDelay: "1s" }}
-                    ></div>
-                    <div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-indigo-300/10 rounded-full animate-pulse"
-                      style={{ animationDelay: "2s" }}
-                    ></div>
-                  </div>
-
-                  {/* Top-Left Icon */}
-                  <div className="absolute top-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center relative">
-                      <Smartphone className="w-5 h-5 text-white" />
-                      {/* Sparkles */}
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-300 rounded-full animate-ping"></div>
-                      <div
-                        className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-purple-300 rounded-full animate-ping"
-                        style={{ animationDelay: "0.5s" }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  {/* Central Icon */}
-                  <div className="relative z-10">
-                    <div className="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-                      <div className="w-24 h-24 bg-gradient-to-br from-indigo-400/40 to-purple-400/40 rounded-full flex items-center justify-center border border-white/30">
-                        <div className="w-16 h-16 bg-gradient-to-br from-indigo-400/60 to-purple-400/60 rounded-full flex items-center justify-center">
-                          <Smartphone className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Floating Elements */}
-                    <div className="absolute inset-0">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-3 h-3 bg-white/30 rounded-full animate-bounce"
-                          style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${2 + Math.random() * 2}s`,
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Text Overlays */}
-                <div className="absolute bottom-3 left-6 right-6 text-white">
-                  <h3 className="text-xl font-bold mb-3 text-center">Mobile App Development</h3>
-                  <Link href="/services/mobile-apps">
-                    <div className="flex items-center justify-center text-sm font-medium hover:underline cursor-pointer group-hover:text-indigo-200 transition-colors">
-                      Learn How We Did It{" "}
-                      <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Services */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-green-100 text-green-700 border-green-200">
-                Our Services
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Professional{" "}
-                <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-                  Digital Services
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We provide comprehensive digital solutions to help your business grow and succeed
-                online.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {/* Multi-Marketplace Management */}
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Globe className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    Multi-Marketplace Management
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Manage stock, pricing, and orders across Amazon, Walmart, eBay, Shopify, Etsy,
-                    TikTok Shop, and more from a single platform.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Unified Dashboard</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Cross-Platform Sync</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Centralized Inventory</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Automated Pricing</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <TrendingUp className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    Amazon Seller Account Setup
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Complete Amazon seller account setup and optimization for maximum sales and
-                    visibility.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Account Setup</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Listing Optimization</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">PPC Management</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Sales Analytics</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Palette className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Web Design</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Creative and modern website designs that capture your brand essence and engage
-                    your audience.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Responsive Design</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">UI/UX Design</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Brand Integration</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">SEO Optimized</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <FileText className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">CMS Development</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Custom content management systems that make website management easy and
-                    efficient.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">WordPress Development</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Custom CMS</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Content Management</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Admin Panel</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <ShoppingCart className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">E-commerce Development</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Complete online store solutions with payment integration and inventory
-                    management.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Online Store</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Payment Gateway</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Inventory Management</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Order Processing</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Globe className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Web Development</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Custom web applications and websites built with modern technologies and best
-                    practices.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Custom Websites</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Web Applications</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">API Development</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Performance Optimization</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Cloud className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Cloud Services</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Cloud infrastructure and services for scalable, secure, and reliable
-                    applications.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">AWS Services</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Azure Solutions</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Server Management</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Backup & Recovery</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Smartphone className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Mobile App Development</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    Native and cross-platform mobile applications for iOS and Android platforms.
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">iOS Development</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Android Development</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">React Native</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-gray-600">Flutter Apps</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-purple-100 text-purple-700 border-purple-200">
-                Why Choose Us
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                The{" "}
-                <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-                  Ctas Advantage
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We deliver exceptional results through our expertise, quality, and commitment to
-                your success.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {whyChooseUs.map((feature, index) => (
-                <Card
-                  key={index}
-                  className="group hover:shadow-xl transition-all duration-300 border-0 bg-gray-50 text-center"
-                >
-                  <CardContent className="p-6">
-                    <div
-                      className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <feature.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Industries Slider Section */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-blue-100 text-blue-700 border-blue-200">
-                Industries We Serve
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Industries We{" "}
-                <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-                  Empower
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We don&apos;t believe in one-size-fits-all. We specialize in crafting bespoke
-                software solutions that directly address the unique complexities and opportunities
-                within diverse sectors.
-              </p>
-            </div>
-
-            <div className="relative">
-              {/* Navigation Arrows */}
-
-              {/* Industries Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {/* SME Business Solutions */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-900 to-purple-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <Users className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">SME Business Solutions</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Custom software solutions tailored for small and medium enterprises to
-                        streamline operations and boost productivity.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Finance and FinTech */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-900 to-emerald-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 to-emerald-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <DollarSign className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Finance and FinTech</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Innovative financial technology solutions including payment systems, banking
-                        apps, and fintech platforms.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* E-commerce and Retail */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-900 to-red-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 to-red-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <ShoppingCart className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">E-commerce and Retail</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Complete e-commerce solutions including online stores, inventory management,
-                        and retail automation systems.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Healthcare & Fitness */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900 to-pink-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <Heart className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Healthcare & Fitness</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Healthcare management systems, telemedicine platforms, and fitness tracking
-                        applications for better health outcomes.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Gaming/Entertainment */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-900 to-cyan-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-cyan-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <Gamepad2 className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Gaming/Entertainment</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Interactive gaming platforms, entertainment apps, and immersive digital
-                        experiences for engaging user interactions.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Travel and Hospitality */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-900 to-green-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-green-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <Globe className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Travel and Hospitality</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Travel booking platforms, hotel management systems, and hospitality
-                        solutions for seamless guest experiences.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Real Estate */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900 to-orange-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-amber-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <Home className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Real Estate</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Property management systems, real estate platforms, and digital solutions
-                        for modern real estate businesses.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* EdTech */}
-                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-900 to-purple-900 text-white cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 to-purple-600/20"></div>
-                  <div className="relative p-6 h-64 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                        <GraduationCap className="w-6 h-6 text-white" />
-                      </div>
-                      <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">EdTech</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        Educational technology platforms, learning management systems, and digital
-                        learning solutions for modern education.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-green-100 text-green-700 border-green-200">
-                Our Process
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Development{" "}
-                <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-                  Process
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our proven development process ensures quality, transparency, and timely delivery.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
-              {process.map((step, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-xl transition-all duration-300 group border-0 bg-white text-center"
-                >
-                  <CardContent className="p-6 lg:p-8">
-                    <div
-                      className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <step.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="text-2xl font-bold text-gray-300 mb-4">{step.step}</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Amazon Seller Services Section */}
-        <section className="py-16 bg-gradient-to-br from-orange-50 via-red-50 to-pink-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-orange-100 text-orange-700 border-orange-200">
-                Amazon Services
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Amazon Seller{" "}
-                <span className="text-transparent bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text">
-                  Account Setup & Optimization
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                At Ctas Info Services LLP, we offer end-to-end e-commerce and IT solutions tailored
-                for online businesses.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              <Card className="hover:shadow-xl transition-all duration-300 group border-0 bg-white">
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <ShoppingCart className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                    Account Setup
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Professional seller account creation</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Business verification & documentation</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Tax information setup</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Payment method configuration</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 group border-0 bg-white">
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <TrendingUp className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                    Listing Optimization
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>SEO-optimized product titles</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Compelling product descriptions</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>High-quality image optimization</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Keyword research & implementation</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 group border-0 bg-white">
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <BarChart3 className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                    Performance Analytics
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Sales performance tracking</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Competitor analysis</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>ROI optimization strategies</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Monthly performance reports</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 group border-0 bg-white">
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                    Compliance & Security
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Amazon policy compliance</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Account security setup</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Fraud prevention measures</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Regular security audits</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 group border-0 bg-white">
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <MessageSquare className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                    Customer Support
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Review management</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Customer inquiry handling</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Return & refund management</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>24/7 support availability</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 group border-0 bg-white">
-                <CardContent className="p-6 lg:p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Settings className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                    Ongoing Management
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Inventory management</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Pricing strategy optimization</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Campaign management</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 mr-3 text-green-500 flex-shrink-0" />
-                      <span>Regular account maintenance</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Amazon Stats */}
-            <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-2">500+</div>
-                <div className="text-sm text-gray-600">Seller Accounts</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-2">₹50M+</div>
-                <div className="text-sm text-gray-600">Revenue Generated</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-2">4.8★</div>
-                <div className="text-sm text-gray-600">Average Rating</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-6 h-6 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900 mb-2">24/7</div>
-                <div className="text-sm text-gray-600">Support Available</div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <PageCTA
-          title="Ready to Start Your Project?"
-          description="Let's discuss your requirements and create a custom solution that drives your business forward. Get in touch with our experts today."
-          primaryLabel="Get Free Quote"
-          primaryHref="/contact-us"
-          secondaryLabel="View Our Portfolio"
-          secondaryHref="/portfolios"
-        />
-      </main>
-      <FooterSection />
-    </PageShell>
-  );
+  ],
 };
+
+const IconBox = ({ icon: Icon }: { icon: LucideIcon }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
+
+const ServicesListingPage = () => (
+  <PageShell>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+    <Navigation />
+    <main>
+      <PageHero
+        ariaLabel="Our Services"
+        badge="Our Services"
+        title="Comprehensive"
+        highlight="E-commerce & IT Solutions"
+        description="From web development to mobile apps, custom software to e-commerce solutions - we deliver cutting-edge digital solutions that drive business growth and success."
+        stats={[
+          { number: "100+", label: "Projects Delivered", icon: Target, description: "Successfully Completed" },
+          { number: "20+", label: "Team Members", icon: Users, description: "Expert Professionals" },
+          { number: "7+", label: "Years Experience", icon: Award, description: "Industry Expertise" },
+          { number: "15+", label: "Technologies", icon: Code, description: "Modern Stack" },
+        ]}
+        primaryCta={{ label: "View Our Work", href: "/portfolios" }}
+        secondaryCta={{ label: "Schedule a Call", href: "/contact-us" }}
+      />
+
+      {/* Featured Services — bento grid */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]" aria-labelledby="featured-services-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <motion.h2
+            id="featured-services-heading"
+            {...fadeUp}
+            transition={{ duration: 0.5 }}
+            className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-slate-900 mb-10 sm:mb-12`}
+          >
+            Featured Services
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 auto-rows-[minmax(180px,auto)]">
+            {featuredServices.map((service, i) => (
+              <motion.div
+                key={service.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className={`group relative overflow-hidden rounded-[1.5rem] border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#13345A]/[0.06] ${
+                  service.featured
+                    ? `${service.span} min-h-[280px] lg:min-h-[380px] border-orange-200/60`
+                    : `${service.span} min-h-[200px] border-slate-200/80`
+                }`}
+                style={
+                  service.featured
+                    ? { backgroundImage: `linear-gradient(145deg, ${NAVY}, #1a3d5c 40%, #0E2233)` }
+                    : { backgroundColor: "#fff" }
+                }
+              >
+                {service.featured && (
+                  <>
+                    <div
+                      className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-[80px] pointer-events-none opacity-40"
+                      style={{ background: "radial-gradient(circle, rgba(249,115,22,0.5) 0%, transparent 70%)" }}
+                      aria-hidden="true"
+                    />
+                    {service.badge && (
+                      <span className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500 text-white">
+                        {service.badge}
+                      </span>
+                    )}
+                  </>
+                )}
+
+                <Link href={service.href} className="flex flex-col justify-between h-full p-6 sm:p-7 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] focus-visible:ring-offset-2 rounded-[1.5rem]">
+                  <div className="flex items-start justify-between gap-3">
+                    <div
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                        service.featured ? "bg-white/10" : ""
+                      }`}
+                      style={service.featured ? undefined : { backgroundColor: `${CYAN}18` }}
+                    >
+                      <service.icon
+                        className="w-6 h-6"
+                        style={{ color: service.featured ? "#6FC3E4" : NAVY }}
+                      />
+                    </div>
+                    <ArrowUpRight
+                      className={`w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
+                        service.featured ? "text-white/50 group-hover:text-white" : "text-slate-300 group-hover:text-[#13345A]"
+                      }`}
+                    />
+                  </div>
+
+                  <div className="mt-auto pt-6">
+                    <h3
+                      className={`text-lg sm:text-xl font-semibold mb-2 leading-snug ${
+                        service.featured ? "text-white" : "text-slate-900"
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
+                    <span
+                      className={`inline-flex items-center gap-1.5 text-sm font-medium ${
+                        service.featured ? "text-[#6FC3E4] group-hover:text-white" : "text-[#249BCA] group-hover:text-[#13345A]"
+                      } transition-colors`}
+                    >
+                      {service.cta}
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Professional Digital Services — alternating split rows */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-white" aria-labelledby="digital-services-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <SectionHeader
+            badge="Our Services"
+            title="Professional"
+            highlight="Digital Services"
+            description="We provide comprehensive digital solutions to help your business grow and succeed online."
+          />
+
+          <div className="space-y-0 divide-y divide-slate-100">
+            {digitalServices.map((service, i) => (
+              <motion.div
+                key={service.title}
+                {...fadeUp}
+                transition={{ duration: 0.5, delay: i * 0.04 }}
+                className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center py-10 sm:py-12 ${
+                  i % 2 === 1 ? "" : ""
+                }`}
+              >
+                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <IconBox icon={service.icon} />
+                    <h3 className={`${fraunces.className} text-xl sm:text-2xl font-medium text-slate-900`}>
+                      {service.title}
+                    </h3>
+                  </div>
+                  <p className="text-slate-500 leading-relaxed mb-6">{service.description}</p>
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] rounded-full"
+                    style={{ color: NAVY }}
+                  >
+                    Explore service
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </div>
+                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {service.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#F6F8FA] border border-slate-100 text-sm text-slate-700"
+                      >
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us — horizontal icon strip with connectors */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]" aria-labelledby="why-choose-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <SectionHeader
+            badge="Why Choose Us"
+            title="The"
+            highlight="Ctas Advantage"
+            description="We deliver exceptional results through our expertise, quality, and commitment to your success."
+          />
+
+          <div className="relative">
+            <div
+              className="hidden lg:block absolute top-[2.75rem] left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-[#13345A]/15 to-transparent"
+              aria-hidden="true"
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {whyChooseUs.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className="relative text-center group"
+                >
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-105 transition-transform shadow-sm border border-slate-200/60 bg-white"
+                  >
+                    <item.icon className="w-6 h-6" style={{ color: NAVY }} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries — horizontal scroll showcase */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden" aria-labelledby="industries-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 mb-10 sm:mb-12">
+          <SectionHeader
+            badge="Industries We Serve"
+            title="Industries We"
+            highlight="Empower"
+            description="We don't believe in one-size-fits-all. We specialize in crafting bespoke software solutions that directly address the unique complexities and opportunities within diverse sectors."
+          />
+        </div>
+
+        <div className="relative">
+          <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-slate-200">
+            {industries.map((industry, i) => (
+              <motion.div
+                key={industry.title}
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className="flex-shrink-0 w-[280px] sm:w-[300px] snap-start"
+              >
+                <Link
+                  href={industry.href}
+                  className="group block h-full rounded-[1.5rem] p-6 sm:p-7 border border-slate-200/80 bg-[#F6F8FA] hover:bg-white hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA]"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center"
+                      style={{ backgroundColor: `${NAVY}10` }}
+                    >
+                      <industry.icon className="w-5 h-5" style={{ color: NAVY }} />
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-[#13345A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{industry.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{industry.description}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Development Process — vertical timeline */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]" aria-labelledby="process-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <SectionHeader
+            badge="Our Process"
+            title="Development"
+            highlight="Process"
+            description="Our proven development process ensures quality, transparency, and timely delivery."
+          />
+
+          <div className="max-w-3xl mx-auto relative">
+            <div
+              className="absolute left-[1.35rem] sm:left-6 top-4 bottom-4 w-px bg-gradient-to-b from-[#249BCA]/40 via-[#13345A]/20 to-transparent"
+              aria-hidden="true"
+            />
+            <div className="space-y-8 sm:space-y-10">
+              {process.map((step, i) => (
+                <motion.div
+                  key={step.step}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className="relative flex gap-5 sm:gap-8 pl-0"
+                >
+                  <div
+                    className="relative z-10 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold border-4 border-[#F6F8FA]"
+                    style={{ backgroundColor: NAVY }}
+                  >
+                    {step.step}
+                  </div>
+                  <div className="flex-1 pt-1 pb-2">
+                    <div className="flex items-center gap-3 mb-2">
+                      <step.icon className="w-4 h-4" style={{ color: CYAN }} />
+                      <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
+                    </div>
+                    <p className="text-sm sm:text-base text-slate-500 leading-relaxed">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Amazon Services — asymmetric split + checklist grid */}
+      <section
+        className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden"
+        aria-labelledby="amazon-services-heading"
+      >
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(135deg, #f97316 0%, transparent 50%, #ec4899 100%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-12 lg:gap-16 items-start mb-14 sm:mb-16">
+            <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
+              <SectionHeader
+                badge="Amazon Services"
+                title="Amazon Seller"
+                highlight="Account Setup & Optimization"
+                description="At Ctas Info Services LLP, we offer end-to-end e-commerce and IT solutions tailored for online businesses."
+                align="left"
+              />
+              <Link
+                href="/services/amazon-services"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-[#08141F] transition-all hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] focus-visible:ring-offset-2"
+                style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
+              >
+                Explore Amazon Services
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+              {amazonServices.map((service, i) => (
+                <motion.div
+                  key={service.title}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.05 }}
+                  className="rounded-2xl border border-slate-200/80 bg-[#F6F8FA] p-5 sm:p-6 hover:bg-white hover:shadow-md transition-all"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <IconBox icon={service.icon} />
+                    <h3 className="font-semibold text-slate-900 text-sm sm:text-base">{service.title}</h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {service.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                        <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Amazon Stats — animated counter bar */}
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.5 }}
+            className="rounded-[1.75rem] overflow-hidden border border-slate-200/80"
+            style={{ backgroundImage: `linear-gradient(135deg, ${NAVY}, #0E2233)` }}
+            role="list"
+            aria-label="Amazon services statistics"
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
+              {amazonStats.map((stat) => (
+                <div key={stat.label} className="p-6 sm:p-8 text-center" role="listitem">
+                  <stat.icon className="w-5 h-5 mx-auto mb-3" style={{ color: CYAN }} aria-hidden="true" />
+                  <p className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-white mb-1`}>
+                    <AnimatedStat value={stat.number} />
+                  </p>
+                  <p className="text-sm text-white/55">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <PageCTA
+        title="Ready to Start Your Project?"
+        description="Let's discuss your requirements and create a custom solution that drives your business forward. Get in touch with our experts today."
+        primaryLabel="Get Free Quote"
+        primaryHref="/contact-us"
+        secondaryLabel="View Our Portfolio"
+        secondaryHref="/portfolios"
+      />
+    </main>
+    <FooterSection />
+  </PageShell>
+);
 
 export default ServicesListingPage;

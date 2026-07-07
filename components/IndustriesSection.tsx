@@ -108,7 +108,7 @@ const IndustriesSection = () => {
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">

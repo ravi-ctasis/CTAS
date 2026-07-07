@@ -348,11 +348,44 @@ const topicalGuide = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Mobile App Development Services",
+      description:
+        "Expert mobile app development: iOS, Android, React Native, Flutter. Native and cross-platform solutions.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Mobile App Development",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Mobile Apps",
+          item: "https://www.ctasis.com/services/mobile-apps",
+        },
+      ],
+    },
+  ],
+};
+
 export default function MobileAppsPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Mobile App Development Services",
+        structuredData,
         hero: {
           badge: "Mobile App Development",
           title: "Mobile",
@@ -371,6 +404,7 @@ export default function MobileAppsPage() {
         sections: [
           {
             type: "cards",
+            variant: "scroll",
             header: {
               badge: "App Types",
               title: "Mobile App",
@@ -394,6 +428,7 @@ export default function MobileAppsPage() {
           },
           {
             type: "process",
+            variant: "horizontal",
             header: {
               badge: "Our Process",
               title: "Development",
@@ -404,7 +439,8 @@ export default function MobileAppsPage() {
             steps: process,
           },
           {
-            type: "cards",
+            type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Why Choose Us",
               title: "Key",
@@ -413,10 +449,10 @@ export default function MobileAppsPage() {
                 "We deliver exceptional mobile solutions with cutting-edge features and technologies.",
             },
             items: features,
-            columns: 3,
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose Mobile Apps?",
               title: "Benefits of",

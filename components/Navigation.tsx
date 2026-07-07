@@ -238,7 +238,7 @@ const Navigation = () => {
         onMouseLeave={handleMouseLeave}
       >
         <div className="dark:bg-gray-800 border-t mt-3 border-gray-200 dark:border-none overflow-visible">
-          <div className="max-w-7xl mx-auto px-4 py-6 flex">
+          <div className="max-w-[1584px] mx-auto px-4 py-6 flex">
             <div className="flex-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pr-8 border-r border-gray-200 dark:border-gray-700">
               {data.items.map((categoryData: any, cIndex: number) => (
                 <div key={cIndex} className="space-y-4">

@@ -90,22 +90,25 @@ export type ServiceSection =
       header: ServiceSectionHeader;
       items: ServiceCardItem[];
       columns?: 2 | 3;
-      variant?: "default" | "horizontal";
+      variant?: "default" | "horizontal" | "bento" | "alternating" | "scroll";
     }
   | {
       type: "benefits";
       header: ServiceSectionHeader;
       items: ServiceBenefitItem[];
+      variant?: "grid" | "zigzag" | "icon-strip";
     }
   | {
       type: "process";
       header: ServiceSectionHeader;
       steps: ServiceProcessStep[];
+      variant?: "grid" | "timeline" | "horizontal";
     }
   | {
       type: "tech-grid";
       header: ServiceSectionHeader;
       items: ServiceTechItem[];
+      variant?: "grid" | "scroll";
     }
   | {
       type: "tech-categories";
@@ -145,6 +148,7 @@ export type ServiceSection =
       header: ServiceSectionHeader;
       items: ServiceMarketplaceItem[];
       logos?: Record<string, string>;
+      variant?: "grid" | "scroll" | "alternating";
     }
   | {
       type: "faq";

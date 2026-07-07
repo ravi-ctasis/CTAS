@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { Fraunces } from "next/font/google";
 import Link from "next/link";
 import { Sparkles, ArrowRight, type LucideIcon } from "lucide-react";
@@ -20,6 +21,42 @@ export const fadeUp = {
   initial: { opacity: 0, y: 18 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-40px" },
+};
+
+export const AnimatedStat = ({
+  value,
+  className = "",
+}: {
+  value: string;
+  className?: string;
+}) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const match = value.match(/^([\d.]+)(.*)$/);
+  const num = match ? parseFloat(match[1]) : null;
+  const suffix = match ? match[2] : "";
+  const isDecimal = num !== null && match![1].includes(".");
+  const [display, setDisplay] = useState(value);
+
+  useEffect(() => {
+    if (!isInView || num === null) return;
+    const duration = 1400;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = isDecimal ? (eased * num).toFixed(1) : String(Math.round(eased * num));
+      setDisplay(`${current}${suffix}`);
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [isInView, num, suffix, isDecimal]);
+
+  return (
+    <span ref={ref} className={className}>
+      {display}
+    </span>
+  );
 };
 
 export const SectionBadge = ({ children }: { children: React.ReactNode }) => (
@@ -115,7 +152,7 @@ export const PageHero = ({
       aria-hidden="true"
     />
 
-    <div className="relative max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+    <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -220,7 +257,7 @@ export const PageCTA = ({
   secondaryLabel?: string;
 }) => (
   <section className="py-16 sm:py-20">
-    <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
       <motion.div
         {...fadeUp}
         transition={{ duration: 0.5 }}

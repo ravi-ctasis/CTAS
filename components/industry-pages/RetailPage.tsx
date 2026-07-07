@@ -140,7 +140,7 @@ const RetailPage = () => {
         />
 {/* Overview Section */}
         <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium border border-blue-200 mb-6">
@@ -292,7 +292,7 @@ const RetailPage = () => {
 
         {/* Services Section */}
         <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium border border-blue-200 mb-6">
@@ -362,7 +362,7 @@ const RetailPage = () => {
 
         {/* Key Features Section */}
         <section className="py-12 lg:py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-sm font-semibold mb-6">
@@ -543,7 +543,7 @@ const RetailPage = () => {
 
         {/* Technologies Section */}
         <section className="py-12 lg:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">

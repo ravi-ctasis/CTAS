@@ -8,7 +8,7 @@ const CTABannerSection = () => {
       className="py-12 sm:py-16 bg-white"
       aria-label="Call to action - start your project with CTAS"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="bg-slate-900 rounded-2xl sm:rounded-3xl px-8 sm:px-12 lg:px-16 py-12 sm:py-14 relative overflow-hidden">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-[0.04]">

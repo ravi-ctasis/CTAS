@@ -313,11 +313,44 @@ const topicalGuide = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Web Design Services",
+      description:
+        "Professional web design services from Ctas, creating modern, responsive, and high-performing websites tailored for business growth.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Web Design",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Web Design",
+          item: "https://www.ctasis.com/services/web-design",
+        },
+      ],
+    },
+  ],
+};
+
 export default function WebDesignPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Web Design Services",
+        structuredData,
         hero: {
           badge: "Web Design Services",
           title: "Modern",
@@ -336,6 +369,7 @@ export default function WebDesignPage() {
         sections: [
           {
             type: "cards",
+            variant: "alternating",
             header: {
               badge: "Design Types",
               title: "Web Design",
@@ -359,6 +393,7 @@ export default function WebDesignPage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Design",
@@ -370,6 +405,7 @@ export default function WebDesignPage() {
           },
           {
             type: "cards",
+            variant: "scroll",
             header: {
               badge: "Why Choose Us",
               title: "Key",
@@ -382,6 +418,7 @@ export default function WebDesignPage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose Web Design?",
               title: "Benefits of",

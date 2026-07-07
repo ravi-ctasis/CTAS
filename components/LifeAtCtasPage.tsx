@@ -156,7 +156,7 @@ const LifeAtCtasPage = () => {
         />
 
         <section className="py-10 sm:py-12 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.5 }}
@@ -190,7 +190,7 @@ const LifeAtCtasPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 bg-white overflow-hidden">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 text-center mb-8">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 text-center mb-8">
             <SectionHeader
               badge="Celebrations"
               title="We Take Pride in Our Work and"
@@ -219,7 +219,7 @@ const LifeAtCtasPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Perks"
               title="Perks of Being a"
@@ -235,7 +235,7 @@ const LifeAtCtasPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 bg-white">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 grid md:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 grid md:grid-cols-2 gap-10 lg:gap-14 items-start">
             <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm">
               <Image
                 src={`${baseURL}/life-at-ctas-slide-1.webp`}
@@ -277,7 +277,7 @@ const LifeAtCtasPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Recognition"
               title="Recognized As a Leading"
@@ -318,7 +318,7 @@ const LifeAtCtasPage = () => {
         </section>
 
         <section className="py-16 sm:py-20 bg-white">
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <SectionHeader
               badge="Behind the Scenes"
               title="Insta Life"

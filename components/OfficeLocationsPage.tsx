@@ -98,7 +98,7 @@ const OfficeLocationsPage = () => (
       />
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader
             badge="Visit Us"
             title="Find Us"
@@ -106,7 +106,7 @@ const OfficeLocationsPage = () => (
             description="Visit our office for in-person consultations, project discussions, or to meet our talented team."
           />
 
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch max-w-[1584px] mx-auto">
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.5 }}
@@ -201,7 +201,7 @@ const OfficeLocationsPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader
             badge="Worldwide"
             title="Serving Clients"

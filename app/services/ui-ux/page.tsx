@@ -259,11 +259,44 @@ const topicalGuide = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "UI/UX Design Services",
+      description:
+        "UI/UX research, product design, and design systems from Ctas to craft intuitive, high-performing digital products.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "UI/UX Design",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "UI/UX Design",
+          item: "https://www.ctasis.com/services/ui-ux",
+        },
+      ],
+    },
+  ],
+};
+
 export default function UIUXPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "UI/UX Design Services",
+        structuredData,
         hero: {
           badge: "UI/UX Design Services",
           title: "Creative",
@@ -282,6 +315,7 @@ export default function UIUXPage() {
         sections: [
           {
             type: "cards",
+            variant: "bento",
             header: {
               badge: "Our Services",
               title: "UI/UX Design",
@@ -294,6 +328,7 @@ export default function UIUXPage() {
           },
           {
             type: "tech-grid",
+            variant: "scroll",
             header: {
               badge: "Design Tools",
               title: "Modern",
@@ -305,6 +340,7 @@ export default function UIUXPage() {
           },
           {
             type: "process",
+            variant: "horizontal",
             header: {
               badge: "Our Process",
               title: "UI/UX Design",
@@ -316,6 +352,7 @@ export default function UIUXPage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose UI/UX Design?",
               title: "Benefits of",

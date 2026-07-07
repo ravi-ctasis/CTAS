@@ -1,11 +1,8 @@
 "use client";
-import Navigation from "@/components/Navigation";
-import FooterSection from "@/components/FooterSection";
-import { PageShell, PageHero, PageCTA } from "@/components/page-design";
-import { Button } from "@/components/ui/button";
 
+import { motion } from "framer-motion";
 import {
-  CheckCircle,
+  CheckCircle2,
   Clock,
   Database,
   Server,
@@ -14,586 +11,414 @@ import {
   HardDrive,
   Monitor,
   Code,
-  Monitor as MedicalMonitor,
-  Database as MedicalData,
-  Network as MedicalNetwork,
-  ShieldCheck,
-  Shield as MedicalShield,
-  BarChart3 as MedicalAnalytics,
-  Users as MedicalStaff,
-  Building as Hospital,
-  Heart as FileHeart,
-  ArrowRight,
-  Star,
+  Shield,
+  BarChart3,
+  Users,
+  Building,
+  Heart,
   Award,
   Globe,
+  ArrowRight,
 } from "lucide-react";
 
-import { useMemo } from "react";
-import Link from "next/link";
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
+import {
+  PageShell,
+  PageHero,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  AnimatedStat,
+} from "@/components/page-design";
 
-;
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
 
-const Healthcare = () => {
-  // Memoize data to prevent unnecessary re-renders
-  const healthcareServices = useMemo(
-    () => [
-      {
-        icon: MedicalShield,
-        title: "HIPAA Compliant Systems",
-        description:
-          "Secure healthcare platforms with full HIPAA compliance, patient data protection, and audit trails.",
-        features: ["HIPAA Compliance", "Data Encryption", "Audit Logging"],
-        gradient: "from-emerald-600 to-teal-600",
-      },
-      {
-        icon: MedicalMonitor,
-        title: "Electronic Health Records",
-        description:
-          "Comprehensive EHR systems with patient management, medical history, and clinical decision support.",
-        features: ["Patient Records", "Medical History", "Clinical Support"],
-        gradient: "from-teal-600 to-cyan-600",
-      },
-      {
-        icon: MedicalAnalytics,
-        title: "Healthcare Analytics",
-        description:
-          "Advanced analytics for patient outcomes, treatment effectiveness, and healthcare performance metrics.",
-        features: ["Patient Analytics", "Treatment Insights", "Performance Metrics"],
-        gradient: "from-cyan-600 to-blue-600",
-      },
-      {
-        icon: MedicalStaff,
-        title: "Patient Management",
-        description:
-          "Complete patient lifecycle management with appointment scheduling and care coordination.",
-        features: ["Appointment Scheduling", "Care Coordination", "Patient Portal"],
-        gradient: "from-blue-600 to-indigo-600",
-      },
-      {
-        icon: MedicalData,
-        title: "Medical Data Security",
-        description:
-          "Bank-grade security for medical data with encryption, access controls, and compliance monitoring.",
-        features: ["Data Encryption", "Access Controls", "Compliance Monitoring"],
-        gradient: "from-indigo-600 to-purple-600",
-      },
-      {
-        icon: MedicalNetwork,
-        title: "Telemedicine Platform",
-        description:
-          "Secure telemedicine solutions with video consultations, remote monitoring, and virtual care.",
-        features: ["Video Consultations", "Remote Monitoring", "Virtual Care"],
-        gradient: "from-purple-600 to-emerald-600",
-      },
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
+
+const Pill = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex px-2.5 py-1 rounded-full text-xs font-medium bg-[#EAF3F8] text-[#13345A] border border-[#13345A]/10">
+    {children}
+  </span>
+);
+
+const healthcareServices = [
+  {
+    icon: Shield,
+    title: "HIPAA Compliant Systems",
+    description:
+      "Secure healthcare platforms with full HIPAA compliance, patient data protection, and audit trails.",
+    features: ["HIPAA Compliance", "Data Encryption", "Audit Logging"],
+  },
+  {
+    icon: Monitor,
+    title: "Electronic Health Records",
+    description:
+      "Comprehensive EHR systems with patient management, medical history, and clinical decision support.",
+    features: ["Patient Records", "Medical History", "Clinical Support"],
+  },
+  {
+    icon: BarChart3,
+    title: "Healthcare Analytics",
+    description:
+      "Advanced analytics for patient outcomes, treatment effectiveness, and healthcare performance metrics.",
+    features: ["Patient Analytics", "Treatment Insights", "Performance Metrics"],
+  },
+  {
+    icon: Users,
+    title: "Patient Management",
+    description:
+      "Complete patient lifecycle management with appointment scheduling and care coordination.",
+    features: ["Appointment Scheduling", "Care Coordination", "Patient Portal"],
+  },
+  {
+    icon: Database,
+    title: "Medical Data Security",
+    description:
+      "Bank-grade security for medical data with encryption, access controls, and compliance monitoring.",
+    features: ["Data Encryption", "Access Controls", "Compliance Monitoring"],
+  },
+  {
+    icon: Network,
+    title: "Telemedicine Platform",
+    description:
+      "Secure telemedicine solutions with video consultations, remote monitoring, and virtual care.",
+    features: ["Video Consultations", "Remote Monitoring", "Virtual Care"],
+  },
+];
+
+const overviewItems = [
+  {
+    icon: Shield,
+    title: "HIPAA Compliance",
+    description:
+      "Full HIPAA compliance with data encryption, access controls, and audit trails to ensure patient privacy and regulatory compliance.",
+  },
+  {
+    icon: Monitor,
+    title: "Patient Care",
+    description:
+      "Comprehensive patient care management with electronic health records, appointment scheduling, and clinical decision support.",
+  },
+  {
+    icon: BarChart3,
+    title: "Clinical Intelligence",
+    description:
+      "AI-powered clinical intelligence with predictive analytics, treatment recommendations, and patient outcome analysis.",
+  },
+];
+
+const overviewStats = [
+  { label: "Healthcare Clients", value: "200+", icon: Building, progress: 80 },
+  { label: "HIPAA Compliance", value: "100%", icon: Shield, progress: 100 },
+  { label: "Patient Records", value: "2M+", icon: Heart, progress: 75 },
+  { label: "Uptime Guarantee", value: "99.9%", icon: Clock, progress: 67 },
+];
+
+const keyFeatures = [
+  {
+    icon: Shield,
+    title: "HIPAA Compliance",
+    description:
+      "Full HIPAA compliance with data encryption, access controls, and comprehensive audit trails.",
+    items: ["Data Encryption", "Access Controls", "Audit Trails", "Privacy Protection"],
+  },
+  {
+    icon: Monitor,
+    title: "Patient Care Management",
+    description:
+      "Comprehensive patient care with electronic health records and clinical decision support.",
+    items: ["EHR Systems", "Appointment Scheduling", "Clinical Support", "Patient Portal"],
+  },
+  {
+    icon: BarChart3,
+    title: "Clinical Intelligence",
+    description:
+      "AI-powered clinical intelligence with predictive analytics and treatment recommendations.",
+    items: [
+      "Predictive Analytics",
+      "Treatment Recommendations",
+      "Outcome Analysis",
+      "Risk Assessment",
     ],
-    []
-  );
+  },
+];
 
-  const healthcareTechnologies = useMemo(
-    () => [
-      { name: "React", icon: Monitor, category: "Frontend" },
-      { name: "Node.js", icon: Server, category: "Backend" },
-      { name: "MongoDB", icon: Database, category: "Database" },
-      { name: "AWS", icon: Cloud, category: "Cloud" },
-      { name: "Docker", icon: HardDrive, category: "Containerization" },
-      { name: "HL7 FHIR", icon: MedicalData, category: "Healthcare" },
-      { name: "DICOM", icon: MedicalMonitor, category: "Imaging" },
-      { name: "Kubernetes", icon: Network, category: "Orchestration" },
-      { name: "PostgreSQL", icon: Database, category: "Database" },
-      { name: "Angular", icon: Monitor, category: "Frontend" },
-      { name: "Python", icon: Code, category: "Backend" },
-    ],
-    []
-  );
+const healthcareTechnologies = [
+  { name: "React", icon: Monitor, category: "Frontend" },
+  { name: "Node.js", icon: Server, category: "Backend" },
+  { name: "MongoDB", icon: Database, category: "Database" },
+  { name: "AWS", icon: Cloud, category: "Cloud" },
+  { name: "Docker", icon: HardDrive, category: "Containerization" },
+  { name: "HL7 FHIR", icon: Database, category: "Healthcare" },
+  { name: "DICOM", icon: Monitor, category: "Imaging" },
+  { name: "Kubernetes", icon: Network, category: "Orchestration" },
+  { name: "PostgreSQL", icon: Database, category: "Database" },
+  { name: "Angular", icon: Monitor, category: "Frontend" },
+  { name: "Python", icon: Code, category: "Backend" },
+];
 
-  const healthcareStats = useMemo(
-    () => [
-      { label: "Healthcare Clients", value: "12+", icon: Hospital },
-      { label: "Certifications", value: "10+", icon: Award },
-      { label: "Global Offices", value: "10+", icon: Globe },
-      { label: "Uptime Guarantee", value: "99.9%", icon: Clock },
-    ],
-    []
-  );
+const healthcareStats = [
+  { label: "Healthcare Clients", value: "12+", icon: Building },
+  { label: "Certifications", value: "10+", icon: Award },
+  { label: "Global Offices", value: "10+", icon: Globe },
+  { label: "Uptime Guarantee", value: "99.9%", icon: Clock },
+];
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Healthcare Software Development",
-    description: "HIPAA-compliant healthcare software including EHR systems, telemedicine platforms, and patient management solutions.",
-    provider: { "@type": "Organization", name: "Ctas Info Services LLP", url: "https://www.ctasis.com" },
-    areaServed: "Worldwide",
-    serviceType: "Healthcare Software Development",
-  };
-
-  return (
-    <PageShell>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <Navigation />
-      <main>
-        <PageHero
-          ariaLabel="Healthcare Technology Solutions"
-          badge="HIPAA Compliant Healthcare"
-          title="Next-Generation"
-          highlight="Healthcare Technology"
-          description="Revolutionizing healthcare with HIPAA-compliant systems, AI-powered diagnostics, and secure patient care platforms for the digital health era."
-          stats={healthcareStats.map((s) => ({ number: s.value, label: s.label, icon: s.icon }))}
-          primaryCta={{ label: "Start Free Consultation", href: "/contact-us" }}
-          secondaryCta={{ label: "View Portfolio", href: "/portfolios" }}
-        />
-{/* Overview Section */}
-        <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium border border-emerald-200 mb-6">
-                <Star className="w-5 h-5 mr-2" />
-                Healthcare Overview
-              </div>
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-gray-900 mb-6">
-                Modern
-                <span className="block text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
-                  Healthcare Solutions
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                End-to-end healthcare technology solutions designed to improve patient care, ensure
-                data security, and enhance clinical outcomes with HIPAA compliance.
-              </p>
-            </div>
-
-            {/* Overview Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <div className="space-y-8">
-                {/* Overview Item 1 */}
-                <div className="group relative">
-                  <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
-                      <MedicalShield className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors mb-3">
-                        HIPAA Compliance
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Full HIPAA compliance with data encryption, access controls, and audit
-                        trails to ensure patient privacy and regulatory compliance.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Overview Item 2 */}
-                <div className="group relative">
-                  <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
-                      <MedicalMonitor className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors mb-3">
-                        Patient Care
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        Comprehensive patient care management with electronic health records,
-                        appointment scheduling, and clinical decision support.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Overview Item 3 */}
-                <div className="group relative">
-                  <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
-                      <MedicalAnalytics className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-cyan-600 transition-colors mb-3">
-                        Clinical Intelligence
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        AI-powered clinical intelligence with predictive analytics, treatment
-                        recommendations, and patient outcome analysis.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Content - Stats */}
-              <div className="space-y-6">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100 group hover:shadow-lg transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                        <Hospital className="h-6 w-6 text-white" />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-black text-emerald-600 mb-1">200+</div>
-                        <div className="text-sm font-semibold text-gray-700">
-                          Healthcare Clients
-                        </div>
-                      </div>
-                    </div>
-                    <div className="h-2 bg-emerald-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-emerald-600 rounded-full w-4/5 animate-pulse"></div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-6 border border-teal-100 group hover:shadow-lg transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-teal-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                        <ShieldCheck className="h-6 w-6 text-white" />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-black text-teal-600 mb-1">100%</div>
-                        <div className="text-sm font-semibold text-gray-700">HIPAA Compliance</div>
-                      </div>
-                    </div>
-                    <div className="h-2 bg-teal-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-teal-600 rounded-full w-full animate-pulse"></div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-6 border border-cyan-100 group hover:shadow-lg transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-cyan-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                        <FileHeart className="h-6 w-6 text-white" />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-black text-cyan-600 mb-1">2M+</div>
-                        <div className="text-sm font-semibold text-gray-700">Patient Records</div>
-                      </div>
-                    </div>
-                    <div className="h-2 bg-cyan-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-cyan-600 rounded-full w-3/4 animate-pulse"></div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100 group hover:shadow-lg transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                        <Clock className="h-6 w-6 text-white" />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-black text-blue-600 mb-1">99.9%</div>
-                        <div className="text-sm font-semibold text-gray-700">Uptime Guarantee</div>
-                      </div>
-                    </div>
-                    <div className="h-2 bg-blue-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-blue-600 rounded-full w-2/3 animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-emerald-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium border border-emerald-200 mb-6">
-                <Star className="w-5 h-5 mr-2" />
-                Healthcare Technology Solutions
-              </div>
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-gray-900 mb-6">
-                Comprehensive
-                <span className="block text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
-                  Healthcare Services
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                End-to-end healthcare solutions designed to improve patient care, ensure data
-                security, and enhance clinical outcomes with full HIPAA compliance.
-              </p>
-            </div>
-
-            {/* Services Grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {healthcareServices.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:scale-105 bg-white rounded-3xl border border-gray-200 hover:border-emerald-300 shadow-lg hover:shadow-emerald-100/50"
-                  >
-                    <div className="p-8">
-                      {/* Icon */}
-                      <div
-                        className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110`}
-                      >
-                        <Icon className="h-8 w-8 text-white" />
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors mb-4">
-                        {service.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
-                        {service.description}
-                      </p>
-
-                      {/* Feature Tags */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {service.features.map((feature, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200 hover:bg-emerald-100 transition-colors"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Decorative Corner */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-bl-3xl"></div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Key Features Section */}
-        <section className="py-12 lg:py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 text-sm font-semibold mb-6">
-                <Star className="w-4 h-4 mr-2" />
-                Key Features
-              </div>
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-gray-900 mb-6">
-                Healthcare Platform
-                <span className="block text-transparent bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text">
-                  Key Features
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Discover the powerful features that make our healthcare solutions the preferred
-                choice for leading healthcare providers worldwide.
-              </p>
-            </div>
-
-            {/* Key Features List Style */}
-            <div className="space-y-12">
-              {/* Feature 1 */}
-              <div className="group relative">
-                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12">
-                  {/* Left - Icon and Title */}
-                  <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-110">
-                      <MedicalShield className="h-10 w-10 lg:h-12 lg:w-12 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors mb-2">
-                        HIPAA Compliance
-                      </h3>
-                      <p className="text-lg text-gray-600 max-w-md">
-                        Full HIPAA compliance with data encryption, access controls, and
-                        comprehensive audit trails.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Right - Features List */}
-                  <div className="flex-1 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-6 lg:p-8 border border-emerald-100">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Data Encryption</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Access Controls</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Audit Trails</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Privacy Protection</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Feature 2 */}
-              <div className="group relative">
-                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12">
-                  {/* Left - Icon and Title */}
-                  <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-110">
-                      <MedicalMonitor className="h-10 w-10 lg:h-12 lg:w-12 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors mb-2">
-                        Patient Care Management
-                      </h3>
-                      <p className="text-lg text-gray-600 max-w-md">
-                        Comprehensive patient care with electronic health records and clinical
-                        decision support.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Right - Features List */}
-                  <div className="flex-1 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6 lg:p-8 border border-teal-100">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">EHR Systems</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Appointment Scheduling</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Clinical Support</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Patient Portal</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="group relative">
-                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12">
-                  {/* Left - Icon and Title */}
-                  <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl flex items-center justify-center shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-110">
-                      <MedicalAnalytics className="h-10 w-10 lg:h-12 lg:w-12 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-cyan-600 transition-colors mb-2">
-                        Clinical Intelligence
-                      </h3>
-                      <p className="text-lg text-gray-600 max-w-md">
-                        AI-powered clinical intelligence with predictive analytics and treatment
-                        recommendations.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Right - Features List */}
-                  <div className="flex-1 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-2xl p-6 lg:p-8 border border-cyan-100">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Predictive Analytics</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">
-                          Treatment Recommendations
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Outcome Analysis</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-semibold text-gray-800">Risk Assessment</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technologies Section */}
-        <section className="py-12 lg:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                Healthcare Technology
-                <span className="block text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
-                  Stack
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Cutting-edge technologies and healthcare standards that power modern healthcare
-                solutions.
-              </p>
-            </div>
-
-            {/* Technologies Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
-              {healthcareTechnologies.map((tech, index) => {
-                const Icon = tech.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-md hover:scale-105"
-                  >
-                    <div className="text-center">
-                      <Icon className="w-8 h-8 text-emerald-600 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
-                      <div className="text-sm font-medium text-gray-900">{tech.name}</div>
-                      <div className="text-xs text-gray-500">{tech.category}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <PageCTA
-          title="Ready to Transform Your Healthcare Operations?"
-          description="Let's discuss how our HIPAA-compliant healthcare solutions can improve patient care and operational efficiency."
-          primaryLabel="Start Your Project"
-          primaryHref="/contact-us"
-          secondaryLabel="View Portfolio"
-          secondaryHref="/portfolios"
-        />
-      </main>
-      <FooterSection />
-    </PageShell>
-  );
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Healthcare Software Development",
+      description:
+        "HIPAA-compliant healthcare software including EHR systems, telemedicine platforms, and patient management solutions.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Healthcare Software Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Industries", item: "https://www.ctasis.com/industries" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Healthcare",
+          item: "https://www.ctasis.com/industries/healthcare",
+        },
+      ],
+    },
+  ],
 };
 
-export default Healthcare;
+const HealthcarePage = () => (
+  <PageShell>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+    <Navigation />
+    <main>
+      <PageHero
+        ariaLabel="Healthcare Technology Solutions"
+        badge="HIPAA Compliant Healthcare"
+        title="Next-Generation"
+        highlight="Healthcare Technology"
+        description="Revolutionizing healthcare with HIPAA-compliant systems, AI-powered diagnostics, and secure patient care platforms for the digital health era."
+        stats={healthcareStats.map((s) => ({ number: s.value, label: s.label, icon: s.icon }))}
+        primaryCta={{ label: "Start Free Consultation", href: "/contact-us" }}
+        secondaryCta={{ label: "View Portfolio", href: "/portfolios" }}
+      />
+
+      {/* Overview — split-screen with animated stat progress bars */}
+      <SectionWrap>
+        <SectionHeader
+          badge="Healthcare Overview"
+          title="Modern"
+          highlight="Healthcare Solutions"
+          description="End-to-end healthcare technology solutions designed to improve patient care, ensure data security, and enhance clinical outcomes with HIPAA compliance."
+        />
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="space-y-8">
+            {overviewItems.map((item, i) => (
+              <motion.div
+                key={item.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="flex gap-4 sm:gap-5"
+              >
+                <IconBox icon={item.icon} />
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-sm sm:text-base text-slate-500 leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-4 sm:gap-5">
+            {overviewStats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: 0.1 + i * 0.06 }}
+                className="rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: `${CYAN}18` }}
+                  >
+                    <stat.icon className="w-5 h-5" style={{ color: NAVY }} />
+                  </div>
+                  <div className="text-right">
+                    <div className={`${fraunces.className} text-2xl sm:text-3xl font-medium`} style={{ color: NAVY }}>
+                      <AnimatedStat value={stat.value} />
+                    </div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-600">{stat.label}</div>
+                  </div>
+                </div>
+                <div className="h-1.5 bg-[#EAF3F8] rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{ backgroundColor: CYAN }}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${stat.progress}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, delay: 0.2 + i * 0.1 }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionWrap>
+
+      {/* Services — bento grid */}
+      <SectionWrap alt>
+        <SectionHeader
+          badge="Healthcare Technology Solutions"
+          title="Comprehensive"
+          highlight="Healthcare Services"
+          description="End-to-end healthcare solutions designed to improve patient care, ensure data security, and enhance clinical outcomes with full HIPAA compliance."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 auto-rows-fr">
+          {healthcareServices.map((service, i) => (
+            <motion.article
+              key={service.title}
+              {...fadeUp}
+              transition={{ duration: 0.45, delay: i * 0.05 }}
+              className={`bg-white border border-slate-200/80 rounded-[1.5rem] p-6 sm:p-7 hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col ${
+                i === 0 ? "md:col-span-2 lg:row-span-2" : ""
+              }`}
+            >
+              <IconBox icon={service.icon} />
+              <h3 className={`${fraunces.className} text-lg sm:text-xl font-medium text-slate-900 mt-5 mb-2`}>
+                {service.title}
+              </h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-4 flex-1">{service.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {service.features.map((feature) => (
+                  <Pill key={feature}>{feature}</Pill>
+                ))}
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </SectionWrap>
+
+      {/* Key features — alternating split rows with check grids */}
+      <SectionWrap>
+        <SectionHeader
+          badge="Key Features"
+          title="Healthcare Platform"
+          highlight="Key Features"
+          description="Discover the powerful features that make our healthcare solutions the preferred choice for leading healthcare providers worldwide."
+        />
+        <div className="space-y-12 sm:space-y-16">
+          {keyFeatures.map((feature, index) => (
+            <motion.article
+              key={feature.title}
+              {...fadeUp}
+              transition={{ duration: 0.5, delay: index * 0.04 }}
+              className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            >
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="flex items-center gap-4 mb-4">
+                  <div
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${CYAN}18` }}
+                  >
+                    <feature.icon className="w-7 h-7 sm:w-8 sm:h-8" style={{ color: NAVY }} />
+                  </div>
+                  <h3 className={`${fraunces.className} text-xl sm:text-2xl font-medium text-slate-900`}>
+                    {feature.title}
+                  </h3>
+                </div>
+                <p className="text-slate-500 leading-relaxed">{feature.description}</p>
+              </div>
+              <ul
+                className={`grid sm:grid-cols-2 gap-3 ${index % 2 === 1 ? "lg:order-1" : ""}`}
+                aria-label={`${feature.title} capabilities`}
+              >
+                {feature.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-white border border-slate-100 text-sm text-slate-700"
+                  >
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
+          ))}
+        </div>
+      </SectionWrap>
+
+      {/* Technologies — horizontal scroll */}
+      <SectionWrap alt>
+        <SectionHeader
+          badge="Technology"
+          title="Healthcare Technology"
+          highlight="Stack"
+          description="Cutting-edge technologies and healthcare standards that power modern healthcare solutions."
+        />
+        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+          <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+            {healthcareTechnologies.map((tech, i) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: i * 0.04 }}
+                className="flex-shrink-0 w-[140px] sm:w-[160px] snap-start"
+              >
+                <div className="bg-white border border-slate-200/80 rounded-2xl p-5 text-center hover:border-[#13345A]/20 hover:shadow-md transition-all h-full">
+                  <tech.icon className="w-7 h-7 mx-auto mb-3" style={{ color: NAVY }} />
+                  <div className="text-sm font-semibold text-slate-900">{tech.name}</div>
+                  <div className="text-xs text-slate-500 mt-1">{tech.category}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionWrap>
+
+      <PageCTA
+        title="Ready to Transform Your Healthcare Operations?"
+        description="Let's discuss how our HIPAA-compliant healthcare solutions can improve patient care and operational efficiency."
+        primaryLabel="Start Your Project"
+        primaryHref="/contact-us"
+        secondaryLabel="View Portfolio"
+        secondaryHref="/portfolios"
+      />
+    </main>
+    <FooterSection />
+  </PageShell>
+);
+
+export default HealthcarePage;

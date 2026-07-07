@@ -363,11 +363,52 @@ const faqs = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Complete Design Packages",
+      description:
+        "Comprehensive design packages from Ctas: branding, UI/UX, and web design. Complete visual identity solutions for growing businesses.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Complete Design Packages",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Complete Design Packages",
+          item: "https://www.ctasis.com/services/complete-design-packages",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ],
+};
+
 export default function CompleteDesignPackagesPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Complete Design Packages",
+        structuredData,
         hero: {
           badge: "Complete Design Packages",
           title: "Complete",
@@ -386,6 +427,7 @@ export default function CompleteDesignPackagesPage() {
         sections: [
           {
             type: "cards",
+            variant: "alternating",
             header: {
               badge: "Packages",
               title: "Brand Identity",
@@ -409,6 +451,7 @@ export default function CompleteDesignPackagesPage() {
           },
           {
             type: "process",
+            variant: "horizontal",
             header: {
               badge: "Our Process",
               title: "Design",
@@ -420,6 +463,7 @@ export default function CompleteDesignPackagesPage() {
           },
           {
             type: "cards",
+            variant: "scroll",
             header: {
               badge: "Why Choose Us",
               title: "Key",
@@ -432,6 +476,7 @@ export default function CompleteDesignPackagesPage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose Brand Design?",
               title: "Benefits of",

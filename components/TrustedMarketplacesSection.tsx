@@ -34,7 +34,7 @@ const TrustedMarketplacesSection = () => {
       className="py-16 sm:py-20 bg-[#F6F8FA] border-y border-slate-100"
       aria-label="Trusted by leading global marketplaces"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Trusted Worldwide

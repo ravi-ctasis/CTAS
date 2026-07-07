@@ -28,7 +28,7 @@ const ClientLogosSection = () => {
 
   return (
     <section className="py-20 bg-gradient-to-r from-slate-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto ">
+      <div className="max-w-[1584px] mx-auto ">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-blue/10 text-brand-blue text-sm font-semibold mb-4">

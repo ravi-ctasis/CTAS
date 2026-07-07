@@ -17,23 +17,40 @@ import type { ServicePageConfig } from "@/types/service-page";
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "e-Commerce Workflow Automation Services",
-  provider: {
-    "@type": "Organization",
-    name: "Ctas Info Services LLP",
-    url: "https://www.ctasis.com",
-  },
-  serviceType: "e-Commerce Automation",
-  areaServed: ["Worldwide"],
-  description:
-    "Strategy, implementation, and managed services for automating e-commerce catalog, merchandising, order management, fulfillment, and support journeys.",
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "USD",
-    price: "0",
-    description: "Free automation readiness assessment",
-  },
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "e-Commerce Workflow Automation Services",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "e-Commerce Automation",
+      areaServed: ["Worldwide"],
+      description:
+        "Strategy, implementation, and managed services for automating e-commerce catalog, merchandising, order management, fulfillment, and support journeys.",
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        price: "0",
+        description: "Free automation readiness assessment",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Ecommerce Workflow Automation",
+          item: "https://www.ctasis.com/services/ecommerce-workflow-automation",
+        },
+      ],
+    },
+  ],
 };
 
 const automationStack = [
@@ -112,9 +129,11 @@ export const ecommerceWorkflowAutomationConfig: ServicePageConfig = {
         },
       ],
       columns: 2,
+      variant: "scroll",
     },
     {
-      type: "cards",
+      type: "benefits",
+      variant: "zigzag",
       header: {
         badge: "Differentiators",
         title: "Not Another Generic",
@@ -146,7 +165,6 @@ export const ecommerceWorkflowAutomationConfig: ServicePageConfig = {
           icon: Sparkles,
         },
       ],
-      columns: 2,
     },
     {
       type: "process-sidebar",

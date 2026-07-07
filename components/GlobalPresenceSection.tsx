@@ -49,7 +49,7 @@ const GlobalPresenceSection = () => {
       className="py-16 sm:py-20 lg:py-24 section-bg-dots overflow-hidden"
       aria-label="CTAS global presence — clients across Europe, USA, India, Australia and UK"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Header — full width */}
         <div className="max-w-3xl mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-4">

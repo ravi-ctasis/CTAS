@@ -26,6 +26,37 @@ import type { ServicePageConfig } from "@/types/service-page";
 
 export const meanStackConfig: ServicePageConfig = {
   ariaLabel: "MEAN Stack Development Services",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: "MEAN Stack Development Services",
+        description:
+          "Expert MEAN stack development: MongoDB, Express, Angular, Node.js. Full-stack JavaScript solutions for modern businesses.",
+        provider: {
+          "@type": "Organization",
+          name: "Ctas Info Services LLP",
+          url: "https://www.ctasis.com",
+        },
+        serviceType: "MEAN Stack Development",
+        areaServed: { "@type": "Country", name: "India" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "MEAN Stack",
+            item: "https://www.ctasis.com/services/mean-stack",
+          },
+        ],
+      },
+    ],
+  },
   hero: {
     badge: "MEAN Stack",
     title: "Enterprise-Grade",
@@ -38,6 +69,7 @@ export const meanStackConfig: ServicePageConfig = {
   sections: [
     {
       type: "cards",
+      variant: "scroll",
       header: {
         badge: "Technology Stack",
         title: "The MEAN",
@@ -235,6 +267,7 @@ export const meanStackConfig: ServicePageConfig = {
     },
     {
       type: "benefits",
+      variant: "icon-strip",
       header: {
         badge: "Benefits",
         title: "Why Choose",

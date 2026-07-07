@@ -1,6 +1,8 @@
+"use client";
 
-;
-import React from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
   Building2,
@@ -10,7 +12,7 @@ import {
   ArrowRight,
   Database,
   Server,
-  CheckCircle,
+  CheckCircle2,
   Search,
   MapPin,
   Heart,
@@ -23,748 +25,634 @@ import {
   Shield,
   Building,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
-import Link from "next/link";
+import {
+  PageShell,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
+
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
+
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
+
+const heroBenefits = ["AI-Powered Discovery", "Virtual Reality Tours", "Market Intelligence"];
+
+const stats = [
+  { number: "75K+", label: "Properties Listed" },
+  { number: "35K+", label: "Happy Users" },
+  { number: "750+", label: "Real Estate Agents" },
+  { number: "4.9★", label: "Average Rating" },
+];
+
+const features = [
+  {
+    icon: Search,
+    title: "AI-Powered Smart Search",
+    description:
+      "Advanced property discovery with intelligent filters, natural language processing, and predictive search suggestions",
+    highlights: ["Voice Search", "Auto-complete", "Smart Filters", "Saved Searches"],
+  },
+  {
+    icon: MapPin,
+    title: "Location Intelligence",
+    description:
+      "Comprehensive neighborhood insights with crime data, school ratings, transportation, and local amenities analysis",
+    highlights: ["Crime Statistics", "School Ratings", "Transport Links", "Local Amenities"],
+  },
+  {
+    icon: Home,
+    title: "Virtual Reality Tours",
+    description:
+      "Immersive 3D virtual tours with 360° walkthroughs, AR furniture placement, and virtual staging",
+    highlights: ["360° Tours", "AR Staging", "Floor Plans", "Virtual Walkthrough"],
+  },
+  {
+    icon: Heart,
+    title: "Personalized Recommendations",
+    description:
+      "ML-driven property suggestions based on preferences, browsing history, and behavioral patterns",
+    highlights: ["Smart Matching", "Preference Learning", "Market Alerts", "Price Predictions"],
+  },
+  {
+    icon: TrendingUp,
+    title: "Market Analytics",
+    description:
+      "Real-time market trends, price history, investment potential analysis, and market forecasting",
+    highlights: ["Price Trends", "Investment ROI", "Market Forecast", "Comparable Sales"],
+  },
+  {
+    icon: Shield,
+    title: "Secure Transactions",
+    description:
+      "End-to-end encrypted communications, secure document sharing, and verified agent profiles",
+    highlights: ["Bank-level Security", "Document Vault", "Identity Verification", "Secure Messaging"],
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile-First Experience",
+    description:
+      "Native mobile apps with offline viewing, push notifications, and GPS-based property discovery",
+    highlights: ["Offline Mode", "Push Notifications", "GPS Discovery", "Touch ID Login"],
+  },
+  {
+    icon: Users,
+    title: "Agent Network",
+    description:
+      "Connect with verified real estate professionals, schedule viewings, and access expert consultation",
+    highlights: ["Verified Agents", "Video Consultations", "Instant Scheduling", "Expert Reviews"],
+  },
+];
+
+const benefits = [
+  {
+    icon: Home,
+    title: "For Homebuyers",
+    items: [
+      "Advanced property search with AI filters",
+      "Virtual reality property tours",
+      "Real-time market analysis and trends",
+      "Mortgage calculator and financing tools",
+      "Property comparison and evaluation",
+      "Saved searches with instant alerts",
+    ],
+  },
+  {
+    icon: Building2,
+    title: "For Property Sellers",
+    items: [
+      "Comprehensive listing management",
+      "AI-powered market value estimation",
+      "Professional photography and staging",
+      "Lead generation and tracking system",
+      "Performance analytics and insights",
+      "Virtual staging and 3D modeling",
+    ],
+  },
+  {
+    icon: Users,
+    title: "For Real Estate Agents",
+    items: [
+      "Advanced CRM and lead management",
+      "Property listing and marketing tools",
+      "Client communication platform",
+      "Market analysis and reporting",
+      "Commission tracking and analytics",
+      "Mobile app for field operations",
+    ],
+  },
+];
+
+const techStack = [
+  { icon: Code, title: "React Native", description: "Cross-platform mobile development", category: "Frontend" },
+  { icon: Globe, title: "Next.js", description: "React framework for web applications", category: "Frontend" },
+  { icon: Server, title: "Node.js", description: "JavaScript runtime for backend services", category: "Backend" },
+  { icon: Database, title: "PostgreSQL", description: "Advanced relational database system", category: "Database" },
+  { icon: Database, title: "MongoDB", description: "NoSQL database for flexible data storage", category: "Database" },
+  { icon: Cloud, title: "AWS", description: "Comprehensive cloud infrastructure", category: "Cloud" },
+  { icon: Cloud, title: "Google Cloud", description: "Machine learning and analytics platform", category: "Cloud" },
+  { icon: Server, title: "Docker", description: "Containerization for deployment", category: "DevOps" },
+  { icon: Server, title: "Kubernetes", description: "Container orchestration platform", category: "DevOps" },
+  { icon: Globe, title: "Google Maps API", description: "Advanced mapping and location services", category: "APIs" },
+  { icon: Globe, title: "Stripe API", description: "Secure payment processing", category: "APIs" },
+  { icon: Shield, title: "Auth0", description: "Authentication and authorization", category: "Security" },
+  { icon: Shield, title: "JWT", description: "JSON Web Tokens for secure sessions", category: "Security" },
+  { icon: TrendingUp, title: "TensorFlow", description: "Machine learning for property recommendations", category: "AI/ML" },
+  { icon: TrendingUp, title: "Python", description: "Data analysis and AI algorithms", category: "AI/ML" },
+  { icon: Smartphone, title: "React Native", description: "iOS and Android mobile applications", category: "Mobile" },
+  { icon: Smartphone, title: "Flutter", description: "Cross-platform mobile development", category: "Mobile" },
+  { icon: Globe, title: "Socket.io", description: "Real-time communication and notifications", category: "Real-time" },
+  { icon: Server, title: "GraphQL", description: "Efficient API query language", category: "APIs" },
+  { icon: Code, title: "TypeScript", description: "Type-safe JavaScript development", category: "Languages" },
+  { icon: Database, title: "Elasticsearch", description: "Advanced search and analytics", category: "Search" },
+  { icon: Cloud, title: "CloudFlare", description: "CDN and security services", category: "Infrastructure" },
+  { icon: TrendingUp, title: "Apache Kafka", description: "Event streaming and data pipelines", category: "Data" },
+];
+
+const techCategories = [
+  { id: "all", title: "All", items: [] as typeof techStack },
+  ...Array.from(new Set(techStack.map((t) => t.category))).map((cat) => ({
+    id: cat.toLowerCase().replace(/[^a-z]/g, "-"),
+    title: cat,
+    items: techStack.filter((t) => t.category === cat),
+  })),
+];
+
+techCategories[0].items = techStack;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Property Finder App Development Services",
+      description:
+        "Advanced property finder apps: map-based search, virtual tours, agent management, and real estate listings.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Property Finder App Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: "https://www.ctasis.com/solutions" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Property Finder App",
+          item: "https://www.ctasis.com/solutions/property-finder-app",
+        },
+      ],
+    },
+  ],
+};
+
+const PropertyVisionMockup = () => (
+  <div className="relative mx-auto max-w-xs hidden lg:block">
+    <motion.div
+      {...fadeUp}
+      className="absolute -top-3 left-0 rounded-xl border border-slate-200/80 bg-white px-2.5 py-1.5 shadow-md text-xs z-10"
+    >
+      <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block mr-1.5 animate-pulse" />
+      AI Powered
+    </motion.div>
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.08 }}
+      className="absolute top-16 -right-4 rounded-xl border border-slate-200/80 bg-white px-2.5 py-1.5 shadow-md text-xs z-10"
+    >
+      <Star className="w-3 h-3 text-amber-400 inline mr-1" />
+      4.9 Rating
+    </motion.div>
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.12 }}
+      className="absolute bottom-24 -left-4 rounded-xl border border-slate-200/80 bg-white px-2.5 py-1.5 shadow-md text-xs z-10"
+    >
+      <MapPin className="w-3 h-3 inline mr-1" style={{ color: CYAN }} />
+      Live Location
+    </motion.div>
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.16 }}
+      className="absolute bottom-8 -right-3 rounded-xl border border-slate-200/80 bg-white px-2.5 py-1.5 shadow-md text-xs z-10"
+    >
+      <Shield className="w-3 h-3 inline mr-1" style={{ color: NAVY }} />
+      Secure
+    </motion.div>
+
+    <div className="relative w-[280px] h-[560px] bg-white rounded-[2.25rem] border-4 border-slate-200 shadow-2xl overflow-hidden transform rotate-2">
+      <div className="h-6 bg-white border-b border-slate-100 flex items-center justify-between px-4 text-[10px] text-slate-500">
+        <span className="font-semibold">9:41</span>
+        <span className="px-1.5 py-0.5 rounded-full text-[9px] font-medium" style={{ backgroundColor: `${CYAN}18`, color: NAVY }}>
+          Live
+        </span>
+      </div>
+
+      <div className="px-3 pt-3 pb-2 bg-[#F6F8FA]">
+        <div className="flex items-center justify-between mb-2">
+          <div>
+            <div className={`${fraunces.className} text-sm font-medium text-slate-900`}>PropertyVision</div>
+            <div className="text-[10px]" style={{ color: CYAN }}>AI Real Estate Discovery</div>
+          </div>
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: NAVY }}>
+            <Home className="w-4 h-4 text-white" />
+          </div>
+        </div>
+        <div className="flex gap-1.5 text-[9px]">
+          <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-medium">3,247 Properties</span>
+          <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full font-medium flex items-center gap-0.5">
+            <TrendingUp className="w-2.5 h-2.5" /> +5.2%
+          </span>
+        </div>
+      </div>
+
+      <div className="px-3 py-2">
+        <div className="flex items-center bg-white rounded-xl px-2.5 py-2 border border-slate-200 shadow-sm">
+          <Search className="w-3.5 h-3.5 mr-1.5" style={{ color: CYAN }} />
+          <span className="text-[10px] text-slate-400 flex-1">Search dream property...</span>
+          <div className="p-1 rounded-md" style={{ backgroundColor: CYAN }}>
+            <Sliders className="w-2.5 h-2.5 text-white" />
+          </div>
+        </div>
+      </div>
+
+      <div className="px-3 space-y-2 overflow-hidden flex-1">
+        {[
+          {
+            title: "Luxury Penthouse",
+            loc: "Manhattan • 3 beds • 2 baths",
+            price: "$1.2M",
+            rating: "4.9",
+            featured: true,
+            icon: Home,
+          },
+          {
+            title: "Modern Townhouse",
+            loc: "Brooklyn • 4 beds • 3 baths",
+            price: "$950K",
+            rating: "4.7",
+            featured: false,
+            icon: Building2,
+          },
+          {
+            title: "Seaside Villa",
+            loc: "Malibu • 5 beds • 4 baths",
+            price: "$2.1M",
+            rating: "5.0",
+            featured: false,
+            icon: Home,
+          },
+        ].map((prop) => (
+          <div key={prop.title} className="rounded-xl border border-slate-200 bg-white p-2.5">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${CYAN}22` }}>
+                <prop.icon className="w-5 h-5" style={{ color: NAVY }} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[11px] font-bold text-slate-800 truncate">{prop.title}</span>
+                  {prop.featured && (
+                    <span className="text-[8px] px-1.5 py-0.5 rounded-full font-bold" style={{ backgroundColor: `${CYAN}18`, color: NAVY }}>
+                      Featured
+                    </span>
+                  )}
+                </div>
+                <div className="text-[9px] text-slate-500">{prop.loc}</div>
+                <div className="flex items-center justify-between mt-0.5">
+                  <span className="text-[10px] font-bold" style={{ color: NAVY }}>{prop.price}</span>
+                  <span className="text-[9px] text-slate-500 flex items-center gap-0.5">
+                    <Star className="w-2.5 h-2.5 text-amber-400 fill-current" />
+                    {prop.rating}
+                  </span>
+                </div>
+              </div>
+              <Heart className="w-4 h-4 text-pink-500 fill-current flex-shrink-0" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-around px-2 py-2 border-t border-slate-200 bg-white text-[9px]">
+        {[
+          { icon: Home, label: "Home", active: true },
+          { icon: Search, label: "Search", active: false },
+          { icon: MapPin, label: "Map", active: false },
+          { icon: Heart, label: "Saved", active: false },
+          { icon: Users, label: "Agents", active: false },
+        ].map((nav) => (
+          <div key={nav.label} className="flex flex-col items-center">
+            <div className={`p-1.5 rounded-lg ${nav.active ? "" : ""}`} style={nav.active ? { backgroundColor: CYAN } : undefined}>
+              <nav.icon className={`w-4 h-4 ${nav.active ? "text-white" : "text-slate-400"}`} />
+            </div>
+            <span className={nav.active ? "font-bold mt-0.5" : "text-slate-400 mt-0.5"} style={nav.active ? { color: NAVY } : undefined}>
+              {nav.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 const PropertyFinderAppPage = () => {
-  const features = [
-    {
-      icon: <Search className="w-8 h-8" />,
-      title: "AI-Powered Smart Search",
-      description:
-        "Advanced property discovery with intelligent filters, natural language processing, and predictive search suggestions",
-      highlights: ["Voice Search", "Auto-complete", "Smart Filters", "Saved Searches"],
-    },
-    {
-      icon: <MapPin className="w-8 h-8" />,
-      title: "Location Intelligence",
-      description:
-        "Comprehensive neighborhood insights with crime data, school ratings, transportation, and local amenities analysis",
-      highlights: ["Crime Statistics", "School Ratings", "Transport Links", "Local Amenities"],
-    },
-    {
-      icon: <Home className="w-8 h-8" />,
-      title: "Virtual Reality Tours",
-      description:
-        "Immersive 3D virtual tours with 360° walkthroughs, AR furniture placement, and virtual staging",
-      highlights: ["360° Tours", "AR Staging", "Floor Plans", "Virtual Walkthrough"],
-    },
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Personalized Recommendations",
-      description:
-        "ML-driven property suggestions based on preferences, browsing history, and behavioral patterns",
-      highlights: ["Smart Matching", "Preference Learning", "Market Alerts", "Price Predictions"],
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "Market Analytics",
-      description:
-        "Real-time market trends, price history, investment potential analysis, and market forecasting",
-      highlights: ["Price Trends", "Investment ROI", "Market Forecast", "Comparable Sales"],
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Secure Transactions",
-      description:
-        "End-to-end encrypted communications, secure document sharing, and verified agent profiles",
-      highlights: [
-        "Bank-level Security",
-        "Document Vault",
-        "Identity Verification",
-        "Secure Messaging",
-      ],
-    },
-    {
-      icon: <Smartphone className="w-8 h-8" />,
-      title: "Mobile-First Experience",
-      description:
-        "Native mobile apps with offline viewing, push notifications, and GPS-based property discovery",
-      highlights: ["Offline Mode", "Push Notifications", "GPS Discovery", "Touch ID Login"],
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Agent Network",
-      description:
-        "Connect with verified real estate professionals, schedule viewings, and access expert consultation",
-      highlights: [
-        "Verified Agents",
-        "Video Consultations",
-        "Instant Scheduling",
-        "Expert Reviews",
-      ],
-    },
-  ];
-
-  const benefits = [
-    {
-      title: "For Homebuyers",
-      icon: <Home className="w-8 h-8" />,
-      items: [
-        "Advanced property search with AI filters",
-        "Virtual reality property tours",
-        "Real-time market analysis and trends",
-        "Mortgage calculator and financing tools",
-        "Property comparison and evaluation",
-        "Saved searches with instant alerts",
-      ],
-    },
-    {
-      title: "For Property Sellers",
-      icon: <Building2 className="w-8 h-8" />,
-      items: [
-        "Comprehensive listing management",
-        "AI-powered market value estimation",
-        "Professional photography and staging",
-        "Lead generation and tracking system",
-        "Performance analytics and insights",
-        "Virtual staging and 3D modeling",
-      ],
-    },
-    {
-      title: "For Real Estate Agents",
-      icon: <Users className="w-8 h-8" />,
-      items: [
-        "Advanced CRM and lead management",
-        "Property listing and marketing tools",
-        "Client communication platform",
-        "Market analysis and reporting",
-        "Commission tracking and analytics",
-        "Mobile app for field operations",
-      ],
-    },
-  ];
-
-  const techStack = [
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: "React Native",
-      description: "Cross-platform mobile development",
-      category: "Frontend",
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Next.js",
-      description: "React framework for web applications",
-      category: "Frontend",
-    },
-    {
-      icon: <Server className="w-8 h-8" />,
-      title: "Node.js",
-      description: "JavaScript runtime for backend services",
-      category: "Backend",
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: "PostgreSQL",
-      description: "Advanced relational database system",
-      category: "Database",
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: "MongoDB",
-      description: "NoSQL database for flexible data storage",
-      category: "Database",
-    },
-
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: "AWS",
-      description: "Comprehensive cloud infrastructure",
-      category: "Cloud",
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: "Google Cloud",
-      description: "Machine learning and analytics platform",
-      category: "Cloud",
-    },
-    {
-      icon: <Server className="w-8 h-8" />,
-      title: "Docker",
-      description: "Containerization for deployment",
-      category: "DevOps",
-    },
-    {
-      icon: <Server className="w-8 h-8" />,
-      title: "Kubernetes",
-      description: "Container orchestration platform",
-      category: "DevOps",
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Google Maps API",
-      description: "Advanced mapping and location services",
-      category: "APIs",
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Stripe API",
-      description: "Secure payment processing",
-      category: "APIs",
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Auth0",
-      description: "Authentication and authorization",
-      category: "Security",
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "JWT",
-      description: "JSON Web Tokens for secure sessions",
-      category: "Security",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "TensorFlow",
-      description: "Machine learning for property recommendations",
-      category: "AI/ML",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "Python",
-      description: "Data analysis and AI algorithms",
-      category: "AI/ML",
-    },
-    {
-      icon: <Smartphone className="w-8 h-8" />,
-      title: "React Native",
-      description: "iOS and Android mobile applications",
-      category: "Mobile",
-    },
-    {
-      icon: <Smartphone className="w-8 h-8" />,
-      title: "Flutter",
-      description: "Cross-platform mobile development",
-      category: "Mobile",
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Socket.io",
-      description: "Real-time communication and notifications",
-      category: "Real-time",
-    },
-    {
-      icon: <Server className="w-8 h-8" />,
-      title: "GraphQL",
-      description: "Efficient API query language",
-      category: "APIs",
-    },
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: "TypeScript",
-      description: "Type-safe JavaScript development",
-      category: "Languages",
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: "Elasticsearch",
-      description: "Advanced search and analytics",
-      category: "Search",
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: "CloudFlare",
-      description: "CDN and security services",
-      category: "Infrastructure",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "Apache Kafka",
-      description: "Event streaming and data pipelines",
-      category: "Data",
-    },
-  ];
+  const [activeBenefit, setActiveBenefit] = useState(0);
+  const [activeTech, setActiveTech] = useState(0);
+  const currentBenefit = benefits[activeBenefit];
+  const currentTech = techCategories[activeTech];
 
   return (
-    <div className="min-h-screen bg-white">
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navigation />
-
-      {/* Hero Section */}
-      <section className="relative min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-violet-900 overflow-hidden py-10">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-violet-500/10 animate-pulse"></div>
-          <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-float-delayed"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-violet-500/20 rounded-full blur-2xl animate-pulse"></div>
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-10 flex items-center min-h-screen px-6 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto w-full">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left Content */}
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm font-medium">
-                    🏘️ Next-Gen Property Platform
-                  </Badge>
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                    Find Your
-                    <span className="bg-gradient-to-r from-purple-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
-                      {" "}
-                      Dream Property
-                    </span>
-                  </h1>
-                  <p className="text-xl text-purple-100 max-w-2xl">
-                    Experience the future of real estate with our cutting-edge property discovery
-                    platform. Powered by AI and designed for the modern property hunter.
-                  </p>
+      <main>
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="Property Finder App Development"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                  🏘️ Next-Gen Property Platform
                 </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <div className="flex items-center space-x-2 text-purple-200">
-                    <CheckCircle className="w-5 h-5 text-purple-400" />
-                    <span>AI-Powered Discovery</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-purple-200">
-                    <CheckCircle className="w-5 h-5 text-purple-400" />
-                    <span>Virtual Reality Tours</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-purple-200">
-                    <CheckCircle className="w-5 h-5 text-purple-400" />
-                    <span>Market Intelligence</span>
-                  </div>
+                <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                  Find Your{" "}
+                  <span className="italic" style={{ color: CYAN_LIGHT }}>
+                    Dream Property
+                  </span>
+                </h1>
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-6 max-w-xl">
+                  Experience the future of real estate with our cutting-edge property discovery platform. Powered by AI
+                  and designed for the modern property hunter.
+                </p>
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {heroBenefits.map((benefit) => (
+                    <div key={benefit} className="flex items-center gap-2 text-sm text-[#C7D2D9]">
+                      <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/contact-us">
-                    <Button className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-8 py-4 text-lg font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all shadow-lg">
-                      <Phone className="w-5 h-5 mr-2" />
-                      Get Free Quote
-                    </Button>
-                  </Link>
-                  <Link href="/portfolios">
-                    <Button
-                      variant="outline"
-                      className="border-purple-400 text-purple-300 hover:bg-purple-500/20 px-8 py-4 text-lg font-semibold rounded-xl"
-                    >
-                      <ArrowRight className="w-5 h-5 mr-2" />
-                      View Portfolios
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right - Enhanced App Phone Mockup */}
-              <div className="relative hidden lg:flex items-center justify-center min-h-[680px] px-8">
-                {/* Enhanced Background Effects */}
-                <div className="absolute inset-0">
-                  <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-400/15 to-cyan-400/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                  <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-gradient-to-br from-indigo-400/20 to-violet-400/20 rounded-full blur-2xl animate-float"></div>
-                </div>
-
-                {/* Hand/Shadow effect */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 h-20 bg-black/10 rounded-full blur-2xl z-0"></div>
-
-                {/* Floating UI Elements around phone */}
-                <div className="absolute top-16 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-purple-200 animate-float z-20">
-                  <div className="flex items-center space-x-2 text-xs">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-slate-600 font-medium">AI Powered</span>
-                  </div>
-                </div>
-
-                <div className="absolute top-32 right-12 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-blue-200 animate-float-delayed z-20">
-                  <div className="flex items-center space-x-2 text-xs">
-                    <Star className="w-3 h-3 text-yellow-500" />
-                    <span className="text-slate-600 font-medium">4.9 Rating</span>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-32 left-16 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-cyan-200 animate-float z-20">
-                  <div className="flex items-center space-x-2 text-xs">
-                    <MapPin className="w-3 h-3 text-cyan-500" />
-                    <span className="text-slate-600 font-medium">Live Location</span>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-16 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-pink-200 animate-float-delayed z-20">
-                  <div className="flex items-center space-x-2 text-xs">
-                    <Shield className="w-3 h-3 text-pink-500" />
-                    <span className="text-slate-600 font-medium">Secure</span>
-                  </div>
-                </div>
-
-                {/* Phone Mockup with Fixed Styling */}
-                <div className="relative z-10">
-                  <div
-                    className="mx-auto w-[300px] h-[600px] bg-gradient-to-br from-slate-100 to-white rounded-[2.5rem] shadow-2xl border-4 border-slate-200 flex flex-col overflow-hidden transform rotate-3 scale-105"
-                    style={{ boxShadow: "0 25px 50px rgba(0,0,0,0.25)" }}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
                   >
-                    {/* Phone Bezel Details */}
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-slate-400 rounded-full"></div>
-                    <div className="absolute top-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-500 rounded-full"></div>
-
-                    {/* Status Bar */}
-                    <div className="flex items-center justify-between px-4 py-2 bg-white/90 backdrop-blur-sm border-b border-slate-200">
-                      <div className="flex items-center space-x-2 text-xs text-slate-600">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="font-semibold">9:41</span>
-                        <div className="px-2 py-0.5 bg-purple-100 rounded-full text-purple-600 text-xs font-medium">
-                          Live
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <div className="flex space-x-0.5">
-                          <div className="w-1 h-2 bg-slate-400 rounded-full"></div>
-                          <div className="w-1 h-2 bg-slate-400 rounded-full"></div>
-                          <div className="w-1 h-2 bg-green-400 rounded-full"></div>
-                        </div>
-                        <div className="w-5 h-2 bg-green-400 rounded-sm ml-1"></div>
-                      </div>
-                    </div>
-
-                    {/* App Header */}
-                    <div className="px-4 pt-4 pb-3 bg-gradient-to-br from-white to-purple-50/50">
-                      <div className="flex items-center justify-between mb-2">
-                        <div>
-                          <div className="text-lg font-bold text-slate-800 mb-1">
-                            PropertyVision
-                          </div>
-                          <div className="text-xs text-purple-600 font-medium">
-                            AI Real Estate Discovery
-                          </div>
-                        </div>
-                        <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
-                          <Home className="w-5 h-5 text-white" />
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2 text-xs">
-                        <div className="flex items-center space-x-1 px-2 py-1 bg-green-100 rounded-full">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-green-700 font-medium">3,247 Properties</span>
-                        </div>
-                        <div className="flex items-center space-x-1 px-2 py-1 bg-blue-100 rounded-full">
-                          <TrendingUp className="w-3 h-3 text-blue-600" />
-                          <span className="text-blue-700 font-medium">+5.2%</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Search Bar */}
-                    <div className="px-4 py-3 bg-gradient-to-b from-purple-50/40 to-white/80">
-                      <div className="relative">
-                        <div className="flex items-center bg-white rounded-xl px-3 py-2 shadow-md border border-purple-100">
-                          <Search className="w-4 h-4 text-purple-500 mr-2" />
-                          <input
-                            type="text"
-                            placeholder="Search dream property..."
-                            className="bg-transparent outline-none text-sm flex-1 text-slate-700"
-                          />
-                          <div className="ml-2 p-1 bg-purple-500 rounded-md">
-                            <Sliders className="w-3 h-3 text-white" />
-                          </div>
-                        </div>
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full border-2 border-white animate-bounce"></div>
-                      </div>
-                    </div>
-
-                    {/* Property Cards */}
-                    <div className="flex-1 overflow-y-auto px-4 py-2 space-y-3 bg-gradient-to-b from-white/90 to-slate-50">
-                      {/* Card 1 */}
-                      <div className="bg-gradient-to-br from-white to-purple-50 rounded-2xl shadow-lg p-4 border border-purple-100 hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-xl"></div>
-                        <div className="flex items-center space-x-3 relative z-10">
-                          <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center shadow-md relative">
-                            <Home className="w-7 h-7 text-white" />
-                            <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="font-bold text-slate-800 text-sm">
-                                Luxury Penthouse
-                              </div>
-                              <div className="px-2 py-0.5 bg-purple-100 rounded-full">
-                                <span className="text-purple-600 text-xs font-bold">Featured</span>
-                              </div>
-                            </div>
-                            <div className="text-xs text-slate-500 mb-1">
-                              Manhattan • 3 beds • 2 baths
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <span className="font-bold text-purple-600 text-sm">$1.2M</span>
-                              <div className="flex items-center space-x-1">
-                                <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                                <span className="text-xs text-slate-600">4.9</span>
-                              </div>
-                            </div>
-                          </div>
-                          <Heart className="w-5 h-5 text-pink-500 fill-current hover:scale-110 transition-transform cursor-pointer" />
-                        </div>
-                      </div>
-
-                      {/* Card 2 */}
-                      <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg p-4 border border-blue-100 hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-14 h-14 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-lg"></div>
-                        <div className="flex items-center space-x-3 relative z-10">
-                          <div className="w-14 h-14 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center shadow-md">
-                            <Building2 className="w-7 h-7 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <div className="font-bold text-slate-800 text-sm mb-1">
-                              Modern Townhouse
-                            </div>
-                            <div className="text-xs text-slate-500 mb-1">
-                              Brooklyn • 4 beds • 3 baths
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <span className="font-bold text-blue-600 text-sm">$950K</span>
-                              <div className="flex items-center space-x-1">
-                                <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                                <span className="text-xs text-slate-600">4.7</span>
-                              </div>
-                            </div>
-                          </div>
-                          <Heart className="w-5 h-5 text-pink-400 hover:scale-110 transition-transform cursor-pointer" />
-                        </div>
-                      </div>
-
-                      {/* Card 3 */}
-                      <div className="bg-gradient-to-br from-white to-cyan-50 rounded-2xl shadow-lg p-4 border border-cyan-100 hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-cyan-200/30 to-teal-200/30 rounded-full blur-lg"></div>
-                        <div className="flex items-center space-x-3 relative z-10">
-                          <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-xl flex items-center justify-center shadow-md">
-                            <Home className="w-7 h-7 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <div className="font-bold text-slate-800 text-sm mb-1">
-                              Seaside Villa
-                            </div>
-                            <div className="text-xs text-slate-500 mb-1">
-                              Malibu • 5 beds • 4 baths
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <span className="font-bold text-cyan-600 text-sm">$2.1M</span>
-                              <div className="flex items-center space-x-1">
-                                <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                                <span className="text-xs text-slate-600">5.0</span>
-                              </div>
-                            </div>
-                          </div>
-                          <Heart className="w-5 h-5 text-pink-400 hover:scale-110 transition-transform cursor-pointer" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Navigation */}
-                    <div className="flex items-center justify-between px-6 py-3 bg-gradient-to-r from-white to-slate-50 border-t border-slate-200 backdrop-blur-sm">
-                      <div className="flex flex-col items-center relative">
-                        <div className="p-2 bg-purple-500 rounded-xl shadow-md">
-                          <Home className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="text-xs font-bold text-purple-600 mt-1">Home</span>
-                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-orange-500 rounded-full"></div>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <div className="p-2 rounded-xl">
-                          <Search className="w-5 h-5 text-slate-400" />
-                        </div>
-                        <span className="text-xs text-slate-400 mt-1">Search</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <div className="p-2 rounded-xl">
-                          <MapPin className="w-5 h-5 text-slate-400" />
-                        </div>
-                        <span className="text-xs text-slate-400 mt-1">Map</span>
-                      </div>
-                      <div className="flex flex-col items-center relative">
-                        <div className="p-2 rounded-xl">
-                          <Heart className="w-5 h-5 text-slate-400" />
-                        </div>
-                        <span className="text-xs text-slate-400 mt-1">Saved</span>
-                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></div>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <div className="p-2 rounded-xl">
-                          <Users className="w-5 h-5 text-slate-400" />
-                        </div>
-                        <span className="text-xs text-slate-400 mt-1">Agents</span>
-                      </div>
-                    </div>
-
-                    {/* Screen Reflection Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none rounded-[2.5rem]"></div>
-                  </div>
-
-                  {/* Phone Stand/Hand Effect */}
-                  <div className="absolute -bottom-6 -left-3 w-20 h-12 bg-gradient-to-br from-slate-300/40 to-slate-400/40 rounded-2xl blur-lg transform rotate-12"></div>
+                    <Phone className="w-4 h-4" />
+                    Get Free Quote
+                  </Link>
+                  <Link
+                    href="/portfolios"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    View Portfolios
+                  </Link>
                 </div>
-              </div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+                <PropertyVisionMockup />
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">75K+</div>
-              <div className="text-gray-600">Properties Listed</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">35K+</div>
-              <div className="text-gray-600">Happy Users</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">750+</div>
-              <div className="text-gray-600">Real Estate Agents</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">4.9★</div>
-              <div className="text-gray-600">Average Rating</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              <Building className="inline-block w-8 h-8 mr-3 text-blue-500" />
-              Key Features for Modern Property Discovery
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive platform with advanced AI, virtual tours, market analytics, and secure
-              transactions for the ultimate real estate experience
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 border-l-4 border-purple-500"
+        <SectionWrap>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" role="list" aria-label="Property platform statistics">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="text-center rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 hover:shadow-md transition-shadow"
+                role="listitem"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="text-white">{feature.icon}</div>
+                <div className={`${fraunces.className} text-3xl sm:text-4xl font-medium mb-2`} style={{ color: NAVY }}>
+                  {stat.number.match(/^[\d.]+/) ? <AnimatedStat value={stat.number} /> : stat.number}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4 text-center">{feature.description}</p>
-              </Card>
+                <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Benefits Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Benefits for All Real Estate Stakeholders
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our platform creates value for buyers, sellers, and real estate professionals with
-              cutting-edge technology
-            </p>
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Features"
+            title="Key Features for"
+            highlight="Modern Property Discovery"
+            description="Comprehensive platform with advanced AI, virtual tours, market analytics, and secure transactions for the ultimate real estate experience"
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {features.map((feature, i) => (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.04 }}
+                  className="flex-shrink-0 w-[300px] sm:w-[320px] snap-start"
+                >
+                  <div className="h-full bg-white border border-slate-200/80 rounded-[1.5rem] p-6 hover:shadow-lg transition-all">
+                    <IconBox icon={feature.icon} />
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-2`}>
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed mb-4">{feature.description}</p>
+                    <ul className="space-y-1.5">
+                      {feature.highlights.map((h) => (
+                        <li key={h} className="flex items-center gap-2 text-xs text-slate-600">
+                          <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: CYAN }} />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
+        </SectionWrap>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="p-8 text-center hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  {benefit.icon}
+        <SectionWrap>
+          <SectionHeader
+            badge="Benefits"
+            title="Benefits for All Real Estate"
+            highlight="Stakeholders"
+            description="Our platform creates value for buyers, sellers, and real estate professionals with cutting-edge technology"
+          />
+          <div className="grid lg:grid-cols-[minmax(0,220px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Stakeholder benefits">
+              {benefits.map((benefit, bi) => (
+                <button
+                  key={benefit.title}
+                  type="button"
+                  onClick={() => setActiveBenefit(bi)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeBenefit === bi
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeBenefit === bi ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeBenefit === bi ? "true" : undefined}
+                >
+                  {benefit.title}
+                </button>
+              ))}
+            </nav>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentBenefit.title}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${CYAN}18` }}>
+                    <currentBenefit.icon className="w-6 h-6" style={{ color: NAVY }} />
+                  </div>
+                  <h3 className={`${fraunces.className} text-xl font-medium text-slate-900`}>{currentBenefit.title}</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
-                <ul className="space-y-3 text-left">
-                  {benefit.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">{item}</span>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {currentBenefit.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
+                      {item}
                     </li>
                   ))}
                 </ul>
-              </Card>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Tech Stack Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Complete Technology Stack
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Built with cutting-edge technologies across frontend, backend, mobile, AI/ML, and
-              cloud infrastructure
-            </p>
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Technology"
+            title="Complete"
+            highlight="Technology Stack"
+            description="Built with cutting-edge technologies across frontend, backend, mobile, AI/ML, and cloud infrastructure"
+          />
+          <div className="grid lg:grid-cols-[minmax(0,200px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 max-h-[320px] lg:max-h-[480px] lg:overflow-y-auto" aria-label="Technology categories">
+              {techCategories.map((cat, ci) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveTech(ci)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeTech === ci
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeTech === ci ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeTech === ci ? "true" : undefined}
+                >
+                  {cat.title}
+                </button>
+              ))}
+            </nav>
+            <div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTech.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  {currentTech.items.map((tech) => (
+                    <div
+                      key={`${tech.title}-${tech.category}`}
+                      className="rounded-2xl border border-slate-200/80 bg-white p-5 hover:shadow-md transition-all"
+                    >
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: `${CYAN}18` }}>
+                        <tech.icon className="w-5 h-5" style={{ color: NAVY }} />
+                      </div>
+                      <h3 className="text-sm font-semibold text-slate-900 mb-1">{tech.title}</h3>
+                      <p className="text-xs text-slate-500 mb-2">{tech.description}</p>
+                      <span className="inline-block text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: `${CYAN}18`, color: NAVY }}>
+                        {tech.category}
+                      </span>
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+              <motion.p {...fadeUp} className="mt-8 inline-flex items-center gap-2 text-sm text-slate-600">
+                <Building className="w-4 h-4" style={{ color: CYAN }} />
+                Explore our{" "}
+                <Link href="/services/web-development" className="font-semibold hover:underline" style={{ color: NAVY }}>
+                  web development
+                </Link>{" "}
+                and{" "}
+                <Link href="/services/mobile-apps" className="font-semibold hover:underline" style={{ color: NAVY }}>
+                  mobile app services
+                </Link>
+              </motion.p>
+            </div>
           </div>
+        </SectionWrap>
 
-          {/* Technology Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {techStack.map((tech, index) => (
-              <Card
-                key={index}
-                className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-l-4 border-purple-500"
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-white">{tech.icon}</div>
-                </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3">{tech.title}</h4>
-                <p className="text-gray-600 text-sm">{tech.description}</p>
-                <div className="mt-3">
-                  <span className="inline-block px-3 py-1 bg-purple-100 text-purple-600 text-xs font-medium rounded-full">
-                    {tech.category}
-                  </span>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-green-600 to-blue-700 text-white py-16 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Transform Property Discovery?
-          </h2>
-          <p className="text-lg sm:text-xl opacity-90 mb-8">
-            Join the real estate revolution with a smart, efficient, and user-friendly property
-            discovery platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact-us">
-              <Button
-                size="lg"
-                className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg"
-              >
-                Start Free Consultation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/portfolios">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg"
-              >
-                View Portfolio
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
+        <PageCTA
+          title="Ready to Transform Property Discovery?"
+          description="Join the real estate revolution with a smart, efficient, and user-friendly property discovery platform."
+          primaryLabel={
+            <>
+              Start Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </>
+          }
+          primaryHref="/contact-us"
+          secondaryLabel="View Portfolio"
+          secondaryHref="/portfolios"
+        />
+      </main>
       <FooterSection />
-    </div>
+    </PageShell>
   );
 };
 

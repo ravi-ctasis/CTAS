@@ -85,11 +85,44 @@ const technologies = [
   { name: "Prometheus", icon: Activity, level: "Advanced" },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "DevOps Services",
+      description:
+        "CI/CD, infrastructure automation, observability, and cloud operations from Ctas to speed up delivery and reliability.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "DevOps",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "DevOps",
+          item: "https://www.ctasis.com/services/devops",
+        },
+      ],
+    },
+  ],
+};
+
 export default function DevOpsPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "DevOps Services",
+        structuredData,
         hero: {
           badge: "Our DevOps Services",
           title: "Continuous",
@@ -108,6 +141,7 @@ export default function DevOpsPage() {
         sections: [
           {
             type: "cards",
+            variant: "alternating",
             header: {
               badge: "Our Services",
               title: "Comprehensive",
@@ -119,6 +153,7 @@ export default function DevOpsPage() {
           },
           {
             type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Key Benefits",
               title: "Why Choose Our",
@@ -129,6 +164,7 @@ export default function DevOpsPage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "DevOps",
@@ -139,6 +175,7 @@ export default function DevOpsPage() {
           },
           {
             type: "tech-grid",
+            variant: "scroll",
             header: {
               badge: "Technologies",
               title: "Modern",

@@ -181,7 +181,7 @@ const TeamPage = () => (
       />
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Leadership" title="Our" highlight="Leadership Team" description="Experienced leaders who drive innovation, strategy, and excellence across all aspects of our organization." />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
             {leadershipTeam.map((member, i) => (
@@ -192,7 +192,7 @@ const TeamPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Development" title="Technical" highlight="Experts" description="Our certified developers specialize in modern technologies and deliver cutting-edge solutions." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {developmentTeam.map((member, i) => (
@@ -203,7 +203,7 @@ const TeamPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Specialized" title="Domain" highlight="Specialists" description="Our specialized teams bring deep expertise in AI, DevOps, QA, and other critical areas." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {specializedTeam.map((member, i) => (
@@ -214,7 +214,7 @@ const TeamPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Culture" title="Company" highlight="Culture" description="We believe in fostering a positive, inclusive, and growth-oriented work environment." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {companyCulture.map((item, i) => (
@@ -236,7 +236,7 @@ const TeamPage = () => (
       </section>
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader badge="Benefits" title="Working" highlight="With Us" description="We offer competitive benefits and a supportive environment for professional growth." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {teamBenefits.map((benefit, i) => (
@@ -258,7 +258,7 @@ const TeamPage = () => (
       </section>
 
       <section className="py-16 sm:py-20">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.5 }}

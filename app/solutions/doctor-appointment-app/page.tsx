@@ -1,10 +1,8 @@
+"use client";
 
-;
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
-import FooterSection from "@/components/FooterSection";
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Stethoscope,
   Users,
@@ -15,11 +13,11 @@ import {
   Code,
   Database,
   Cloud,
-  Smartphone as MobileIcon,
-  Globe as WebIcon,
+  Smartphone,
+  Globe,
   Server,
   Calendar,
-  CheckCircle,
+  CheckCircle2,
   Heart,
   Activity,
   Microscope,
@@ -35,706 +33,629 @@ import {
   Star,
   Lock,
 } from "lucide-react";
-import Link from "next/link";
 
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  gradient: string;
-}
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
+import {
+  PageShell,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
 
-interface TechStackProps {
-  icon: React.ReactNode;
-  name: string;
-  description: string;
-}
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, gradient }) => {
-  return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
-      {/* Background Pattern */}
-      <div className="absolute top-0 right-0 w-24 h-24 opacity-5">
-        <div className={`w-full h-full ${gradient} rounded-full blur-2xl`}></div>
-      </div>
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
 
-      {/* Icon Container */}
-      <div className="relative z-10">
-        <div
-          className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl ${gradient} text-white mb-6 shadow-lg border-2 border-white/20`}
-        >
-          {icon ? (
-            <div className="text-white">{icon}</div>
-          ) : (
-            <Stethoscope className="w-8 h-8 text-white" />
-          )}
-        </div>
+const featurePills = ["AI Scheduling", "Telemedicine", "HIPAA Secure", "24/7 Access"];
 
-        {/* Title */}
-        <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{title}</h3>
+const stats = [
+  { number: "1000+", label: "Verified Doctors" },
+  { number: "50K+", label: "Happy Patients" },
+  { number: "25+", label: "Medical Specialties" },
+  { number: "4.9★", label: "Average Rating" },
+];
 
-        {/* Description */}
-        <p className="text-gray-600 leading-relaxed text-base">{description}</p>
-      </div>
+const features = [
+  {
+    icon: Calendar,
+    title: "Smart Appointment Booking",
+    description:
+      "Intelligent scheduling system with real-time availability, automated reminders, and conflict detection.",
+    span: "md:col-span-2",
+  },
+  {
+    icon: UserCheck,
+    title: "Doctor Verification",
+    description:
+      "Comprehensive verification system including medical licenses, certifications, and background checks.",
+    span: "",
+  },
+  {
+    icon: Video,
+    title: "Telemedicine Integration",
+    description:
+      "Built-in video consultation platform with screen sharing, file sharing, and secure communication.",
+    span: "",
+  },
+  {
+    icon: FileText,
+    title: "Digital Health Records",
+    description:
+      "Secure patient records management with HIPAA compliance and easy access for authorized personnel.",
+    span: "",
+  },
+  {
+    icon: Bell,
+    title: "Smart Notifications",
+    description:
+      "Automated reminders for appointments, medication schedules, and follow-up consultations.",
+    span: "",
+  },
+  {
+    icon: Star,
+    title: "Patient Reviews",
+    description:
+      "Comprehensive rating system for doctors and clinics to help patients make informed decisions.",
+    span: "",
+  },
+  {
+    icon: Shield,
+    title: "HIPAA Compliance",
+    description:
+      "End-to-end encryption and security measures to ensure patient data protection and privacy.",
+    span: "",
+  },
+  {
+    icon: Activity,
+    title: "Health Analytics",
+    description:
+      "Advanced analytics dashboard for healthcare providers to track patient outcomes and practice efficiency.",
+    span: "md:col-span-2",
+  },
+];
 
-      {/* Corner Decoration */}
-      <div className="absolute top-4 right-4 w-3 h-3 bg-gradient-to-r from-emerald-200 to-teal-200 rounded-full opacity-60"></div>
-    </div>
-  );
+const benefits = [
+  {
+    icon: Users,
+    title: "For Patients",
+    items: [
+      "Easy appointment booking and management",
+      "Access to verified healthcare providers",
+      "Secure telemedicine consultations",
+      "Digital health records access",
+      "Automated appointment reminders",
+      "Transparent pricing and reviews",
+    ],
+  },
+  {
+    icon: Stethoscope,
+    title: "For Doctors",
+    items: [
+      "Streamlined patient management",
+      "Digital health records integration",
+      "Telemedicine consultation tools",
+      "Automated scheduling system",
+      "Patient communication platform",
+      "Practice analytics and insights",
+    ],
+  },
+  {
+    icon: Heart,
+    title: "For Healthcare",
+    items: [
+      "Improved patient outcomes",
+      "Reduced administrative burden",
+      "Better resource utilization",
+      "Enhanced patient engagement",
+      "Compliance and security",
+      "Data-driven insights",
+    ],
+  },
+];
+
+const specialties = [
+  { name: "Cardiology", icon: Heart },
+  { name: "Dermatology", icon: Activity },
+  { name: "Neurology", icon: Brain },
+  { name: "Pediatrics", icon: Baby },
+  { name: "Ophthalmology", icon: Eye },
+  { name: "Dentistry", icon: Activity },
+  { name: "Orthopedics", icon: Bone },
+  { name: "Psychiatry", icon: Brain },
+  { name: "Gynecology", icon: Heart },
+  { name: "Oncology", icon: Microscope },
+  { name: "Emergency Medicine", icon: Syringe },
+  { name: "General Practice", icon: Stethoscope },
+];
+
+const techStack = [
+  { icon: Smartphone, name: "React Native", description: "Cross-platform mobile development for iOS and Android" },
+  { icon: Globe, name: "Next.js", description: "Modern web framework for admin dashboard and web app" },
+  { icon: Server, name: "Node.js", description: "Scalable backend server with Express.js framework" },
+  { icon: Database, name: "PostgreSQL", description: "Reliable relational database for healthcare data" },
+  { icon: Cloud, name: "AWS", description: "HIPAA-compliant cloud infrastructure" },
+  { icon: Zap, name: "WebRTC", description: "Real-time video communication for telemedicine" },
+];
+
+const securityFeatures = [
+  { icon: Lock, title: "End-to-End Encryption", desc: "All data encrypted in transit and at rest" },
+  { icon: Shield, title: "HIPAA Compliance", desc: "Full compliance with healthcare regulations" },
+  { icon: UserCheck, title: "Access Control", desc: "Role-based permissions and authentication" },
+  { icon: Activity, title: "Audit Trails", desc: "Complete audit logs for compliance" },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Doctor Appointment App Development Services",
+      description:
+        "Custom doctor appointment app solutions: patient booking, telemedicine, scheduling, secure EMR integration, and real-time notifications.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "Doctor Appointment App Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: "https://www.ctasis.com/solutions" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Doctor Appointment App",
+          item: "https://www.ctasis.com/solutions/doctor-appointment-app",
+        },
+      ],
+    },
+  ],
 };
 
-const TechStack: React.FC<TechStackProps> = ({ icon, name, description }) => {
-  return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100">
-      {/* Background Pattern */}
-      <div className="absolute top-0 right-0 w-20 h-20 opacity-5">
-        <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-400 rounded-full blur-2xl"></div>
-      </div>
-
-      {/* Icon Container */}
-      <div className="relative z-10">
-        <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg border-2 border-white/20">
-          <div className="text-white text-2xl">
-            {icon || <Code className="w-8 h-8 text-white" />}
+const HealthcareBookingMockup = () => (
+  <div className="relative mx-auto max-w-md hidden lg:block">
+    <div className="relative rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-200/80 bg-[#F6F8FA] overflow-hidden">
+      <div className="text-center mb-5">
+        <div className="relative inline-block">
+          <div
+            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto shadow-lg"
+            style={{ backgroundImage: `linear-gradient(135deg, ${NAVY}, #0E2233)` }}
+          >
+            <Activity className="w-7 h-7 text-white" />
+          </div>
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-white" />
+        </div>
+        <div className="mt-3">
+          <div className={`${fraunces.className} text-lg font-medium text-slate-900`}>
+            Healthcare Booking System
+          </div>
+          <div className="text-sm text-slate-500">Smart Appointment Management</div>
+          <div className="flex items-center justify-center gap-3 mt-2 text-xs">
+            <span className="flex items-center gap-1 text-emerald-600">
+              <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" /> Live
+            </span>
+            <span className="flex items-center gap-1" style={{ color: CYAN }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: CYAN }} /> Secure
+            </span>
+            <span className="flex items-center gap-1 text-violet-600">
+              <span className="w-1.5 h-1.5 bg-violet-400 rounded-full" /> HIPAA
+            </span>
           </div>
         </div>
+      </div>
 
-        {/* Name */}
-        <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">{name}</h3>
+      <div className="grid grid-cols-2 gap-2.5 mb-4">
+        <div className="rounded-xl p-3 border border-emerald-200 bg-emerald-50/60">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-emerald-700 text-[10px] font-bold">Book Appointment</span>
+            <Calendar className="w-3.5 h-3.5 text-emerald-600" />
+          </div>
+          <div className="text-emerald-800 text-sm font-bold">Quick Book</div>
+          <div className="text-emerald-600 text-[10px]">Find available slots</div>
+          <div className="text-emerald-500 text-[10px] mt-0.5">12 slots today</div>
+        </div>
+        <div className="rounded-xl p-3 border border-blue-200 bg-blue-50/60">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-blue-700 text-[10px] font-bold">Video Consult</span>
+            <Video className="w-3.5 h-3.5 text-blue-600" />
+          </div>
+          <div className="text-blue-800 text-sm font-bold">Telemedicine</div>
+          <div className="text-blue-600 text-[10px]">Connect instantly</div>
+          <div className="text-blue-500 text-[10px] mt-0.5">8 doctors online</div>
+        </div>
+      </div>
 
-        {/* Description */}
-        <p className="text-gray-600 text-sm text-center leading-relaxed">{description}</p>
+      <div className="rounded-xl p-3.5 mb-4 border border-slate-200 bg-white">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-semibold text-slate-900 text-sm">Patient Dashboard</span>
+          <span className="text-slate-400 text-[10px]">Welcome back, John</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2 mb-3 text-center">
+          <div>
+            <div className="text-base font-bold" style={{ color: NAVY }}>3</div>
+            <div className="text-[10px] text-slate-500">Upcoming</div>
+          </div>
+          <div>
+            <div className="text-base font-bold text-emerald-600">12</div>
+            <div className="text-[10px] text-slate-500">Completed</div>
+          </div>
+          <div>
+            <div className="text-base font-bold text-violet-600">4.9★</div>
+            <div className="text-[10px] text-slate-500">Rating</div>
+          </div>
+        </div>
+        <div className="rounded-lg p-2.5 border border-slate-200 bg-[#F6F8FA]">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <div className="text-slate-800 font-semibold text-[10px]">Next Appointment</div>
+              <div className="text-slate-500 text-[10px]">Dr. Sarah Johnson - Cardiology</div>
+            </div>
+            <div className="text-right flex-shrink-0">
+              <div className="text-slate-800 font-bold text-[10px]">Dec 15, 2:00 PM</div>
+              <div className="text-slate-400 text-[10px]">In 2 days</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2">
+        {[
+          { label: "Book Now", icon: Calendar },
+          { label: "Consult", icon: Video },
+          { label: "Records", icon: FileText },
+        ].map((action) => (
+          <span
+            key={action.label}
+            className="flex items-center justify-center gap-1 py-2 rounded-lg text-[10px] font-bold text-white"
+            style={{ backgroundColor: NAVY }}
+          >
+            <action.icon className="w-3 h-3" />
+            {action.label}
+          </span>
+        ))}
+      </div>
+
+      <div className="absolute top-3 right-3 rounded-lg p-2 border border-slate-200 bg-white/95 text-center">
+        <div className="text-slate-500 text-[10px]">Emergency</div>
+        <div className="text-red-600 font-bold text-sm">24/7</div>
+        <div className="text-slate-500 text-[10px]">Available</div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 const DoctorAppointmentAppPage = () => {
-  const features = [
-    {
-      icon: <Calendar className="w-8 h-8" />,
-      title: "Smart Appointment Booking",
-      description:
-        "Intelligent scheduling system with real-time availability, automated reminders, and conflict detection.",
-      gradient: "bg-gradient-to-br from-emerald-500 to-teal-500",
-    },
-    {
-      icon: <UserCheck className="w-8 h-8" />,
-      title: "Doctor Verification",
-      description:
-        "Comprehensive verification system including medical licenses, certifications, and background checks.",
-      gradient: "bg-gradient-to-br from-blue-500 to-indigo-500",
-    },
-    {
-      icon: <Video className="w-8 h-8" />,
-      title: "Telemedicine Integration",
-      description:
-        "Built-in video consultation platform with screen sharing, file sharing, and secure communication.",
-      gradient: "bg-gradient-to-br from-purple-500 to-pink-500",
-    },
-    {
-      icon: <FileText className="w-8 h-8" />,
-      title: "Digital Health Records",
-      description:
-        "Secure patient records management with HIPAA compliance and easy access for authorized personnel.",
-      gradient: "bg-gradient-to-br from-cyan-500 to-blue-500",
-    },
-    {
-      icon: <Bell className="w-8 h-8" />,
-      title: "Smart Notifications",
-      description:
-        "Automated reminders for appointments, medication schedules, and follow-up consultations.",
-      gradient: "bg-gradient-to-br from-orange-500 to-red-500",
-    },
-    {
-      icon: <Star className="w-8 h-8" />,
-      title: "Patient Reviews",
-      description:
-        "Comprehensive rating system for doctors and clinics to help patients make informed decisions.",
-      gradient: "bg-gradient-to-br from-yellow-500 to-orange-500",
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "HIPAA Compliance",
-      description:
-        "End-to-end encryption and security measures to ensure patient data protection and privacy.",
-      gradient: "bg-gradient-to-br from-green-500 to-emerald-500",
-    },
-    {
-      icon: <Activity className="w-8 h-8" />,
-      title: "Health Analytics",
-      description:
-        "Advanced analytics dashboard for healthcare providers to track patient outcomes and practice efficiency.",
-      gradient: "bg-gradient-to-br from-indigo-500 to-purple-500",
-    },
-  ];
-
-  const techStack = [
-    {
-      icon: <MobileIcon className="w-8 h-8" />,
-      name: "React Native",
-      description: "Cross-platform mobile development for iOS and Android",
-    },
-    {
-      icon: <WebIcon className="w-8 h-8" />,
-      name: "Next.js",
-      description: "Modern web framework for admin dashboard and web app",
-    },
-    {
-      icon: <Server className="w-8 h-8" />,
-      name: "Node.js",
-      description: "Scalable backend server with Express.js framework",
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      name: "PostgreSQL",
-      description: "Reliable relational database for healthcare data",
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      name: "AWS",
-      description: "HIPAA-compliant cloud infrastructure",
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      name: "WebRTC",
-      description: "Real-time video communication for telemedicine",
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "For Patients",
-      items: [
-        "Easy appointment booking and management",
-        "Access to verified healthcare providers",
-        "Secure telemedicine consultations",
-        "Digital health records access",
-        "Automated appointment reminders",
-        "Transparent pricing and reviews",
-      ],
-    },
-    {
-      icon: <Stethoscope className="w-6 h-6" />,
-      title: "For Doctors",
-      items: [
-        "Streamlined patient management",
-        "Digital health records integration",
-        "Telemedicine consultation tools",
-        "Automated scheduling system",
-        "Patient communication platform",
-        "Practice analytics and insights",
-      ],
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      title: "For Healthcare",
-      items: [
-        "Improved patient outcomes",
-        "Reduced administrative burden",
-        "Better resource utilization",
-        "Enhanced patient engagement",
-        "Compliance and security",
-        "Data-driven insights",
-      ],
-    },
-  ];
-
-  const specialties = [
-    { name: "Cardiology", icon: <Heart className="w-6 h-6" /> },
-    { name: "Dermatology", icon: <Activity className="w-6 h-6" /> },
-    { name: "Neurology", icon: <Brain className="w-6 h-6" /> },
-    { name: "Pediatrics", icon: <Baby className="w-6 h-6" /> },
-    { name: "Ophthalmology", icon: <Eye className="w-6 h-6" /> },
-    { name: "Dentistry", icon: <Activity className="w-6 h-6" /> },
-    { name: "Orthopedics", icon: <Bone className="w-6 h-6" /> },
-    { name: "Psychiatry", icon: <Brain className="w-6 h-6" /> },
-    { name: "Gynecology", icon: <Heart className="w-6 h-6" /> },
-    { name: "Oncology", icon: <Microscope className="w-6 h-6" /> },
-    { name: "Emergency Medicine", icon: <Syringe className="w-6 h-6" /> },
-    { name: "General Practice", icon: <Stethoscope className="w-6 h-6" /> },
-  ];
+  const [activeBenefit, setActiveBenefit] = useState(0);
+  const currentBenefit = benefits[activeBenefit];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navigation />
-
-      {/* Hero Section */}
-      <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden py-10">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10"></div>
-        </div>
-
-        {/* Floating Medical Icons */}
-        <div className="absolute top-20 left-20 text-purple-400/20 animate-float">
-          <Stethoscope className="w-16 h-16" />
-        </div>
-        <div className="absolute top-40 right-32 text-blue-400/20 animate-float-delayed">
-          <Heart className="w-12 h-12" />
-        </div>
-        <div className="absolute bottom-32 left-32 text-emerald-400/20 animate-float">
-          <Activity className="w-14 h-14" />
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-10 flex items-center min-h-screen px-6 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto w-full">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Left Content */}
-              <div className="text-center lg:text-left">
-                {/* Animated Badge */}
-                <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm rounded-full border border-purple-400/30 mb-8 animate-pulse">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 animate-ping"></div>
-                  <span className="text-purple-200 text-sm font-medium">Healthcare Innovation</span>
+      <main id="main-content">
+        {/* Split hero with healthcare booking mockup */}
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="Doctor Appointment App Development"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                  <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: CYAN_LIGHT }} />
+                  Healthcare Innovation
                 </div>
-
-                {/* Main Title */}
-                <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-8 leading-none">
-                  <span className="block text-white mb-2">Doctor</span>
-                  <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                  <span className="block">Doctor</span>
+                  <span className="italic" style={{ color: CYAN_LIGHT }}>
                     Appointment
                   </span>
-                  <span className="block text-white text-4xl sm:text-5xl lg:text-6xl mt-4">
-                    Platform
-                  </span>
+                  <span className="block text-2xl sm:text-3xl lg:text-4xl mt-2 text-[#F2F6F9]">Platform</span>
                 </h1>
-
-                {/* Description */}
-                <p className="text-xl sm:text-2xl mb-10 text-gray-300 leading-relaxed max-w-2xl lg:max-w-none">
-                  Next-generation healthcare booking system with AI-powered scheduling,
-                  <span className="text-purple-300 font-semibold"> telemedicine integration</span>,
-                  and advanced patient management.
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-6 max-w-xl">
+                  Next-generation healthcare booking system with AI-powered scheduling,{" "}
+                  <span className="font-semibold text-[#C7D2D9]">telemedicine integration</span>, and advanced patient
+                  management.
                 </p>
-
-                {/* Feature Pills */}
-                <div className="flex flex-wrap gap-3 mb-12 justify-center lg:justify-start">
-                  {[
-                    {
-                      text: "AI Scheduling",
-                      color: "from-purple-500 to-purple-600",
-                    },
-                    {
-                      text: "Telemedicine",
-                      color: "from-blue-500 to-blue-600",
-                    },
-                    {
-                      text: "HIPAA Secure",
-                      color: "from-emerald-500 to-emerald-600",
-                    },
-                    { text: "24/7 Access", color: "from-pink-500 to-pink-600" },
-                  ].map((pill, index) => (
-                    <div
-                      key={index}
-                      className={`px-4 py-2 bg-gradient-to-r ${pill.color} rounded-full text-white text-sm font-semibold shadow-lg hover:scale-105 transition-transform duration-200`}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {featurePills.map((pill) => (
+                    <span
+                      key={pill}
+                      className="px-3 py-1.5 rounded-full text-xs font-semibold text-white border border-white/15 bg-white/[0.08]"
                     >
-                      {pill.text}
-                    </div>
+                      {pill}
+                    </span>
                   ))}
                 </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                  <Link href="/portfolios">
-                    <Button className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-10 py-5 text-lg font-bold rounded-2xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-1">
-                      <span className="relative z-10 flex items-center">
-                        <Play className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" />
-                        view Portfolios
-                      </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                    </Button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/portfolios"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
+                  >
+                    <Play className="w-4 h-4" />
+                    view Portfolios
                   </Link>
-                  <Link href="/contact-us">
-                    <Button
-                      variant="outline"
-                      className="border-2 border-purple-400/50 text-purple-200 hover:bg-purple-400 hover:text-slate-900 px-10 py-5 text-lg font-bold rounded-2xl backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/25"
-                    >
-                      <span className="flex items-center">
-                        Get Free Quote
-                        <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </Button>
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
+                  >
+                    Get Free Quote
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
-              </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+              >
+                <HealthcareBookingMockup />
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
-              {/* Right - Healthcare Booking System Interface */}
-              <div className="relative hidden lg:block">
-                <div className="relative">
-                  {/* Main Healthcare Booking Container */}
-                  <div className="relative mx-auto w-[450px] h-[650px] bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl p-6 shadow-2xl border border-blue-200 overflow-hidden">
-                    {/* Healthcare System Header */}
-                    <div className="text-center mb-6">
-                      <div className="relative inline-block">
-                        <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-lg">
-                          <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
-                            <Activity className="w-6 h-6 text-white" />
-                          </div>
-                        </div>
-                        <div className="absolute -top-2 -right-2 w-5 h-5 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
-                        <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-blue-400 rounded-full animate-bounce delay-500"></div>
-                      </div>
-                      <div className="mt-4">
-                        <div className="text-blue-800 font-bold text-xl mb-2">
-                          Healthcare Booking System
-                        </div>
-                        <div className="text-blue-600 text-sm font-medium">
-                          Smart Appointment Management
-                        </div>
-                        <div className="flex items-center justify-center mt-2 space-x-3">
-                          <div className="flex items-center space-x-1">
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                            <span className="text-green-600 text-xs font-medium">Live</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
-                            <span className="text-blue-600 text-xs font-medium">Secure</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-600"></div>
-                            <span className="text-purple-600 text-xs font-medium">HIPAA</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Quick Access Dashboard */}
-                    <div className="grid grid-cols-2 gap-3 mb-5">
-                      <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-3 border border-emerald-200 hover:scale-105 transition-transform cursor-pointer group">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="text-emerald-700 text-xs font-bold">Book Appointment</div>
-                          <Calendar className="w-4 h-4 text-emerald-600 group-hover:animate-bounce" />
-                        </div>
-                        <div className="text-emerald-800 text-sm font-bold mb-1">Quick Book</div>
-                        <div className="text-emerald-600 text-xs">Find available slots</div>
-                        <div className="mt-1 text-emerald-500 text-xs">12 slots today</div>
-                      </div>
-
-                      <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl p-3 border border-blue-200 hover:scale-105 transition-transform cursor-pointer group">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="text-blue-700 text-xs font-bold">Video Consult</div>
-                          <Video className="w-4 h-4 text-blue-600 group-hover:animate-bounce" />
-                        </div>
-                        <div className="text-blue-800 text-sm font-bold mb-1">Telemedicine</div>
-                        <div className="text-blue-600 text-xs">Connect instantly</div>
-                        <div className="mt-1 text-blue-500 text-xs">8 doctors online</div>
-                      </div>
-                    </div>
-
-                    {/* Patient Dashboard */}
-                    <div className="bg-white rounded-xl p-4 mb-5 border border-blue-100 shadow-sm">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="text-blue-800 font-bold text-base">Patient Dashboard</div>
-                        <div className="text-blue-500 text-xs">Welcome back, John</div>
-                      </div>
-
-                      <div className="grid grid-cols-3 gap-3 mb-3">
-                        <div className="text-center">
-                          <div className="text-blue-600 text-lg font-bold mb-1">3</div>
-                          <div className="text-blue-500 text-xs">Upcoming</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-emerald-600 text-lg font-bold mb-1">12</div>
-                          <div className="text-emerald-500 text-xs">Completed</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-purple-600 text-lg font-bold mb-1">4.9★</div>
-                          <div className="text-purple-500 text-xs">Rating</div>
-                        </div>
-                      </div>
-
-                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 border border-blue-200">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <div className="text-blue-800 font-semibold text-xs">
-                              Next Appointment
-                            </div>
-                            <div className="text-blue-600 text-xs">
-                              Dr. Sarah Johnson - Cardiology
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-blue-800 font-bold text-xs">Dec 15, 2:00 PM</div>
-                            <div className="text-blue-500 text-xs">In 2 days</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="grid grid-cols-3 gap-2">
-                      <Button className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-3 py-2 rounded-lg text-xs font-bold hover:from-emerald-600 hover:to-teal-700 transition-all shadow-lg">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="w-3 h-3" />
-                          <span>Book Now</span>
-                        </div>
-                      </Button>
-                      <Button className="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-3 py-2 rounded-lg text-xs font-bold hover:from-blue-600 hover:to-cyan-700 transition-all shadow-lg">
-                        <div className="flex items-center space-x-1">
-                          <Video className="w-3 h-3" />
-                          <span>Consult</span>
-                        </div>
-                      </Button>
-                      <Button className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-3 py-2 rounded-lg text-xs font-bold hover:from-purple-600 hover:to-pink-700 transition-all shadow-lg">
-                        <div className="flex items-center space-x-1">
-                          <FileText className="w-3 h-3" />
-                          <span>Records</span>
-                        </div>
-                      </Button>
-                    </div>
-
-                    {/* Healthcare Indicators */}
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg p-2 border border-blue-200">
-                      <div className="text-center">
-                        <div className="text-blue-600 text-xs font-medium">Emergency</div>
-                        <div className="text-red-600 font-bold text-sm">24/7</div>
-                        <div className="text-blue-600 text-xs">Available</div>
-                      </div>
-                    </div>
-
-                    {/* Floating Healthcare Elements */}
-                    <div className="absolute top-6 left-6 w-12 h-12 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-full blur-lg animate-float"></div>
-                    <div className="absolute bottom-6 right-6 w-8 h-8 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-lg animate-float-delayed"></div>
-                    <div className="absolute top-1/2 -right-3 w-6 h-6 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-full blur-md animate-pulse"></div>
-                    <div className="absolute bottom-1/2 -left-3 w-8 h-8 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-md animate-pulse delay-1000"></div>
-
-                    {/* Healthcare Status Bar */}
-                    <div className="absolute bottom-3 left-3 flex items-center space-x-2">
-                      <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-                        <span className="text-green-600 text-xs font-medium">Live</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse delay-300"></div>
-                        <span className="text-blue-600 text-xs font-medium">Secure</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <div className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse delay-600"></div>
-                        <span className="text-purple-600 text-xs font-medium">HIPAA</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Background Healthcare Effects */}
-                  <div className="absolute -top-12 -left-12 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute -bottom-12 -right-12 w-28 h-28 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                  <div className="absolute top-1/2 -left-8 w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-full blur-2xl animate-float"></div>
-                  <div className="absolute bottom-1/2 -right-8 w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-2xl animate-float-delayed"></div>
+        {/* Stats — animated counter grid */}
+        <SectionWrap>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" role="list" aria-label="Healthcare platform statistics">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="text-center rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 hover:shadow-md transition-shadow"
+                role="listitem"
+              >
+                <div className={`${fraunces.className} text-3xl sm:text-4xl font-medium mb-2`} style={{ color: NAVY }}>
+                  {stat.number.match(/^[\d.]+/) ? <AnimatedStat value={stat.number} /> : stat.number}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-emerald-600">1000+</div>
-              <div className="text-gray-600">Verified Doctors</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-emerald-600">50K+</div>
-              <div className="text-gray-600">Happy Patients</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-emerald-600">25+</div>
-              <div className="text-gray-600">Medical Specialties</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-emerald-600">4.9★</div>
-              <div className="text-gray-600">Average Rating</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Advanced Features for Healthcare
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive platform provides everything needed for modern healthcare management
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} />
+                <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Benefits Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Benefits for All Healthcare Stakeholders
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our platform creates value for patients, doctors, and healthcare systems
-            </p>
+        {/* Features — bento grid */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Features"
+            title="Advanced Features for"
+            highlight="Healthcare"
+            description="Our comprehensive platform provides everything needed for modern healthcare management"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {features.map((feature, i) => (
+              <motion.article
+                key={feature.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.04 }}
+                className={`rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-7 hover:shadow-lg transition-shadow ${feature.span}`}
+              >
+                <IconBox icon={feature.icon} />
+                <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-2`}>
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
+              </motion.article>
+            ))}
           </div>
+        </SectionWrap>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="p-8 text-center hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  {benefit.icon}
+        {/* Benefits — tabbed sidebar */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Benefits"
+            title="Benefits for All Healthcare"
+            highlight="Stakeholders"
+            description="Our platform creates value for patients, doctors, and healthcare systems"
+          />
+          <div className="grid lg:grid-cols-[minmax(0,220px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Stakeholder benefits">
+              {benefits.map((benefit, bi) => (
+                <button
+                  key={benefit.title}
+                  type="button"
+                  onClick={() => setActiveBenefit(bi)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeBenefit === bi
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeBenefit === bi ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeBenefit === bi ? "true" : undefined}
+                >
+                  {benefit.title}
+                </button>
+              ))}
+            </nav>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentBenefit.title}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: `${CYAN}18` }}
+                  >
+                    <currentBenefit.icon className="w-6 h-6" style={{ color: NAVY }} />
+                  </div>
+                  <h3 className={`${fraunces.className} text-xl font-medium text-slate-900`}>
+                    {currentBenefit.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
-                <ul className="space-y-3 text-left">
-                  {benefit.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">{item}</span>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {currentBenefit.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
+                      {item}
                     </li>
                   ))}
                 </ul>
-              </Card>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Medical Specialties */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Comprehensive Medical Specialties
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Covering all major medical fields and specialties
-            </p>
+        {/* Specialties — horizontal scroll */}
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Specialties"
+            title="Comprehensive Medical"
+            highlight="Specialties"
+            description="Covering all major medical fields and specialties"
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {specialties.map((specialty, i) => (
+                <motion.div
+                  key={specialty.name}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: i * 0.03 }}
+                  className="flex-shrink-0 w-[200px] sm:w-[220px] snap-start rounded-[1.25rem] border border-slate-200/80 bg-white p-5 hover:shadow-md transition-shadow border-l-4"
+                  style={{ borderLeftColor: CYAN }}
+                >
+                  <specialty.icon className="w-6 h-6 mb-3" style={{ color: CYAN }} />
+                  <span className="font-semibold text-slate-800 text-sm">{specialty.name}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
+        </SectionWrap>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {specialties.map((specialty, index) => (
-              <Card
-                key={index}
-                className="p-6 hover:shadow-lg transition-shadow border-l-4 border-l-emerald-500"
+        {/* Tech stack — 3-column grid */}
+        <SectionWrap>
+          <SectionHeader
+            badge="Technology"
+            title="HIPAA-Compliant"
+            highlight="Technology Stack"
+            description="Built with security-first technologies for healthcare applications"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {techStack.map((tech, i) => (
+              <motion.div
+                key={tech.name}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 text-center hover:shadow-md transition-shadow"
               >
-                <div className="flex items-center">
-                  <div className="text-emerald-500 mr-3">{specialty.icon}</div>
-                  <span className="font-semibold text-gray-800">{specialty.name}</span>
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: `${CYAN}18` }}
+                >
+                  <tech.icon className="w-6 h-6" style={{ color: NAVY }} />
                 </div>
-              </Card>
+                <h3 className="text-base font-semibold text-slate-900 mb-2">{tech.name}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{tech.description}</p>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+          <motion.p {...fadeUp} className="mt-8 text-center text-sm text-slate-600">
+            <Stethoscope className="w-4 h-4 inline mr-1.5" style={{ color: CYAN }} />
+            See our{" "}
+            <Link href="/industries/healthcare" className="font-semibold hover:underline" style={{ color: NAVY }}>
+              healthcare industry
+            </Link>{" "}
+            and{" "}
+            <Link href="/services/custom-software" className="font-semibold hover:underline" style={{ color: NAVY }}>
+              custom software
+            </Link>{" "}
+            solutions
+          </motion.p>
+        </SectionWrap>
 
-      {/* Tech Stack Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              HIPAA-Compliant Technology Stack
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Built with security-first technologies for healthcare applications
-            </p>
+        {/* Security — split with compliance checklist */}
+        <SectionWrap alt>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
+              <SectionHeader
+                badge="Security"
+                title="Enterprise-Grade"
+                highlight="Security"
+                description="HIPAA-compliant security measures to protect patient data"
+                align="left"
+              />
+            </motion.div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {securityFeatures.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.06 }}
+                  className="rounded-[1.25rem] border border-slate-200/80 bg-white p-5 hover:shadow-md transition-shadow"
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                    style={{ backgroundColor: `${CYAN}18` }}
+                  >
+                    <item.icon className="w-5 h-5" style={{ color: NAVY }} />
+                  </div>
+                  <h3 className="text-sm font-semibold text-slate-900 mb-1">{item.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
+        </SectionWrap>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {techStack.map((tech, index) => (
-              <TechStack key={index} {...tech} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Security Features */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Enterprise-Grade Security
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              HIPAA-compliant security measures to protect patient data
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: <Lock className="w-8 h-8" />,
-                title: "End-to-End Encryption",
-                desc: "All data encrypted in transit and at rest",
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: "HIPAA Compliance",
-                desc: "Full compliance with healthcare regulations",
-              },
-              {
-                icon: <UserCheck className="w-8 h-8" />,
-                title: "Access Control",
-                desc: "Role-based permissions and authentication",
-              },
-              {
-                icon: <Activity className="w-8 h-8" />,
-                title: "Audit Trails",
-                desc: "Complete audit logs for compliance",
-              },
-            ].map((security, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-white">{security.icon}</div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{security.title}</h3>
-                <p className="text-gray-600 text-sm">{security.desc}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-green-600 to-blue-700 text-white py-16 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Transform Healthcare Access?
-          </h2>
-          <p className="text-lg sm:text-xl opacity-90 mb-8">
-            Join the healthcare revolution with a secure, efficient, and patient-friendly
-            appointment booking platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact-us">
-              <Button
-                size="lg"
-                className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg"
-              >
-                Start Free Consultation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/portfolios">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg"
-              >
-                View Portfolio
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
+        <PageCTA
+          title="Ready to Transform Healthcare Access?"
+          description="Join the healthcare revolution with a secure, efficient, and patient-friendly appointment booking platform."
+          primaryLabel={
+            <>
+              Start Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </>
+          }
+          primaryHref="/contact-us"
+          secondaryLabel="View Portfolio"
+          secondaryHref="/portfolios"
+        />
+      </main>
       <FooterSection />
-    </div>
+    </PageShell>
   );
 };
 

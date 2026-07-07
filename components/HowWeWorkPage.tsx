@@ -160,7 +160,7 @@ const HowWeWorkPage = () => (
       />
 
       <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader
             badge="Comprehensive Approach"
             title="Our"
@@ -180,7 +180,7 @@ const HowWeWorkPage = () => (
           key={section.title}
           className={`py-16 sm:py-20 ${si % 2 === 1 ? "bg-white" : "bg-[#F6F8FA]"}`}
         >
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <motion.div
                 {...fadeUp}
@@ -224,7 +224,7 @@ const HowWeWorkPage = () => (
       ))}
 
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <SectionHeader
             badge="Why Choose Us"
             title="Why Our"

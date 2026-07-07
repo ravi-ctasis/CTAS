@@ -171,11 +171,44 @@ const processSteps = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Amazon Services",
+      description:
+        "Ctas provides complete Amazon services including store setup, product listing, A+ content, Amazon SEO, PPC management, and brand growth solutions.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Amazon Services",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Amazon Services",
+          item: "https://www.ctasis.com/services/amazon-services",
+        },
+      ],
+    },
+  ],
+};
+
 export default function AmazonServicesPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Amazon Services",
+        structuredData,
         hero: {
           badge: "Premium Amazon Solutions",
           title: "Transform Your Amazon Business",
@@ -194,6 +227,7 @@ export default function AmazonServicesPage() {
         sections: [
           {
             type: "cards",
+            variant: "alternating",
             header: {
               badge: "Our Services",
               title: "Our Premium",
@@ -206,6 +240,7 @@ export default function AmazonServicesPage() {
           },
           {
             type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Why Choose Us",
               title: "Why Choose Our",
@@ -237,6 +272,7 @@ export default function AmazonServicesPage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Our 4-Step",

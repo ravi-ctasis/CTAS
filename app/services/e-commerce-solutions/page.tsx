@@ -332,11 +332,44 @@ const topicalGuideTabs = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "E-commerce Solutions",
+      description:
+        "End-to-end e-commerce development by Ctas: marketplaces, custom stores, payment integration, logistics, and workflow automation.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "E-commerce Development",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "E-commerce Solutions",
+          item: "https://www.ctasis.com/services/e-commerce-solutions",
+        },
+      ],
+    },
+  ],
+};
+
 export default function EcommerceSolutionsPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "E-commerce Solutions",
+        structuredData,
         hero: {
           badge: "E-commerce Solutions",
           title: "E-commerce",
@@ -355,6 +388,7 @@ export default function EcommerceSolutionsPage() {
         sections: [
           {
             type: "cards",
+            variant: "bento",
             header: {
               badge: "Solutions",
               title: "E-commerce",
@@ -367,6 +401,7 @@ export default function EcommerceSolutionsPage() {
           },
           {
             type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Amazon Expertise",
               title: "Premier",
@@ -424,7 +459,19 @@ export default function EcommerceSolutionsPage() {
             categories: integrations,
           },
           {
+            type: "tech-categories",
+            header: {
+              badge: "Technologies",
+              title: "E-commerce",
+              highlight: "Tech Stack",
+              description:
+                "We use cutting-edge e-commerce technologies organized by development layers to build robust and scalable online stores.",
+            },
+            categories: techCategories,
+          },
+          {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Development",
@@ -445,17 +492,6 @@ export default function EcommerceSolutionsPage() {
             },
             tabs: topicalGuideTabs,
             defaultTab: "platform-selection",
-          },
-          {
-            type: "tech-categories",
-            header: {
-              badge: "Technologies",
-              title: "E-commerce",
-              highlight: "Tech Stack",
-              description:
-                "We use cutting-edge e-commerce technologies organized by development layers to build robust and scalable online stores.",
-            },
-            categories: techCategories,
           },
         ],
         cta: {

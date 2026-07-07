@@ -1,10 +1,8 @@
+"use client";
 
-;
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import Navigation from "@/components/Navigation";
-import FooterSection from "@/components/FooterSection";
+import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Wallet,
   TrendingUp,
@@ -21,597 +19,638 @@ import {
   Code,
   Server,
   Network,
-  Smartphone as Mobile,
-  Monitor as Desktop,
-  Database as Storage,
-  Network as NetworkIcon,
   Star,
-  CheckCircle,
-  Code as Blockchain,
-  Server as Backend,
-  Cloud as CloudIcon,
+  CheckCircle2,
   ArrowRight,
+  Cloud,
 } from "lucide-react";
-import Link from "next/link";
+
+import Navigation from "@/components/Navigation";
+import FooterSection from "@/components/FooterSection";
+import {
+  PageShell,
+  PageCTA,
+  SectionHeader,
+  fadeUp,
+  fraunces,
+  NAVY,
+  CYAN,
+  CYAN_LIGHT,
+  AnimatedStat,
+} from "@/components/page-design";
+
+const SectionWrap = ({
+  children,
+  alt = false,
+}: {
+  children: React.ReactNode;
+  alt?: boolean;
+}) => (
+  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  </section>
+);
+
+const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
+  <div
+    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+    style={{ backgroundColor: `${CYAN}18` }}
+  >
+    <Icon className="w-5 h-5" style={{ color: NAVY }} />
+  </div>
+);
+
+const heroStats = [
+  { number: "$2.5B+", label: "Trading Volume" },
+  { number: "500K+", label: "Active Users" },
+  { number: "99.9%", label: "Uptime" },
+];
+
+const keyHighlights = [
+  {
+    icon: Wallet,
+    title: "Secure Wallet Integration",
+    description: "Multi-chain wallet support with advanced security features",
+  },
+  {
+    icon: TrendingUp,
+    title: "Real-time Trading",
+    description: "Instant buy/sell with real-time price updates and market data",
+  },
+  {
+    icon: BarChart3,
+    title: "Advanced Analytics",
+    description: "Comprehensive market analysis and portfolio tracking tools",
+  },
+  {
+    icon: Users,
+    title: "Community Features",
+    description: "Social trading, collections, and community engagement tools",
+  },
+  {
+    icon: Globe,
+    title: "Cross-Chain Support",
+    description: "Trade NFTs across multiple blockchain networks seamlessly",
+  },
+  {
+    icon: Zap,
+    title: "AI-Powered Discovery",
+    description: "Smart recommendations and trending NFT discovery",
+  },
+];
+
+const features = [
+  {
+    icon: Network,
+    title: "Multi-Chain Support",
+    description: "Trade NFTs across Ethereum, Polygon, BSC, and other networks",
+  },
+  {
+    icon: Code,
+    title: "Smart Contracts",
+    description: "Custom smart contracts for minting, trading, and royalties",
+  },
+  {
+    icon: BarChart3,
+    title: "Marketplace Analytics",
+    description: "Real-time market data, trends, and portfolio analytics",
+  },
+  {
+    icon: Palette,
+    title: "Creator Tools",
+    description: "Advanced tools for artists and creators to mint and sell",
+  },
+  {
+    icon: TrendingUp,
+    title: "Auction System",
+    description: "Dutch and English auction formats with bidding mechanisms",
+  },
+  {
+    icon: Zap,
+    title: "Gas Optimization",
+    description: "Optimized transactions to minimize gas fees and costs",
+  },
+  {
+    icon: Wallet,
+    title: "Royalty Management",
+    description: "Automatic royalty distribution to creators on secondary sales",
+  },
+  {
+    icon: Database,
+    title: "Collection Management",
+    description: "Organize and manage NFT collections with metadata",
+  },
+];
+
+const platforms = [
+  {
+    icon: Smartphone,
+    name: "iOS App",
+    description: "Native iOS app with Apple Pay integration",
+    features: ["Swift UI", "Core Data", "ARKit Support"],
+  },
+  {
+    icon: Smartphone,
+    name: "Android App",
+    description: "Android app with Google Pay integration",
+    features: ["Kotlin", "Jetpack Compose", "Material Design"],
+  },
+  {
+    icon: Monitor,
+    name: "Web Platform",
+    description: "Responsive web application with PWA support",
+    features: ["React.js", "Next.js", "Web3.js"],
+  },
+  {
+    icon: Tablet,
+    name: "Tablet App",
+    description: "Optimized tablet experience for larger screens",
+    features: ["Adaptive UI", "Touch Gestures", "Split View"],
+  },
+];
+
+const benefits = [
+  {
+    icon: TrendingUp,
+    title: "Revenue Optimization",
+    description: "Maximize profits with advanced trading features and analytics",
+  },
+  {
+    icon: Star,
+    title: "Exceptional User Experience",
+    description: "Intuitive interface designed for both beginners and experts",
+  },
+  {
+    icon: Server,
+    title: "Scalable Architecture",
+    description: "Built to handle millions of users and transactions",
+  },
+  {
+    icon: Shield,
+    title: "Enterprise Security",
+    description: "Bank-level security with multi-layer protection",
+  },
+  {
+    icon: Globe,
+    title: "Multi-Platform Support",
+    description: "Seamless experience across all devices and platforms",
+  },
+  {
+    icon: BarChart3,
+    title: "Advanced Analytics",
+    description: "Comprehensive insights and reporting tools",
+  },
+];
+
+const techStack = [
+  { icon: Smartphone, title: "React Native", description: "Cross-platform mobile apps", category: "Mobile" },
+  { icon: Smartphone, title: "Flutter", description: "Cross-platform mobile framework", category: "Mobile" },
+  { icon: Smartphone, title: "Swift", description: "Native iOS development", category: "Mobile" },
+  { icon: Smartphone, title: "Kotlin", description: "Native Android development", category: "Mobile" },
+  { icon: Monitor, title: "React.js", description: "Web application library", category: "Web" },
+  { icon: Monitor, title: "Next.js", description: "React framework for production", category: "Web" },
+  { icon: Monitor, title: "Vue.js", description: "Progressive web framework", category: "Web" },
+  { icon: Monitor, title: "Angular", description: "Enterprise web framework", category: "Web" },
+  { icon: Server, title: "Node.js", description: "JavaScript runtime for backend", category: "Backend" },
+  { icon: Server, title: "Python", description: "Backend and data processing", category: "Backend" },
+  { icon: Code, title: "Solidity", description: "Smart contract development", category: "Blockchain" },
+  { icon: Code, title: "Web3.js", description: "Ethereum JavaScript API", category: "Blockchain" },
+  { icon: Code, title: "Ethereum", description: "Primary blockchain network", category: "Blockchain" },
+  { icon: Code, title: "Polygon", description: "Layer 2 scaling solution", category: "Blockchain" },
+  { icon: Database, title: "IPFS", description: "Decentralized file storage", category: "Storage" },
+  { icon: Cloud, title: "AWS S3", description: "Cloud object storage", category: "Storage" },
+  { icon: Cloud, title: "Firebase", description: "Real-time database and auth", category: "Cloud" },
+  { icon: Database, title: "MongoDB", description: "NoSQL database for flexible data", category: "Database" },
+  { icon: Database, title: "PostgreSQL", description: "Relational database system", category: "Database" },
+  { icon: Server, title: "Docker", description: "Containerization platform", category: "DevOps" },
+  { icon: Server, title: "Kubernetes", description: "Container orchestration", category: "DevOps" },
+  { icon: Network, title: "GraphQL", description: "Flexible API query language", category: "API" },
+  { icon: Network, title: "REST API", description: "RESTful web services", category: "API" },
+];
+
+const techCategories = [
+  { id: "all", title: "All", items: [] as typeof techStack },
+  ...Array.from(new Set(techStack.map((t) => t.category))).map((cat) => ({
+    id: cat.toLowerCase().replace(/[^a-z]/g, "-"),
+    title: cat,
+    items: techStack.filter((t) => t.category === cat),
+  })),
+];
+
+techCategories[0].items = techStack;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "NFT Marketplace Development Services",
+      description:
+        "Secure and scalable NFT marketplace platforms: minting, wallets, auctions, smart contracts, and multi-chain support.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      areaServed: "Worldwide",
+      serviceType: "NFT Marketplace Development",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Solutions", item: "https://www.ctasis.com/solutions" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "NFT Marketplace",
+          item: "https://www.ctasis.com/solutions/nft-marketplace",
+        },
+      ],
+    },
+  ],
+};
+
+const NFTTraderProMockup = () => (
+  <div className="relative hidden sm:block">
+    <div className="rounded-[1.5rem] border border-slate-200/80 bg-white p-5 sm:p-6 shadow-xl">
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: CYAN }}>
+            <TrendingUp className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h3 className={`${fraunces.className} text-base font-medium text-slate-900`}>NFT Trader Pro</h3>
+            <p className="text-xs font-medium" style={{ color: CYAN }}>Live Trading</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+          <span className="text-emerald-600 text-xs font-medium">Online</span>
+        </div>
+      </div>
+
+      <div className="rounded-xl bg-[#F6F8FA] border border-slate-200/80 p-4 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-sm font-semibold text-slate-800">Price Chart</span>
+          <div className="flex gap-1">
+            {[...Array(3)].map((_, i) => (
+              <span key={i} className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+            ))}
+          </div>
+        </div>
+        <div className="h-24 rounded-lg bg-gradient-to-br from-slate-100 to-slate-50 p-2 mb-2 relative overflow-hidden">
+          <svg className="w-full h-full" viewBox="0 0 200 100" preserveAspectRatio="none">
+            <path
+              d="M0,80 L20,70 L40,60 L60,50 L80,40 L100,30 L120,35 L140,25 L160,20 L180,15 L200,10"
+              stroke={CYAN}
+              strokeWidth="2"
+              fill="none"
+            />
+          </svg>
+          <span className="absolute top-1 left-1 text-[9px] font-semibold text-emerald-600">2.8 ETH</span>
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9px] font-semibold text-emerald-600">2.5 ETH</span>
+          <span className="absolute bottom-1 right-1 text-[9px] font-semibold text-emerald-600">2.2 ETH</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-base text-emerald-600">2.5 ETH</span>
+            <span className="text-emerald-600 text-xs">+12.5%</span>
+            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+          </div>
+          <span className="text-slate-500 text-[10px]">24h Change</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        <div className="rounded-xl p-3 border border-slate-200/80" style={{ backgroundColor: `${CYAN}08` }}>
+          <div className="font-bold text-lg" style={{ color: NAVY }}>2.4K</div>
+          <div className="text-slate-500 text-[10px]">Floor Price</div>
+        </div>
+        <div className="rounded-xl p-3 border border-slate-200/80 bg-[#F6F8FA]">
+          <div className="font-bold text-lg" style={{ color: NAVY }}>156</div>
+          <div className="text-slate-500 text-[10px]">Owners</div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2">
+        {["Buy", "Sell", "Bid"].map((action) => (
+          <span
+            key={action}
+            className="text-center py-2 rounded-lg text-xs font-semibold text-white"
+            style={{ backgroundColor: action === "Sell" ? "#e11d48" : action === "Bid" ? NAVY : CYAN }}
+          >
+            {action}
+          </span>
+        ))}
+      </div>
+    </div>
+    <motion.div
+      {...fadeUp}
+      className="absolute -top-3 -right-3 rounded-xl border border-slate-200/80 bg-white p-2.5 shadow-lg hidden md:flex items-center gap-1.5"
+    >
+      <Wallet className="w-4 h-4" style={{ color: CYAN }} />
+      <span className="text-xs font-medium text-slate-700">Multi-Chain</span>
+    </motion.div>
+    <motion.div
+      {...fadeUp}
+      transition={{ delay: 0.1 }}
+      className="absolute -bottom-2 -left-2 rounded-xl px-3 py-2 shadow-lg text-white text-xs font-medium flex items-center gap-1.5"
+      style={{ backgroundColor: NAVY }}
+    >
+      <Shield className="w-3.5 h-3.5" />
+      Secure Trading
+    </motion.div>
+  </div>
+);
 
 export default function NFTMarketplace() {
-  const keyHighlights = [
-    {
-      title: "Secure Wallet Integration",
-      description: "Multi-chain wallet support with advanced security features",
-      icon: Wallet,
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Real-time Trading",
-      description: "Instant buy/sell with real-time price updates and market data",
-      icon: TrendingUp,
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      title: "Advanced Analytics",
-      description: "Comprehensive market analysis and portfolio tracking tools",
-      icon: BarChart3,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Community Features",
-      description: "Social trading, collections, and community engagement tools",
-      icon: Users,
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      title: "Cross-Chain Support",
-      description: "Trade NFTs across multiple blockchain networks seamlessly",
-      icon: Globe,
-      color: "from-indigo-500 to-purple-500",
-    },
-    {
-      title: "AI-Powered Discovery",
-      description: "Smart recommendations and trending NFT discovery",
-      icon: Zap,
-      color: "from-teal-500 to-cyan-500",
-    },
-  ];
-
-  const features = [
-    {
-      title: "Multi-Chain Support",
-      description: "Trade NFTs across Ethereum, Polygon, BSC, and other networks",
-      icon: Network,
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Smart Contracts",
-      description: "Custom smart contracts for minting, trading, and royalties",
-      icon: Code,
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      title: "Marketplace Analytics",
-      description: "Real-time market data, trends, and portfolio analytics",
-      icon: BarChart3,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Creator Tools",
-      description: "Advanced tools for artists and creators to mint and sell",
-      icon: Palette,
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      title: "Auction System",
-      description: "Dutch and English auction formats with bidding mechanisms",
-      icon: TrendingUp,
-      color: "from-indigo-500 to-purple-500",
-    },
-    {
-      title: "Gas Optimization",
-      description: "Optimized transactions to minimize gas fees and costs",
-      icon: Zap,
-      color: "from-teal-500 to-cyan-500",
-    },
-    {
-      title: "Royalty Management",
-      description: "Automatic royalty distribution to creators on secondary sales",
-      icon: Wallet,
-      color: "from-yellow-500 to-orange-500",
-    },
-    {
-      title: "Collection Management",
-      description: "Organize and manage NFT collections with metadata",
-      icon: Database,
-      color: "from-pink-500 to-rose-500",
-    },
-  ];
-
-  const platforms = [
-    {
-      name: "iOS App",
-      icon: Smartphone,
-      description: "Native iOS app with Apple Pay integration",
-      features: ["Swift UI", "Core Data", "ARKit Support"],
-    },
-    {
-      name: "Android App",
-      icon: Smartphone,
-      description: "Android app with Google Pay integration",
-      features: ["Kotlin", "Jetpack Compose", "Material Design"],
-    },
-    {
-      name: "Web Platform",
-      icon: Monitor,
-      description: "Responsive web application with PWA support",
-      features: ["React.js", "Next.js", "Web3.js"],
-    },
-    {
-      name: "Tablet App",
-      icon: Tablet,
-      description: "Optimized tablet experience for larger screens",
-      features: ["Adaptive UI", "Touch Gestures", "Split View"],
-    },
-  ];
-
-  const benefits = [
-    {
-      title: "Revenue Optimization",
-      description: "Maximize profits with advanced trading features and analytics",
-      icon: TrendingUp,
-      color: "from-green-500 to-emerald-500",
-    },
-    {
-      title: "Exceptional User Experience",
-      description: "Intuitive interface designed for both beginners and experts",
-      icon: Star,
-      color: "from-yellow-500 to-orange-500",
-    },
-    {
-      title: "Scalable Architecture",
-      description: "Built to handle millions of users and transactions",
-      icon: Server,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "Enterprise Security",
-      description: "Bank-level security with multi-layer protection",
-      icon: Shield,
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Multi-Platform Support",
-      description: "Seamless experience across all devices and platforms",
-      icon: Globe,
-      color: "from-indigo-500 to-purple-500",
-    },
-    {
-      title: "Advanced Analytics",
-      description: "Comprehensive insights and reporting tools",
-      icon: BarChart3,
-      color: "from-teal-500 to-cyan-500",
-    },
-  ];
-
-  const techStack = [
-    { name: "React Native", icon: Mobile, category: "Mobile" },
-    { name: "Flutter", icon: Mobile, category: "Mobile" },
-    { name: "Swift", icon: Mobile, category: "Mobile" },
-    { name: "Kotlin", icon: Mobile, category: "Mobile" },
-    { name: "React.js", icon: Desktop, category: "Web" },
-    { name: "Next.js", icon: Desktop, category: "Web" },
-    { name: "Vue.js", icon: Desktop, category: "Web" },
-    { name: "Angular", icon: Desktop, category: "Web" },
-    { name: "Node.js", icon: Backend, category: "Backend" },
-    { name: "Python", icon: Backend, category: "Backend" },
-    { name: "Solidity", icon: Blockchain, category: "Blockchain" },
-    { name: "Web3.js", icon: Blockchain, category: "Blockchain" },
-    { name: "Ethereum", icon: Blockchain, category: "Blockchain" },
-    { name: "Polygon", icon: Blockchain, category: "Blockchain" },
-    { name: "IPFS", icon: Storage, category: "Storage" },
-    { name: "AWS S3", icon: Storage, category: "Storage" },
-    { name: "Firebase", icon: CloudIcon, category: "Cloud" },
-    { name: "MongoDB", icon: Database, category: "Database" },
-    { name: "PostgreSQL", icon: Database, category: "Database" },
-    { name: "Docker", icon: Server, category: "DevOps" },
-    { name: "Kubernetes", icon: Server, category: "DevOps" },
-    { name: "GraphQL", icon: NetworkIcon, category: "API" },
-    { name: "REST API", icon: NetworkIcon, category: "API" },
-  ];
+  const [activeTech, setActiveTech] = useState(0);
+  const currentTech = techCategories[activeTech];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <PageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navigation />
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 to-pink-900/50" />
-        {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30" /> */}
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300 text-sm font-medium">
-                <Palette className="w-4 h-4 mr-2" />
-                NFT Marketplace Solution
-              </div>
-
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-                Digital Asset
-                <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Trading Platform
-                </span>
-              </h1>
-
-              <p className="text-xl text-gray-300 leading-relaxed">
-                Build a secure, scalable NFT marketplace with advanced trading features, multi-chain
-                support, and AI-powered discovery for the next generation of digital assets.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link href="/contact-us">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-xl font-semibold"
+      <main>
+        <section
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          aria-label="NFT Marketplace Development"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.04]"
+            style={{
+              backgroundImage: "radial-gradient(circle, #E7F1F7 1px, transparent 1px)",
+              backgroundSize: "34px 34px",
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
+                  <Palette className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
+                  NFT Marketplace Solution
+                </div>
+                <h1 className={`${fraunces.className} text-3xl sm:text-4xl lg:text-5xl font-medium text-[#F2F6F9] leading-[1.12] mb-6`}>
+                  Digital Asset{" "}
+                  <span className="italic" style={{ color: CYAN_LIGHT }}>
+                    Trading Platform
+                  </span>
+                </h1>
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-8 max-w-xl">
+                  Build a secure, scalable NFT marketplace with advanced trading features, multi-chain support, and
+                  AI-powered discovery for the next generation of digital assets.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                  <Link
+                    href="/contact-us"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all duration-200 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: CYAN, boxShadow: `0 10px 30px -8px ${CYAN}55` }}
                   >
                     Get Free Quote
-                  </Button>
-                </Link>
-                <Link href="/portfolios">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-purple-500/30 text-purple-300 hover:bg-purple-500/10 px-8 py-3 rounded-xl font-semibold"
+                  </Link>
+                  <Link
+                    href="/portfolios"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-white border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
                   >
                     View Portfolios
-                  </Button>
-                </Link>
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">$2.5B+</div>
-                  <div className="text-sm text-gray-400">Trading Volume</div>
+                  </Link>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">500K+</div>
-                  <div className="text-sm text-gray-400">Active Users</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">99.9%</div>
-                  <div className="text-sm text-gray-400">Uptime</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content - Unique NFT Trading Interface */}
-            <div className="relative">
-              {/* Main Trading Dashboard */}
-              <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-3xl p-6 backdrop-blur-sm border border-slate-600/30 mb-6 shadow-2xl">
-                {/* Dashboard Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-lg">NFT Trader Pro</h3>
-                      <p className="text-emerald-400 text-sm">Live Trading</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span className="text-emerald-400 text-sm font-medium">Online</span>
-                  </div>
-                </div>
-
-                {/* Live Trading Chart */}
-                <div className="bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl p-4 mb-6 border border-slate-600/20">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-white font-semibold">Price Chart</span>
-                    <div className="flex gap-2">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                    </div>
-                  </div>
-
-                  {/* Chart Area */}
-                  <div className="h-32 bg-gradient-to-br from-slate-600/30 to-slate-700/30 rounded-xl p-3 mb-3 border border-slate-500/20">
-                    {/* Chart Grid Lines */}
-                    <div className="relative h-full">
-                      {/* Horizontal Grid Lines */}
-                      <div className="absolute inset-0 flex flex-col justify-between">
-                        <div className="w-full h-px bg-slate-500/20"></div>
-                        <div className="w-full h-px bg-slate-500/20"></div>
-                        <div className="w-full h-px bg-slate-500/20"></div>
-                        <div className="w-full h-px bg-slate-500/20"></div>
+                <div className="grid grid-cols-3 gap-4" role="list" aria-label="Platform statistics">
+                  {heroStats.map((stat, i) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
+                      className="text-center"
+                      role="listitem"
+                    >
+                      <div className={`${fraunces.className} text-xl sm:text-2xl font-medium text-[#F2F6F9] mb-1`}>
+                        {stat.number.match(/^[\d.$]+/) ? <AnimatedStat value={stat.number} /> : stat.number}
                       </div>
-
-                      {/* Price Chart Line */}
-                      <svg
-                        className="w-full h-full"
-                        viewBox="0 0 200 100"
-                        preserveAspectRatio="none"
-                      >
-                        <path
-                          d="M0,80 L20,70 L40,60 L60,50 L80,40 L100,30 L120,35 L140,25 L160,20 L180,15 L200,10"
-                          stroke="url(#chartGradient)"
-                          strokeWidth="2"
-                          fill="none"
-                          className="animate-pulse"
-                        />
-                        <defs>
-                          <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#10b981" />
-                            <stop offset="50%" stopColor="#14b8a6" />
-                            <stop offset="100%" stopColor="#10b981" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-
-                      {/* Chart Data Points */}
-                      <div className="absolute top-2 left-2 text-emerald-400 text-xs font-semibold">
-                        2.8 ETH
-                      </div>
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-emerald-400 text-xs font-semibold">
-                        2.5 ETH
-                      </div>
-                      <div className="absolute bottom-2 right-2 text-emerald-400 text-xs font-semibold">
-                        2.2 ETH
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Price Info */}
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2">
-                      <span className="text-emerald-400 font-bold text-lg">2.5 ETH</span>
-                      <span className="text-emerald-400 text-sm">+12.5%</span>
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    </div>
-                    <div className="text-gray-400 text-xs">24h Change</div>
-                  </div>
-                </div>
-
-                {/* Trading Stats Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl p-4 border border-blue-500/20">
-                    <div className="text-blue-400 font-bold text-xl">2.4K</div>
-                    <div className="text-gray-400 text-xs">Floor Price</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl p-4 border border-purple-500/20">
-                    <div className="text-purple-400 font-bold text-xl">156</div>
-                    <div className="text-gray-400 text-xs">Owners</div>
-                  </div>
-                </div>
-
-                {/* Quick Actions */}
-                <div className="grid grid-cols-3 gap-3">
-                  <button className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 px-4 rounded-xl text-sm font-semibold hover:scale-105 transition-transform">
-                    Buy
-                  </button>
-                  <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-4 rounded-xl text-sm font-semibold hover:scale-105 transition-transform">
-                    Sell
-                  </button>
-                  <button className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 px-4 rounded-xl text-sm font-semibold hover:scale-105 transition-transform">
-                    Bid
-                  </button>
-                </div>
-              </div>
-
-              {/* Floating Trading Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                <Wallet className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                <BarChart3 className="w-6 h-6 text-white" />
-              </div>
-              <div
-                className="absolute top-1/2 -right-8 w-10 h-10 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full flex items-center justify-center shadow-lg animate-bounce"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <Shield className="w-5 h-5 text-white" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Highlights Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-0 px-4 py-2 text-sm font-semibold">
-              Key Highlights
-            </Badge>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Why NFT Marketplaces Built with Ctas Succeed
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our NFT marketplace solutions ensure successful digital asset trading through advanced
-              technology, security, and user experience.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {keyHighlights.map((highlight, index) => (
-              <Card
-                key={index}
-                className="p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-gray-50 to-white"
-              >
-                <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${highlight.color} flex items-center justify-center mb-6`}
-                >
-                  <highlight.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{highlight.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{highlight.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Advanced NFT Marketplace Features
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive features designed for modern NFT marketplaces with security,
-              scalability, and user experience at the core.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="p-6 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
-              >
-                <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center mb-4`}
-                >
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Multi-Platform Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Multi-Platform NFT Solutions</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Deploy your NFT marketplace across all platforms with native performance and seamless
-              user experience.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {platforms.map((platform, index) => (
-              <Card
-                key={index}
-                className="p-8 text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-gray-50 to-white"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
-                  <platform.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{platform.name}</h3>
-                <p className="text-gray-600 mb-6">{platform.description}</p>
-                <div className="space-y-2">
-                  {platform.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      {feature}
-                    </div>
+                      <div className="text-[10px] sm:text-xs text-[#93A3AF]">{stat.label}</div>
+                    </motion.div>
                   ))}
                 </div>
-              </Card>
-            ))}
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.15 }}>
+                <NFTTraderProMockup />
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Why Choose Our NFT Marketplace Solution?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the advantages of our comprehensive NFT marketplace development approach.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card
-                key={index}
-                className="p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
-              >
-                <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${benefit.color} flex items-center justify-center mb-6`}
+        <SectionWrap>
+          <SectionHeader
+            badge="Key Highlights"
+            title="Why NFT Marketplaces Built with Ctas"
+            highlight="Succeed"
+            description="Our NFT marketplace solutions ensure successful digital asset trading through advanced technology, security, and user experience."
+          />
+          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
+            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+              {keyHighlights.map((item, i) => (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.04 }}
+                  className="flex-shrink-0 w-[260px] sm:w-[280px] snap-start"
                 >
-                  <benefit.icon className="w-8 h-8 text-white" />
+                  <div className="h-full bg-white border border-slate-200/80 rounded-[1.5rem] p-6 hover:shadow-lg transition-all">
+                    <IconBox icon={item.icon} />
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-5 mb-2`}>{item.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </SectionWrap>
+
+        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <SectionHeader
+              badge="Features"
+              title="Advanced NFT Marketplace"
+              highlight="Features"
+              description="Comprehensive features designed for modern NFT marketplaces with security, scalability, and user experience at the core."
+            />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+              {features.map((feature, i) => (
+                <motion.article
+                  key={feature.title}
+                  {...fadeUp}
+                  transition={{ duration: 0.45, delay: i * 0.04 }}
+                  className={`rounded-[1.5rem] border border-slate-200/80 bg-[#F6F8FA] p-5 sm:p-6 hover:bg-white hover:shadow-md transition-all ${
+                    i === 0 ? "sm:col-span-2 lg:col-span-2" : i === 3 ? "lg:row-span-1" : ""
+                  }`}
+                >
+                  <IconBox icon={feature.icon} />
+                  <h3 className={`${fraunces.className} text-base sm:text-lg font-medium text-slate-900 mt-4 mb-2`}>
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{feature.description}</p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <SectionWrap>
+          <SectionHeader
+            badge="Multi-Platform"
+            title="Multi-Platform"
+            highlight="NFT Solutions"
+            description="Deploy your NFT marketplace across all platforms with native performance and seamless user experience."
+          />
+          <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+            {platforms.map((platform, i) => (
+              <motion.article
+                key={platform.name}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-8 hover:shadow-lg transition-all"
+              >
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${CYAN}18` }}>
+                    <platform.icon className="w-7 h-7" style={{ color: NAVY }} />
+                  </div>
+                  <div>
+                    <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-1`}>{platform.name}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{platform.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
-              </Card>
+                <ul className="flex flex-wrap gap-2">
+                  {platform.features.map((f) => (
+                    <li
+                      key={f}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#F6F8FA] text-slate-600 border border-slate-200/80"
+                    >
+                      <CheckCircle2 className="w-3 h-3" style={{ color: CYAN }} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* Technology Stack */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Technology Stack</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Built with cutting-edge technologies for performance, security, and scalability.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {techStack.map((tech, index) => (
-              <div
-                key={index}
-                className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+        <SectionWrap alt>
+          <SectionHeader
+            badge="Why Choose Us"
+            title="Why Choose Our"
+            highlight="NFT Marketplace Solution?"
+            description="Experience the advantages of our comprehensive NFT marketplace development approach."
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+            {benefits.map((item, i) => (
+              <motion.article
+                key={item.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className={`rounded-[1.5rem] border border-slate-200/80 bg-white p-6 sm:p-7 hover:shadow-lg transition-all ${
+                  i === 0 ? "sm:col-span-2 lg:col-span-1" : ""
+                }`}
               >
-                <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <tech.icon className="w-6 h-6 text-white" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${CYAN}18` }}>
+                    <item.icon className="w-6 h-6" style={{ color: NAVY }} />
+                  </div>
+                  <div>
+                    <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mb-2`}>{item.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-sm font-semibold text-gray-900">{tech.name}</h3>
-                <p className="text-xs text-gray-500 mt-1">{tech.category}</p>
-              </div>
+              </motion.article>
             ))}
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-600 to-blue-700">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Build Your NFT Marketplace?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Join the digital asset revolution with our comprehensive NFT marketplace solution.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact-us">
-              <Button
-                size="lg"
-                className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg"
-              >
-                Start Free Consultation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/portfolios">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg"
-              >
-                View Portfolio
-              </Button>
-            </Link>
+        <SectionWrap>
+          <SectionHeader
+            badge="Technology Stack"
+            title="Technology"
+            highlight="Stack"
+            description="Built with cutting-edge technologies for performance, security, and scalability."
+          />
+          <div className="grid lg:grid-cols-[minmax(0,220px)_1fr] gap-6 lg:gap-10 items-start">
+            <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Technology layers">
+              {techCategories.map((cat, ci) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveTech(ci)}
+                  className={`flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    activeTech === ci
+                      ? "text-white shadow-md"
+                      : "text-slate-600 bg-white border border-slate-200/80 hover:border-[#13345A]/20"
+                  }`}
+                  style={activeTech === ci ? { backgroundColor: NAVY } : undefined}
+                  aria-current={activeTech === ci ? "true" : undefined}
+                >
+                  {cat.title}
+                </button>
+              ))}
+            </nav>
+            <div>
+              <p className="text-sm text-slate-500 mb-6">
+                {currentTech.items.length} technolog{currentTech.items.length !== 1 ? "ies" : "y"}
+                {activeTech > 0 && ` in ${currentTech.title}`}
+              </p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTech.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  {currentTech.items.map((tech) => (
+                    <div
+                      key={`${tech.title}-${tech.category}`}
+                      className="rounded-2xl border border-slate-200/80 bg-white p-5 hover:shadow-md transition-all"
+                    >
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: `${CYAN}18` }}>
+                        <tech.icon className="w-5 h-5" style={{ color: NAVY }} />
+                      </div>
+                      <h3 className="text-sm font-semibold text-slate-900 mb-1">{tech.title}</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed">{tech.description}</p>
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+              <motion.p {...fadeUp} className="mt-8 inline-flex items-center gap-2 text-sm text-slate-600">
+                <Code className="w-4 h-4" style={{ color: CYAN }} />
+                See our{" "}
+                <Link href="/services/custom-software" className="font-semibold hover:underline" style={{ color: NAVY }}>
+                  custom software
+                </Link>{" "}
+                and{" "}
+                <Link href="/solutions/e-commerce" className="font-semibold hover:underline" style={{ color: NAVY }}>
+                  e-commerce
+                </Link>{" "}
+                solutions
+              </motion.p>
+            </div>
           </div>
-        </div>
-      </section>
+        </SectionWrap>
 
+        <PageCTA
+          title="Ready to Build Your NFT Marketplace?"
+          description="Join the digital asset revolution with our comprehensive NFT marketplace solution."
+          primaryLabel="Start Free Consultation"
+          primaryHref="/contact-us"
+          secondaryLabel="View Portfolio"
+          secondaryHref="/portfolios"
+        />
+      </main>
       <FooterSection />
-    </div>
+    </PageShell>
   );
 }

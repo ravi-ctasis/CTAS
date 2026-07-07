@@ -126,7 +126,7 @@ const HeroSection = () => {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="relative z-10 max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div
           className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center py-16 sm:py-20 lg:py-24"
           onMouseEnter={() => setIsHovered(true)}
@@ -441,7 +441,7 @@ const HeroSection = () => {
 
       {/* ── Bottom stats bar ── */}
       <div className="relative z-10 border-t border-white/[0.06]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-6">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-6">
           <div className="grid grid-cols-2 sm:grid-cols-4">
             {stats.map((s, i) => (
               <motion.div

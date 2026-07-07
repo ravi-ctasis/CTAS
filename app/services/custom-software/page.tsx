@@ -389,11 +389,44 @@ const topicalGuideTabs = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Custom Software Development Services",
+      description:
+        "Ctas provides custom software development services including enterprise apps, MVP development, automation, and product engineering using modern tech stacks.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Custom Software Development",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Custom Software",
+          item: "https://www.ctasis.com/services/custom-software",
+        },
+      ],
+    },
+  ],
+};
+
 export default function CustomSoftwarePage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Custom Software Development Services",
+        structuredData,
         hero: {
           badge: "Custom Software Development",
           title: "Innovative &",
@@ -412,6 +445,7 @@ export default function CustomSoftwarePage() {
         sections: [
           {
             type: "cards",
+            variant: "bento",
             header: {
               badge: "Software Types",
               title: "Custom",
@@ -435,6 +469,7 @@ export default function CustomSoftwarePage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Custom Software",
@@ -446,6 +481,7 @@ export default function CustomSoftwarePage() {
           },
           {
             type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Why Choose Us",
               title: "Key",
@@ -457,6 +493,7 @@ export default function CustomSoftwarePage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose Custom Software?",
               title: "Benefits of",

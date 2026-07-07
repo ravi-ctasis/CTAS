@@ -327,11 +327,44 @@ const topicalGuideTabs = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Cloud Solutions Services",
+      description:
+        "Expert cloud solutions: AWS, Azure, GCP, Docker, Kubernetes. Scalable infrastructure and DevOps services.",
+      provider: {
+        "@type": "Organization",
+        name: "Ctas Info Services LLP",
+        url: "https://www.ctasis.com",
+      },
+      serviceType: "Cloud Computing",
+      areaServed: { "@type": "Country", name: "India" },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ctasis.com/services" },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Cloud Solutions",
+          item: "https://www.ctasis.com/services/cloud-solutions",
+        },
+      ],
+    },
+  ],
+};
+
 export default function CloudSolutionsPage() {
   return (
     <ServicePageTemplate
       config={{
         ariaLabel: "Cloud Solutions Services",
+        structuredData,
         hero: {
           badge: "Cloud Solutions Services",
           title: "Enterprise",
@@ -350,6 +383,7 @@ export default function CloudSolutionsPage() {
         sections: [
           {
             type: "cards",
+            variant: "bento",
             header: {
               badge: "Cloud Services",
               title: "Enterprise",
@@ -373,6 +407,7 @@ export default function CloudSolutionsPage() {
           },
           {
             type: "process",
+            variant: "timeline",
             header: {
               badge: "Our Process",
               title: "Cloud Implementation",
@@ -384,6 +419,7 @@ export default function CloudSolutionsPage() {
           },
           {
             type: "benefits",
+            variant: "icon-strip",
             header: {
               badge: "Why Choose Us",
               title: "Key",
@@ -395,6 +431,7 @@ export default function CloudSolutionsPage() {
           },
           {
             type: "benefits",
+            variant: "zigzag",
             header: {
               badge: "Why Choose Cloud Solutions?",
               title: "Benefits of",
