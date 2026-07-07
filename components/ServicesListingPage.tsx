@@ -1,3 +1,5 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import { PageShell, PageHero, PageCTA } from "@/components/page-design";
 import FooterSection from "@/components/FooterSection";
