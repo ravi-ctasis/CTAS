@@ -23,11 +23,12 @@ import {
   NAVY,
   CYAN,
 } from "@/components/page-design";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const milestones = [
   { year: "2019", icon: Calendar, title: "Founded", description: "Established in 2019 with a vision to build delightful software." },
   { year: "Launch", icon: Rocket, title: "First Launch", description: "Shipped our first enterprise product used by thousands of users." },
-  { year: "100+", icon: Award, title: "Milestones", description: "100+ successful deliveries across web, mobile, and cloud." },
+  { year: COMPANY_STATS.projectsDelivered, icon: Award, title: "Milestones", description: `${COMPANY_STATS.projectsDelivered} successful deliveries across web, mobile, and cloud.` },
   { year: "20+", icon: Users, title: "Team", description: "A diverse team of specialists distributed across time zones." },
 ];
 
@@ -59,7 +60,7 @@ const timeline = [
     icon: Users,
     title: "Global Expansion & Team Growth",
     description:
-      "We expanded our reach internationally, serving clients across 15+ countries. Our team grew to 20+ skilled professionals, enabling 24/7 development cycles and round-the-clock support.",
+      "We expanded our reach internationally, serving clients across 20+ countries. Our team grew to 20+ skilled professionals, enabling 24/7 development cycles and round-the-clock support.",
     align: "left" as const,
   },
   {
@@ -83,14 +84,14 @@ const timeline = [
     icon: Heart,
     title: "Future-Ready Innovation",
     description:
-      "Today, we're at the forefront of emerging technologies, serving 500+ clients worldwide. From blockchain solutions to IoT integrations, we continue to push boundaries and deliver transformative digital experiences.",
+      "Today, we're at the forefront of emerging technologies, serving 200+ clients worldwide. From blockchain solutions to IoT integrations, we continue to push boundaries and deliver transformative digital experiences.",
     align: "right" as const,
   },
 ];
 
 const globalStats = [
-  { number: "18+", label: "Countries" },
-  { number: "100+", label: "Projects Delivered" },
+  { number: COMPANY_STATS.countries, label: "Countries" },
+  { number: COMPANY_STATS.projectsDelivered, label: "Projects Delivered" },
   { number: "98%", label: "On-time Delivery" },
   { number: "4.9/5", label: "Client Rating" },
 ];
@@ -123,9 +124,9 @@ const OurStoryPage = () => (
         description="Discover our journey — from a small team with a big idea to a trusted partner delivering impactful digital products worldwide."
       />
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF3F8] border border-[#13345A]/15 text-[#13345A] text-xs font-semibold uppercase tracking-widest">
                 Origins
@@ -160,8 +161,8 @@ const OurStoryPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 bg-white">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Beliefs" title="What We" highlight="Believe" description="The principles that guide every project, partnership, and product we build." />
           <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
             {values.map((v, i) => (
@@ -171,8 +172,8 @@ const OurStoryPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Timeline" title="Our" highlight="Journey" description="Key milestones that shaped who we are today." />
           <div className="relative max-w-4xl mx-auto">
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-[#13345A]/20 via-[#249BCA]/40 to-[#13345A]/20 hidden md:block" />
@@ -221,8 +222,8 @@ const OurStoryPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 bg-white">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Impact" title="Global" highlight="Presence" description="Numbers that reflect our commitment to excellence and client success." />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
             {globalStats.map((stat, i) => (

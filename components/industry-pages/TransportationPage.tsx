@@ -52,6 +52,7 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -61,8 +62,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -347,7 +348,7 @@ const TransportationPage = () => {
           highlight="Transportation"
           description="Build innovative mobility and logistics applications that optimize routes, enhance fleet management, and create seamless transportation experiences for the modern world."
           stats={[
-            { number: "500+", label: "Fleets Managed", icon: Rocket },
+            { number: "200+", label: "Fleets Managed", icon: Rocket },
             { number: "10K+", label: "Routes Optimized", icon: TrendingUp },
             { number: "25%", label: "Fuel Savings", icon: Target },
             { number: "99.9%", label: "Uptime", icon: CheckCircle },
@@ -364,7 +365,7 @@ const TransportationPage = () => {
             highlight="Transportation Platform?"
             description="Discover the essential features that make our mobility and logistics applications stand out in the competitive transportation market."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-8">
               {platformFeatures.map((feature, i) => (
                 <motion.div
@@ -471,8 +472,7 @@ const TransportationPage = () => {
             highlight="Use Cases"
             description="From delivery services to fleet operators, our platform serves diverse transportation needs across multiple industries and use cases."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {useCases.map((useCase, i) => (
                 <motion.article
                   key={useCase.title}
@@ -506,8 +506,7 @@ const TransportationPage = () => {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         {/* Technologies — tabbed sidebar */}

@@ -110,7 +110,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
       <main>
         {/* Hero — split with embedded search */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label="Our Blog"
         >
           <div
@@ -121,7 +121,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
@@ -153,15 +153,15 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
 
         {/* Category pills + sort */}
         <section className="py-5 bg-white border-b border-slate-200/80">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-              <div className="flex gap-2 overflow-x-auto pb-1 snap-x flex-1">
+              <div className="flex flex-wrap gap-2 flex-1">
                 {categories.map((category) => (
                   <button
                     key={category}
                     type="button"
                     onClick={() => setSelectedCategory(category)}
-                    className={`flex-shrink-0 snap-start px-4 py-2 rounded-full text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
+                    className={`snap-start px-4 py-2 rounded-full text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#249BCA] ${
                       selectedCategory === category ? "text-white" : "bg-[#F6F8FA] text-slate-600 border border-slate-200"
                     }`}
                     style={selectedCategory === category ? { backgroundColor: NAVY } : undefined}
@@ -189,8 +189,8 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
 
         {/* Featured post — large bento */}
         {featuredPost && currentPage === 1 && !searchTerm && selectedCategory === "All" && (
-          <section className="py-12 sm:py-16 bg-[#F6F8FA]">
-            <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <section className="py-8 sm:py-10 bg-[#F6F8FA]">
+            <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
               <motion.article
                 {...fadeUp}
                 className="grid lg:grid-cols-2 gap-0 rounded-[1.75rem] border border-slate-200/80 bg-white overflow-hidden hover:shadow-xl transition-shadow"
@@ -241,8 +241,8 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
         )}
 
         {/* Article grid */}
-        <section className="py-12 sm:py-16 lg:py-20 bg-white">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-8 sm:py-10 lg:py-12 bg-white">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             {currentPosts.length === 0 ? (
               <div className="text-center py-20">
                 <BookOpen className="w-12 h-12 mx-auto text-slate-300 mb-4" />

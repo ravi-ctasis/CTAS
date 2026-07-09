@@ -420,9 +420,9 @@ export default function APIDevelopmentPage() {
           description:
             "We design and develop scalable, secure, and high-performance APIs that seamlessly connect and power your applications. From REST to GraphQL, we deliver enterprise-grade backend solutions tailored to your business needs.",
           stats: [
-            { number: "100+", label: "APIs Developed", icon: Code },
+            { number: "200+", label: "APIs Developed", icon: Code },
             { number: "99.9%", label: "Uptime", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

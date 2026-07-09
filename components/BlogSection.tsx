@@ -45,12 +45,12 @@ const blogs = [
 const BlogSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-slate-50"
+      className="py-10 sm:py-12 lg:py-14 bg-slate-50"
       aria-label="Latest blog posts and resources"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
               Resources

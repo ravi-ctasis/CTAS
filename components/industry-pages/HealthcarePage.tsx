@@ -33,6 +33,7 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -42,8 +43,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -179,7 +180,7 @@ const healthcareTechnologies = [
 ];
 
 const healthcareStats = [
-  { label: "Healthcare Clients", value: "12+", icon: Building },
+  { label: "Healthcare Clients", value: "200+", icon: Building },
   { label: "Certifications", value: "10+", icon: Award },
   { label: "Global Offices", value: "10+", icon: Globe },
   { label: "Uptime Guarantee", value: "99.9%", icon: Clock },
@@ -386,8 +387,7 @@ const HealthcarePage = () => (
           highlight="Stack"
           description="Cutting-edge technologies and healthcare standards that power modern healthcare solutions."
         />
-        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-          <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+        <DotCarousel bleed ariaLabel="Content carousel">
             {healthcareTechnologies.map((tech, i) => (
               <motion.div
                 key={tech.name}
@@ -404,8 +404,7 @@ const HealthcarePage = () => (
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </SectionWrap>
 
       <PageCTA

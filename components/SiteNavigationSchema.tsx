@@ -34,7 +34,7 @@ const SiteNavigationSchema = () => {
       {
         "@type": "SiteNavigationElement",
         name: "Portfolios",
-        description: "Explore our portfolio of 100+ successfully delivered projects worldwide",
+        description: "Explore our portfolio of 200+ successfully delivered projects worldwide",
         url: "https://www.ctasis.com/portfolios",
       },
       {

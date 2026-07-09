@@ -42,6 +42,7 @@ import {
   fraunces,
   NAVY,
   CYAN,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -51,8 +52,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -333,7 +334,7 @@ const WellnessPage = () => {
           highlight="Digital Health"
           description="Create cutting-edge health applications that leverage AI, IoT, and cloud technologies to deliver personalized healthcare experiences that transform lives."
           stats={[
-            { number: "200+", label: "Apps Delivered", icon: Rocket },
+            { number: "200+", label: "Projects Delivered", icon: Rocket },
             { number: "2M+", label: "Active Users", icon: Users },
             { number: "50+", label: "Health Metrics", icon: TrendingUp },
             { number: "99.9%", label: "Uptime", icon: CheckCircle },
@@ -350,7 +351,7 @@ const WellnessPage = () => {
             highlight="Health Platform?"
             description="Discover the essential features that make our health and fitness applications stand out in the competitive digital health market."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-8">
               {platformFeatures.map((feature, i) => (
                 <motion.div
@@ -387,8 +388,7 @@ const WellnessPage = () => {
             highlight="Health Features"
             description="Our platform combines cutting-edge technology with intuitive design to create powerful health and fitness applications that users love."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {healthFeatures.map((feature, i) => (
                 <motion.article
                   key={feature.title}
@@ -415,8 +415,7 @@ const WellnessPage = () => {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         {/* Use cases — bento grid */}

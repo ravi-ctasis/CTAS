@@ -31,6 +31,7 @@ const cloudTypes = [
     description:
       "Seamless migration of your existing infrastructure to cloud platforms with zero downtime",
     icon: Cloud,
+    image: "/service-banners/cloud-solutions.webp",
     features: [
       "Infrastructure Assessment",
       "Migration Strategy",
@@ -372,8 +373,8 @@ export default function CloudSolutionsPage() {
           description:
             "We provide enterprise-grade cloud solutions that scale with your business. From migration to optimization, we ensure your cloud infrastructure is secure, reliable, and cost-effective.",
           stats: [
-            { number: "500+", label: "Cloud Deployments", icon: Cloud },
-            { number: "100+", label: "Happy Clients", icon: Users },
+            { number: "200+", label: "Cloud Deployments", icon: Cloud },
+            { number: "200+", label: "Happy Clients", icon: Users },
             { number: "99.9%", label: "Uptime SLA", icon: Clock },
             { number: "24/7", label: "Support", icon: Headphones },
           ],

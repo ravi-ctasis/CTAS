@@ -105,7 +105,7 @@ const RetailPage = () => {
 
   const retailStats = useMemo(
     () => [
-      { label: "Retail Clients", value: "300+", icon: Store },
+      { label: "Retail Clients", value: "200+", icon: Store },
       { label: "Transactions/Day", value: "50K+", icon: ShoppingCart },
       { label: "Customer Satisfaction", value: "96%", icon: Heart },
       { label: "Uptime Guarantee", value: "99.9%", icon: Clock },
@@ -139,7 +139,7 @@ const RetailPage = () => {
           secondaryCta={{ label: "View Portfolio", href: "/portfolios" }}
         />
 {/* Overview Section */}
-        <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-8 lg:py-12 bg-gradient-to-br from-gray-50 to-white">
           <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -291,7 +291,7 @@ const RetailPage = () => {
         </section>
 
         {/* Services Section */}
-        <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <section className="py-8 lg:py-12 bg-gradient-to-br from-gray-50 to-blue-50">
           <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -361,7 +361,7 @@ const RetailPage = () => {
         </section>
 
         {/* Key Features Section */}
-        <section className="py-12 lg:py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <section className="py-8 lg:py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
           <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -542,7 +542,7 @@ const RetailPage = () => {
         </section>
 
         {/* Technologies Section */}
-        <section className="py-12 lg:py-20 bg-white">
+        <section className="py-8 lg:py-12 bg-white">
           <div className="max-w-[1584px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">

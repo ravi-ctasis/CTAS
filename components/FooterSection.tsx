@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { COMPANY_STATS } from "@/data/company-stats";
 import {
   Mail,
   Phone,
@@ -93,7 +94,7 @@ const FooterSection = () => {
       itemType="https://schema.org/WPFooter"
     >
       {/* ── Main footer content ── */}
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pt-14 sm:pt-16 pb-10">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 pt-14 sm:pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-10 lg:gap-12">
 
           {/* Brand column — 2 cols */}
@@ -112,15 +113,15 @@ const FooterSection = () => {
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               CTAS helps businesses automate commerce using Marketplace Integrations, ERP
               Connectivity, Warehouse Automation, AI Solutions and Enterprise Software.
-              Based in Ahmedabad, India — serving clients across 18+ countries.
+              Based in Ahmedabad, India — serving clients across {COMPANY_STATS.countries} countries.
             </p>
 
             {/* Key stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { v: "500+", l: "Projects" },
-                { v: "35+", l: "Integrations" },
-                { v: "18+", l: "Countries" },
+                { v: COMPANY_STATS.projectsDelivered, l: "Projects" },
+                { v: COMPANY_STATS.marketplaces, l: "Marketplaces" },
+                { v: COMPANY_STATS.countries, l: "Countries" },
                 { v: "24×7", l: "Support" },
               ].map((s) => (
                 <div key={s.l}>
@@ -302,7 +303,7 @@ const FooterSection = () => {
 
       {/* ── Technology bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-5">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center">
             <span className="text-xs text-slate-600 uppercase tracking-widest flex-shrink-0">
               Technologies
@@ -318,7 +319,7 @@ const FooterSection = () => {
 
       {/* ── Platform logos scrolling bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-5">
           <div className="flex flex-wrap justify-center gap-3">
             {[
               "Amazon", "Bol.com", "Allegro", "Shopify", "WooCommerce",
@@ -337,7 +338,7 @@ const FooterSection = () => {
 
       {/* ── Bottom bar ── */}
       <div className="border-t border-white/5">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-5">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} Ctas Info Services LLP. All rights reserved.

@@ -83,7 +83,7 @@ export const ecommerceWorkflowAutomationConfig: ServicePageConfig = {
       { number: "420+", label: "Operational Hours Saved / Month", icon: Gauge },
       { number: "65+", label: "Workflows Automated", icon: Workflow },
       { number: "25+", label: "Channels Supported", icon: Cable },
-      { number: "15", label: "Automation Experts", icon: Bot },
+      { number: "20+", label: "Automation Experts", icon: Bot },
     ],
     primaryCta: { label: "Request Automation Audit", href: "/contact-us" },
     secondaryCta: { label: "View Case Studies", href: "/case-studies" },

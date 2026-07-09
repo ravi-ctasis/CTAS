@@ -40,6 +40,7 @@ const appTypes = [
     description:
       "Tailored software solutions designed specifically for your business needs and requirements",
     icon: Code,
+    image: "/service-banners/custom-software.webp",
     features: [
       "Bespoke Solutions",
       "Business Requirements Analysis",
@@ -434,9 +435,9 @@ export default function CustomSoftwarePage() {
           description:
             "We create innovative custom software solutions that streamline business operations and drive growth. From enterprise applications to specialized tools, we deliver exceptional software experiences.",
           stats: [
-            { number: "8+", label: "Custom Solutions", icon: Code },
-            { number: "10+", label: "Client Satisfaction", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "200+", label: "Custom Solutions", icon: Code },
+            { number: "200+", label: "Client Satisfaction", icon: Users },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

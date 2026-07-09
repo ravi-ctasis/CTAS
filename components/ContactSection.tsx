@@ -17,6 +17,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const ContactSection = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -144,14 +145,14 @@ const ContactSection = () => {
 
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-slate-50"
+      className="py-10 sm:py-12 lg:py-14 bg-slate-50"
       aria-label="Contact CTAS Info Services"
       itemScope
       itemType="https://schema.org/ContactPage"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-14">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Get in Touch
           </p>
@@ -378,8 +379,8 @@ const ContactSection = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3">
               {[
-                { value: "200+", label: "Happy Clients", color: "text-green-600" },
-                { value: "7+", label: "Years Experience", color: "text-blue-600" },
+                { value: COMPANY_STATS.happyClients, label: "Happy Clients", color: "text-green-600" },
+                { value: COMPANY_STATS.yearsOfExcellence, label: "Years of Excellence", color: "text-blue-600" },
               ].map((s) => (
                 <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-4 text-center">
                   <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>

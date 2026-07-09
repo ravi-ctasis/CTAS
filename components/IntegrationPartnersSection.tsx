@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { MarketplaceFlagGrid } from "@/components/CountryBadge";
 
 const shippingPartners = [
   { name: "DHL", logo: "/dhl-3.svg", wide: true },
@@ -10,13 +11,18 @@ const shippingPartners = [
   { name: "Shipmondo", logo: "/shipmondo-logo.webp", wide: true },
   { name: "SendCloud", logo: "/sendcloud-logo.webp", wide: true },
   { name: "TNT", logo: "/tnt-logo.svg", wide: false },
-  { name: "USPS", logo: "/USPS-logo.webp", wide: true },
+  { name: "ShipBob", logo: "/shipbob.svg", wide: true },
+  { name: "ShipMonk", logo: "/shipmonk.svg", wide: true },
+  { name: "Easyship", logo: "/easyship.svg", wide: true },
+  { name: "Deliverr", logo: "/deliverr.png", wide: true },
 ];
 
 const erpPartners = [
   { name: "QuickBooks", logo: "/quickbooks-logo.svg", wide: true },
   { name: "ShipStation", logo: "/shipstation-logo.svg", wide: true },
   { name: "Zoho", logo: "/zoho.svg", wide: true },
+  { name: "Cin7", logo: "/cin7.svg", wide: true },
+  { name: "Veeqo", logo: "/veeqo.svg", wide: true },
 ];
 
 const aiPartners = [
@@ -25,6 +31,45 @@ const aiPartners = [
   { name: "Gemini", logo: "/gemini-logo.webp", wide: false },
   { name: "Cursor", logo: "/cursor-logo.svg", wide: false },
   { name: "Lovable", logo: "/lovable-logo.webp", wide: false },
+];
+
+const marketplacePartners = [
+  { name: "Amazon", logo: "/amazon.svg", wide: true },
+  { name: "eBay", logo: "/ebay-logo.svg", wide: true },
+  { name: "Walmart", logo: "/walmart-logo.svg", wide: true },
+  { name: "Etsy", logo: "/etsy-logo.webp", wide: true },
+  { name: "Bol.com", logo: "/bol.webp", wide: false },
+  { name: "Allegro", logo: "/allegro_logo.svg", wide: true },
+  { name: "Kaufland", logo: "/kaufland.webp", wide: true },
+  { name: "Cdiscount", logo: "/cdiscount.svg", wide: true },
+  { name: "Fnac", logo: "/fnac.webp", wide: true },
+  { name: "Rakuten", logo: "/rakuten.webp", wide: true },
+  { name: "Worten", logo: "/worten-logo.webp", wide: true },
+  { name: "ManoMano", logo: "/manomano.svg", wide: true },
+  { name: "OnBuy", logo: "/onbuy.svg", wide: true },
+  { name: "Fruugo", logo: "/fruugo.svg", wide: true },
+  { name: "CDON", logo: "/cdon.jpeg", wide: true },
+  { name: "Spartoo", logo: "/spartoo.svg", wide: true },
+  { name: "Otto", logo: "/otto_logo.jpeg", wide: true },
+  { name: "Decathlon", logo: "/decathlon-logo.svg", wide: true },
+  { name: "Alibaba", logo: "/alibaba_logo.svg", wide: true },
+  { name: "AliExpress", logo: "/aliexpress_logo.webp", wide: true },
+  { name: "Lazada", logo: "/lazada_logo.svg", wide: true },
+  { name: "Temu", logo: "/temu_logo.svg", wide: true },
+  { name: "TikTok Shop", logo: "/tiktokshop.svg", wide: true },
+  { name: "Catch", logo: "/catch_logo.png", wide: true },
+  { name: "Global Sources", logo: "/global-sources.svg", wide: true },
+  { name: "BigBuy", logo: "/bigbuy.png", wide: true },
+  { name: "BrandsGateway", logo: "/brandsgateway.svg", wide: true },
+  { name: "Spocket", logo: "/spocket.webp", wide: true },
+  { name: "Syncee", logo: "/syncee.svg", wide: true },
+  { name: "SaleHoo", logo: "/salehoo.svg", wide: true },
+];
+
+const platformPartners = [
+  { name: "Mirakl", logo: "/mirakl.png", wide: true },
+  { name: "ChannelEngine", logo: "/channelengine.svg", wide: true },
+  { name: "Channable", logo: "/channable.svg", wide: true },
 ];
 
 const amazonMarkets = [
@@ -76,15 +121,15 @@ const LogoChip = ({ p }: { p: PartnerLogo }) => {
 const IntegrationPartnersSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-slate-50"
+      className="py-10 sm:py-12 lg:py-14 bg-slate-50"
       aria-label="Integration partners — shipping, ERP, AI and Amazon marketplace coverage"
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
 
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-14">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Integration Ecosystem
           </p>
@@ -109,16 +154,34 @@ const IntegrationPartnersSection = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Shipping & Logistics</h3>
-                <p className="text-xs text-slate-400">DHL · FedEx · Shiprocket · SendCloud · TNT · USPS & more</p>
+                <h3 className="text-sm font-bold text-slate-900">Shipping, Logistics & Fulfilment</h3>
+                <p className="text-xs text-slate-400">Carriers · 3PL · Cross-border fulfilment networks</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2.5">
               {shippingPartners.map((p) => <LogoChip key={p.name} p={p} />)}
             </div>
             <p className="text-xs text-slate-400 mt-4 leading-relaxed">
-              Also: UPS, Bombino, Cirro, Quickship, Easyship — 15+ carriers supported
+              Also: UPS, Bombino, Cirro, Quickship — 15+ carriers &amp; fulfilment partners supported
             </p>
+
+            {/* ── Multichannel & feed platforms ── */}
+            <div className="mt-6 pt-6 border-t border-slate-100">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-4 h-4 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900">Multichannel & Feed Platforms</h3>
+                  <p className="text-xs text-slate-400">Connect via leading marketplace & product-feed management platforms</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
+                {platformPartners.map((p) => <LogoChip key={p.name} p={p} />)}
+              </div>
+            </div>
           </div>
 
           {/* ── ERP & Accounting ── */}
@@ -130,8 +193,8 @@ const IntegrationPartnersSection = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">ERP & Accounting</h3>
-                <p className="text-xs text-slate-400">QuickBooks · ShipStation · Zoho</p>
+                <h3 className="text-sm font-bold text-slate-900">ERP, Inventory & Accounting</h3>
+                <p className="text-xs text-slate-400">QuickBooks · ShipStation · Zoho · Cin7 · Veeqo</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2.5 mb-5">
@@ -160,7 +223,7 @@ const IntegrationPartnersSection = () => {
           {/* ── Amazon EU Coverage ── */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-7 text-white">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center flex-shrink-0 p-1 shadow-sm">
                 <Image src="/amazon-logo.svg" alt="Amazon" width={20} height={20} className="w-5 h-5 object-contain" />
               </div>
               <div>
@@ -169,24 +232,25 @@ const IntegrationPartnersSection = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 mb-5">
-              {amazonMarkets.map((m) => (
-                <div
-                  key={m.code}
-                  className="bg-white/5 border border-white/8 rounded-xl p-2.5 text-center hover:bg-white/10 transition-colors"
-                >
-                  <div className="text-xs font-bold text-white">.{m.code.toLowerCase()}</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">{m.name}</div>
-                </div>
-              ))}
-            </div>
+            <MarketplaceFlagGrid
+              dark
+              className="grid grid-cols-3 gap-2 mb-5"
+              markets={amazonMarkets.map((m) => ({
+                code: m.code,
+                name: m.name,
+                alt: `${m.name} flag - Amazon.${m.code.toLowerCase()} marketplace`,
+              }))}
+            />
 
             <div className="space-y-2 mb-6">
               {[
-                "FBA · FBM · 3PL · AWD Services",
-                "Seller Central & Vendor Central",
-                "Buy Box Optimisation",
-                "SP-API Authorized Developer",
+                "FBA, FBM, 3PL & Amazon Warehousing (AWD)",
+                "Seller Central & Vendor Central Management",
+                "Buy Box Optimisation & Automated Repricing",
+                "SP-API Authorised Developer Integration",
+                "Product Listings, A+ Content & Amazon SEO",
+                "Sponsored Ads (PPC) & Campaign Management",
+                "Inventory, Order & Returns Automation",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-xs text-slate-300">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
@@ -204,6 +268,24 @@ const IntegrationPartnersSection = () => {
             </Link>
           </div>
 
+        </div>
+
+        {/* ── Marketplaces we integrate ── */}
+        <div className="mt-8 bg-white border border-slate-200 rounded-2xl p-7 sm:p-8">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+              <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18v4H3V3zm0 0l1.5 15a1 1 0 001 .9h11a1 1 0 001-.9L19 3M9 12h6" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-900">Marketplaces We Integrate</h3>
+              <p className="text-xs text-slate-400">30+ global & regional marketplaces — one unified integration layer</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2.5">
+            {marketplacePartners.map((p) => <LogoChip key={p.name} p={p} />)}
+          </div>
         </div>
       </div>
     </section>

@@ -5,11 +5,11 @@ import Link from "next/link";
 const CTABannerSection = () => {
   return (
     <section
-      className="py-12 sm:py-16 bg-white"
+      className="py-8 sm:py-10 bg-white"
       aria-label="Call to action - start your project with CTAS"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-        <div className="bg-slate-900 rounded-2xl sm:rounded-3xl px-8 sm:px-12 lg:px-16 py-12 sm:py-14 relative overflow-hidden">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+        <div className="bg-slate-900 rounded-2xl sm:rounded-3xl px-8 sm:px-12 lg:px-16 py-8 sm:py-10 relative overflow-hidden">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-[0.04]">
             <svg width="100%" height="100%">

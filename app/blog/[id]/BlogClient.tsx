@@ -164,7 +164,7 @@ export default function BlogClient({ blog, relatedPosts }: BlogProps) {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <Link
                 href="/blog"
@@ -217,7 +217,7 @@ export default function BlogClient({ blog, relatedPosts }: BlogProps) {
         </section>
 
         {/* Featured image — overlapping */}
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 -mt-10 sm:-mt-14 relative z-10 mb-12 sm:mb-16">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 -mt-10 sm:-mt-14 relative z-10 mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -235,7 +235,7 @@ export default function BlogClient({ blog, relatedPosts }: BlogProps) {
           </motion.div>
         </div>
 
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-16 sm:pb-20">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 pb-16 sm:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             {/* Left sidebar — author + related */}
             <aside className="lg:col-span-3 order-2 lg:order-1">

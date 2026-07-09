@@ -33,6 +33,7 @@ import {
   fraunces,
   NAVY,
   CYAN,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -42,8 +43,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -211,7 +212,7 @@ const keyFeatures = [
 ];
 
 const enterpriseStats = [
-  { label: "Enterprise Clients", value: "8+", icon: Building },
+  { label: "Enterprise Clients", value: "200+", icon: Building },
   { label: "Uptime Guarantee", value: "99.9%", icon: Clock },
   { label: "Certifications", value: "10+", icon: Award },
   { label: "Global Offices", value: "10+", icon: Globe },
@@ -374,8 +375,7 @@ const EnterprisePage = () => (
           highlight="Enterprise Services"
           description="End-to-end enterprise solutions designed to drive digital transformation, improve operational efficiency, and enable business growth."
         />
-        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-          <div className="flex gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+        <DotCarousel bleed ariaLabel="Content carousel">
             {enterpriseServices.map((service, i) => (
               <motion.article
                 key={service.title}
@@ -403,8 +403,7 @@ const EnterprisePage = () => (
                 </div>
               </motion.article>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </SectionWrap>
 
       {/* Advanced features — split-screen with dashboard mockup */}

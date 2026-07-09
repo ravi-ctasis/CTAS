@@ -35,6 +35,7 @@ import {
   CYAN,
   CYAN_LIGHT,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -44,8 +45,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -66,7 +67,7 @@ const heroBenefits = [
 ];
 
 const stats = [
-  { number: "50+", label: "Dating Apps Built" },
+  { number: "200+", label: "Dating Apps Built" },
   { number: "2M+", label: "Users Connected" },
   { number: "98%", label: "Client Satisfaction" },
   { number: "24/7", label: "Support Available" },
@@ -364,7 +365,7 @@ const DatingAppPage = () => {
       <main>
         {/* Split hero with app mockup */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label="Dating App Development"
         >
           <div
@@ -375,8 +376,8 @@ const DatingAppPage = () => {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
                   <Heart className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
@@ -458,8 +459,7 @@ const DatingAppPage = () => {
             highlight="Features"
             description="Dating apps need more than just swipes. Our innovative design creates engaging, visual experiences that keep users coming back."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {features.map((feature, i) => (
                 <motion.article
                   key={feature.title}
@@ -478,8 +478,7 @@ const DatingAppPage = () => {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -503,7 +502,7 @@ const DatingAppPage = () => {
             highlight="Dating App Development?"
             description="We deliver cutting-edge dating apps with proven technology stacks and innovative features that drive user engagement."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-8">
               {keyFeatures.map((feature, i) => (
                 <motion.div

@@ -231,7 +231,7 @@ export const serviceCategories: ServiceCategory[] = [
 export const whyChooseUs = [
   {
     title: "Expert Team",
-    description: "Certified professionals with 7+ years of experience across industries.",
+    description: "Certified professionals with 16+ years of experience across industries.",
     icon: Globe,
   },
   {

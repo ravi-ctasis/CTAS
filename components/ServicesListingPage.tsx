@@ -44,7 +44,9 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const whyChooseUs = [
   {
@@ -338,8 +340,8 @@ const amazonServices = [
 ];
 
 const amazonStats = [
-  { number: "500+", label: "Seller Accounts", icon: TrendingUp },
-  { number: "₹50M+", label: "Revenue Generated", icon: DollarSign },
+  { number: "200+", label: "Seller Accounts", icon: TrendingUp },
+  { number: "₹28M+", label: "Revenue Generated", icon: DollarSign },
   { number: "4.8★", label: "Average Rating", icon: Star },
   { number: "24/7", label: "Support Available", icon: Clock },
 ];
@@ -390,23 +392,23 @@ const ServicesListingPage = () => (
         highlight="E-commerce & IT Solutions"
         description="From web development to mobile apps, custom software to e-commerce solutions - we deliver cutting-edge digital solutions that drive business growth and success."
         stats={[
-          { number: "100+", label: "Projects Delivered", icon: Target, description: "Successfully Completed" },
-          { number: "20+", label: "Team Members", icon: Users, description: "Expert Professionals" },
-          { number: "7+", label: "Years Experience", icon: Award, description: "Industry Expertise" },
-          { number: "15+", label: "Technologies", icon: Code, description: "Modern Stack" },
+          { number: COMPANY_STATS.projectsDelivered, label: "Projects Delivered", icon: Target, description: "Successfully Completed" },
+          { number: COMPANY_STATS.teamMembers, label: "Team Members", icon: Users, description: "Expert Professionals" },
+          { number: COMPANY_STATS.yearsOfExcellence, label: "Years of Excellence", icon: Award, description: "Industry Expertise" },
+          { number: COMPANY_STATS.marketplaces, label: "Marketplaces", icon: Code, description: "Global Integrations" },
         ]}
         primaryCta={{ label: "View Our Work", href: "/portfolios" }}
         secondaryCta={{ label: "Schedule a Call", href: "/contact-us" }}
       />
 
       {/* Featured Services — bento grid */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]" aria-labelledby="featured-services-heading">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]" aria-labelledby="featured-services-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <motion.h2
             id="featured-services-heading"
             {...fadeUp}
             transition={{ duration: 0.5 }}
-            className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-slate-900 mb-10 sm:mb-12`}
+            className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-slate-900 mb-8 sm:mb-10`}
           >
             Featured Services
           </motion.h2>
@@ -488,8 +490,8 @@ const ServicesListingPage = () => (
       </section>
 
       {/* Professional Digital Services — alternating split rows */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white" aria-labelledby="digital-services-heading">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-white" aria-labelledby="digital-services-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Our Services"
             title="Professional"
@@ -544,8 +546,8 @@ const ServicesListingPage = () => (
       </section>
 
       {/* Why Choose Us — horizontal icon strip with connectors */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]" aria-labelledby="why-choose-heading">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]" aria-labelledby="why-choose-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Why Choose Us"
             title="The"
@@ -581,8 +583,8 @@ const ServicesListingPage = () => (
       </section>
 
       {/* Industries — horizontal scroll showcase */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden" aria-labelledby="industries-heading">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 mb-10 sm:mb-12">
+      <section className="py-10 sm:py-12 lg:py-14 bg-white overflow-hidden" aria-labelledby="industries-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 mb-8 sm:mb-10">
           <SectionHeader
             badge="Industries We Serve"
             title="Industries We"
@@ -591,8 +593,7 @@ const ServicesListingPage = () => (
           />
         </div>
 
-        <div className="relative">
-          <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-slate-200">
+        <DotCarousel ariaLabel="Industries we serve">
             {industries.map((industry, i) => (
               <motion.div
                 key={industry.title}
@@ -620,13 +621,12 @@ const ServicesListingPage = () => (
                 </Link>
               </motion.div>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </section>
 
       {/* Development Process — vertical timeline */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]" aria-labelledby="process-heading">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]" aria-labelledby="process-heading">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Our Process"
             title="Development"
@@ -669,7 +669,7 @@ const ServicesListingPage = () => (
 
       {/* Amazon Services — asymmetric split + checklist grid */}
       <section
-        className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden"
+        className="py-10 sm:py-12 lg:py-14 bg-white relative overflow-hidden"
         aria-labelledby="amazon-services-heading"
       >
         <div
@@ -679,8 +679,8 @@ const ServicesListingPage = () => (
           }}
           aria-hidden="true"
         />
-        <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-12 lg:gap-16 items-start mb-14 sm:mb-16">
+        <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-8 lg:gap-10 items-start mb-8 sm:mb-10">
             <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
               <SectionHeader
                 badge="Amazon Services"

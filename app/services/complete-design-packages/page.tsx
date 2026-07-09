@@ -416,9 +416,9 @@ export default function CompleteDesignPackagesPage() {
           description:
             "Professional brand identity packages that include everything you need to establish a strong, cohesive brand presence. From logo design to comprehensive brand guidelines.",
           stats: [
-            { number: "10+", label: "Brands Created", icon: Palette },
-            { number: "8+", label: "Happy Clients", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "200+", label: "Brands Created", icon: Palette },
+            { number: "200+", label: "Happy Clients", icon: Users },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "4.9", label: "Client Rating", icon: Star },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

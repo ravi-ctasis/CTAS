@@ -37,8 +37,8 @@ import {
 const careerStats = [
   { number: "20+", label: "Open Positions", icon: Briefcase, description: "Across All Departments" },
   { number: "100%", label: "Growth Focused", icon: Target, description: "Career Development" },
-  { number: "7+", label: "Years Average", icon: Clock, description: "Team Experience" },
-  { number: "15+", label: "Technologies", icon: Code, description: "Modern Stack Learning" },
+  { number: "16+", label: "Years Average", icon: Clock, description: "Team Experience" },
+  { number: "35+", label: "Technologies", icon: Code, description: "Modern Stack Learning" },
 ];
 
 const openPositions = [
@@ -240,8 +240,8 @@ const CareersPage = () => {
           stats={careerStats}
         />
 
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader
               badge="Openings"
               title="Open"
@@ -352,8 +352,8 @@ const CareersPage = () => {
           </div>
         </section>
 
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-white">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader badge="Benefits" title="Benefits &" highlight="Perks" description="We offer competitive benefits and a supportive environment that promotes growth and professional development." />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {companyBenefits.map((benefit, i) => (
@@ -363,8 +363,8 @@ const CareersPage = () => {
           </div>
         </section>
 
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader badge="Values" title="Company" highlight="Culture" description="We believe in creating an inclusive, supportive, and innovative work environment where everyone can thrive." />
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {companyValues.map((value, i) => (
@@ -374,8 +374,8 @@ const CareersPage = () => {
           </div>
         </section>
 
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-white">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader badge="How to Apply" title="Application" highlight="Process" description="Our streamlined application process ensures a smooth experience from application to onboarding." />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
               {applicationProcess.map((process, i) => (
@@ -402,7 +402,7 @@ const CareersPage = () => {
           </div>
         </section>
 
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
+        <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
           <div className="max-w-3xl mx-auto px-6 sm:px-10">
             <SectionHeader badge="Apply Now" title="Submit Your" highlight="Application" description="Ready to join our team? Fill out the form below and we'll get back to you within 48 hours." />
             <motion.div {...fadeUp} transition={{ duration: 0.5 }} className="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm">

@@ -53,6 +53,7 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -62,8 +63,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -436,7 +437,7 @@ export default function FoodBeveragePage() {
             highlight="Food Platform?"
             description="Discover the essential features that make our restaurant and delivery platforms stand out in the competitive food industry market."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-8">
               {platformFeatures.map((feature, i) => (
                 <motion.div
@@ -543,8 +544,7 @@ export default function FoodBeveragePage() {
             highlight="Features"
             description="Our platform combines cutting-edge technology with intuitive design to create powerful restaurant and delivery applications that users love."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {platformFeatureCards.map((feature, i) => (
                 <motion.article
                   key={feature.title}
@@ -571,8 +571,7 @@ export default function FoodBeveragePage() {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         {/* Use cases — zigzag alternating rows */}

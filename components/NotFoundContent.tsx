@@ -21,7 +21,7 @@ export default function NotFoundContent() {
       <main>
         {/* Hero — split with decorative 404 */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-20 sm:py-28 lg:py-32 min-h-[70vh] flex items-center"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-12 sm:py-16 lg:py-20 min-h-[70vh] flex items-center"
           aria-label="Page Not Found"
         >
           <div
@@ -40,8 +40,8 @@ export default function NotFoundContent() {
             aria-hidden="true"
           />
 
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 w-full">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}

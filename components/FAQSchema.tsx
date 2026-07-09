@@ -84,7 +84,7 @@ const FAQSchema = () => {
         name: "What makes Ctas Info Services LLP different from other technology companies?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Ctas Info Services LLP stands out for our specialized expertise in Amazon SP-API integration, AI-powered solutions, multi-marketplace management, and our proven track record of delivering 100+ successful projects. We combine deep domain expertise with innovative technology solutions and provide 24/7 support with 99.9% uptime."
+          text: "Ctas Info Services LLP stands out for our specialized expertise in Amazon SP-API integration, AI-powered solutions, multi-marketplace management, and our proven track record of delivering 200+ successful projects. We combine deep domain expertise with innovative technology solutions and provide 24/7 support with 99.9% uptime."
         }
       }
     ]

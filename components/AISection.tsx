@@ -21,7 +21,7 @@ const capabilities = [
 const AISection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-slate-900 text-white overflow-hidden relative"
+      className="py-10 sm:py-12 lg:py-14 bg-slate-900 text-white overflow-hidden relative"
       aria-label="AI and machine learning automation solutions"
     >
       {/* Subtle background texture */}
@@ -36,8 +36,8 @@ const AISection = () => {
         </svg>
       </div>
 
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 relative">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-center">
           {/* Left Content */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400 mb-4">
@@ -154,7 +154,7 @@ const AISection = () => {
                   <div className="text-xs text-slate-400 uppercase tracking-wider mb-3">Pricing Intelligence</div>
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { label: "Products", value: "40K+" },
+                      { label: "Products", value: "28M+" },
                       { label: "Rules Active", value: "847" },
                       { label: "Avg. Margin", value: "+12%" },
                     ].map((item) => (

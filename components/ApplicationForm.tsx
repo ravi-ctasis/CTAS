@@ -235,7 +235,7 @@ const ApplicationForm = ({ positions = [] }: ApplicationFormProps) => {
             <option value="1-3">1-3 years</option>
             <option value="3-5">3-5 years</option>
             <option value="5-8">5-8 years</option>
-            <option value="8+">8+ years</option>
+            <option value="200+">8+ years</option>
           </select>
         </div>
 

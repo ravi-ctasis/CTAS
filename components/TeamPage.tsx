@@ -30,12 +30,13 @@ import {
   NAVY,
   CYAN,
 } from "@/components/page-design";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const teamStats = [
-  { number: "20+", label: "Team Members", icon: Users, description: "Certified Professionals" },
-  { number: "100+", label: "Projects Delivered", icon: Target, description: "Successfully Completed" },
-  { number: "7+", label: "Years Experience", icon: Award, description: "Industry Expertise" },
-  { number: "15+", label: "Technologies", icon: Code, description: "Modern Stack Mastery" },
+  { number: COMPANY_STATS.teamMembers, label: "Team Members", icon: Users, description: "Certified Professionals" },
+  { number: COMPANY_STATS.projectsDelivered, label: "Projects Delivered", icon: Target, description: "Successfully Completed" },
+  { number: COMPANY_STATS.yearsOfExcellence, label: "Years of Excellence", icon: Award, description: "Industry Expertise" },
+  { number: COMPANY_STATS.marketplaces, label: "Marketplaces", icon: Code, description: "Global Platform Integrations" },
 ];
 
 const leadershipTeam = [
@@ -97,7 +98,7 @@ const specializedTeam = [
     role: "Quality Assurance and Testing",
     bio: "Our QA team ensures top-quality software through thorough manual and automated testing, performance analysis, and security validation.",
     expertise: ["Automated Testing", "Performance Testing", "Security Testing", "Test Automation"],
-    achievements: "100+ Tested Projects • Zero Critical Bugs • Performance Optimization",
+    achievements: "200+ Tested Projects • Zero Critical Bugs • Performance Optimization",
   },
 ];
 
@@ -180,8 +181,8 @@ const TeamPage = () => (
         stats={teamStats}
       />
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Leadership" title="Our" highlight="Leadership Team" description="Experienced leaders who drive innovation, strategy, and excellence across all aspects of our organization." />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
             {leadershipTeam.map((member, i) => (
@@ -191,8 +192,8 @@ const TeamPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-white">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Development" title="Technical" highlight="Experts" description="Our certified developers specialize in modern technologies and deliver cutting-edge solutions." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {developmentTeam.map((member, i) => (
@@ -202,8 +203,8 @@ const TeamPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Specialized" title="Domain" highlight="Specialists" description="Our specialized teams bring deep expertise in AI, DevOps, QA, and other critical areas." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {specializedTeam.map((member, i) => (
@@ -213,8 +214,8 @@ const TeamPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-white">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Culture" title="Company" highlight="Culture" description="We believe in fostering a positive, inclusive, and growth-oriented work environment." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {companyCulture.map((item, i) => (
@@ -235,8 +236,8 @@ const TeamPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader badge="Benefits" title="Working" highlight="With Us" description="We offer competitive benefits and a supportive environment for professional growth." />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {teamBenefits.map((benefit, i) => (
@@ -257,15 +258,15 @@ const TeamPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <motion.div
             {...fadeUp}
             transition={{ duration: 0.5 }}
-            className="relative rounded-[1.75rem] px-8 sm:px-12 py-12 sm:py-14 overflow-hidden text-center"
+            className="relative rounded-[1.75rem] px-8 sm:px-12 py-8 sm:py-10 overflow-hidden text-center"
             style={{ backgroundImage: `linear-gradient(135deg, ${NAVY}, #0E2233 55%, #0B1A26)` }}
           >
-            <div className="relative max-w-2xl mx-auto">
+            <div className="relative max-w-4xl mx-auto">
               <SectionBadge>Join Us</SectionBadge>
               <h2 className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-white mt-4 mb-4`}>
                 Want to Join Our Team?

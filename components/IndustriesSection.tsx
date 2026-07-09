@@ -103,14 +103,14 @@ const colorMap: Record<string, { bg: string; icon: string; highlight: string }> 
 const IndustriesSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-white"
+      className="py-10 sm:py-12 lg:py-14 bg-white"
       aria-label="Industries we serve"
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Industries
           </p>

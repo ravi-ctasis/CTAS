@@ -267,8 +267,8 @@ export default function MarketplaceServicesPage() {
             "Comprehensive marketplace management solutions for all major e-commerce platforms. From inventory management to AI-powered insights, we've got you covered.",
           stats: [
             { number: "23+", label: "Services", icon: Package },
-            { number: "15+", label: "Marketplaces", icon: Target },
-            { number: "1000+", label: "Clients", icon: Users },
+            { number: "35+", label: "Marketplaces", icon: Target },
+            { number: "200+", label: "Happy Clients", icon: Users },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "View All Services", href: "/services" },

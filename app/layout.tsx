@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s | Ctas Info Services LLP",
   },
   description:
-    "India’s pioneering Ctas Info Services LLP delivers AI web solutions, SP-API integration, e-commerce automation & IT services for global growth. 100+ projects delivered across retail, healthcare, and finance.",
+    "India’s pioneering Ctas Info Services LLP delivers AI web solutions, SP-API integration, e-commerce automation & IT services for global growth. 200+ projects delivered across retail, healthcare, and finance.",
   keywords: [
     "Ctas Info Services LLP",
     "Amazon SP API integration",

@@ -216,7 +216,7 @@ export default function AmazonServicesPage() {
           description:
             "Unlock explosive growth with our 32+ professional services designed to optimize, automate, and scale your Amazon business to market-dominating success.",
           stats: [
-            { number: "500+", label: "Success Stories", icon: Star },
+            { number: "200+", label: "Success Stories", icon: Star },
             { number: "32+", label: "Professional Services", icon: CheckCircle },
             { number: "100%", label: "Secure & Reliable", icon: Shield },
             { number: "24/7", label: "Support", icon: Clock },

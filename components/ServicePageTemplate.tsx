@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ArrowRight, type LucideIcon } from "lucide-react";
 
@@ -16,6 +17,7 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 import type { ServicePageConfig, ServiceSection } from "@/types/service-page";
 
@@ -26,8 +28,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -147,18 +149,36 @@ const CardsSection = ({
       <SectionWrap alt={index % 2 === 1}>
         <SectionHeader {...section.header} description={section.header.description || ""} />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 auto-rows-fr">
-          {section.items.map((item, i) => (
-            <motion.div
-              key={item.title}
-              {...fadeUp}
-              transition={{ duration: 0.45, delay: i * 0.05 }}
-              className={`bg-white border border-slate-200/80 rounded-[1.5rem] p-6 sm:p-7 hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] hover:-translate-y-0.5 transition-all duration-300 h-full ${
-                i === 0 ? "md:col-span-2 lg:row-span-2" : ""
-              }`}
-            >
-              <CardItemContent item={item} />
-            </motion.div>
-          ))}
+          {section.items.map((item, i) => {
+            const isFeatured = i === 0;
+            const featuredImage = isFeatured ? item.image : undefined;
+            return (
+              <motion.div
+                key={item.title}
+                {...fadeUp}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className={`bg-white border border-slate-200/80 rounded-[1.5rem] overflow-hidden hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col ${
+                  isFeatured ? "md:col-span-2 lg:row-span-2" : ""
+                }`}
+              >
+                {featuredImage && (
+                  <div className="relative w-full aspect-[16/10] bg-[#F6F8FA] shrink-0">
+                    <Image
+                      src={featuredImage}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                      priority
+                    />
+                  </div>
+                )}
+                <div className="p-6 sm:p-7 flex-1 flex flex-col">
+                  <CardItemContent item={item} />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </SectionWrap>
     );
@@ -168,8 +188,7 @@ const CardsSection = ({
     return (
       <SectionWrap alt={index % 2 === 1}>
         <SectionHeader {...section.header} description={section.header.description || ""} />
-        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-          <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+        <DotCarousel bleed ariaLabel={section.header.title || "Service highlights"}>
             {section.items.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -184,8 +203,7 @@ const CardsSection = ({
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </SectionWrap>
     );
   }
@@ -364,34 +382,32 @@ const ProcessSection = ({
     return (
       <SectionWrap alt={index % 2 === 1}>
         <SectionHeader {...section.header} description={section.header.description || ""} />
-        <div className="relative overflow-x-auto pb-4 -mx-2 px-2">
-          <div className="flex gap-4 sm:gap-5 min-w-max lg:min-w-0 lg:grid lg:grid-cols-5">
-            {section.steps.map((step, i) => (
-              <motion.div
-                key={step.step}
-                {...fadeUp}
-                transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="relative flex-shrink-0 w-[220px] lg:w-auto bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6"
-              >
-                {i < section.steps.length - 1 && (
-                  <div
-                    className="hidden lg:block absolute top-8 -right-3 w-6 h-px bg-slate-200"
-                    aria-hidden="true"
-                  />
-                )}
+        <DotCarousel bleed ariaLabel={section.header.title || "Process steps"} className="gap-4 sm:gap-5 min-w-max lg:min-w-0 lg:grid lg:grid-cols-5" trackClassName="px-2">
+          {section.steps.map((step, i) => (
+            <motion.div
+              key={step.step}
+              {...fadeUp}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="relative flex-shrink-0 w-[220px] lg:w-auto snap-start bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6"
+            >
+              {i < section.steps.length - 1 && (
                 <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[10px] font-bold mb-4"
-                  style={{ backgroundColor: NAVY }}
-                >
-                  {step.step}
-                </div>
-                <step.icon className="w-5 h-5 mb-3" style={{ color: CYAN }} />
-                <h3 className="text-sm font-semibold text-slate-900 mb-2">{step.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                  className="hidden lg:block absolute top-8 -right-3 w-6 h-px bg-slate-200"
+                  aria-hidden="true"
+                />
+              )}
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[10px] font-bold mb-4"
+                style={{ backgroundColor: NAVY }}
+              >
+                {step.step}
+              </div>
+              <step.icon className="w-5 h-5 mb-3" style={{ color: CYAN }} />
+              <h3 className="text-sm font-semibold text-slate-900 mb-2">{step.title}</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">{step.description}</p>
+            </motion.div>
+          ))}
+        </DotCarousel>
       </SectionWrap>
     );
   }
@@ -441,8 +457,7 @@ const TechGridSection = ({
     return (
       <SectionWrap alt={index % 2 === 1}>
         <SectionHeader {...section.header} description={section.header.description || ""} />
-        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-          <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+        <DotCarousel bleed ariaLabel={section.header.title || "Technologies"}>
             {section.items.map((tech, i) => (
               <motion.div
                 key={tech.name}
@@ -468,8 +483,7 @@ const TechGridSection = ({
                 )}
               </motion.div>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </SectionWrap>
     );
   }
@@ -518,7 +532,7 @@ const TechCategoriesSection = ({
     <SectionWrap alt={index % 2 === 1}>
       <SectionHeader {...section.header} description={section.header.description || ""} />
       <div className="grid lg:grid-cols-[minmax(0,280px)_1fr] gap-6 lg:gap-10 items-start">
-        <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0" aria-label="Technology layers">
+        <nav className="flex lg:flex-col gap-2 overflow-x-auto scrollbar-hide lg:overflow-visible pb-2 lg:pb-0" aria-label="Technology layers">
           {section.categories.map((cat, ci) => (
             <button
               key={cat.title}
@@ -846,8 +860,7 @@ const MarketplaceGridSection = ({
     return (
       <SectionWrap alt={index % 2 === 1}>
         <SectionHeader {...section.header} description={section.header.description || ""} />
-        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-          <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+        <DotCarousel bleed ariaLabel={section.header.title || "Marketplace services"}>
             {section.items.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -875,8 +888,7 @@ const MarketplaceGridSection = ({
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </SectionWrap>
     );
   }

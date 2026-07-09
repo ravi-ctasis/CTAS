@@ -16,6 +16,8 @@ export type ServiceCardItem = {
   title: string;
   description: string;
   icon: LucideIcon;
+  /** Optional banner shown in the featured (first) bento card */
+  image?: string;
   features?: string[];
   pills?: string[];
   tags?: string[];

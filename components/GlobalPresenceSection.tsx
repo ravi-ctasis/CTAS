@@ -2,41 +2,47 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const stats = [
-  { value: "18+", label: "Countries Served" },
-  { value: "500+", label: "Successful Projects" },
-  { value: "200+", label: "Enterprise Clients" },
+  { value: COMPANY_STATS.countries, label: "Countries Served" },
+  { value: COMPANY_STATS.projectsDelivered, label: "Projects Delivered" },
+  { value: COMPANY_STATS.happyClients, label: "Happy Clients" },
   { value: "24/7", label: "Support" },
 ];
 
 const regions = [
   {
     code: "IN",
+    flag: "/flags/in.webp",
     name: "India",
     role: "Primary Development Center",
-    desc: "Ahmedabad, Gujarat — Engineering hub with 20+ certified developers.",
+    desc: `Ahmedabad, Gujarat — Engineering hub with ${COMPANY_STATS.certifiedDevelopers} certified developers.`,
   },
   {
     code: "EU",
+    flag: "/flags/eu.svg",
     name: "Europe",
     role: "Marketplace Consulting",
     desc: "Bol.com, Allegro, Worten and EU marketplace integrations.",
   },
   {
     code: "US",
+    flag: "/flags/us.webp",
     name: "USA",
     role: "Enterprise Sales & Support",
     desc: "Amazon, Walmart and major North American marketplace clients.",
   },
   {
     code: "AU",
+    flag: "/flags/au.webp",
     name: "Australia",
     role: "APAC Partnerships",
     desc: "Catch, Kogan and regional marketplace integrations.",
   },
   {
     code: "GB",
+    flag: "/flags/uk.webp",
     name: "United Kingdom",
     role: "European Hub",
     desc: "UK marketplace operations and European business partnerships.",
@@ -46,10 +52,10 @@ const regions = [
 const GlobalPresenceSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 section-bg-dots overflow-hidden"
+      className="py-10 sm:py-12 lg:py-14 section-bg-dots overflow-hidden"
       aria-label="CTAS global presence — clients across Europe, USA, India, Australia and UK"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         {/* Header — full width */}
         <div className="max-w-3xl mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-4">
@@ -61,12 +67,12 @@ const GlobalPresenceSection = () => {
           <p className="text-slate-500 text-base sm:text-lg leading-relaxed">
             CTAS partners with startups, SMBs and enterprise organizations to build scalable
             commerce ecosystems connecting marketplaces, ERP platforms, warehouses and logistics
-            providers across 18+ countries.
+            providers across {COMPANY_STATS.countries} countries.
           </p>
         </div>
 
         {/* Stats — full width row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
           {stats.map((s) => (
             <div key={s.label} className="border border-slate-200 rounded-xl p-4 sm:p-5 bg-slate-50/50">
               <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">{s.value}</div>
@@ -84,8 +90,14 @@ const GlobalPresenceSection = () => {
                 key={r.code}
                 className="flex items-center gap-3 p-3.5 sm:p-4 bg-slate-50 border border-slate-100 rounded-xl hover:border-blue-200 transition-colors"
               >
-                <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 text-xs font-bold text-blue-700">
-                  {r.code}
+                <div className="relative w-9 h-6 rounded-[3px] overflow-hidden ring-1 ring-black/10 shadow-sm flex-shrink-0">
+                  <Image
+                    src={r.flag}
+                    alt={`${r.name} flag`}
+                    fill
+                    className="object-cover"
+                    sizes="36px"
+                  />
                 </div>
                 <div className="min-w-0">
                   <div className="font-semibold text-slate-900 text-sm leading-snug">

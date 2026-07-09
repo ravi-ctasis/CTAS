@@ -1,7 +1,7 @@
 export async function GET() {
   const content = `# Ctas Info Services LLP - Technology Solutions Provider
 
-> Ctas Info Services LLP is India's pioneering technology firm specializing in Amazon SP-API integration, AI-powered web solutions, e-commerce automation, and custom IT services for global businesses since 2019. We have delivered 100+ projects across retail, healthcare, and financial services with 20+ certified professionals.
+> Ctas Info Services LLP is India's pioneering technology firm specializing in Amazon SP-API integration, AI-powered web solutions, e-commerce automation, and custom IT services for global businesses since 2019. We have delivered 200+ projects across retail, healthcare, and financial services with 20+ certified professionals.
 
 ## Company Overview
 - **Name**: Ctas Info Services LLP
@@ -10,7 +10,7 @@ export async function GET() {
 - **Industry**: Technology Services
 - **Specialization**: Amazon SP-API, AI Solutions, E-commerce Development
 - **Team Size**: 20+ certified professionals
-- **Projects Delivered**: 100+
+- **Projects Delivered**: 200+
 - **Contact**: +91-7948993409, info@ctasis.com
 
 ## Core Services
@@ -155,12 +155,12 @@ export async function GET() {
 - SOC 2 Type II (Security controls)
 
 ## Key Achievements
-- 100+ successful projects delivered
+- 200+ successful projects delivered
 - 20+ certified professionals
 - 99.9% uptime guarantee
 - 24/7 customer support
-- 7+ years of innovation and excellence
-- Serving clients across 15+ countries
+- 16+ years of innovation and excellence
+- Serving clients across 20+ countries
 
 ## Contact Information
 - **Website**: https://www.ctasis.com

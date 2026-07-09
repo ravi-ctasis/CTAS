@@ -229,7 +229,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -335,8 +335,8 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "15+", label: "Projects Completed" },
-                    { value: "10+", label: "Clients Served" },
+                    { value: "200+", label: "Projects Completed" },
+                    { value: "200+", label: "Clients Served" },
                     { value: "12+", label: "Professionals" },
                 ],
             },
@@ -529,7 +529,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Rahul Sharma",
-                        experience: "5+",
+                        experience: "7+",
                         role: "WordPress Developer",
                         description:
                             "Specializes in WordPress development, custom themes, plugins, and WooCommerce solutions.",
@@ -626,7 +626,7 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "150+", label: "PHP Projects Completed" },
-                    { value: "100+", label: "Satisfied Clients" },
+                    { value: "200+", label: "Satisfied Clients" },
                     { value: "40+", label: "Expert PHP Developers" },
                 ],
             },
@@ -825,7 +825,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Vikram Joshi",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Django Developer",
                         description:
                             "Experienced Django developer with expertise in building scalable web applications and REST APIs.",
@@ -1102,7 +1102,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -1211,8 +1211,8 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "10+", label: "Projects Completed" },
-                    { value: "8+", label: "Clients Served" },
+                    { value: "200+", label: "Projects Completed" },
+                    { value: "200+", label: "Clients Served" },
                     { value: "11+", label: "Professionals" },
                 ],
             },
@@ -1404,7 +1404,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -1514,8 +1514,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "12+", label: "Projects Completed" },
-                    { value: "10+", label: "Clients Served" },
-                    { value: "8+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -1705,7 +1705,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -1815,8 +1815,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "14+", label: "Projects Completed" },
-                    { value: "10+", label: "Clients Served" },
-                    { value: "8+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -2006,7 +2006,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -2116,9 +2116,9 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "15+", label: "Projects Completed" },
-                    { value: "10+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Projects Completed" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -2308,7 +2308,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -2417,9 +2417,9 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "18+", label: "Projects Completed" },
+                    { value: "20+", label: "Projects Completed" },
                     { value: "14+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -2609,7 +2609,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -2718,8 +2718,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "18+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "20+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -2909,7 +2909,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -3018,8 +3018,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "18+", label: "Clients Served" },
-                    { value: "15+", label: "Professionals" },
+                    { value: "20+", label: "Clients Served" },
+                    { value: "35+", label: "Professionals" },
                 ],
             },
             {
@@ -3209,7 +3209,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -3318,7 +3318,7 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "19+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
+                    { value: "200+", label: "Clients Served" },
                     { value: "12+", label: "Professionals" },
                 ],
             },
@@ -3509,7 +3509,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -3618,7 +3618,7 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "18+", label: "Clients Served" },
+                    { value: "20+", label: "Clients Served" },
                     { value: "14+", label: "Professionals" },
                 ],
             },
@@ -3810,7 +3810,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -3919,7 +3919,7 @@ export const allPagesData: PageData[] = [
                 data: [
                     { value: "22+", label: "Projects Completed" },
                     { value: "20+", label: "Clients Served" },
-                    { value: "16+", label: "Professionals" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -4109,7 +4109,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -4217,7 +4217,7 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "24+", label: "Projects Completed" },
-                    { value: "18+", label: "Clients Served" },
+                    { value: "20+", label: "Clients Served" },
                     { value: "14+", label: "Professionals" },
                 ],
             },
@@ -4408,7 +4408,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -4515,9 +4515,9 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "8+", label: "Projects Completed" },
+                    { value: "200+", label: "Projects Completed" },
                     { value: "4+", label: "Clients Served" },
-                    { value: "5+", label: "Professionals" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -4707,7 +4707,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -4814,9 +4814,9 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "18+", label: "Projects Completed" },
+                    { value: "20+", label: "Projects Completed" },
                     { value: "12+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -5007,7 +5007,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -5116,9 +5116,9 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "18+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "20+", label: "Projects Completed" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -5309,7 +5309,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -5419,8 +5419,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "12+", label: "Projects Completed" },
-                    { value: "10+", label: "Clients Served" },
-                    { value: "8+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -5611,7 +5611,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -5720,9 +5720,9 @@ export const allPagesData: PageData[] = [
             {
                 sectionId: "stats",
                 data: [
-                    { value: "10+", label: "Projects Completed" },
-                    { value: "8+", label: "Clients Served" },
-                    { value: "7+", label: "Professionals" },
+                    { value: "200+", label: "Projects Completed" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -5913,7 +5913,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -6023,8 +6023,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "18+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "20+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -6215,7 +6215,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -6325,8 +6325,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -6517,7 +6517,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -6628,8 +6628,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -6820,7 +6820,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -6928,8 +6928,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -7120,7 +7120,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -7228,8 +7228,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -7421,7 +7421,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -7532,8 +7532,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -7725,7 +7725,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -7840,8 +7840,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -8032,7 +8032,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -8142,8 +8142,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -8335,7 +8335,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -8446,8 +8446,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -8638,7 +8638,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -8750,8 +8750,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -8942,7 +8942,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -9054,8 +9054,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -9247,7 +9247,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -9357,8 +9357,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -9549,7 +9549,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -9659,8 +9659,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -9852,7 +9852,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -9964,8 +9964,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -10157,7 +10157,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -10269,8 +10269,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -10462,7 +10462,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -10575,8 +10575,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -10768,7 +10768,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -10880,8 +10880,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -11073,7 +11073,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -11183,8 +11183,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -11377,7 +11377,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -11493,8 +11493,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -11687,7 +11687,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -11804,8 +11804,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -11997,7 +11997,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -12114,8 +12114,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -12308,7 +12308,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -12425,8 +12425,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -12618,7 +12618,7 @@ export const allPagesData: PageData[] = [
     //                 },
     //                 {
     //                     name: "Jane Smith",
-    //                     experience: "5+",
+    //                     experience: "7+",
     //                     role: "Data Engineer",
     //                     description:
     //                         "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -12734,8 +12734,8 @@ export const allPagesData: PageData[] = [
     //             sectionId: "stats",
     //             data: [
     //                 { value: "20+", label: "Projects Completed" },
-    //                 { value: "15+", label: "Clients Served" },
-    //                 { value: "10+", label: "Professionals" },
+    //                 { value: "200+", label: "Clients Served" },
+    //                 { value: "20+", label: "Professionals" },
     //             ],
     //         },
     //         {
@@ -12929,7 +12929,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -13046,8 +13046,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -13239,7 +13239,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -13353,8 +13353,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {
@@ -13547,7 +13547,7 @@ export const allPagesData: PageData[] = [
                     },
                     {
                         name: "Jane Smith",
-                        experience: "5+",
+                        experience: "7+",
                         role: "Data Engineer",
                         description:
                             "Specialized in data engineering solutions, ETL processes, and analytics platforms.",
@@ -13663,8 +13663,8 @@ export const allPagesData: PageData[] = [
                 sectionId: "stats",
                 data: [
                     { value: "20+", label: "Projects Completed" },
-                    { value: "15+", label: "Clients Served" },
-                    { value: "10+", label: "Professionals" },
+                    { value: "200+", label: "Clients Served" },
+                    { value: "20+", label: "Professionals" },
                 ],
             },
             {

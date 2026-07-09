@@ -31,6 +31,7 @@ const ecommerceTypes = [
     description:
       "Enterprise-level B2B e-commerce platforms for wholesale and business transactions",
     icon: Building,
+    image: "/service-banners/e-commerce-solutions.webp",
     features: [
       "Bulk ordering and inventory management",
       "Multi-tier pricing and customer groups",
@@ -379,7 +380,7 @@ export default function EcommerceSolutionsPage() {
           stats: [
             { number: "200+", label: "E-commerce Stores", icon: ShoppingCart },
             { number: "95%", label: "Client Satisfaction", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

@@ -81,6 +81,7 @@ export const mernStackConfig: ServicePageConfig = {
           title: "MongoDB",
           description: "NoSQL database for flexible data storage",
           icon: Database,
+          image: "/service-banners/mern-stack.webp",
         },
         {
           title: "Express.js",

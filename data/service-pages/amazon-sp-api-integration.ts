@@ -113,7 +113,7 @@ export const amazonSpApiConfig: ServicePageConfig = {
       "Automate every Amazon workflow—from catalog ingestion and Buy Box repricing to settlements and compliance—using secure, scalable SP API integrations built by engineers who manage 35+ marketplace programs globally.",
     stats: [
       { number: "35+", label: "SP API Projects Delivered", icon: ShoppingCart },
-      { number: "15", label: "Marketplaces & Regions", icon: Globe },
+      { number: "35+", label: "Marketplaces & Regions", icon: Globe },
       { number: "99.9%", label: "Average Uptime", icon: Cloud },
       { number: "20+", label: "Integration Experts", icon: Users },
     ],

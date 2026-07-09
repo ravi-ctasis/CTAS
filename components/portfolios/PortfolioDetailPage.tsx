@@ -28,6 +28,7 @@ import {
   CYAN,
   CYAN_LIGHT,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 import type {
   PortfolioContentBlock,
@@ -42,8 +43,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -183,7 +184,7 @@ const renderSection = (
     case "advantages":
       return (
         <SectionWrap key={`adv-${index}`} alt={alt}>
-          <div className="mb-12 sm:mb-14">
+          <div className="mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF3F8] border border-[#13345A]/15 text-[#13345A] text-xs font-semibold uppercase tracking-widest mb-4">
               Advantages
             </div>
@@ -314,8 +315,7 @@ const renderSection = (
       return (
         <SectionWrap key={`tech-${index}`} alt={alt}>
           <SectionHeader badge="Technology" title="Technology" highlight="Stack" description={section.description} />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {data.techStack.flatMap((cat) =>
                 cat.technologies.map((tech, i) => (
                   <motion.div
@@ -335,8 +335,7 @@ const renderSection = (
                   </motion.div>
                 ))
               )}
-            </div>
-          </div>
+        </DotCarousel>
         </SectionWrap>
       );
 
@@ -400,7 +399,7 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
       <main>
         {/* Hero — split with image */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label={data.title}
         >
           <div
@@ -411,7 +410,7 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
               <Link
                 href="/portfolios"

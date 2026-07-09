@@ -27,6 +27,7 @@ import {
   NAVY,
   CYAN,
 } from "@/components/page-design";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 import Analyzing from "../public/analyzing.webp";
 import Hiring from "../public/developers-hiring.webp";
@@ -154,13 +155,13 @@ const HowWeWorkPage = () => (
         description="Our proven methodology ensures successful project delivery through collaboration, AI-augmented innovation, and engineering excellence."
         stats={[
           { number: "6", label: "Process Steps", icon: Rocket, description: "End-to-end delivery" },
-          { number: "100+", label: "Projects", icon: Shield, description: "Successfully delivered" },
-          { number: "20+", label: "Experts", icon: Users, description: "Certified professionals" },
+          { number: COMPANY_STATS.projectsDelivered, label: "Projects", icon: Shield, description: "Successfully delivered" },
+          { number: COMPANY_STATS.certifiedDevelopers, label: "Experts", icon: Users, description: "Certified professionals" },
         ]}
       />
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Comprehensive Approach"
             title="Our"
@@ -178,10 +179,10 @@ const HowWeWorkPage = () => (
       {processSections.map((section, si) => (
         <section
           key={section.title}
-          className={`py-16 sm:py-20 ${si % 2 === 1 ? "bg-white" : "bg-[#F6F8FA]"}`}
+          className={`py-10 sm:py-12 ${si % 2 === 1 ? "bg-white" : "bg-[#F6F8FA]"}`}
         >
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <motion.div
                 {...fadeUp}
                 transition={{ duration: 0.5 }}
@@ -223,8 +224,8 @@ const HowWeWorkPage = () => (
         </section>
       ))}
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-white">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Why Choose Us"
             title="Why Our"

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const marketplaces = [
   { name: "Amazon", logo: "/amazon.svg", width: 100, height: 32 },
@@ -31,10 +32,10 @@ const TrustedMarketplacesSection = () => {
 
   return (
     <section
-      className="py-16 sm:py-20 bg-[#F6F8FA] border-y border-slate-100"
+      className="py-10 sm:py-12 bg-[#F6F8FA] border-y border-slate-100"
       aria-label="Trusted by leading global marketplaces"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Trusted Worldwide
@@ -49,11 +50,11 @@ const TrustedMarketplacesSection = () => {
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {[
-            { value: "35+", label: "Marketplace APIs" },
-            { value: "1.5M+", label: "Orders Synced" },
-            { value: "40K+", label: "Products Managed" },
+            { value: COMPANY_STATS.marketplaces, label: "Marketplace APIs" },
+            { value: COMPANY_STATS.ordersSynced, label: "Orders Synced" },
+            { value: COMPANY_STATS.inventoryManaged, label: "Inventory Managed" },
             { value: "99.9%", label: "API Reliability" },
           ].map((stat) => (
             <div

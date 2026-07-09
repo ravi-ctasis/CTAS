@@ -12,12 +12,13 @@ import {
   CalendarDays,
 } from "lucide-react";
 import Link from "next/link";
+import { COMPANY_STATS, COMPANY_STAT_COPY } from "@/data/company-stats";
 
 const features = [
-  "100+ Projects Delivered in Retail, Healthcare & Finance",
+  `${COMPANY_STAT_COPY.projectsDelivered} in Retail, Healthcare & Finance`,
   "AI-Augmented Development Using GPT, Claude & Gemini",
-  "20+ Certified Developers in AI, Python, TypeScript & C#",
-  "End-to-End Marketplace Expertise on Amazon, eBay, Walmart & More",
+  `${COMPANY_STAT_COPY.certifiedDevelopers} in AI, Python, TypeScript & C#`,
+  `End-to-End Marketplace Expertise Across ${COMPANY_STATS.marketplaces} Global Marketplaces`,
   "HIPAA-Compliant Healthcare Solutions",
   "PCI DSS & GDPR Compliant FinTech Solutions",
   "Multi-Platform E-Commerce Integration",
@@ -26,7 +27,7 @@ const features = [
 const achievements = [
   {
     icon: Users,
-    number: "100+",
+    number: COMPANY_STATS.projectsDelivered,
     label: "Projects Delivered",
     description: "Across Retail, Healthcare & Finance",
     iconBg: "bg-[#EAF3F8]",
@@ -34,7 +35,7 @@ const achievements = [
   },
   {
     icon: Award,
-    number: "20+",
+    number: COMPANY_STATS.certifiedDevelopers,
     label: "Certified Developers",
     description: "AI, Python, TypeScript & C#",
     iconBg: "bg-violet-50",
@@ -42,7 +43,7 @@ const achievements = [
   },
   {
     icon: Globe,
-    number: "15+",
+    number: COMPANY_STATS.marketplaces,
     label: "Marketplaces",
     description: "Amazon, eBay, Walmart & More",
     iconBg: "bg-emerald-50",
@@ -59,13 +60,13 @@ const bottomStats = [
 const AboutSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 section-bg-dots"
+      className="py-10 sm:py-12 lg:py-14 section-bg-dots"
       aria-label="About Ctas Info Services LLP"
       itemScope
       itemType="https://schema.org/Organization"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-center">
 
           {/* ── Left: Content ── */}
           <div className="space-y-7">
@@ -75,15 +76,16 @@ const AboutSection = () => {
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight" itemProp="name">
               India&apos;s Trusted{" "}
-              <span className="text-[#13345A]">AI-Powered Web Development &amp; Marketplace Integration</span>{" "}
+              <span className="text-[#13345A]">AI-Powered Ecommerce Automation, Marketplace Integrations &amp; ERP/MVP/OMS/WMS, SaaS Development</span>{" "}
               Company
+ 
             </h2>
 
             <p className="text-slate-500 text-base sm:text-lg leading-relaxed max-w-xl" itemProp="description">
               Ctas Info Services LLP builds and ships custom web development, mobile apps, and
               e-commerce solutions faster and smarter — powered by an AI-augmented engineering
               workflow using GPT, Claude, Gemini and Cursor alongside 20+ certified developers.
-              Since 2019, we have delivered 100+ projects across retail, logistics, education,
+              Since 2019, we have delivered {COMPANY_STATS.projectsDelivered} projects across retail, logistics, education,
               healthcare, and financial services in India and worldwide — specializing in Amazon
               SP-API integration, AI automation, and multi-marketplace synchronization for
               measurable business growth.
@@ -150,8 +152,8 @@ const AboutSection = () => {
                   <CalendarDays className="w-6 h-6 text-white" aria-hidden="true" />
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-[#13345A] leading-none">7+</div>
-                  <div className="text-base font-semibold text-slate-900 mt-1">Years of Experience</div>
+                  <div className="text-4xl font-bold text-[#13345A] leading-none">{COMPANY_STATS.yearsOfExcellence}</div>
+                  <div className="text-base font-semibold text-slate-900 mt-1">Years of Excellence</div>
                   <div className="text-sm text-slate-500 mt-0.5">
                     Delivering web, mobile &amp; marketplace solutions since 2019
                   </div>

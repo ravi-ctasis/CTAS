@@ -15,7 +15,7 @@ export const automatedSkuIdentifierFrameworkData: PortfolioDetailData = {
   stats: {
     views: "20k",
     likes: "2.5k",
-    clients: "100+",
+    clients: "200+",
     revenue: "$1.8M+",
     accuracy: "99%",
     skus: "10M+",

@@ -39,6 +39,7 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -48,8 +49,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -170,7 +171,7 @@ const realEstateCaseStudies = [
       "Developed a comprehensive digital marketplace connecting buyers, sellers, and agents with advanced search capabilities, virtual tours, and secure transaction processing.",
     results: {
       "User Growth": "300%",
-      "Transaction Volume": "$50M+",
+      "Transaction Volume": "$28M+",
       "Agent Efficiency": "40%",
       "Customer Satisfaction": "95%",
     },
@@ -454,8 +455,7 @@ const RealEstatePage = () => (
           highlight="Stories"
           description="Real-world implementations that have transformed real estate operations and customer experiences with measurable results."
         />
-        <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-          <div className="flex gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+        <DotCarousel bleed ariaLabel="Content carousel">
             {realEstateCaseStudies.map((study, i) => (
               <motion.article
                 key={study.title}
@@ -498,8 +498,7 @@ const RealEstatePage = () => (
                 </div>
               </motion.article>
             ))}
-          </div>
-        </div>
+        </DotCarousel>
       </SectionWrap>
 
       <PageCTA

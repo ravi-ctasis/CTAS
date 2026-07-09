@@ -393,9 +393,9 @@ export default function MobileAppsPage() {
           description:
             "We create innovative mobile applications that engage users and drive business growth. From native iOS/Android apps to cross-platform solutions, we deliver exceptional mobile experiences.",
           stats: [
-            { number: "5+", label: "Apps Built", icon: Smartphone },
-            { number: "10+", label: "Happy Clients", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "200+", label: "Projects Delivered", icon: Smartphone },
+            { number: "200+", label: "Happy Clients", icon: Users },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

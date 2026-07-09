@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 
 import { heroSlides } from "@/data/heroSlides";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -40,13 +41,13 @@ const trustBadges = [
   { icon: ShieldCheck, label: "ISO Certified" },
   { icon: Cloud, label: "AWS Partner" },
   { icon: Award, label: "Clutch Top Developer" },
-  { icon: Globe2, label: "18+ Countries" },
+  { icon: Globe2, label: `${COMPANY_STATS.countries} Countries` },
 ];
 
 const stats = [
-  { v: "35+", l: "Marketplace APIs" },
-  { v: "1.5M+", l: "Orders Synced" },
-  { v: "18+", l: "Countries Served" },
+  { v: COMPANY_STATS.marketplaces, l: "Marketplace APIs" },
+  { v: COMPANY_STATS.ordersSynced, l: "Orders Synced" },
+  { v: COMPANY_STATS.countries, l: "Countries Served" },
   { v: "99.9%", l: "API Reliability" },
 ];
 
@@ -126,9 +127,9 @@ const HeroSection = () => {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="relative z-10 max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         <div
-          className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center py-16 sm:py-20 lg:py-24"
+          className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-12 items-center py-10 sm:py-12 lg:py-14"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -210,7 +211,7 @@ const HeroSection = () => {
                   {slide.techStack?.map((tech, i) => (
                     <div
                       key={i}
-                      className="flex-shrink-0 w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center"
+                      className="flex-shrink-0 w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center"
                     >
                       <Image
                         src={tech.image}
@@ -284,7 +285,7 @@ const HeroSection = () => {
                   <Zap className="w-4 h-4" style={{ color: CYAN }} />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-[#F2F6F9] leading-none">1.5M+</div>
+                  <div className="text-sm font-semibold text-[#F2F6F9] leading-none">{COMPANY_STATS.ordersSynced}</div>
                   <div className="text-[10px] text-[#7A8B97] mt-1">Orders Synced</div>
                 </div>
               </motion.div>
@@ -383,7 +384,7 @@ const HeroSection = () => {
                         <div
                           key={i}
                           title={tech.label}
-                          className="w-18 h-18 rounded-xl bg-[#0B1A26]/60 border border-white/10 flex items-center justify-center hover:border-white/25 hover:scale-105 transition-all duration-200"
+                          className="w-18 h-18 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center hover:border-[#249BCA]/50 hover:shadow-md hover:scale-105 transition-all duration-200"
                         >
                           <Image
                             src={tech.image}
@@ -441,7 +442,7 @@ const HeroSection = () => {
 
       {/* ── Bottom stats bar ── */}
       <div className="relative z-10 border-t border-white/[0.06]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-6">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-6">
           <div className="grid grid-cols-2 sm:grid-cols-4">
             {stats.map((s, i) => (
               <motion.div

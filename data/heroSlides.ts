@@ -132,7 +132,7 @@ export const heroSlides = [
         title: "Logistics & Supply Chain – Automation",
         subtitle: "DHL · FedEx · UPS · Shiprocket · SendCloud & More",
         description:
-            "Connect your fulfilment stack with 15+ global carriers — DHL, FedEx, UPS, USPS, TNT, Shiprocket, Shipmondo, SendCloud and more. Automate shipment creation, tracking updates, returns management and cross-border logistics for EU and global delivery.",
+            "Connect your fulfilment stack with 35+ global carriers — DHL, FedEx, UPS, USPS, TNT, Shiprocket, Shipmondo, SendCloud and more. Automate shipment creation, tracking updates, returns management and cross-border logistics for EU and global delivery.",
         features: [
             "DHL & FedEx Integration",
             "Shiprocket & SendCloud",

@@ -26,6 +26,7 @@ import {
   CYAN,
   CYAN_LIGHT,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 import {
   allPagesData,
@@ -48,8 +49,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -199,7 +200,7 @@ export default function HireTeamPage() {
       <main>
         {/* Hero — split-screen + trial form */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label="Hire developers"
         >
           <div
@@ -210,8 +211,8 @@ export default function HireTeamPage() {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-[10px] sm:text-xs font-medium mb-6 max-w-full">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
@@ -273,7 +274,7 @@ export default function HireTeamPage() {
 
         {/* Intro — asymmetric split */}
         <SectionWrap alt>
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
             <motion.div {...fadeUp}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF3F8] border border-[#13345A]/15 text-[#13345A] text-xs font-semibold uppercase tracking-widest mb-6">
                 PART-TIME, FULL-TIME, AND HOURLY
@@ -315,8 +316,7 @@ export default function HireTeamPage() {
             title="Worlds Top Companies Trusting Ctas for Hiring Dedicated Web Developers in India"
             description="From startups to global enterprises, businesses trust our expert developers to deliver scalable and secure digital solutions across industries."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {developerTypes.map((devType, i) => (
                 <motion.article
                   key={devType.title}
@@ -333,8 +333,7 @@ export default function HireTeamPage() {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         {/* Reasons — staggered 2-column list */}
@@ -367,7 +366,7 @@ export default function HireTeamPage() {
 
         {/* FAQ — split image + accordion */}
         <SectionWrap>
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <motion.div {...fadeUp} className="relative aspect-[6/5] rounded-[1.5rem] overflow-hidden border border-slate-200/80 shadow-lg">
               <Image
                 src={faqMedia?.imageSrc || "/hire-web-developers-two.webp"}

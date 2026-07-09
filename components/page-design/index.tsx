@@ -10,6 +10,16 @@ export const NAVY = "#13345A";
 export const CYAN = "#249BCA";
 export const CYAN_LIGHT = "#6FC3E4";
 
+/** Shared layout spacing — tighter sections, less vertical whitespace */
+export const SECTION_PY = "py-10 sm:py-12 lg:py-14";
+export const SECTION_PY_COMPACT = "py-8 sm:py-10";
+export const SECTION_PY_HERO = "py-8 sm:py-10 lg:py-16";
+export const SECTION_PY_CTA = "py-10 sm:py-12";
+export const PAGE_CONTAINER = "max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16";
+export const SECTION_HEADER_MB = "mb-8 sm:mb-10";
+export const GRID_GAP = "gap-8 lg:gap-10";
+export const GRID_GAP_WIDE = "gap-8 lg:gap-10 xl:gap-12";
+
 export const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -81,7 +91,7 @@ export const SectionHeader = ({
   <motion.div
     {...fadeUp}
     transition={{ duration: 0.5 }}
-    className={align === "center" ? "text-center mb-12 sm:mb-14" : "mb-10"}
+    className={align === "center" ? `text-center ${SECTION_HEADER_MB}` : "mb-8"}
   >
     <SectionBadge>{badge}</SectionBadge>
     <h2
@@ -133,7 +143,7 @@ export const PageHero = ({
   secondaryCta?: { label: string; href: string };
 }) => (
   <section
-    className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+    className={`relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] ${SECTION_PY_HERO}`}
     aria-label={ariaLabel}
   >
     <div
@@ -152,12 +162,12 @@ export const PageHero = ({
       aria-hidden="true"
     />
 
-    <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+    <div className={`relative ${PAGE_CONTAINER}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`text-center max-w-4xl mx-auto ${stats ? "mb-12 sm:mb-14" : ""}`}
+        className={`text-center max-w-4xl mx-auto ${stats ? SECTION_HEADER_MB : ""}`}
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
           <Sparkles className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
@@ -256,12 +266,12 @@ export const PageCTA = ({
   secondaryHref?: string;
   secondaryLabel?: string;
 }) => (
-  <section className="py-16 sm:py-20">
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+  <section className={SECTION_PY_CTA}>
+    <div className={PAGE_CONTAINER}>
       <motion.div
         {...fadeUp}
         transition={{ duration: 0.5 }}
-        className="relative rounded-[1.75rem] px-8 sm:px-12 lg:px-16 py-12 sm:py-14 overflow-hidden text-center"
+        className="relative rounded-[1.75rem] px-6 sm:px-10 lg:px-12 py-8 sm:py-10 overflow-hidden text-center"
         style={{ backgroundImage: `linear-gradient(135deg, ${NAVY}, #0E2233 55%, #0B1A26)` }}
       >
         <div
@@ -269,7 +279,7 @@ export const PageCTA = ({
           style={{ background: "radial-gradient(circle, rgba(36,155,202,0.35) 0%, transparent 70%)" }}
           aria-hidden="true"
         />
-        <div className="relative max-w-2xl mx-auto">
+        <div className="relative max-w-4xl mx-auto">
           <h2 className={`${fraunces.className} text-2xl sm:text-3xl lg:text-4xl font-medium text-white mb-4`}>
             {title}
           </h2>
@@ -301,3 +311,6 @@ export const PageCTA = ({
 export const PageShell = ({ children }: { children: React.ReactNode }) => (
   <div className="min-h-screen bg-[#F6F8FA]">{children}</div>
 );
+
+export { DotCarousel } from "./DotCarousel";
+export { PageFilterToolbar, PageFilterSidebar, type FilterGroup } from "./PageFilters";

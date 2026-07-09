@@ -347,8 +347,8 @@ export const features = [
 ];
 
 export const heroStats = [
-  { number: "100+", label: "Websites Built", icon: Globe },
-  { number: "50+", label: "Happy Clients", icon: Users },
-  { number: "7+", label: "Years Experience", icon: Award },
+  { number: "200+", label: "Websites Built", icon: Globe },
+  { number: "200+", label: "Happy Clients", icon: Users },
+  { number: "16+", label: "Years of Excellence", icon: Award },
   { number: "24/7", label: "Support", icon: Clock },
 ];

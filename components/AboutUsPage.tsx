@@ -32,8 +32,6 @@ import {
   Home,
   CreditCard,
   Activity,
-  Store,
-  Package,
   ArrowRight,
   Sparkles,
   MapPin,
@@ -43,6 +41,8 @@ import {
 
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
+import { COMPANY_STATS, COMPANY_STAT_COPY } from "@/data/company-stats";
+import Image from "next/image";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -83,7 +83,7 @@ const SectionHeader = ({
   <motion.div
     {...fadeUp}
     transition={{ duration: 0.5 }}
-    className={align === "center" ? "text-center mb-12 sm:mb-14" : "mb-10"}
+    className={align === "center" ? "text-center mb-8 sm:mb-10" : "mb-10"}
   >
     <SectionBadge>{badge}</SectionBadge>
     <h2
@@ -109,9 +109,9 @@ const SectionHeader = ({
 );
 
 const stats = [
-  { number: "100+", label: "Projects Delivered", icon: Target, description: "Retail, Healthcare & Finance" },
-  { number: "20+", label: "Certified Developers", icon: Users, description: "AI, Python, TypeScript & C#" },
-  { number: "15+", label: "Marketplaces", icon: ShoppingCart, description: "Amazon, eBay, Walmart & More" },
+  { number: COMPANY_STATS.projectsDelivered, label: "Projects Delivered", icon: Target, description: "Retail, Healthcare & Finance" },
+  { number: COMPANY_STATS.certifiedDevelopers, label: "Certified Developers", icon: Users, description: "AI, Python, TypeScript & C#" },
+  { number: COMPANY_STATS.marketplaces, label: "Marketplaces", icon: ShoppingCart, description: "Amazon, eBay, Walmart & More" },
   { number: "2019", label: "Founded", icon: Building, description: "Ahmedabad, Gujarat, India" },
 ];
 
@@ -158,7 +158,7 @@ const services = [
   {
     icon: ShoppingCart,
     title: "Marketplace Integration",
-    description: "Amazon SP-API, eBay, Walmart, TikTok Shop, Shopify, and 15+ global platforms",
+    description: `Amazon SP-API, eBay, Walmart, TikTok Shop, Shopify, and ${COMPANY_STATS.marketplaces} global platforms`,
     features: ["Multi-Platform Support", "AI-Powered Automation", "Real-time Sync"],
     href: "/services/marketplace",
   },
@@ -263,37 +263,69 @@ const industries = [
 ];
 
 const marketplaces = [
-  { icon: Store, title: "Amazon", description: "Complete SP-API integration with FBA/FBM management", href: "/services/amazon-services" },
-  { icon: ShoppingCart, title: "eBay", description: "Listing management, order processing, and inventory sync", href: "/services/marketplace" },
-  { icon: Package, title: "Walmart", description: "Product management and order fulfillment automation", href: "/services/marketplace" },
-  { icon: Globe, title: "Shopify", description: "Custom themes, apps, and third-party integrations", href: "/services/e-commerce-solutions" },
-  { icon: Smartphone, title: "TikTok Shop", description: "Social commerce and influencer marketing tools", href: "/services/marketplace" },
-  { icon: Store, title: "Etsy", description: "Handmade product management and seller tools", href: "/services/marketplace" },
+  {
+    logo: "/amazon.svg",
+    title: "Amazon",
+    description: "Complete SP-API integration with FBA/FBM management",
+    href: "/services/amazon-services",
+  },
+  {
+    logo: "/ebay-logo.svg",
+    title: "eBay",
+    description: "Listing management, order processing, and inventory sync",
+    href: "/services/marketplace",
+  },
+  {
+    logo: "/walmart.webp",
+    title: "Walmart",
+    description: "Product management and order fulfillment automation",
+    href: "/services/marketplace",
+  },
+  {
+    logo: "/shopify-logo.svg",
+    title: "Shopify",
+    description: "Custom themes, apps, and third-party integrations",
+    href: "/services/e-commerce-solutions",
+  },
+  {
+    logo: "/tiktok.webp",
+    title: "TikTok Shop",
+    description: "Social commerce and influencer marketing tools",
+    href: "/services/marketplace",
+  },
+  {
+    logo: "/etsy-logo.webp",
+    title: "Etsy",
+    description: "Handmade product management and seller tools",
+    href: "/services/marketplace",
+  },
 ];
 
 const storyHighlights = [
-  "100+ Projects Delivered Successfully",
+  COMPANY_STAT_COPY.projectsDelivered + " Successfully",
   "AI-Augmented Development with GPT, Claude & Gemini",
-  "20+ Certified Technology Experts",
-  "15+ Global Marketplace Integrations",
+  `${COMPANY_STATS.certifiedDevelopers} Certified Technology Experts`,
+  `${COMPANY_STATS.marketplaces} Global Marketplace Integrations`,
 ];
 
 const teamMetrics = [
-  { icon: Users, label: "Team Size", value: "20+ Professionals" },
+  { icon: Users, label: "Team Size", value: `${COMPANY_STATS.teamMembers} Professionals` },
   { icon: Target, label: "Success Rate", value: "98% Client Satisfaction" },
-  { icon: Globe, label: "Global Reach", value: "18+ Countries" },
-  { icon: Award, label: "Experience", value: "7+ Years" },
+  { icon: Globe, label: "Global Reach", value: `${COMPANY_STATS.countries} Countries` },
+  { icon: Award, label: "Experience", value: `${COMPANY_STATS.yearsOfExcellence} Years` },
 ];
 
 const IconCard = ({
   icon: Icon,
+  logo,
   title,
   description,
   features,
   href,
   index,
 }: {
-  icon: LucideIcon;
+  icon?: LucideIcon;
+  logo?: string;
   title: string;
   description: string;
   features?: string[];
@@ -306,12 +338,24 @@ const IconCard = ({
       transition={{ duration: 0.5, delay: index * 0.05 }}
       className="group h-full bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-7 hover:border-[#13345A]/20 hover:shadow-xl hover:shadow-[#13345A]/[0.04] hover:-translate-y-0.5 transition-all duration-300"
     >
-      <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-        style={{ backgroundColor: `${CYAN}18` }}
-      >
-        <Icon className="w-5 h-5" style={{ color: NAVY }} />
-      </div>
+      {logo ? (
+        <div className="w-14 h-14 rounded-xl bg-[#F6F8FA] border border-slate-100 flex items-center justify-center mb-5 p-1">
+          <Image
+            src={logo}
+            alt={`${title} logo`}
+            width={40}
+            height={40}
+            className="object-contain w-full h-full"
+          />
+        </div>
+      ) : Icon ? (
+        <div
+          className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+          style={{ backgroundColor: `${CYAN}18` }}
+        >
+          <Icon className="w-5 h-5" style={{ color: NAVY }} />
+        </div>
+      ) : null}
       <h3 className="text-lg font-semibold text-slate-900 mb-2">{title}</h3>
       <p className="text-sm text-slate-500 leading-relaxed mb-4">{description}</p>
       {features && (
@@ -343,7 +387,7 @@ const AboutUsPage = () => {
       <main>
         {/* ── Hero ── */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label="About Ctas Info Services LLP"
         >
           <div
@@ -362,12 +406,12 @@ const AboutUsPage = () => {
             aria-hidden="true"
           />
 
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-4xl mx-auto mb-12 sm:mb-14"
+              className="text-center max-w-4xl mx-auto mb-8 sm:mb-10"
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
                 <Sparkles className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
@@ -383,8 +427,8 @@ const AboutUsPage = () => {
               </h1>
               <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed max-w-3xl mx-auto">
                 Ctas Info Services LLP specializes in AI-augmented web development, mobile apps, and
-                e-commerce automation since 2019. Our team of 20+ certified professionals has delivered
-                100+ projects across retail, logistics, education, healthcare, and financial services —
+                e-commerce automation since 2019. Our team of {COMPANY_STATS.certifiedDevelopers} certified professionals has delivered
+                {COMPANY_STATS.projectsDelivered} projects across retail, logistics, education, healthcare, and financial services —
                 combining deep domain expertise with GPT, Claude, Gemini and Cursor to drive measurable
                 growth for businesses in India and worldwide.
               </p>
@@ -412,9 +456,9 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── Our Story ── */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
                 <SectionBadge>Our Story</SectionBadge>
                 <h2
@@ -474,7 +518,7 @@ const AboutUsPage = () => {
                       <CalendarDays className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className={`${fraunces.className} text-3xl font-medium text-white`}>7+</div>
+                      <div className={`${fraunces.className} text-3xl font-medium text-white`}>{COMPANY_STATS.yearsOfExcellence}</div>
                       <div className="text-sm font-semibold text-white/90">Years of Excellence</div>
                       <div className="text-xs text-white/50 mt-0.5">Delivering since 2019</div>
                     </div>
@@ -486,8 +530,8 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── Core Values ── */}
-        <section className="py-16 sm:py-20 lg:py-24 section-bg-dots">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 section-bg-dots">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader
               badge="Our Values"
               title="Core Values That"
@@ -517,8 +561,8 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── Services ── */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader
               badge="Our Services"
               title="Comprehensive"
@@ -534,8 +578,8 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── Development Process ── */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-white">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader
               badge="Our Process"
               title="AI-Augmented"
@@ -578,8 +622,8 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── Industries ── */}
-        <section className="py-16 sm:py-20 lg:py-24 section-bg-dots">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 section-bg-dots">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader
               badge="Industries"
               title="Industries We"
@@ -614,8 +658,8 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── Marketplaces ── */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <SectionHeader
               badge="Marketplace Expertise"
               title="Global"
@@ -631,12 +675,12 @@ const AboutUsPage = () => {
         </section>
 
         {/* ── CTA ── */}
-        <section className="py-16 sm:py-20">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+        <section className="py-10 sm:py-12">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.5 }}
-              className="relative rounded-[1.75rem] px-8 sm:px-12 lg:px-16 py-12 sm:py-14 overflow-hidden text-center"
+              className="relative rounded-[1.75rem] px-8 sm:px-12 lg:px-16 py-8 sm:py-10 overflow-hidden text-center"
               style={{ backgroundImage: `linear-gradient(135deg, ${NAVY}, #0E2233 55%, #0B1A26)` }}
             >
               <div
@@ -644,7 +688,7 @@ const AboutUsPage = () => {
                 style={{ background: "radial-gradient(circle, rgba(36,155,202,0.35) 0%, transparent 70%)" }}
                 aria-hidden="true"
               />
-              <div className="relative max-w-2xl mx-auto">
+              <div className="relative max-w-4xl mx-auto">
                 <h2 className={`${fraunces.className} text-2xl sm:text-3xl lg:text-4xl font-medium text-white mb-4`}>
                   Ready to Transform Your Business?
                 </h2>

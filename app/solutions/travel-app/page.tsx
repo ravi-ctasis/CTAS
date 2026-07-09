@@ -48,6 +48,7 @@ import {
   CYAN,
   CYAN_LIGHT,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -57,8 +58,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -72,7 +73,7 @@ const IconBox = ({ icon: Icon }: { icon: React.ElementType }) => (
 );
 
 const heroStats = [
-  { number: "500+", label: "Apps Built" },
+  { number: "200+", label: "Apps Built" },
   { number: "10M+", label: "Bookings" },
   { number: "99.9%", label: "Uptime" },
 ];
@@ -411,7 +412,7 @@ export default function TravelAppPage() {
       <main>
         {/* Hero — split-screen */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label="Travel App Development"
         >
           <div
@@ -422,8 +423,8 @@ export default function TravelAppPage() {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
                   <Sparkles className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
@@ -484,7 +485,7 @@ export default function TravelAppPage() {
 
         {/* Intro strip — centered banner */}
         <section className="py-10 sm:py-12 bg-white border-b border-slate-200/80" aria-label="Travel App Development overview">
-          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 text-center">
+          <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 text-center">
             <motion.div {...fadeUp}>
               <h2 className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-slate-900 mb-3`}>
                 Travel App Development
@@ -538,7 +539,7 @@ export default function TravelAppPage() {
             highlight="Smart Travel"
             description="Experience the future of travel with AI-powered intelligence, blockchain security, and immersive AR experiences that transform how you explore the world."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start mb-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start mb-12">
             <div className="space-y-4">
               {nextGenFeatures.map((feature, i) => (
                 <motion.article
@@ -709,8 +710,7 @@ export default function TravelAppPage() {
             highlight="APIs"
             description="Connect with payment gateways, maps, analytics, and communication services."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {integrations.map((integration, i) => (
                 <motion.article
                   key={integration.name}
@@ -734,8 +734,7 @@ export default function TravelAppPage() {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         <PageCTA

@@ -128,6 +128,7 @@ const services = [
     description:
       "Professional custom web development services with tailored web applications built from scratch to meet your specific business requirements using modern technologies",
     icon: Monitor,
+    image: "/service-banners/web-development.webp",
     features: [
       "Responsive Design",
       "Progressive Web Apps",
@@ -321,9 +322,9 @@ export default function WebDevelopmentPage() {
           description:
             "We create cutting-edge web applications that drive business growth. From responsive websites to complex web platforms, we deliver solutions that exceed expectations.",
           stats: [
-            { number: "100+", label: "Websites Built", icon: Globe },
-            { number: "50+", label: "Happy Clients", icon: Users },
-            { number: "7+", label: "Years Experience", icon: Award },
+            { number: "200+", label: "Websites Built", icon: Globe },
+            { number: "200+", label: "Happy Clients", icon: Users },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

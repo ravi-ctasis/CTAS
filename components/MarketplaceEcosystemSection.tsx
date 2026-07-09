@@ -2,6 +2,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { COMPANY_STATS } from "@/data/company-stats";
 
 const hubNodes = [
   { label: "Amazon", logo: "/amazon.svg", x: 50, y: 8, size: 88 },
@@ -13,9 +14,9 @@ const hubNodes = [
 ];
 
 const stats = [
-  { value: "35+", label: "Marketplace APIs" },
-  { value: "1.5M+", label: "Orders Synced" },
-  { value: "40K+", label: "Products Managed" },
+  { value: COMPANY_STATS.marketplaces, label: "Marketplace APIs" },
+  { value: COMPANY_STATS.ordersSynced, label: "Orders Synced" },
+  { value: COMPANY_STATS.inventoryManaged, label: "Inventory Managed" },
   { value: "99.9%", label: "API Reliability" },
 ];
 
@@ -24,11 +25,11 @@ const orbitAngles = [0, 60, 120, 180, 240, 300];
 const MarketplaceEcosystemSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-slate-50 overflow-hidden"
+      className="py-10 sm:py-12 lg:py-14 bg-slate-50 overflow-hidden"
       aria-label="Enterprise marketplace ecosystem platform"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-center">
           {/* Left Content */}
           <div>
             <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">

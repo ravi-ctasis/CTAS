@@ -33,6 +33,7 @@ import {
   CYAN,
   CYAN_LIGHT,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 import type { CaseStudyDetailData } from "@/types/case-study-detail";
 
@@ -43,8 +44,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -137,7 +138,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
       <main>
         {/* Hero — dark with meta strip */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label={data.title}
         >
           <div
@@ -148,7 +149,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <Link
                 href="/case-studies"
@@ -404,8 +405,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
             highlight="Approach"
             description="Implementation approach and technical decisions."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {data.strategy.map((step, i) => (
                 <motion.div
                   key={i}
@@ -429,8 +429,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
                   </div>
                 </motion.div>
               ))}
-            </div>
-          </div>
+        </DotCarousel>
         </SectionWrap>
 
         {/* Outcomes — parsed highlight cards */}
@@ -463,7 +462,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
         {/* Our Client — split + requirements timeline */}
         <SectionWrap>
           <SectionHeader badge="Client" title="Our" highlight="Client" description="Who we built this for." />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
             <motion.div {...fadeUp} className="rounded-[1.75rem] border border-slate-200/80 bg-white p-6 sm:p-8">
               <div className="flex items-center gap-4 mb-5">
                 <div
@@ -542,7 +541,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
             highlight="Solution"
             description="Our approach and rationale."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
             <motion.div {...fadeUp} className="space-y-6 order-2 lg:order-1">
               <div>
                 <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-4`}>Our Approach</h3>
@@ -601,8 +600,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
             description="Core platform capabilities delivered."
           />
           {useFeatureScroll ? (
-            <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-              <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+            <DotCarousel bleed ariaLabel="Content carousel">
                 {data.keyFeatures.map((feature, i) => (
                   <motion.div
                     key={i}
@@ -617,8 +615,7 @@ export default function CaseStudyDetailPage({ data, slug }: Props) {
                     <p className="text-xs text-slate-500 leading-relaxed">{feature.description}</p>
                   </motion.div>
                 ))}
-              </div>
-            </div>
+        </DotCarousel>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 auto-rows-fr">
               {data.keyFeatures.map((feature, i) => (

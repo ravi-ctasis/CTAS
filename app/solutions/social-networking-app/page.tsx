@@ -46,6 +46,7 @@ import {
   CYAN,
   CYAN_LIGHT,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -58,11 +59,11 @@ const SectionWrap = ({
   dark?: boolean;
 }) => (
   <section
-    className={`py-16 sm:py-20 lg:py-24 ${
+    className={`py-10 sm:py-12 lg:py-14 ${
       dark ? "bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40]" : alt ? "bg-white" : "bg-[#F6F8FA]"
     }`}
   >
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -83,7 +84,7 @@ const heroBenefits = [
 ];
 
 const stats = [
-  { number: "100+", label: "Social Apps Built" },
+  { number: "200+", label: "Social Apps Built" },
   { number: "5M+", label: "Users Connected" },
   { number: "99%", label: "Client Satisfaction" },
   { number: "24/7", label: "Support Available" },
@@ -410,7 +411,7 @@ export default function SocialNetworkingAppPage() {
       <main>
         {/* Hero — split-screen with orbit */}
         <section
-          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden bg-gradient-to-b from-[#0B1A26] via-[#0E2233] to-[#122B40] py-10 sm:py-12 lg:py-14"
           aria-label="Social Networking App Development"
         >
           <div
@@ -421,8 +422,8 @@ export default function SocialNetworkingAppPage() {
             }}
             aria-hidden="true"
           />
-          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="relative max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-[#A9B7C2] text-xs font-medium mb-6">
                   <Users className="w-3.5 h-3.5" style={{ color: CYAN_LIGHT }} />
@@ -501,8 +502,7 @@ export default function SocialNetworkingAppPage() {
             highlight="Features"
             description="Build a comprehensive social platform with all the features users expect and innovative tools that set you apart."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {features.map((feature, i) => (
                 <motion.article
                   key={feature.title}
@@ -519,8 +519,7 @@ export default function SocialNetworkingAppPage() {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         {/* Community — split list + stats mockup */}
@@ -531,7 +530,7 @@ export default function SocialNetworkingAppPage() {
             highlight="Communities"
             description="Advanced tools to create, manage, and grow engaged communities around shared interests and goals."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-6">
               {communityFeatures.map((item, i) => (
                 <motion.article
@@ -622,7 +621,7 @@ export default function SocialNetworkingAppPage() {
             highlight="Security"
             description="Protect your users and platform with advanced security measures and privacy controls."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-6">
               {securityFeatures.map((item, i) => (
                 <motion.article

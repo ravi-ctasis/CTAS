@@ -19,6 +19,7 @@ import {
   fraunces,
   NAVY,
   CYAN,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -28,8 +29,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -306,8 +307,7 @@ const SolutionsPage = () => {
             highlight="In Real Time"
             description="Voice, food delivery, and home services — platforms built for instant engagement and seamless transactions."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {scrollRow.map((solution, i) => (
                 <motion.article
                   key={solution.title}
@@ -330,8 +330,7 @@ const SolutionsPage = () => {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+        </DotCarousel>
         </SectionWrap>
 
         {/* Zigzag alternating rows */}

@@ -27,6 +27,7 @@ const uiuxServices = [
     title: "User Research & Analysis",
     description: "Comprehensive user research to understand your target audience and their needs",
     icon: Users,
+    image: "/service-banners/ui-ux.webp",
     features: [
       "User Personas",
       "User Journey Mapping",
@@ -304,9 +305,9 @@ export default function UIUXPage() {
           description:
             "We create exceptional user experiences through research-driven design. From user research to interactive prototypes, we focus on user-centered design principles to deliver intuitive and engaging interfaces.",
           stats: [
-            { number: "15+", label: "Designs Created", icon: Palette },
+            { number: "35+", label: "Designs Created", icon: Palette },
             { number: "20+", label: "Happy Clients", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "4.9", label: "Client Rating", icon: Star },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

@@ -15,11 +15,11 @@ const features = [
 const BusinessIntelligenceSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 bg-slate-50"
+      className="py-10 sm:py-12 lg:py-14 bg-slate-50"
       aria-label="Business intelligence and real-time analytics dashboard"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-12 items-center">
           {/* Left Content */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-4">

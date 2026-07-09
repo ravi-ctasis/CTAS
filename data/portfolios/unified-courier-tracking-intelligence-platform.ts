@@ -24,7 +24,7 @@ export const unifiedCourierTrackingIntelligencePlatformData: PortfolioDetailData
   stats: {
     views: "20k",
     likes: "2.5k",
-    clients: "100+",
+    clients: "200+",
     revenue: "$1.8M+",
     efficiency: "90%",
     accuracy: "98.5%",

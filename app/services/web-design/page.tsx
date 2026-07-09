@@ -358,9 +358,9 @@ export default function WebDesignPage() {
           description:
             "We create stunning, user-friendly websites that look great on every device. We design with purpose, focusing on user experience and conversion.",
           stats: [
-            { number: "10+", label: "Websites Built", icon: Globe },
-            { number: "5+", label: "Happy Clients", icon: Users },
-            { number: "5+", label: "Years Experience", icon: Award },
+            { number: "200+", label: "Websites Built", icon: Globe },
+            { number: "200+", label: "Happy Clients", icon: Users },
+            { number: "16+", label: "Years of Excellence", icon: Award },
             { number: "24/7", label: "Support", icon: Clock },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

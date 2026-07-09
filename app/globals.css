@@ -545,6 +545,15 @@
     background-size: 28px 28px;
   }
 
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-spin-slow,
     .animate-spin-slow-reverse,

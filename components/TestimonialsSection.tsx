@@ -74,7 +74,7 @@ const TestimonialsSection = () => {
         <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-pink-200/8 rounded-full blur-xl"></div>
       </div>
 
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 relative">
         {/* Header - Compact */}
         <div className="text-center space-y-2 mb-4">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-sm font-medium border border-purple-200">

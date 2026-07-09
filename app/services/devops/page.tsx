@@ -132,7 +132,7 @@ export default function DevOpsPage() {
           stats: [
             { number: "80%", label: "Faster Deployment", icon: Zap },
             { number: "99.9%", label: "Uptime SLA", icon: Clock },
-            { number: "50+", label: "Pipelines Built", icon: Code },
+            { number: "200+", label: "Pipelines Built", icon: Code },
             { number: "24/7", label: "Monitoring", icon: Activity },
           ],
           primaryCta: { label: "Get Free Quote", href: "/contact-us" },

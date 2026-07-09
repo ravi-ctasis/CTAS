@@ -35,16 +35,16 @@ const primaryServices = [
     popular: false,
   },
   {
-    name: "Allegro",
-    logo: "/allegro_logo.svg",
-    logoAlt: "Allegro marketplace integration",
-    logoWidth: 100,
-    logoHeight: 32,
+    name: "Kaufland",
+    logo: "/kaufland.webp",
+    logoAlt: "Kaufland global marketplace integration",
+    logoWidth: 110,
+    logoHeight: 36,
     features: [
-      "Offer & Product Catalog Management",
-      "Order Processing & Payments",
-      "Invoice Automation",
-      "Real-Time Sync",
+      "Product Feed & Catalog",
+      "Order Processing & Fulfilment",
+      "Returns Management",
+      "Pricing & Inventory Sync",
     ],
     link: "/services/marketplace",
     popular: false,
@@ -63,6 +63,21 @@ const primaryServices = [
     ],
     link: "/services/e-commerce-solutions",
     popular: true,
+  },
+  {
+    name: "Fnac",
+    logo: "/fnac.webp",
+    logoAlt: "Fnac marketplace integration",
+    logoWidth: 90,
+    logoHeight: 32,
+    features: [
+      "Product Catalog Management",
+      "Order & Shipment Sync",
+      "Pricing & Offers",
+      "Returns Handling",
+    ],
+    link: "/services/marketplace",
+    popular: false,
   },
 ];
 
@@ -101,14 +116,25 @@ const secondaryServices = [
     link: "/services/marketplace",
   },
   {
-    name: "Kaufland",
-    logo: "/kaufland.webp",
-    logoAlt: "Kaufland global marketplace integration",
-    logoWidth: 110,
-    logoHeight: 36,
+    name: "Allegro",
+    logo: "/allegro_logo.svg",
+    logoAlt: "Allegro marketplace integration",
+    logoWidth: 100,
+    logoHeight: 32,
     description:
-      "Connect to Kaufland's growing global marketplace with automated product feeds, order processing, returns management and pricing sync.",
-    features: ["Product Feed", "Order Processing", "Returns Management", "Pricing Sync"],
+      "Poland's largest marketplace — automate offers, product catalogue, order processing, payments and invoicing with real-time synchronization.",
+    features: ["Offer Management", "Order Processing", "Invoice Automation", "Real-Time Sync"],
+    link: "/services/marketplace",
+  },
+  {
+    name: "Rakuten",
+    logo: "/rakuten.webp",
+    logoAlt: "Rakuten global marketplace integration",
+    logoWidth: 110,
+    logoHeight: 32,
+    description:
+      "Sell across Rakuten's global marketplace with automated listings, order management, inventory sync and returns processing for international reach.",
+    features: ["Listings Sync", "Order Management", "Inventory Sync", "Returns Processing"],
     link: "/services/marketplace",
   },
 ];
@@ -116,14 +142,14 @@ const secondaryServices = [
 const ServicesSection = () => {
   return (
     <section
-      className="py-16 sm:py-20 lg:py-24 section-bg-dots"
+      className="py-10 sm:py-12 lg:py-14 section-bg-dots"
       aria-label="Marketplace integration and domain solutions"
       itemScope
       itemType="https://schema.org/ItemList"
     >
-      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Our Core Services
           </p>
@@ -137,8 +163,8 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Primary Services - 4 Column Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-5 sm:mb-6">
+        {/* Primary Services - 5 Column Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6 mb-5 sm:mb-6">
           {primaryServices.map((service) => (
             <article
               key={service.name}
@@ -189,8 +215,8 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* Secondary Services - 4 Column Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* Secondary Services - 5 Column Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6">
           {secondaryServices.map((service) => (
             <article
               key={service.name}

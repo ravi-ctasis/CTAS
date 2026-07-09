@@ -41,7 +41,7 @@ const globalReach = [
     icon: Globe,
     title: "Global Reach",
     description:
-      "We work with clients across 15+ countries, providing seamless communication and project delivery.",
+      "We work with clients across 20+ countries, providing seamless communication and project delivery.",
   },
   {
     icon: Clock,
@@ -89,7 +89,7 @@ const OfficeLocationsPage = () => (
         badge="Our Presence"
         title="Our"
         highlight="Global Presence"
-        description="Connecting with clients worldwide through our strategically located office in Ahmedabad, India — serving businesses across 15+ countries."
+        description="Connecting with clients worldwide through our strategically located office in Ahmedabad, India — serving businesses across 20+ countries."
         stats={[
           { number: "1", label: "Office", icon: MapPin, description: "Ahmedabad HQ" },
           { number: "20+", label: "Team Members", icon: Users, description: "Certified experts" },
@@ -97,8 +97,8 @@ const OfficeLocationsPage = () => (
         ]}
       />
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F6F8FA]">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-[#F6F8FA]">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Visit Us"
             title="Find Us"
@@ -200,8 +200,8 @@ const OfficeLocationsPage = () => (
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+      <section className="py-10 sm:py-12 lg:py-14 bg-white">
+        <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
           <SectionHeader
             badge="Worldwide"
             title="Serving Clients"

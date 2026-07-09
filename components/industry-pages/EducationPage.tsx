@@ -40,6 +40,7 @@ import {
   NAVY,
   CYAN,
   AnimatedStat,
+  DotCarousel,
 } from "@/components/page-design";
 
 const SectionWrap = ({
@@ -49,8 +50,8 @@ const SectionWrap = ({
   children: React.ReactNode;
   alt?: boolean;
 }) => (
-  <section className={`py-16 sm:py-20 lg:py-24 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
-    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">{children}</div>
+  <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
+    <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
 );
 
@@ -388,8 +389,7 @@ const EducationPage = () => {
             highlight="Modern Learning"
             description="Our comprehensive LMS platform combines cutting-edge technology with intuitive design to create the ultimate learning experience for educators and students alike."
           />
-          <div className="-mx-6 sm:-mx-10 lg:-mx-16 xl:-mx-20">
-            <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 px-6 sm:px-10 lg:px-16 xl:px-20 snap-x snap-mandatory">
+          <DotCarousel bleed ariaLabel="Content carousel">
               {lmsFeatures.map((feature, i) => (
                 <motion.article
                   key={feature.title}
@@ -416,8 +416,7 @@ const EducationPage = () => {
                   </div>
                 </motion.article>
               ))}
-            </div>
-          </div>
+          </DotCarousel>
         </SectionWrap>
 
         {/* Key features — split with mockup, stats, and benefits */}
@@ -428,7 +427,7 @@ const EducationPage = () => {
             highlight="LMS Platform?"
             description="Discover the core capabilities that make our Learning Management System the preferred choice for educational institutions worldwide."
           />
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             <div className="space-y-8">
               {platformFeatures.map((feature, i) => (
                 <motion.div
@@ -551,7 +550,7 @@ const EducationPage = () => {
 
         {/* Case studies — alternating split with animated stats */}
         <SectionWrap alt>
-          <div className="text-center mb-12 sm:mb-14">
+          <div className="text-center mb-8 sm:mb-10">
             <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
               <h2 className={`${fraunces.className} text-2xl sm:text-3xl font-medium text-slate-900 mb-4 flex items-center justify-center gap-3`}>
                 <Trophy className="w-7 h-7 sm:w-8 sm:h-8 text-amber-500" aria-hidden="true" />
