@@ -8,7 +8,7 @@ export const automatedAmazonReviewFeedbackManagementData: PortfolioDetailData = 
     "Automates Amazon customer review requests, enabling sellers to efficiently manage feedback, track responses, and gain insights to enhance customer satisfaction.",
   longDescription:
     "The Review Feedback System automates Amazon customer review requests, enabling sellers to efficiently manage and monitor feedback from their customers. It helps businesses send personalized and timely review requests, track customer responses, and analyze feedback to enhance products and services. The system also allows Amazon sellers to submit their own feedback directly, providing a streamlined way to gather and manage customer opinions and improve overall satisfaction.",
-  image: "/image.webp",
+  image: "/portfolio-banners/automated-amazon-review-feedback-management.webp",
   technologies: [
     "Amazon SP API",
     "React.js",
@@ -143,7 +143,7 @@ export const automatedAmazonReviewFeedbackManagementData: PortfolioDetailData = 
     titleLine1: "Automated Amazon",
     titleLine2: "Review & Feedback Management",
     heroImage: {
-      src: "/amazon-review-feedback.webp",
+      src: "/portfolio-banners/automated-amazon-review-feedback-management.webp",
       alt: "Amazon Review Feedback",
     },
     heroStats: [

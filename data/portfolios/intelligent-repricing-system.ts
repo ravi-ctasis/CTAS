@@ -8,7 +8,7 @@ export const intelligentRepricingSystemData: PortfolioDetailData = {
     "An intelligent repricing engine that optimizes prices across millions of SKUs in real-time, ensuring competitiveness and profitability on marketplaces like Amazon.",
   longDescription:
     "E-commerce is more competitive than ever. Marketplaces like Amazon, Cdiscount, and others change dynamically every second—where even a few cents difference can decide who wins the Buy Box. Managing millions of SKUs manually is impossible. Monitoring competitors, applying business rules, calculating margins, and updating prices across multiple platforms requires a scalable, automated solution. Our repricing system is an intelligent engine that continuously optimizes prices across large-scale inventories while protecting profitability.",
-  image: "/image.webp",
+  image: "/portfolio-banners/intelligent-repricing-system.webp",
   technologies: ["Amazon SP API & Business API", "Angular", "NodeJs", "MongoDB", "Docker"],
   link: "#",
   featured: true,
@@ -117,7 +117,7 @@ export const intelligentRepricingSystemData: PortfolioDetailData = {
     badgeIcon: "Zap",
     titleLine1: "Intelligent Repricing",
     titleLine2: "Engine for Multi-Marketplace Growth",
-    heroImage: { src: "/intelligent-repricing-system-img.webp", alt: "Amazon Review Feedback" },
+    heroImage: { src: "/portfolio-banners/intelligent-repricing-system.webp", alt: "Amazon Review Feedback" },
     heroStats: [
       { valueKey: "revenue", label: "Revenue Generated" },
       { valueKey: "efficiency", label: "Efficiency Gain" },

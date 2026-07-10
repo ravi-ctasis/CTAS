@@ -469,13 +469,13 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="relative aspect-[4/3] rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl"
+                className="relative aspect-[4/3] rounded-[1.75rem] overflow-hidden border border-white/10 shadow-2xl bg-white"
               >
                 <Image
                   src={data.hero.heroImage.src}
                   alt={data.hero.heroImage.alt}
                   fill
-                  className="object-cover"
+                  className="object-contain mix-blend-multiply transition-opacity duration-300 ease-in-out opacity-100 z-1"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />

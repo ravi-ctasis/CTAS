@@ -8,7 +8,7 @@ export const globalMultiSellerEcommercePlatformData: PortfolioDetailData = {
     "A scalable, user-friendly platform connecting sellers and customers worldwide with intelligent search, personalized recommendations, and optimized product listings.",
   longDescription:
     "Shop is a next-generation multi-seller e-commerce platform designed to empower businesses—from local vendors to international brands—to reach global customers. With over 1.5 million products across 12,000+ categories and 10+ active stores worldwide, Shop delivers fast performance, superior SEO, and low infrastructure costs through advanced technology and intelligent architecture.",
-  image: "/silkrute-hero.webp",
+  image: "/portfolio-banners/global-multi-seller-e-commerce-platform.webp",
   technologies: ["Node.js", "MongoDB", "Next.js", "Google Merchant API"],
   link: "#",
   featured: true,
@@ -111,7 +111,7 @@ export const globalMultiSellerEcommercePlatformData: PortfolioDetailData = {
     badgeIcon: "Globe",
     titleLine1: "Shop",
     titleLine2: "Multi-Seller Marketplace",
-    heroImage: { src: "/multi-seller-e-commerce-platform.webp", alt: "Shop E-Commerce Platform" },
+    heroImage: { src: "/portfolio-banners/global-multi-seller-e-commerce-platform.webp", alt: "Shop E-Commerce Platform" },
     heroStats: [
       { valueKey: "products", label: "Products" },
       { valueKey: "categories", label: "Categories" },

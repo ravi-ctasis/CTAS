@@ -29,7 +29,7 @@ export const portfoliosData: Portfolio[] = [
       "All-in-one Amazon product management automation software with AI-driven repricing, smart inventory control, and seamless multi-marketplace integration for sellers and enterprises.",
     longDescription:
       "Our Amazon Product Management Automation Platform helps sellers scale effortlessly with AI-powered insights, dynamic pricing, and real-time stock optimization. It automates everything from product listing and SKU generation to order fulfillment and return handling, ensuring smooth operations across multiple Amazon marketplaces worldwide. With intelligent repricing, marketplace synchronization, and advanced analytics, sellers achieve faster growth, reduced costs, and improved sales performance.",
-    image: "/amazon-product-management-automation-img.webp",
+    image: "/portfolio-banners/amazon-product-management-automation-platform.webp",
     technologies: [
       "Amazon SP API",
       "Node.js",
@@ -61,7 +61,7 @@ export const portfoliosData: Portfolio[] = [
       "A centralized, enterprise-grade platform for managing tile production, domestic and international sales, buyers, sellers, and secure workflows with real-time visibility.",
     longDescription:
       "A web-based, scalable system designed to streamline the complete lifecycle of tile sales and distribution across global and domestic markets. The platform enables efficient management of product catalogs, buyer–seller interactions, order processing, invoicing, production tracking, and secure link sharing. With role-based access controls and advanced reporting, it ensures transparency, operational efficiency, and seamless collaboration for manufacturers, distributors, and sales teams.",
-    image: "/tiles-management-system.webp",
+    image: "/portfolio-banners/tiles-management-system.webp",
     technologies: [
       "Node.js",
       "React",
@@ -107,7 +107,7 @@ export const portfoliosData: Portfolio[] = [
       "A centralized, web-based platform for managing Amazon FBA and FBM operations, including inventory, orders, shipments, and performance analytics.",
     longDescription:
       "An enterprise-grade admin panel designed for Amazon sellers to streamline FBA and FBM operations efficiently. The platform offers real-time inventory synchronization, automated order processing, shipment creation via Amazon API integration, backorder handling, and advanced multi-store analytics. It ensures compliance with Amazon policies, supports role-based access control, and provides scalable workflows for high-volume operations.",
-    image: "/amazon-fbm-fba-management-models-img.webp",
+    image: "/portfolio-banners/amazon-fbm-fba-operations-automation-platform.webp",
     technologies: ["Amazon SP API", "Node.js", "React", "MongoDB", "AWS"],
     link: "/portfolios/amazon-fbm-fba-operations-automation-platform",
     year: "2024",
@@ -143,7 +143,7 @@ export const portfoliosData: Portfolio[] = [
       "Next-generation platform for fully automating Amazon order processing, Seller-Flex operations, and multi-courier management with real-time tracking.",
     longDescription:
       "An enterprise-grade web platform that automates the complete Amazon order lifecycle, from order placement to last-mile delivery. It seamlessly integrates with Amazon Seller-Flex and FBM, supports multiple courier partners (e.g., Bluedart, Shiprocket), and ensures real-time tracking, returns management, and full compliance with Amazon standards. The system provides scalable, accurate, and efficient workflows, reducing manual errors and enhancing operational productivity for businesses of all sizes.",
-    image: "/amazon-auto-ordering-order-management.webp",
+    image: "/portfolio-banners/amazon-order-management-automation-system.webp",
     technologies: ["React", "Node.js", "MongoDB", "Redis", "AWS"],
     link: "/portfolios/amazon-order-management-automation-system",
     year: "2020",
@@ -179,7 +179,7 @@ export const portfoliosData: Portfolio[] = [
       "A real-time repricing platform that optimizes millions of SKUs across marketplaces, ensuring competitiveness, profitability, and Buy Box dominance.",
     longDescription:
       "In today's competitive e-commerce landscape, marketplaces like Amazon, Cdiscount, and others change dynamically every second. Manual SKU management is impossible at scale. Our intelligent repricing engine continuously monitors competitors, applies business rules, calculates margins, and updates prices across multiple platforms automatically. It combines enterprise-scale performance with data-driven insights, ensuring optimal pricing, margin protection, and maximum Buy Box wins across millions of SKUs.",
-    image: "/intelligent-repricing-system-img.webp",
+    image: "/portfolio-banners/intelligent-repricing-system.webp",
     technologies: ["Amazon SP API & Business API", "Angular", "Node.js", "MongoDB", "Docker"],
     link: "/portfolios/intelligent-repricing-system",
     year: "2019",
@@ -215,7 +215,7 @@ export const portfoliosData: Portfolio[] = [
       "A unified system for generating global Master SKUs and managing marketplace identifiers (ASIN, EAN, UPC) to ensure consistency across Amazon, Flipkart, Walmart, and more.",
     longDescription:
       "Managing products across multiple marketplaces worldwide (Amazon, Flipkart, Walmart, Cdiscount, Shopify, etc.) requires consistent and standardized identifiers. Each platform uses different identification systems (ASIN, EAN, UPC, ISBN, GTIN, etc.), and without a central management process, product duplication, listing errors, and data mismatches are inevitable. Our system generates globally unique Master SKUs, maps market-specific identifiers, and synchronizes stock, price, and order data, becoming the backbone of global catalog management.",
-    image: "/automatic-sku-generation-img.webp",
+    image: "/portfolio-banners/automated-sku-identifier-framework.webp",
     technologies: ["Amazon SP API", "Angular", "NodeJs", "MongoDB", "Docker"],
     link: "/portfolios/automated-sku-identifier-framework",
     year: "2021",
@@ -254,7 +254,7 @@ export const portfoliosData: Portfolio[] = [
       "A system that automates Amazon customer review requests, manages seller feedback, and tracks responses to improve engagement and customer satisfaction.",
     longDescription:
       "This system automates the process of sending and managing Amazon customer review requests, ensuring sellers can efficiently engage with buyers and monitor feedback. It enables personalized and timely review requests, tracks responses in real-time, and provides insights to enhance products and services. Additionally, the platform allows sellers to manage their own feedback submissions securely, creating a streamlined workflow for feedback collection, order tracking, and overall customer satisfaction improvements.",
-    image: "/amazon-review-feedback.webp",
+    image: "/portfolio-banners/automated-amazon-review-feedback-management.webp",
     technologies: ["Amazon SP API", "React.js", "NodeJs", "MongoDB", "Express", "JWT", "PM2"],
     link: "/portfolios/automated-amazon-review-feedback-management",
     year: "2022",
@@ -295,7 +295,7 @@ export const portfoliosData: Portfolio[] = [
       "A unified platform for managing courier operations, including tracking, dispatch, and delivery management across multiple marketplaces.",
     longDescription:
       "This Courier Sync Platform is a comprehensive solution for managing courier operations. It integrates with various courier services (e.g., Bluedart, Shiprocket) and provides real-time tracking, dispatch, and delivery management. The platform ensures seamless communication between couriers and marketplaces like Amazon and Flipkart, enabling efficient order fulfillment and enhanced customer satisfaction.",
-    image: "/courier-tracking-simple-compose.webp",
+    image: "/portfolio-banners/unified-courier-tracking-intelligence-platform.webp",
     technologies: [
       "Node.js",
       "React",
@@ -339,7 +339,7 @@ export const portfoliosData: Portfolio[] = [
       "A centralized platform for managing production, inventory, and shipping processes efficiently, minimizing delays and errors across operations.",
     longDescription:
       "Managing production and stock manually across multiple marketplaces is prone to errors and delays. This platform automates PI confirmations, production order creation, and shipping workflows, while providing real-time inventory visibility, audit trails, and compliance monitoring. By centralizing operations, it ensures data integrity, improves efficiency, and supports scalability for high-volume e-commerce operations.",
-    image: "/production-stock-tracking.webp",
+    image: "/portfolio-banners/production-inventory-tracking-platform.webp",
     technologies: [
       "Angular",
       "Node.js",
@@ -391,7 +391,7 @@ export const portfoliosData: Portfolio[] = [
       "A scalable, user-centric platform connecting sellers and customers worldwide, featuring intelligent search, personalized recommendations, and optimized product listings.",
     longDescription:
       "The store is a next-generation multi-seller e-commerce platform designed to empower businesses—from local vendors to international brands—to reach a global audience. Hosting over 1.5 million products across 12,000+ categories and 10+ active stores worldwide, the store delivers fast performance, superior SEO, and cost-efficient infrastructure through advanced technology and intelligent architecture.",
-    image: "/multi-seller-e-commerce-platform.webp",
+    image: "/portfolio-banners/global-multi-seller-e-commerce-platform.webp",
     technologies: ["Node.js", "MongoDB", "Next.js", "Google Merchant API"],
     link: "/portfolios/global-multi-seller-e-commerce-platform",
     year: "2025",
@@ -433,7 +433,7 @@ export const portfoliosData: Portfolio[] = [
       "A next-gen platform for real-time stock tracking, automated workflows, and efficient warehouse operations to prevent overselling and maintain inventory accuracy.",
     longDescription:
       "Managing multiple warehouses manually is prone to errors, delays, and stock mismatches. This platform provides real-time inventory visibility, automates stock imports and exports, streamlines order fulfillment, and ensures complete audit-ready traceability across all warehouse operations. It reduces operational friction and improves warehouse efficiency while maintaining accurate stock levels across locations.",
-    image: "/warehouse-inventory-stock-img.webp",
+    image: "/portfolio-banners/warehouse-inventory-management-platform.webp",
     technologies: ["Node.js", "MongoDB", "Next.js", "Tailwind CSS", "Real-Time Tracking", "Workflow Automation"],
     link: "/portfolios/warehouse-inventory-management-platform",
     year: "2023",
@@ -473,7 +473,7 @@ export const portfoliosData: Portfolio[] = [
       "A centralized inspection management platform that supports real-time and offline operations, report generation, attachment handling, and seamless data synchronization.",
     longDescription:
       "This Inspection Management Web System streamlines the entire inspection lifecycle for manufacturing and logistics operations. It enables inspectors to work online or offline, capture and store attachments, and automatically sync data across systems when connected. With built-in reporting tools, audit trails, and scalable architecture, it ensures accuracy, compliance, and operational efficiency while handling large inspection volumes with ease.",
-    image: "/inspection-management-web-system.webp",
+    image: "/portfolio-banners/inspection-management-web-system.webp",
     technologies: ["Node.js", "Next.js", "MongoDB", "IndexedDB", "Tailwind CSS"],
     link: "/portfolios/inspection-management-web-system",
     year: "2024",
@@ -515,7 +515,7 @@ export const portfoliosData: Portfolio[] = [
       "A customer-friendly e-commerce platform designed for speed, scalability, and intelligence, delivering a seamless shopping experience for buyers and sellers.",
     longDescription:
       "E-Commerce Platform is a next-generation e-commerce platform built with cloud-native architecture, offering a smooth shopping experience akin to Amazon or Flipkart. It features fast ElasticSearch-powered product discovery, optimized media handling with AWS S3, smart warehouse allocation, real-time order tracking, and automated order management. E-Commerce Platform simplifies seller onboarding and provides robust tools for managing stock, orders, and promotions, ensuring scalability and reliability for all stakeholders.",
-    image: "/e-commerce-platform.webp",
+    image: "/portfolio-banners/e-commerce-platform.webp",
     technologies: ["React.js", "Node.js", "MongoDB", "AWS", "S3", "Lambda", "Docker"],
     link: "/portfolios/e-commerce-platform",
     year: "2022",
@@ -560,7 +560,7 @@ export const portfoliosData: Portfolio[] = [
       "A dedicated online bookstore offering an extensive collection of English-language books, optimized for efficient discovery and purchase across the EU.",
     longDescription:
       "bookstore is a specialized e-commerce platform focused solely on books. It simplifies browsing, ordering, and tracking across millions of titles, catering to book buyers and sellers across the EU. With ElasticSearch-powered search, full order lifecycle management, EU payment compliance, VAT handling, and automated returns and refunds, the platform ensures a fast, precise, and user-friendly shopping experience.",
-    image: "/book-store.webp",
+    image: "/portfolio-banners/book-store.webp",
     technologies: [
       "React",
       "Node.js",
@@ -614,7 +614,7 @@ export const portfoliosData: Portfolio[] = [
       "A unified platform for managing Amazon returns, enabling real-time scanning, Safe-T claim filing, reimbursement tracking, and actionable insights.",
     longDescription:
       "The Return & Refund Automation System streamlines Amazon return management with a centralized platform for tracking, scanning, and validating returns. It automates Safe-T claim filing for damaged or missing items, ensures compliance with Amazon policies, and maximizes reimbursement recovery. With real-time dashboards and AI-driven insights, it reduces errors, accelerates workflows, and enhances transparency for warehouse teams and e-commerce operations.",
-    image: "/return-operations-refund-automation.webp",
+    image: "/portfolio-banners/return-and-refund-automation-system.webp",
     technologies: [
       "Angular",
       "Node.js",
@@ -664,7 +664,7 @@ export const portfoliosData: Portfolio[] = [
       "Automates product data extraction, normalization, and organization from multiple online sources with speed and accuracy.",
     longDescription:
       "The Web Scraping Tool empowers e-commerce businesses to automatically collect, clean, and integrate product data from various websites and marketplaces. By eliminating manual data entry, ensuring consistency, and supporting scalable operations, it streamlines inventory, pricing, and catalog management while maintaining high data quality.",
-    image: "/automated-product-data-extraction-platform.webp",
+    image: "/portfolio-banners/automated-product-data-extraction-platform.webp",
     technologies: ["Node.js", "Puppeteer", "MongoDB", "AWS", "Redis", "Elasticsearch"],
     link: "/portfolios/automated-product-data-extraction-platform",
     year: "2025",
@@ -696,7 +696,7 @@ export const portfoliosData: Portfolio[] = [
     industry: "Amazon FBA/FBM & Multi-Marketplace",
     description: "A smart image upload kit for Canva that automates the process of uploading images to Canva, ensuring that the images are uploaded correctly and efficiently.",
     longDescription: "The Canva Smart Image Upload Kit is a smart image upload kit for Canva that automates the process of uploading images to Canva, ensuring that the images are uploaded correctly and efficiently.",
-    image: "/canva-ui-kit.webp",
+    image: "/portfolio-banners/canva-smart-image-upload-kit.webp",
     technologies: [
       "Canva API",
       "React.js",

@@ -8,7 +8,7 @@ export const amazonProductManagementAutomationPlatformData: PortfolioDetailData 
     "All-in-one Amazon product management automation software with AI-driven repricing, smart inventory control, and seamless multi-marketplace integration for sellers and enterprises.",
   longDescription:
     "Our Amazon Product Management Automation Platform helps sellers scale effortlessly with AI-powered insights, dynamic pricing, and real-time stock optimization. It automates everything from product listing and SKU generation to order fulfillment and return handling, ensuring smooth operations across multiple Amazon marketplaces worldwide. With intelligent repricing, marketplace synchronization, and advanced analytics, sellers achieve faster growth, reduced costs, and improved sales performance.",
-  image: "/Portfoliosimg/image-front.webp",
+  image: "/portfolio-banners/amazon-product-management-automation-platform.webp",
   technologies: [
     "Amazon SP API",
     "Node.js",
@@ -136,7 +136,7 @@ export const amazonProductManagementAutomationPlatformData: PortfolioDetailData 
     titleLine1: "Amazon Product Management",
     titleLine2: "Automation Platform",
     heroImage: {
-      src: "/amazon-product-management-automation-img.webp",
+      src: "/portfolio-banners/amazon-product-management-automation-platform.webp",
       alt: "Mobile Responsive Website Design",
     },
     heroStats: [

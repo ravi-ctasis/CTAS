@@ -8,7 +8,7 @@ export const amazonFbmFbaOperationsAutomationPlatformData: PortfolioDetailData =
     "A centralized, web-based platform for managing Amazon FBA and FBM operations, including inventory, orders, shipments, and performance analytics.",
   longDescription:
     "An enterprise-grade admin panel designed for Amazon sellers to streamline FBA and FBM operations efficiently. The platform offers real-time inventory synchronization, automated order processing, shipment creation via Amazon API integration, backorder handling, and advanced multi-store analytics. It ensures compliance with Amazon policies, supports role-based access control, and provides scalable workflows for high-volume operations.",
-  image: "/amazon-fbm-fba-management-models-img.webp",
+  image: "/portfolio-banners/amazon-fbm-fba-operations-automation-platform.webp",
   technologies: ["Amazon SP API", "Node.js", "React", "MongoDB", "AWS"],
   link: "#",
   featured: true,
@@ -128,7 +128,7 @@ export const amazonFbmFbaOperationsAutomationPlatformData: PortfolioDetailData =
     titleLine1: "Amazon FBA & FBM Operations",
     titleLine2: "Automation Platform",
     heroImage: {
-      src: "/amazon-fbm-fba-management-models-img.webp",
+      src: "/portfolio-banners/amazon-fbm-fba-operations-automation-platform.webp",
       alt: "Tablet Responsive Website Design",
     },
     heroStats: [

@@ -8,7 +8,7 @@ export const amazonOrderManagementAutomationSystemData: PortfolioDetailData = {
     "A next-generation platform that automates Amazon order processing, Seller-Flex handling, and courier integration for seamless fulfillment.",
   longDescription:
     "A next-generation automation platform that simplifies and accelerates Amazon order processing.It delivers end-to-end auto ordering, order management, Seller-Flex handling, and courier integration, ensuring that every order is processed with accuracy, speed, and full visibility. ",
-  image: "/image.webp",
+  image: "/portfolio-banners/amazon-order-management-automation-system.webp",
   technologies: [
     "Amazon SP API & Bussiness API",
     "Angular",
@@ -127,7 +127,7 @@ export const amazonOrderManagementAutomationSystemData: PortfolioDetailData = {
     titleLine1: "Amazon Order Management",
     titleLine2: "& Automation System",
     heroImage: {
-      src: "/amazon-auto-ordering-order-management.webp",
+      src: "/portfolio-banners/amazon-order-management-automation-system.webp",
       alt: "Amazon Order Automation Platform",
     },
     heroStats: [

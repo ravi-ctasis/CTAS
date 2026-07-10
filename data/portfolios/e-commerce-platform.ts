@@ -8,7 +8,7 @@ export const ecommercePlatformData: PortfolioDetailData = {
     "A customer-friendly e-commerce platform designed for speed, scalability, and intelligence, delivering a seamless shopping experience for buyers and sellers.",
   longDescription:
     "E-Commerce Platform is a customer-friendly e-commerce platform designed with the speed, scalability, and intelligence of modern cloud architecture. Built to deliver a smooth shopping experience like Amazon or Flipkart, E-Commerce Platform combines fast search, secure infrastructure, and seller-friendly tools—making it the perfect marketplace for both buyers and sellers.",
-  image: "/e-commerce-platform.webp",
+  image: "/portfolio-banners/e-commerce-platform.webp",
   technologies: ["React.js", "Node.js", "MongoDB", "AWS", "S3", "Lambda", "Docker"],
   link: "/portfolios/njour",
   featured: true,
@@ -121,7 +121,7 @@ export const ecommercePlatformData: PortfolioDetailData = {
     badgeIcon: "Search",
     titleLine1: "E-Commerce",
     titleLine2: "Platform",
-    heroImage: { src: "/e-commerce-platform.webp", alt: "E-Commerce Platform" },
+    heroImage: { src: "/portfolio-banners/e-commerce-platform.webp", alt: "E-Commerce Platform" },
     heroStats: [
       { valueKey: "orders", label: "Orders Processed" },
       { valueKey: "searches", label: "Search Queries" },

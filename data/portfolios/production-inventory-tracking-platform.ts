@@ -8,7 +8,7 @@ export const productionInventoryTrackingPlatformData: PortfolioDetailData = {
     "A centralized solution that manages every stage, from PI creation to outgoing shipments, while maintaining full audit history.",
   longDescription:
     "Managing Performa Invoices (PIs), product sizes, packaging, pallets, and production manually is time-consuming and error-prone. Lack of visibility across PI confirmation, production orders, and shipping creates operational delays. Without automation, stock calculations, shipment planning, and history tracking quickly become unmanageable at scale. That\u2019s why we designed an intelligent PI-to-Production system \u2014 a centralized solution that manages every stage, from PI creation to outgoing shipments, while maintaining full audit history.",
-  image: "/image.webp",
+  image: "/portfolio-banners/production-inventory-tracking-platform.webp",
   technologies: [
     "Angular",
     "Node.js",
@@ -136,7 +136,7 @@ export const productionInventoryTrackingPlatformData: PortfolioDetailData = {
     titleLine1: "Smart Production &",
     titleLine2: "Inventory Tracking Platform",
     heroImage: {
-      src: "/production-stock-tracking.webp",
+      src: "/portfolio-banners/production-inventory-tracking-platform.webp",
       alt: "Intelligent Production & Stock Tracking System",
     },
     heroStats: [

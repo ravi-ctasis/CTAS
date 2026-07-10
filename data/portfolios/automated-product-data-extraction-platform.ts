@@ -8,7 +8,7 @@ export const automatedProductDataExtractionPlatformData: PortfolioDetailData = {
     "Automates product data extraction, normalization, and organization from multiple online sources with speed and accuracy.",
   longDescription:
     "The Web Scraping Tool empowers e-commerce businesses to automatically collect, clean, and integrate product data from various websites and marketplaces. By eliminating manual data entry, ensuring consistency, and supporting scalable operations, it streamlines inventory, pricing, and catalog management while maintaining high data quality.",
-  image: "/web-scraping-tool-dashboard.webp",
+  image: "/portfolio-banners/automated-product-data-extraction-platform.webp",
   technologies: [
     "Node.js",
     "Puppeteer",
@@ -110,7 +110,7 @@ export const automatedProductDataExtractionPlatformData: PortfolioDetailData = {
     titleLine1: "Automated Product",
     titleLine2: "Data Extraction Platform",
     heroImage: {
-      src: "/automated-product-data-extraction-platform.webp",
+      src: "/portfolio-banners/automated-product-data-extraction-platform.webp",
       alt: "Web Scraping Tool",
     },
     heroStats: [
