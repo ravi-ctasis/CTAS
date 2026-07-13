@@ -53,6 +53,9 @@ import {
     Bot,
     Search,
     MousePointerClick,
+    Scan,
+    DollarSign,
+    RefreshCcw,
 } from "lucide-react";
 
 export const navigationData = {
@@ -703,6 +706,45 @@ export const navigationData = {
         description:
             "Build your team with specialized developers for web, mobile, and emerging technologies.",
         ctaText: "Contact Us",
+        ctaHref: "/contact-us",
+    },
+    product: {
+        title: "Product",
+        href: "/product",
+        items: [
+            {
+                category: "Our Products",
+                links: [
+                    {
+                        icon: Scan,
+                        name: "CTAS ScanPro",
+                        href: "/product/ctas-scanpro",
+                        description: "High-Performance Barcode Scanning Solution",
+                    },
+                    {
+                        icon: RefreshCcw,
+                        name: "CTAS Repricer",
+                        href: "/product/ctas-repricer",
+                        description: "AI-Powered Amazon Repricing Platform",
+                    },
+                    {
+                        icon: Store,
+                        name: "SellerBuz",
+                        href: "/product/sellerbuz",
+                        description: "Unified Multi-Channel Selling Platform",
+                    },
+                    {
+                        icon: Share2,
+                        name: "Postbell",
+                        href: "/product/postbell",
+                        description: "AI-Powered Social Media Automation Platform",
+                    },
+                ],
+            },
+        ],
+        description:
+            "Explore our innovative products designed to solve real-world challenges and drive business success.",
+        ctaText: "Learn More",
         ctaHref: "/contact-us",
     },
 };
