@@ -31,7 +31,7 @@ const primaryServices = [
       "Shipments & Returns",
       "Pricing Automation",
     ],
-    link: "/services/marketplace",
+    link: "/services/bol-com",
     popular: false,
   },
   {
@@ -46,7 +46,7 @@ const primaryServices = [
       "Returns Management",
       "Pricing & Inventory Sync",
     ],
-    link: "/services/marketplace",
+    link: "/services/kaufland",
     popular: false,
   },
   {
@@ -61,7 +61,7 @@ const primaryServices = [
       "Inventory Automation",
       "Custom App Development",
     ],
-    link: "/services/e-commerce-solutions",
+    link: "/services/shopify",
     popular: true,
   },
   {
@@ -76,7 +76,7 @@ const primaryServices = [
       "Pricing & Offers",
       "Returns Handling",
     ],
-    link: "/services/marketplace",
+    link: "/services/fnac",
     popular: false,
   },
 ];
@@ -91,7 +91,7 @@ const secondaryServices = [
     description:
       "Launch and automate your TikTok Shop presence — product listings, live-commerce sync, order management and fulfilment automation for social commerce.",
     features: ["Product Listings", "Live Commerce Sync", "Order Management", "Fulfilment Automation"],
-    link: "/services/marketplace",
+    link: "/services/tiktok-shop",
   },
   {
     name: "Walmart",
@@ -102,7 +102,7 @@ const secondaryServices = [
     description:
       "Manage Walmart listings, inventory, pricing and fulfilment automatically with our certified integration platform.",
     features: ["Feed Upload", "Order Sync", "Inventory", "Returns Processing"],
-    link: "/services/marketplace",
+    link: "/services/walmart-marketplace",
   },
   {
     name: "Worten",
@@ -113,7 +113,7 @@ const secondaryServices = [
     description:
       "Integrate with Worten, the leading electronics & home appliance marketplace in Portugal and Spain, with full catalogue and order automation.",
     features: ["Catalogue Sync", "Order Automation", "Pricing Rules", "Inventory Management"],
-    link: "/services/marketplace",
+    link: "/services/worten",
   },
   {
     name: "Allegro",
@@ -124,7 +124,7 @@ const secondaryServices = [
     description:
       "Poland's largest marketplace — automate offers, product catalogue, order processing, payments and invoicing with real-time synchronization.",
     features: ["Offer Management", "Order Processing", "Invoice Automation", "Real-Time Sync"],
-    link: "/services/marketplace",
+    link: "/services/allegro",
   },
   {
     name: "Rakuten",
@@ -135,7 +135,7 @@ const secondaryServices = [
     description:
       "Sell across Rakuten's global marketplace with automated listings, order management, inventory sync and returns processing for international reach.",
     features: ["Listings Sync", "Order Management", "Inventory Sync", "Returns Processing"],
-    link: "/services/marketplace",
+    link: "/services/rakuten",
   },
 ];
 
