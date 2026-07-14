@@ -35,32 +35,38 @@ import FooterSection from "@/components/FooterSection";
 const features = [
   {
     title: "Smart Repricing Engine",
-    description: "Automatically adjusts prices based on competitor movements, marketplace fees, sales velocity, and product demand",
+    description:
+      "Automatically adjusts prices based on competitor movements, marketplace fees, sales velocity, and product demand",
     icon: Zap,
   },
   {
     title: "Buy Box Optimization",
-    description: "Employs intelligent algorithms to increase Buy Box ownership through faster response times and dynamic rule execution",
+    description:
+      "Employs intelligent algorithms to increase Buy Box ownership through faster response times and dynamic rule execution",
     icon: Target,
   },
   {
     title: "Inventory-Aware Pricing",
-    description: "Protects inventory health by adjusting pricing based on stock availability, inventory age, and seasonal demand",
+    description:
+      "Protects inventory health by adjusting pricing based on stock availability, inventory age, and seasonal demand",
     icon: Shield,
   },
   {
     title: "Multi-Marketplace Support",
-    description: "Seamlessly manage operations across Amazon US, UK, Germany, France, Italy, Spain, Netherlands, Sweden, Poland, Belgium, Japan, Australia, UAE, and Saudi Arabia",
+    description:
+      "Seamlessly manage operations across Amazon US, UK, Germany, France, Italy, Spain, Netherlands, Sweden, Poland, Belgium, Japan, Australia, UAE, and Saudi Arabia",
     icon: Globe,
   },
   {
     title: "Comprehensive Rule Engine",
-    description: "Create unlimited custom strategies including pricing rules, competitor filters, and time-based campaigns",
+    description:
+      "Create unlimited custom strategies including pricing rules, competitor filters, and time-based campaigns",
     icon: Settings,
   },
   {
     title: "Actionable Analytics",
-    description: "Monitor performance with real-time insights into revenue, sales growth, profit margins, competitor activity, and detailed repricing history",
+    description:
+      "Monitor performance with real-time insights into revenue, sales growth, profit margins, competitor activity, and detailed repricing history",
     icon: BarChart3,
   },
 ];
@@ -142,7 +148,8 @@ const benefits = [
   },
   {
     title: "Protect Margins",
-    description: "Built-in safeguards ensure you never sell below your defined cost or profit threshold",
+    description:
+      "Built-in safeguards ensure you never sell below your defined cost or profit threshold",
     icon: Shield,
   },
   {
@@ -152,16 +159,27 @@ const benefits = [
   },
   {
     title: "Built for Growth",
-    description: "Whether you are an individual seller or a global aggregator, our architecture scales with your business",
+    description:
+      "Whether you are an individual seller or a global aggregator, our architecture scales with your business",
     icon: Award,
   },
 ];
 
 const marketplaces = [
-  "Amazon US", "Amazon UK", "Amazon Germany", "Amazon France",
-  "Amazon Italy", "Amazon Spain", "Amazon Netherlands", "Amazon Sweden",
-  "Amazon Poland", "Amazon Belgium", "Amazon Japan", "Amazon Australia",
-  "Amazon UAE", "Amazon Saudi Arabia"
+  "Amazon US",
+  "Amazon UK",
+  "Amazon Germany",
+  "Amazon France",
+  "Amazon Italy",
+  "Amazon Spain",
+  "Amazon Netherlands",
+  "Amazon Sweden",
+  "Amazon Poland",
+  "Amazon Belgium",
+  "Amazon Japan",
+  "Amazon Australia",
+  "Amazon UAE",
+  "Amazon Saudi Arabia",
 ];
 
 // Data for the "One tool. Every platform you sell on." hub
@@ -236,7 +254,14 @@ export default function CTASRepricerPage() {
         <MetaTags
           title="CTAS Repricer - AI-Powered Amazon Repricing Platform"
           description="Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers."
-          keywords={["Amazon repricer", "Buy Box optimization", "automated pricing", "Amazon seller tools", "CTAS Repricer", "price automation"]}
+          keywords={[
+            "Amazon repricer",
+            "Buy Box optimization",
+            "automated pricing",
+            "Amazon seller tools",
+            "CTAS Repricer",
+            "price automation",
+          ]}
           ogImage="/products/repricer-og.webp"
         />
         <BreadcrumbSchema
@@ -248,20 +273,25 @@ export default function CTASRepricerPage() {
         />
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-20 px-4">
-          <div className="max-w-7xl mx-auto">
+        <section className="relative bg-gradient-to-br from-[#0d1f3c] via-[#13345A] to-[#1e4d80] py-24 px-4 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-400 rounded-full blur-3xl" />
+          </div>
+          <div className="relative max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-block px-4 py-2 bg-blue-100 rounded-full text-blue-800 text-sm font-medium mb-6">
+                <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/30 rounded-full px-4 py-1.5 text-sm text-orange-300 font-medium mb-6">
+                  <RefreshCcw className="w-4 h-4" />
                   AI-Powered Amazon Repricing
                 </div>
-                <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                  CTAS <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">Repricer</span>
+                <h1 className="text-5xl font-extrabold text-white mb-6 leading-tight">
+                  CTAS <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Repricer</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-4">
+                <p className="text-white/70 text-lg mb-4 leading-relaxed">
                   Automate Pricing. Protect Profits. Win More Buy Boxes.
                 </p>
-                <p className="text-lg text-gray-600 mb-8">
+                <p className="text-white/60 text-base mb-8 leading-relaxed">
                   Intelligent, AI-driven platform designed for modern Amazon sellers, brands, and enterprises. Continuously monitor market conditions and automatically optimize your product prices to maximize profitability.
                 </p>
                 <div className="grid grid-cols-2 gap-6 mb-8">
@@ -272,10 +302,10 @@ export default function CTASRepricerPage() {
                     { number: "Real-time", label: "Updates", icon: TrendingUp },
                   ].map((stat, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <stat.icon className="w-6 h-6 text-blue-600" />
+                      <stat.icon className="w-6 h-6 text-orange-400" />
                       <div>
-                        <div className="text-2xl font-bold text-gray-900">{stat.number}</div>
-                        <div className="text-sm text-gray-600">{stat.label}</div>
+                        <div className="text-2xl font-bold text-white">{stat.number}</div>
+                        <div className="text-sm text-white/60">{stat.label}</div>
                       </div>
                     </div>
                   ))}
@@ -283,14 +313,14 @@ export default function CTASRepricerPage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/contact-us"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
                     Get Started
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                   <Link
                     href="#features"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-600 transition-all duration-300"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
                   >
                     Learn More
                   </Link>
@@ -299,7 +329,7 @@ export default function CTASRepricerPage() {
 
               {/* Animated competitor-pricing visual replacing the static hero image */}
               <div className="relative">
-                <div className="bg-gradient-to-br from-blue-500 to-orange-500 rounded-2xl p-1">
+                <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-1">
                   <CompetitorRepricingAnimation />
                 </div>
               </div>
@@ -315,19 +345,19 @@ export default function CTASRepricerPage() {
                 Intelligent Pricing & Strategy Engine
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our advanced engine moves beyond basic rules, leveraging AI to analyze marketplace data and execute pricing strategies in real time
+                Our advanced engine moves beyond basic rules, leveraging AI to analyze marketplace
+                data and execute pricing strategies in real time
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
+                >
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -348,7 +378,9 @@ export default function CTASRepricerPage() {
                   One tool. Every platform you sell on.
                 </h2>
                 <p className="text-gray-600 max-w-md mb-6">
-                  Keep pricing consistent across Amazon, eBay, Walmart, Shopify, Etsy, Cdiscount, and beyond. Our multi-channel sync engine keeps your strategy sharp everywhere, automatically.
+                  Keep pricing consistent across Amazon, eBay, Walmart, Shopify, Etsy, Cdiscount,
+                  and beyond. Our multi-channel sync engine keeps your strategy sharp everywhere,
+                  automatically.
                 </p>
 
                 <RevenueSparkChart />
@@ -378,7 +410,9 @@ export default function CTASRepricerPage() {
                 Repricer works for you, 24/7, without lifting a finger.
               </h2>
               <p className="text-slate-400 max-w-md">
-                Repricer monitors every competitor move across your entire catalogue and responds intelligently — weighting seller ratings, stock levels, location, fulfillment speed, and dozens more signals. Zero manual intervention required.
+                Repricer monitors every competitor move across your entire catalogue and responds
+                intelligently — weighting seller ratings, stock levels, location, fulfillment speed,
+                and dozens more signals. Zero manual intervention required.
               </p>
             </div>
 
@@ -401,23 +435,20 @@ export default function CTASRepricerPage() {
         <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-orange-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Comprehensive Rule Engine
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Comprehensive Rule Engine</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Create unlimited, custom strategies for your business
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {ruleTypes.map((rule, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   <rule.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {rule.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {rule.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{rule.title}</h3>
+                  <p className="text-gray-600">{rule.description}</p>
                 </div>
               ))}
             </div>
@@ -439,13 +470,17 @@ export default function CTASRepricerPage() {
                           className={`flex items-start justify-between gap-3 rounded-lg border px-3 py-2.5 ${alert.tone}`}
                         >
                           <div className="flex items-start gap-2">
-                            <span className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${alert.dot}`} />
+                            <span
+                              className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${alert.dot}`}
+                            />
                             <div>
                               <div className="text-sm font-bold text-gray-900">{alert.title}</div>
                               <div className="text-xs text-gray-500">{alert.detail}</div>
                             </div>
                           </div>
-                          <span className="text-[11px] text-gray-400 whitespace-nowrap">{alert.time}</span>
+                          <span className="text-[11px] text-gray-400 whitespace-nowrap">
+                            {alert.time}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -467,9 +502,14 @@ export default function CTASRepricerPage() {
                   Never miss a profit opportunity again.
                 </h2>
                 <p className="text-gray-600 max-w-md mb-6">
-                  Repricer surfaces high-value opportunities and fires real-time alerts the moment something critical happens — lost Buy Box, low stock, competitor price drop. One-click actions let you respond instantly.
+                  Repricer surfaces high-value opportunities and fires real-time alerts the moment
+                  something critical happens — lost Buy Box, low stock, competitor price drop.
+                  One-click actions let you respond instantly.
                 </p>
-                <Link href="#features" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:gap-2.5 transition-all duration-300">
+                <Link
+                  href="#features"
+                  className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:gap-2.5 transition-all duration-300"
+                >
                   Explore Insights <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -481,9 +521,7 @@ export default function CTASRepricerPage() {
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Global Scalability
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Global Scalability</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Manage your entire global business from a single, unified dashboard
               </p>
@@ -505,9 +543,7 @@ export default function CTASRepricerPage() {
         <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-orange-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                How It Works
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Automated 5-step process for optimal pricing
               </p>
@@ -518,12 +554,8 @@ export default function CTASRepricerPage() {
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl font-bold text-white">{step.step}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {step.description}
-                  </p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-sm text-gray-600">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -534,9 +566,7 @@ export default function CTASRepricerPage() {
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Enterprise-Grade Security
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Enterprise-Grade Security</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Your data security is our priority
               </p>
@@ -545,12 +575,8 @@ export default function CTASRepricerPage() {
               {securityFeatures.map((feature, index) => (
                 <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200">
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -575,12 +601,8 @@ export default function CTASRepricerPage() {
                     <benefit.icon className="w-10 h-10 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {benefit.description}
-                    </p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                    <p className="text-gray-600">{benefit.description}</p>
                   </div>
                 </div>
               ))}
@@ -591,9 +613,7 @@ export default function CTASRepricerPage() {
         {/* CTA Section */}
         <section className="py-20 px-4 bg-gradient-to-br from-blue-600 to-orange-500">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Win More Buy Boxes?
-            </h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Ready to Win More Buy Boxes?</h2>
             <p className="text-xl text-white/90 mb-12">
               Start automating your Amazon pricing with CTAS Repricer today.
             </p>
@@ -656,12 +676,15 @@ function CompetitorRepricingAnimation() {
           {competitors.map((c, i) => (
             <div key={i} className="bg-[#161c2e] rounded-xl px-4 py-3.5 relative">
               <span
-                className={`absolute -top-2.5 -right-2.5 flex items-center gap-0.5 text-[11px] font-bold px-2 py-1 rounded-full text-white ${c.trend === "up" ? "bg-red-500" : "bg-green-500"
-                  }`}
+                className={`absolute -top-2.5 -right-2.5 flex items-center gap-0.5 text-[11px] font-bold px-2 py-1 rounded-full text-white ${
+                  c.trend === "up" ? "bg-red-500" : "bg-green-500"
+                }`}
               >
                 {c.trend === "up" ? "▲" : "▼"} {c.change}
               </span>
-              <div className="text-[10px] font-semibold text-slate-400 tracking-wider">{c.label}</div>
+              <div className="text-[10px] font-semibold text-slate-400 tracking-wider">
+                {c.label}
+              </div>
               <div className="flex items-center gap-2 mt-0.5">
                 <span className="text-xl font-bold text-white font-mono">{c.price}</span>
                 <MiniSpark color={c.trend === "up" ? "#f87171" : "#4ade80"} />
@@ -672,11 +695,39 @@ function CompetitorRepricingAnimation() {
 
         {/* connecting lines + center node */}
         <div className="flex flex-col items-center justify-center relative w-20 sm:w-28">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 220" preserveAspectRatio="none">
-            <path d="M0,26 C40,26 40,110 50,110" fill="none" stroke="#93c5fd" strokeWidth="2" className="repricer-flow-line" />
-            <path d="M0,110 L50,110" fill="none" stroke="#93c5fd" strokeWidth="2" className="repricer-flow-line" />
-            <path d="M0,194 C40,194 40,110 50,110" fill="none" stroke="#93c5fd" strokeWidth="2" className="repricer-flow-line" />
-            <path d="M50,110 L100,110" fill="none" stroke="#86efac" strokeWidth="2" className="repricer-flow-line" />
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 100 220"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,26 C40,26 40,110 50,110"
+              fill="none"
+              stroke="#93c5fd"
+              strokeWidth="2"
+              className="repricer-flow-line"
+            />
+            <path
+              d="M0,110 L50,110"
+              fill="none"
+              stroke="#93c5fd"
+              strokeWidth="2"
+              className="repricer-flow-line"
+            />
+            <path
+              d="M0,194 C40,194 40,110 50,110"
+              fill="none"
+              stroke="#93c5fd"
+              strokeWidth="2"
+              className="repricer-flow-line"
+            />
+            <path
+              d="M50,110 L100,110"
+              fill="none"
+              stroke="#86efac"
+              strokeWidth="2"
+              className="repricer-flow-line"
+            />
           </svg>
           <div className="relative z-10 flex items-center justify-center">
             <span className="repricer-halo absolute w-24 h-24 rounded-full border-2 border-blue-200" />
@@ -690,7 +741,9 @@ function CompetitorRepricingAnimation() {
         {/* your price winning card — two-tone */}
         <div className="rounded-xl overflow-hidden">
           <div className="bg-gradient-to-br from-green-600 to-green-700 px-4 py-4 text-white">
-            <div className="text-[10px] font-semibold text-green-100 tracking-wider">YOUR PRICE</div>
+            <div className="text-[10px] font-semibold text-green-100 tracking-wider">
+              YOUR PRICE
+            </div>
             <div className="text-2xl font-bold font-mono">$23.49</div>
             <div className="flex items-center gap-1.5 text-xs font-semibold text-yellow-300 mt-1.5">
               <Trophy className="w-3.5 h-3.5" /> WINNING BUY BOX
@@ -762,12 +815,12 @@ function HubDiagram({
 }) {
   // 6 positions evenly spaced around a circle, computed for a 320x320 box
   const positions = [
-    { top: 24, left: 160 },   // top
-    { top: 92, left: 269 },   // upper right
-    { top: 222, left: 269 },  // lower right
-    { top: 292, left: 160 },  // bottom
-    { top: 222, left: 51 },   // lower left
-    { top: 92, left: 51 },    // upper left
+    { top: 24, left: 160 }, // top
+    { top: 92, left: 269 }, // upper right
+    { top: 222, left: 269 }, // lower right
+    { top: 292, left: 160 }, // bottom
+    { top: 222, left: 51 }, // lower left
+    { top: 92, left: 51 }, // upper left
   ];
 
   return (
@@ -787,8 +840,9 @@ function HubDiagram({
 
       {/* dashed orbit ring */}
       <div
-        className={`absolute rounded-full border ${dark ? "border-blue-500/30" : "border-blue-300"
-          }`}
+        className={`absolute rounded-full border ${
+          dark ? "border-blue-500/30" : "border-blue-300"
+        }`}
         style={{
           borderStyle: "dashed",
           width: 216,
@@ -820,10 +874,9 @@ function HubDiagram({
 
       {/* center node */}
       <div
-        className={`hub-core absolute w-24 h-24 rounded-full flex flex-col items-center justify-center text-center z-10 ${dark
-            ? "bg-blue-600 text-white"
-            : "bg-blue-600 text-white"
-          }`}
+        className={`hub-core absolute w-24 h-24 rounded-full flex flex-col items-center justify-center text-center z-10 ${
+          dark ? "bg-blue-600 text-white" : "bg-blue-600 text-white"
+        }`}
         style={{ top: 112, left: 112 }}
       >
         <span className="text-[11px] font-bold leading-tight">{centerTitle}</span>
@@ -840,8 +893,9 @@ function HubDiagram({
             style={{ top: p.top, left: p.left, transform: "translate(-50%, -50%)" }}
           >
             <div
-              className={`hub-dot w-14 h-14 rounded-full flex items-center justify-center border-2 ${dark ? "bg-[#111a2e]" : "bg-white"
-                }`}
+              className={`hub-dot w-14 h-14 rounded-full flex items-center justify-center border-2 ${
+                dark ? "bg-[#111a2e]" : "bg-white"
+              }`}
               style={{ borderColor: item.color }}
             >
               <item.icon className="w-5 h-5" style={{ color: item.color }} />
@@ -931,7 +985,9 @@ function OpportunityGauge({ score }: { score: number }) {
           <span className="text-[10px] text-gray-400">out of 100</span>
         </div>
       </div>
-      <div className="text-[11px] font-bold text-orange-500 mt-2 tracking-wide">HIGH OPPORTUNITY</div>
+      <div className="text-[11px] font-bold text-orange-500 mt-2 tracking-wide">
+        HIGH OPPORTUNITY
+      </div>
 
       <svg viewBox="0 0 140 40" className="w-full h-auto mt-3">
         <polyline

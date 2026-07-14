@@ -36,13 +36,7 @@ import type {
   PortfolioSection,
 } from "@/types/portfolio-detail";
 
-const SectionWrap = ({
-  children,
-  alt = false,
-}: {
-  children: React.ReactNode;
-  alt?: boolean;
-}) => (
+const SectionWrap = ({ children, alt = false }: { children: React.ReactNode; alt?: boolean }) => (
   <section className={`py-10 sm:py-12 lg:py-14 ${alt ? "bg-white" : "bg-[#F6F8FA]"}`}>
     <div className="max-w-[1584px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">{children}</div>
   </section>
@@ -78,6 +72,13 @@ const statLabelMap: Record<string, string> = {
   orders: "Orders Processed",
   satisfaction: "Customer Satisfaction",
   deliveries: "On-Time Deliveries",
+  synced: "Items Synced",
+  speed: "Sync Latency",
+  sellers: "Active Sellers",
+  savings: "Time Savings",
+  queries: "Daily Queries",
+  response: "Server Latency",
+  setup: "Setup Time",
 };
 
 const ContentBlockCard = ({ block, index }: { block: PortfolioContentBlock; index: number }) => {
@@ -102,12 +103,17 @@ const ContentBlockCard = ({ block, index }: { block: PortfolioContentBlock; inde
           <ul className="space-y-2.5" aria-label={block.title}>
             {block.items.map((item) => (
               <li key={item} className="flex gap-2.5 text-sm text-slate-700">
-                <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: CYAN }} />
+                <span
+                  className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                  style={{ backgroundColor: CYAN }}
+                />
                 {item}
               </li>
             ))}
           </ul>
-          {block.closing && <p className="text-slate-600 mt-5 text-sm leading-relaxed">{block.closing}</p>}
+          {block.closing && (
+            <p className="text-slate-600 mt-5 text-sm leading-relaxed">{block.closing}</p>
+          )}
         </>
       )}
 
@@ -125,7 +131,9 @@ const ContentBlockCard = ({ block, index }: { block: PortfolioContentBlock; inde
               </ul>
             </div>
           ))}
-          {block.closing && <p className="text-slate-600 mt-5 text-sm leading-relaxed">{block.closing}</p>}
+          {block.closing && (
+            <p className="text-slate-600 mt-5 text-sm leading-relaxed">{block.closing}</p>
+          )}
         </div>
       )}
 
@@ -171,7 +179,9 @@ const renderSection = (
                 }`}
               >
                 <IconBox icon={item.icon} />
-                <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mt-4 mb-2`}>
+                <h3
+                  className={`${fraunces.className} text-lg font-medium text-slate-900 mt-4 mb-2`}
+                >
                   {item.title}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
@@ -188,7 +198,9 @@ const renderSection = (
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EAF3F8] border border-[#13345A]/15 text-[#13345A] text-xs font-semibold uppercase tracking-widest mb-4">
               Advantages
             </div>
-            <h2 className={`${fraunces.className} text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900`}>
+            <h2
+              className={`${fraunces.className} text-2xl sm:text-3xl lg:text-4xl font-medium text-slate-900`}
+            >
               {section.title}
             </h2>
           </div>
@@ -255,7 +267,9 @@ const renderSection = (
             highlight=""
             description={section.subtitle || ""}
           />
-          <div className={`grid gap-5 sm:gap-6 ${cols === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+          <div
+            className={`grid gap-5 sm:gap-6 ${cols === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
+          >
             {section.items.map((item, i) => (
               <motion.article
                 key={item.title}
@@ -314,28 +328,35 @@ const renderSection = (
     case "tech-stack":
       return (
         <SectionWrap key={`tech-${index}`} alt={alt}>
-          <SectionHeader badge="Technology" title="Technology" highlight="Stack" description={section.description} />
+          <SectionHeader
+            badge="Technology"
+            title="Technology"
+            highlight="Stack"
+            description={section.description}
+          />
           <DotCarousel bleed ariaLabel="Content carousel">
-              {data.techStack.flatMap((cat) =>
-                cat.technologies.map((tech, i) => (
-                  <motion.div
-                    key={`${cat.category}-${tech.name}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.03 }}
-                    className="flex-shrink-0 w-[160px] snap-start"
-                  >
-                    <div className="rounded-2xl border border-slate-200/80 bg-white p-5 text-center h-full hover:shadow-md transition-shadow">
-                      <IconBox icon={tech.icon} />
-                      <div className="font-semibold text-slate-900 text-sm mt-3">{tech.name}</div>
-                      <div className="text-xs text-slate-500 mt-1">{cat.category}</div>
-                      <div className="text-xs text-slate-400 mt-2 leading-snug">{tech.description}</div>
+            {data.techStack.flatMap((cat) =>
+              cat.technologies.map((tech, i) => (
+                <motion.div
+                  key={`${cat.category}-${tech.name}`}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.03 }}
+                  className="flex-shrink-0 w-[160px] snap-start"
+                >
+                  <div className="rounded-2xl border border-slate-200/80 bg-white p-5 text-center h-full hover:shadow-md transition-shadow">
+                    <IconBox icon={tech.icon} />
+                    <div className="font-semibold text-slate-900 text-sm mt-3">{tech.name}</div>
+                    <div className="text-xs text-slate-500 mt-1">{cat.category}</div>
+                    <div className="text-xs text-slate-400 mt-2 leading-snug">
+                      {tech.description}
                     </div>
-                  </motion.div>
-                ))
-              )}
-        </DotCarousel>
+                  </div>
+                </motion.div>
+              ))
+            )}
+          </DotCarousel>
         </SectionWrap>
       );
 
@@ -378,7 +399,12 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ctasis.com" },
-          { "@type": "ListItem", position: 2, name: "Portfolios", item: "https://www.ctasis.com/portfolios" },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Portfolios",
+            item: "https://www.ctasis.com/portfolios",
+          },
           {
             "@type": "ListItem",
             position: 3,
@@ -394,7 +420,10 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
 
   return (
     <PageShell>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Navigation />
       <main>
         {/* Hero — split with image */}
@@ -444,7 +473,9 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
                     </span>
                   )}
                 </h1>
-                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-8">{data.description}</p>
+                <p className="text-base sm:text-lg text-[#93A3AF] leading-relaxed mb-8">
+                  {data.description}
+                </p>
                 <Link
                   href="/contact-us"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full text-[#08141F] transition-all hover:opacity-90 mb-10"
@@ -455,8 +486,13 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
                 </Link>
                 <div className="grid grid-cols-3 gap-4">
                   {data.hero.heroStats.map((stat) => (
-                    <div key={stat.label} className="text-center rounded-xl bg-white/[0.05] border border-white/10 p-4">
-                      <div className={`${fraunces.className} text-xl sm:text-2xl font-medium text-[#F2F6F9]`}>
+                    <div
+                      key={stat.label}
+                      className="text-center rounded-xl bg-white/[0.05] border border-white/10 p-4"
+                    >
+                      <div
+                        className={`${fraunces.className} text-xl sm:text-2xl font-medium text-[#F2F6F9]`}
+                      >
                         <AnimatedStat value={data.stats[stat.valueKey] || ""} />
                       </div>
                       <div className="text-xs text-[#93A3AF] mt-1">{stat.label}</div>
@@ -513,7 +549,10 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
                     <ul className="space-y-2.5" aria-label="Our solutions">
                       {data.solutions.map((s) => (
                         <li key={s} className="flex gap-2 text-sm text-slate-600">
-                          <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
+                          <CheckCircle2
+                            className="w-4 h-4 flex-shrink-0 mt-0.5"
+                            style={{ color: CYAN }}
+                          />
                           {s}
                         </li>
                       ))}
@@ -524,7 +563,9 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
 
               {data.results.length > 0 && (
                 <motion.div {...fadeUp}>
-                  <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-4`}>Results</h3>
+                  <h3 className={`${fraunces.className} text-xl font-medium text-slate-900 mb-4`}>
+                    Results
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {data.results.map((r) => (
                       <span
@@ -540,7 +581,10 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
             </div>
 
             <aside className="space-y-5">
-              <motion.div {...fadeUp} className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 lg:sticky lg:top-24">
+              <motion.div
+                {...fadeUp}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 lg:sticky lg:top-24"
+              >
                 <h3 className="font-semibold text-slate-900 mb-5">Project Details</h3>
                 <div className="space-y-4 text-sm">
                   <div className="flex gap-3">
@@ -576,7 +620,11 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
                 </div>
               </motion.div>
 
-              <motion.div {...fadeUp} transition={{ delay: 0.06 }} className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6">
+              <motion.div
+                {...fadeUp}
+                transition={{ delay: 0.06 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6"
+              >
                 <h3 className="font-semibold text-slate-900 mb-4">Technologies Used</h3>
                 <div className="flex flex-wrap gap-2">
                   {data.technologies.map((tech) => (
@@ -590,7 +638,11 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
                 </div>
               </motion.div>
 
-              <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6">
+              <motion.div
+                {...fadeUp}
+                transition={{ delay: 0.1 }}
+                className="rounded-[1.5rem] border border-slate-200/80 bg-white p-6"
+              >
                 <h3 className="font-semibold text-slate-900 mb-4">Project Stats</h3>
                 <div className="space-y-3 text-sm">
                   {statEntries.map(([key, value]) => (
@@ -603,14 +655,25 @@ export default function PortfolioDetailPage({ data, slug }: Props) {
               </motion.div>
             </aside>
           </div>
-          <motion.p {...fadeUp} className="mt-10 inline-flex items-center gap-2 text-sm text-slate-600">
+          <motion.p
+            {...fadeUp}
+            className="mt-10 inline-flex items-center gap-2 text-sm text-slate-600"
+          >
             <Sparkles className="w-4 h-4" style={{ color: CYAN }} />
             See related{" "}
-            <Link href="/case-studies" className="font-semibold hover:underline" style={{ color: NAVY }}>
+            <Link
+              href="/case-studies"
+              className="font-semibold hover:underline"
+              style={{ color: NAVY }}
+            >
               case studies
             </Link>{" "}
             and{" "}
-            <Link href="/solutions" className="font-semibold hover:underline" style={{ color: NAVY }}>
+            <Link
+              href="/solutions"
+              className="font-semibold hover:underline"
+              style={{ color: NAVY }}
+            >
               solutions
             </Link>
             .

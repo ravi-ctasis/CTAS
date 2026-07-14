@@ -97,7 +97,6 @@ export const portfoliosData: Portfolio[] = [
     featured: true,
   },
 
-
   {
     id: 3,
     title: "Amazon FBA & FBM Operations Automation Platform",
@@ -285,7 +284,6 @@ export const portfoliosData: Portfolio[] = [
     featured: true,
   },
 
-
   {
     id: 8,
     title: "Unified Courier Tracking & Intelligence Platform",
@@ -304,7 +302,7 @@ export const portfoliosData: Portfolio[] = [
       "Docker",
       "Kubernetes",
       "Elasticsearch",
-      "RabbitMQ"
+      "RabbitMQ",
     ],
     link: "/portfolios/unified-courier-tracking-intelligence-platform",
     year: "2020",
@@ -314,21 +312,21 @@ export const portfoliosData: Portfolio[] = [
       "Integrating multiple courier services with differing APIs",
       "Ensuring accurate real-time tracking across platforms",
       "Maintaining compliance for multi-marketplace operations",
-      "Optimizing performance under high data volume"
+      "Optimizing performance under high data volume",
     ],
     solutions: [
       "Real-time tracking integration with major courier APIs",
       "Multi-marketplace compliance and workflow standardization",
       "Performance optimization through scalable architecture",
-      "Containerized deployment using Docker and Kubernetes"
+      "Containerized deployment using Docker and Kubernetes",
     ],
     results: [
       "Seamless courier integration enabling real-time dispatch and tracking",
       "Compliance across Amazon, Flipkart, and other marketplaces",
       "Optimized performance ensuring fast data processing",
-      "Highly scalable architecture handling large volumes of orders"
+      "Highly scalable architecture handling large volumes of orders",
     ],
-    featured: true
+    featured: true,
   },
   {
     id: 9,
@@ -434,7 +432,14 @@ export const portfoliosData: Portfolio[] = [
     longDescription:
       "Managing multiple warehouses manually is prone to errors, delays, and stock mismatches. This platform provides real-time inventory visibility, automates stock imports and exports, streamlines order fulfillment, and ensures complete audit-ready traceability across all warehouse operations. It reduces operational friction and improves warehouse efficiency while maintaining accurate stock levels across locations.",
     image: "/warehouse-inventory-stock-img.webp",
-    technologies: ["Node.js", "MongoDB", "Next.js", "Tailwind CSS", "Real-Time Tracking", "Workflow Automation"],
+    technologies: [
+      "Node.js",
+      "MongoDB",
+      "Next.js",
+      "Tailwind CSS",
+      "Real-Time Tracking",
+      "Workflow Automation",
+    ],
     link: "/portfolios/warehouse-inventory-management-platform",
     year: "2023",
     duration: "10 months",
@@ -561,15 +566,7 @@ export const portfoliosData: Portfolio[] = [
     longDescription:
       "bookstore is a specialized e-commerce platform focused solely on books. It simplifies browsing, ordering, and tracking across millions of titles, catering to book buyers and sellers across the EU. With ElasticSearch-powered search, full order lifecycle management, EU payment compliance, VAT handling, and automated returns and refunds, the platform ensures a fast, precise, and user-friendly shopping experience.",
     image: "/book-store.webp",
-    technologies: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "ElasticSearch",
-      "AWS",
-      "S3",
-      "Docker"
-    ],
+    technologies: ["React", "Node.js", "MongoDB", "ElasticSearch", "AWS", "S3", "Docker"],
     link: "/portfolios/book-store",
     year: "2023",
     duration: "10 months",
@@ -582,7 +579,7 @@ export const portfoliosData: Portfolio[] = [
       "EU VAT compliance",
       "Multi-payment handling",
       "Complex returns & refunds",
-      "High traffic and scalability requirements"
+      "High traffic and scalability requirements",
     ],
     solutions: [
       "MongoDB + ElasticSearch for high-volume, real-time queries",
@@ -592,7 +589,7 @@ export const portfoliosData: Portfolio[] = [
       "Country-specific VAT rules automatically applied",
       "Supports Visa, MasterCard, PayPal, Klarna, iDeal, Bancontact, Sofort",
       "Automated return & refund workflows",
-      "AWS cloud infrastructure + Docker for scalable and reliable performance"
+      "AWS cloud infrastructure + Docker for scalable and reliable performance",
     ],
     results: [
       "Rapid Search – Instant book discovery across millions of titles",
@@ -600,9 +597,9 @@ export const portfoliosData: Portfolio[] = [
       "Seamless Order Processing – Full lifecycle from checkout to delivery",
       "EU Compliance – Automated VAT and multi-currency handling",
       "Flexible Payments – Support for all major EU payment methods",
-      "High Satisfaction – Fast delivery and easy returns boosting customer trust"
+      "High Satisfaction – Fast delivery and easy returns boosting customer trust",
     ],
-    featured: true
+    featured: true,
   },
 
   {
@@ -690,22 +687,16 @@ export const portfoliosData: Portfolio[] = [
   },
 
   {
-    id: 7,
+    id: 17,
     title: "Canva Smart Image Upload Kit",
     category: "Canva Automation",
     industry: "Amazon FBA/FBM & Multi-Marketplace",
-    description: "A smart image upload kit for Canva that automates the process of uploading images to Canva, ensuring that the images are uploaded correctly and efficiently.",
-    longDescription: "The Canva Smart Image Upload Kit is a smart image upload kit for Canva that automates the process of uploading images to Canva, ensuring that the images are uploaded correctly and efficiently.",
+    description:
+      "A smart image upload kit for Canva that automates the process of uploading images to Canva, ensuring that the images are uploaded correctly and efficiently.",
+    longDescription:
+      "The Canva Smart Image Upload Kit is a smart image upload kit for Canva that automates the process of uploading images to Canva, ensuring that the images are uploaded correctly and efficiently.",
     image: "/canva-ui-kit.webp",
-    technologies: [
-      "Canva API",
-      "React.js",
-      "NodeJs",
-      "MongoDB",
-      "Express",
-      "JWT",
-      "PM2"
-    ],
+    technologies: ["Canva API", "React.js", "NodeJs", "MongoDB", "Express", "JWT", "PM2"],
     link: "/portfolios/canva-smart-image-upload-kit",
     year: "2025",
     duration: "6 months",
@@ -716,24 +707,88 @@ export const portfoliosData: Portfolio[] = [
       "API Rate Limits imposed by Canva restricting batch uploads",
       "Handling large order data and image volumes efficiently",
       "Maintaining accurate feedback and upload status tracking",
-      "Ensuring secure storage and access of seller credentials"
+      "Ensuring secure storage and access of seller credentials",
     ],
     solutions: [
       "Automated scheduling via cron jobs for timely and sequential uploads",
       "Implemented throttling and delay mechanisms to comply with Canva API limits",
       "Optimized database queries and batching logic for large image volumes",
       "Real-time tracking with status flags (Pending, Uploaded, Failed) for transparency",
-      "Encrypted storage of credentials and secure API authentication with Canva"
+      "Encrypted storage of credentials and secure API authentication with Canva",
     ],
     results: [
       "Improved Efficiency – Faster and reliable image uploads",
       "Scalable Uploads – Capable of handling high-volume image batches",
       "Accurate Tracking – Clear visibility on image upload statuses",
       "Secure Credential Management – Protected Canva account data",
-      "Operational Insights – Data-driven improvements for image upload workflows"
+      "Operational Insights – Data-driven improvements for image upload workflows",
     ],
-    "featured": true
-  }
+    featured: true,
+  },
+  {
+    id: 18,
+    title: "Google Sheets Integration with Direct Marketplace API Synchronization",
+    category: "Marketplace Solutions",
+    industry: "E-commerce",
+    description:
+      "An automated synchronization engine connecting Google Sheets directly with marketplace APIs (Amazon SP-API, eBay, etc.) for real-time inventory and pricing management.",
+    longDescription:
+      "An enterprise-grade solution that connects Google Sheets directly with marketplace APIs, enabling merchants to manage bulk changes (price, stock, details) inside Google Sheets. The synchronization engine monitors sheet edits, validates structural data, and calls Amazon SP-API and other marketplace endpoints with built-in rate-limiting compliance. It handles secure OAuth 2.0 multi-account seller auth, processes updates in queues, and updates sheet status rows upon completion.",
+    image: "/google-sheets-integration-img.png",
+    technologies: ["Google Sheets API", "Amazon SP-API", "OAuth 2.0", "Node.js", "React", "MongoDB"],
+    link: "/portfolios/google-sheets-integration-marketplace-synchronization",
+    year: "2025",
+    duration: "4 months",
+    teamSize: "5",
+    challenges: [
+      "Handling Google Sheets API quota limits and execution timeouts (100 write requests per 100 seconds)",
+      "Bidirectional concurrency conflicts where a seller updates sheets while marketplace API is syncing",
+      "Handling complex OAuth 2.0 refresh token expirations safely for multiple sellers' marketplace access",
+    ],
+    solutions: [
+      "Chunked queue based queueing and request throttling mechanism inside a dedicated backend sync worker",
+      "Central database status tracking model using MongoDB & Redis to lock row updates during active synchronization",
+      "Encrypted credential storage with AWS KMS and automatic OAuth token refresh lifecycle flows",
+    ],
+    results: [
+      "Synchronized over 10 million catalog items across multiple seller accounts",
+      "99.98% synchronization success rate without API rate-limit threshold violations",
+      "Average weekly savings of 25+ hours of manual data entry per merchant",
+    ],
+    featured: true,
+  },
+  {
+    id: 19,
+    title: "AI-Powered Enterprise Systems Integration Using Model Context Protocol (MCP)",
+    category: "AI Solutions",
+    industry: "Enterprise Software",
+    description:
+      "A next-generation AI architecture utilizing the Model Context Protocol (MCP) to interact directly with any enterprise database or REST API, enabling natural language command execution, data analysis, and system management.",
+    longDescription:
+      "This scalable AI server architecture leverages the Model Context Protocol (MCP) to bridge the gap between advanced foundation LLMs and secure internal business APIs (CRMs, ERPs, custom software). By using MCP, the AI assistant dynamically discovers and uses registered tools to query proprietary databases, generate reports, and safely trigger system actions via natural language instructions. It features complex prompt security, SQL-injection prevention, LLM context-window token compression, and dual-layer authorization validation hooks for sensitive operations.",
+    image: "/mcp-api-integration-img.png",
+    technologies: ["Model Context Protocol (MCP)", "LLM Orchestration", "Enterprise REST APIs", "Node.js", "TypeScript"],
+    link: "/portfolios/ai-powered-marketplace-api-integration-mcp",
+    year: "2026",
+    duration: "6 months",
+    teamSize: "4",
+    challenges: [
+      "Preventing the AI model from making hallucinated or unsafe API calls that could corrupt enterprise records or bypass access barriers",
+      "Translating ambiguous natural language instructions (e.g., 'find the latest system errors and create a summary report') into exact multi-parameter backend queries",
+      "Optimizing payload limits and dynamically caching schema responses to prevent the LLM from exceeding token limits during massive database read operations",
+    ],
+    solutions: [
+      "Designed and implemented strict json-schema validation layers alongside a dual-authorization manual approval step for destructive/write actions",
+      "Integrated a semantic router powered by fast vector embeddings that precisely maps text intents to exact backend routes and capabilities",
+      "Built a payload compression and token-caching system that cuts request sizing by 65% securely keeping large database tables within prompt windows",
+    ],
+    results: [
+      "Completed over 50,000 automated query operations daily across multiple enterprise departments with an average response latency of under 350ms",
+      "Lowered data reconciliation and manual report generation times from hours down to near-instant natural language queries",
+      "Decreased AI token billing overheads by 55% via selective payload indexing and context compaction techniques",
+    ],
+    featured: true,
+  },
 ];
 
 export const categories = [

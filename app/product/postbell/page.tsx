@@ -38,12 +38,14 @@ import FooterSection from "@/components/FooterSection";
 const aiFeatures = [
   {
     title: "AI Content Generator",
-    description: "Generate engaging social media captions, promotional posts, marketing copy, hashtags, and campaign ideas in seconds using advanced AI",
+    description:
+      "Generate engaging social media captions, promotional posts, marketing copy, hashtags, and campaign ideas in seconds using advanced AI",
     icon: Bot,
   },
   {
     title: "AI Visual Creator",
-    description: "Generate high-quality marketing images, social graphics, banners, and promotional creatives using AI without graphic design experience",
+    description:
+      "Generate high-quality marketing images, social graphics, banners, and promotional creatives using AI without graphic design experience",
     icon: ImageIcon,
   },
 ];
@@ -51,30 +53,41 @@ const aiFeatures = [
 const publishingFeatures = [
   {
     title: "Multi-Platform Publishing",
-    description: "Publish content simultaneously across multiple social media platforms from a single dashboard",
+    description:
+      "Publish content simultaneously across multiple social media platforms from a single dashboard",
     icon: Globe,
   },
   {
     title: "Auto Publishing Engine",
-    description: "Automatically publish scheduled posts at the optimal time without manual intervention",
+    description:
+      "Automatically publish scheduled posts at the optimal time without manual intervention",
     icon: Zap,
   },
   {
     title: "Smart Scheduling",
-    description: "Plan weeks or months of content in advance using an intelligent scheduling engine",
+    description:
+      "Plan weeks or months of content in advance using an intelligent scheduling engine",
     icon: Calendar,
   },
 ];
 
 const platforms = [
-  "Facebook", "Instagram", "LinkedIn", "X (Twitter)", "Pinterest",
-  "YouTube", "Google Business Profile", "WhatsApp (Business)", "Telegram"
+  "Facebook",
+  "Instagram",
+  "LinkedIn",
+  "X (Twitter)",
+  "Pinterest",
+  "YouTube",
+  "Google Business Profile",
+  "WhatsApp (Business)",
+  "Telegram",
 ];
 
 const planningFeatures = [
   {
     title: "Content Calendar",
-    description: "Visualize your entire publishing schedule with an interactive content calendar. Easily drag, edit, reschedule, and organize campaigns",
+    description:
+      "Visualize your entire publishing schedule with an interactive content calendar. Easily drag, edit, reschedule, and organize campaigns",
     icon: Calendar,
   },
   {
@@ -84,7 +97,8 @@ const planningFeatures = [
   },
   {
     title: "Campaign Planning",
-    description: "Group posts into campaigns for product launches, seasonal promotions, events, and marketing initiatives",
+    description:
+      "Group posts into campaigns for product launches, seasonal promotions, events, and marketing initiatives",
     icon: Settings,
   },
 ];
@@ -92,17 +106,20 @@ const planningFeatures = [
 const collaborationFeatures = [
   {
     title: "Approval Workflow",
-    description: "Create structured approval processes where managers can review, edit, and approve posts before they go live",
+    description:
+      "Create structured approval processes where managers can review, edit, and approve posts before they go live",
     icon: CheckCircle,
   },
   {
     title: "Team Workspace",
-    description: "Collaborate with marketing teams, designers, and content writers from one centralized workspace",
+    description:
+      "Collaborate with marketing teams, designers, and content writers from one centralized workspace",
     icon: Users,
   },
   {
     title: "Role-Based Access",
-    description: "Assign custom permissions to administrators, marketers, designers, and clients for secure collaboration",
+    description:
+      "Assign custom permissions to administrators, marketers, designers, and clients for secure collaboration",
     icon: Shield,
   },
 ];
@@ -110,17 +127,20 @@ const collaborationFeatures = [
 const analyticsFeatures = [
   {
     title: "Performance Dashboard",
-    description: "Track all important social media metrics including Reach, Engagement, Impressions, Followers Growth, Clicks, Shares, Likes, Comments",
+    description:
+      "Track all important social media metrics including Reach, Engagement, Impressions, Followers Growth, Clicks, Shares, Likes, Comments",
     icon: BarChart3,
   },
   {
     title: "AI Performance Insights",
-    description: "Receive intelligent recommendations based on engagement trends, audience behavior, and content performance",
+    description:
+      "Receive intelligent recommendations based on engagement trends, audience behavior, and content performance",
     icon: Bot,
   },
   {
     title: "Custom Reports",
-    description: "Generate downloadable reports for clients or internal teams with detailed analytics across every connected platform",
+    description:
+      "Generate downloadable reports for clients or internal teams with detailed analytics across every connected platform",
     icon: FileText,
   },
 ];
@@ -143,15 +163,23 @@ const automationFeatures = [
   },
   {
     title: "Media Library",
-    description: "Store, organize, and reuse images, videos, logos, and brand assets from one centralized location",
+    description:
+      "Store, organize, and reuse images, videos, logos, and brand assets from one centralized location",
     icon: ImageIcon,
   },
 ];
 
 const businessTypes = [
-  "Small Businesses", "Startups", "Marketing Agencies", "eCommerce Brands",
-  "Corporate Teams", "Educational Institutions", "Healthcare Organizations",
-  "Real Estate Companies", "Restaurants & Hospitality", "Personal Brands & Influencers"
+  "Small Businesses",
+  "Startups",
+  "Marketing Agencies",
+  "eCommerce Brands",
+  "Corporate Teams",
+  "Educational Institutions",
+  "Healthcare Organizations",
+  "Real Estate Companies",
+  "Restaurants & Hospitality",
+  "Personal Brands & Influencers",
 ];
 
 const benefits = [
@@ -239,7 +267,14 @@ export default function PostbellPage() {
         <MetaTags
           title="Postbell - AI-Powered Social Media Automation Platform"
           description="Create. Schedule. Publish. Analyze. Manage your entire social media presence from one intelligent platform with AI-powered content creation and automation."
-          keywords={["social media automation", "AI content creation", "social media scheduling", "multi-platform publishing", "Postbell", "social media management"]}
+          keywords={[
+            "social media automation",
+            "AI content creation",
+            "social media scheduling",
+            "multi-platform publishing",
+            "Postbell",
+            "social media management",
+          ]}
           ogImage="/products/postbell-og.webp"
         />
         <BreadcrumbSchema
@@ -251,20 +286,23 @@ export default function PostbellPage() {
         />
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 to-orange-50 py-20 px-4">
-          <div className="max-w-7xl mx-auto">
+        <section className="relative bg-gradient-to-br from-[#0d1f3c] via-[#13345A] to-[#1e4d80] py-24 px-4 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-400 rounded-full blur-3xl" />
+          </div>
+          <div className="relative max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-block px-4 py-2 bg-blue-100 rounded-full text-blue-800 text-sm font-medium mb-6">
+                <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-400/30 rounded-full px-4 py-1.5 text-sm text-purple-300 font-medium mb-6">
+                  <Share2 className="w-4 h-4" />
                   AI-Powered Social Media Automation
                 </div>
-                <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                  Post<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">bell</span>
+                <h1 className="text-5xl font-extrabold text-white mb-6 leading-tight">
+                  Post<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">bell</span>
                 </h1>
-                <p className="text-xl text-gray-600 mb-4">
-                  Create. Schedule. Publish. Analyze.
-                </p>
-                <p className="text-lg text-gray-600 mb-8">
+                <p className="text-white/70 text-lg mb-4 leading-relaxed">Create. Schedule. Publish. Analyze.</p>
+                <p className="text-white/60 text-base mb-8 leading-relaxed">
                   Manage Your Entire Social Media Presence from One Intelligent Platform. AI-powered social media management that helps businesses create engaging content, automate publishing, collaborate with teams, and measure performance across multiple platforms.
                 </p>
                 <div className="grid grid-cols-2 gap-6 mb-8">
@@ -275,10 +313,10 @@ export default function PostbellPage() {
                     { number: "Real-time", label: "Analytics", icon: BarChart3 },
                   ].map((stat, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <stat.icon className="w-6 h-6 text-blue-600" />
+                      <stat.icon className="w-6 h-6 text-purple-400" />
                       <div>
-                        <div className="text-2xl font-bold text-gray-900">{stat.number}</div>
-                        <div className="text-sm text-gray-600">{stat.label}</div>
+                        <div className="text-2xl font-bold text-white">{stat.number}</div>
+                        <div className="text-sm text-white/60">{stat.label}</div>
                       </div>
                     </div>
                   ))}
@@ -286,14 +324,14 @@ export default function PostbellPage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/contact-us"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-orange-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
                     Get Started
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                   <Link
                     href="#features"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-600 transition-all duration-300"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
                   >
                     Learn More
                   </Link>
@@ -306,47 +344,26 @@ export default function PostbellPage() {
           </div>
         </section>
 
-        {/* Prompt-to-Post generation flow showcase — white theme */}
-        <section className="py-20 px-4 bg-white overflow-x-hidden">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-orange-600 bg-orange-50 px-3 py-1.5 rounded-full w-fit mb-4 mx-auto">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-                See It In Action
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                From idea to ready-to-publish, automatically.
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Watch Postbell turn a plain-text idea into a ready-to-publish festive creative — colors, copy, layout, and caption, done automatically.
-              </p>
-            </div>
 
-            <PostbellGenerationFlow />
-          </div>
-        </section>
 
         {/* AI Content Creation Section */}
         <section id="features" className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                AI Content Creation
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">AI Content Creation</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Generate professional content and visuals in seconds
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               {aiFeatures.map((feature, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300"
+                >
                   <feature.icon className="w-16 h-16 text-blue-600 mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -357,23 +374,20 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-orange-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Social Media Publishing
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Social Media Publishing</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Publish across all major platforms from one dashboard
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {publishingFeatures.map((feature, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -394,23 +408,20 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Content Planning
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Content Planning</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Organize and plan your content strategy effectively
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {planningFeatures.map((feature, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
+                >
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -421,23 +432,20 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-orange-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Team Collaboration
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Team Collaboration</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Work together seamlessly with approval workflows
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {collaborationFeatures.map((feature, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -448,23 +456,20 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Analytics & Insights
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Analytics & Insights</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Track performance and optimize your campaigns
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {analyticsFeatures.map((feature, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
+                >
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -475,23 +480,20 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-orange-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Automation Features
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Automation Features</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Save hours every week with intelligent automation
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {automationFeatures.map((feature, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -502,9 +504,7 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                How It Works
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Simple 6-step process to automate your social media
               </p>
@@ -515,12 +515,8 @@ export default function PostbellPage() {
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <span className="text-2xl font-bold text-white">{step.step}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {step.description}
-                  </p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-sm text-gray-600">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -531,9 +527,7 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-orange-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Built For Every Business
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Built For Every Business</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Designed for businesses of every size
               </p>
@@ -555,26 +549,23 @@ export default function PostbellPage() {
         <section className="py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Why Choose Postbell?
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Postbell?</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Features that transform your social media marketing
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex gap-4 bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div
+                  key={index}
+                  className="flex gap-4 bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
+                >
                   <div className="flex-shrink-0">
                     <benefit.icon className="w-10 h-10 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {benefit.description}
-                    </p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                    <p className="text-gray-600">{benefit.description}</p>
                   </div>
                 </div>
               ))}
@@ -662,7 +653,9 @@ function HeroDashboardMockup() {
           {/* Automation queue */}
           <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-100">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-semibold text-gray-700">Today's Auto-Publish Queue</span>
+              <span className="text-xs font-semibold text-gray-700">
+                Today's Auto-Publish Queue
+              </span>
               <Calendar className="w-3.5 h-3.5 text-gray-400" />
             </div>
             <div className="space-y-2">
@@ -691,12 +684,13 @@ function HeroDashboardMockup() {
                     <span className="text-xs font-medium text-gray-800">{item.platform}</span>
                   </div>
                   <span
-                    className={`text-[10px] font-medium ${item.status === "done"
+                    className={`text-[10px] font-medium ${
+                      item.status === "done"
                         ? "text-green-600"
                         : item.status === "publishing"
                           ? "text-orange-500"
                           : "text-gray-400"
-                      }`}
+                    }`}
                   >
                     {item.status === "publishing" ? "Publishing now" : item.time}
                   </span>
@@ -726,7 +720,15 @@ function HeroDashboardMockup() {
             </div>
             <div className="relative w-9 h-9 hero-float">
               <svg className="hero-ring absolute inset-0 w-9 h-9" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="15" fill="none" stroke="#fed7aa" strokeWidth="2" strokeDasharray="18 10" />
+                <circle
+                  cx="18"
+                  cy="18"
+                  r="15"
+                  fill="none"
+                  stroke="#fed7aa"
+                  strokeWidth="2"
+                  strokeDasharray="18 10"
+                />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-orange-500" />
@@ -785,12 +787,12 @@ function PostbellGenerationFlow() {
   }, [activeStep]);
 
   const orbitPositions = [
-    { top: 14, left: 90 },     // top
-    { top: 52, left: 155.8 },  // upper right
+    { top: 14, left: 90 }, // top
+    { top: 52, left: 155.8 }, // upper right
     { top: 128, left: 155.8 }, // lower right
-    { top: 166, left: 90 },    // bottom
-    { top: 128, left: 24.2 },  // lower left
-    { top: 52, left: 24.2 },   // upper left
+    { top: 166, left: 90 }, // bottom
+    { top: 128, left: 24.2 }, // lower left
+    { top: 52, left: 24.2 }, // upper left
   ];
 
   return (
@@ -815,18 +817,21 @@ function PostbellGenerationFlow() {
         {["Prompt", "AI Engine", "Generated", "Published"].map((label, i) => (
           <div key={label} className="flex items-center gap-2">
             <div
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${i === activeStep
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                i === activeStep
                   ? "bg-gradient-to-r from-blue-600 to-orange-500 text-white shadow-md"
                   : i < activeStep
                     ? "bg-green-50 text-green-700 border border-green-200"
                     : "bg-gray-100 text-gray-400"
-                }`}
+              }`}
             >
               {i < activeStep ? <CheckCircle className="w-3.5 h-3.5" /> : null}
               {label}
             </div>
             {i < 3 && (
-              <ArrowRight className={`w-3.5 h-3.5 ${i < activeStep ? "text-green-400" : "text-gray-300"}`} />
+              <ArrowRight
+                className={`w-3.5 h-3.5 ${i < activeStep ? "text-green-400" : "text-gray-300"}`}
+              />
             )}
           </div>
         ))}
@@ -846,10 +851,11 @@ function PostbellGenerationFlow() {
                 {activeStep === 0 && <span className="pb-caret text-orange-400">|</span>}
               </div>
               <div
-                className={`text-xs font-semibold text-center rounded-lg py-2 transition-colors duration-300 ${activeStep === 0 && typedChars >= PROMPT_TEXT.length
+                className={`text-xs font-semibold text-center rounded-lg py-2 transition-colors duration-300 ${
+                  activeStep === 0 && typedChars >= PROMPT_TEXT.length
                     ? "bg-gradient-to-r from-orange-500 to-orange-400 text-white"
                     : "bg-[#1f2a42] text-slate-500"
-                  }`}
+                }`}
               >
                 Generate
               </div>
@@ -860,7 +866,9 @@ function PostbellGenerationFlow() {
         <FlowArrow />
 
         {/* Step 2: AI Engine */}
-        <div className={`transition-opacity duration-300 ${activeStep === 1 ? "opacity-100" : "opacity-40"}`}>
+        <div
+          className={`transition-opacity duration-300 ${activeStep === 1 ? "opacity-100" : "opacity-40"}`}
+        >
           <FlowStep
             step={2}
             label="AI ENGINE"
@@ -927,7 +935,11 @@ function PostbellGenerationFlow() {
 
         {/* Step 3: Generated */}
         <div className={activeStep === 2 ? "pb-step-active" : "pb-step-inactive"}>
-          <FlowStep step={3} label="GENERATED" badge={activeStep >= 2 ? "Generated in 6 seconds" : undefined}>
+          <FlowStep
+            step={3}
+            label="GENERATED"
+            badge={activeStep >= 2 ? "Generated in 6 seconds" : undefined}
+          >
             <div className={activeStep === 2 ? "pb-fade-up" : ""}>
               <DiwaliPosterCard />
             </div>
@@ -988,8 +1000,24 @@ function FlowArrow() {
   return (
     <div className="hidden lg:flex items-center justify-center pt-16">
       <svg width="32" height="16" viewBox="0 0 32 16">
-        <line x1="0" y1="8" x2="24" y2="8" stroke="#fb923c" strokeWidth="2" strokeDasharray="4 4" className="pb-flow-line" />
-        <path d="M22,3 L28,8 L22,13" fill="none" stroke="#fb923c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <line
+          x1="0"
+          y1="8"
+          x2="24"
+          y2="8"
+          stroke="#fb923c"
+          strokeWidth="2"
+          strokeDasharray="4 4"
+          className="pb-flow-line"
+        />
+        <path
+          d="M22,3 L28,8 L22,13"
+          fill="none"
+          stroke="#fb923c"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </div>
   );
@@ -1010,17 +1038,24 @@ function DiwaliPosterCard() {
         <div className="text-white text-lg font-bold leading-tight">DIWALI</div>
         <div className="text-orange-300 text-sm font-bold mb-1">MEGA SALE</div>
         <div className="text-yellow-300 text-xl font-extrabold mb-1">UPTO 50% OFF</div>
-        <div className="text-orange-200 text-[8px] mb-3">TV | Fridge | AC | Washing Machine | Home Appliances</div>
+        <div className="text-orange-200 text-[8px] mb-3">
+          TV | Fridge | AC | Washing Machine | Home Appliances
+        </div>
         <div className="bg-orange-50/95 rounded-lg p-2 text-left">
-          <div className="text-[7px] font-bold text-center text-orange-800 mb-1 tracking-wide">SPECIAL DIWALI OFFERS</div>
-          <div className="text-[7px] text-gray-700 flex justify-between">
-            <span>Smart LED TV 43"</span><span>Rs 21,999 onwards</span>
+          <div className="text-[7px] font-bold text-center text-orange-800 mb-1 tracking-wide">
+            SPECIAL DIWALI OFFERS
           </div>
           <div className="text-[7px] text-gray-700 flex justify-between">
-            <span>Double Door Refrigerator</span><span>Rs 24,499 onwards</span>
+            <span>Smart LED TV 43"</span>
+            <span>Rs 21,999 onwards</span>
           </div>
           <div className="text-[7px] text-gray-700 flex justify-between">
-            <span>Split AC 1.5 Ton</span><span>Rs 29,999 onwards</span>
+            <span>Double Door Refrigerator</span>
+            <span>Rs 24,499 onwards</span>
+          </div>
+          <div className="text-[7px] text-gray-700 flex justify-between">
+            <span>Split AC 1.5 Ton</span>
+            <span>Rs 29,999 onwards</span>
           </div>
         </div>
       </div>
@@ -1041,7 +1076,9 @@ function InstagramPostCard() {
             SE
           </span>
           <div>
-            <div className="text-[9px] font-semibold text-gray-900 leading-tight">patel.electronics</div>
+            <div className="text-[9px] font-semibold text-gray-900 leading-tight">
+              patel.electronics
+            </div>
             <div className="text-[7px] text-gray-400 leading-tight">Ahmedabad, Gujarat</div>
           </div>
         </div>
@@ -1060,7 +1097,8 @@ function InstagramPostCard() {
       </div>
       <div className="px-3 pt-1.5 text-[9px] font-semibold text-gray-900">312 likes</div>
       <div className="px-3 pt-1 pb-3 text-[8px] text-gray-600 leading-relaxed">
-        <span className="font-semibold text-gray-900">patel.electronics</span> Flat 30% OFF this Diwali on home appliances 🪔✨ Offer valid till 5 Nov — shop in-store or DM us.
+        <span className="font-semibold text-gray-900">patel.electronics</span> Flat 30% OFF this
+        Diwali on home appliances 🪔✨ Offer valid till 5 Nov — shop in-store or DM us.
         <div className="text-blue-600 mt-1">#Diwali2026 #DiwaliSale #FestiveOffer</div>
       </div>
     </div>

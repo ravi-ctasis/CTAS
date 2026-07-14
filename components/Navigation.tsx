@@ -241,11 +241,11 @@ const Navigation = () => {
           <div className="max-w-[1584px] mx-auto px-4 py-6 flex">
             <div className="flex-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pr-8 border-r border-gray-200 dark:border-gray-700">
               {data.items.map((categoryData: any, cIndex: number) => (
-                <div key={cIndex} className="space-y-4">
+                <div key={cIndex} className={`space-y-4 ${key === "product" ? "col-span-full" : ""}`}>
                   <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3 pb-2 border-b border-gray-200 dark:border-gray-700">
                     {categoryData.category}
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className={key === "product" ? "grid grid-cols-2 lg:grid-cols-4 gap-4" : "space-y-3"}>
                     {categoryData.links.map((item: any, iIndex: number) => (
                       <li key={iIndex}>
                         <Link
