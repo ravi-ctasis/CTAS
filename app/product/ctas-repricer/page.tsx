@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     url: "/product/ctas-repricer",
     images: [
       {
-        url: "/products/repricer-og.webp",
+        url: "/products/repricer-og.png",
         width: 1200,
         height: 630,
         alt: "CTAS Repricer AI Pricing Platform",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CTAS Repricer — AI-Powered Amazon Repricing Platform",
     description: "Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers.",
-    images: ["/products/repricer-og.webp"],
+    images: ["/products/repricer-og.png"],
   },
 };
 

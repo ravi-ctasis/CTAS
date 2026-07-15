@@ -3,7 +3,7 @@ import PostbellPage from "./client";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Postbell: Amazon Multi-Channel Order Alerts"
+    absolute: "Postbell: AI Social Media Scheduler"
   },
   description: "Create, schedule, and publish content automatically across 9+ social media channels with Postbell. Generate engaging marketing copy and visuals using AI.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: "/product/postbell",
     images: [
       {
-        url: "/products/postbell-og.webp",
+        url: "/products/postbell-og.png",
         width: 1200,
         height: 630,
         alt: "Postbell Social Media Automation Platform",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Postbell — AI-Powered Social Media Automation Platform",
     description: "Create, schedule, and publish content automatically across 9+ social media channels with Postbell. Generate engaging marketing copy and visuals using AI.",
-    images: ["/products/postbell-og.webp"],
+    images: ["/products/postbell-og.png"],
   },
 };
 

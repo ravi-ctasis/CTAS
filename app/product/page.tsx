@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: "/product",
     images: [
       {
-        url: "/products/og-image.webp",
+        url: "/products/og-image.png",
         width: 1200,
         height: 630,
         alt: "CTAS Products Suite",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CTAS Products — E-commerce Automation & Software Suite",
     description: "Explore our specialized e-commerce automation and software products: ScanPro, Repricer, SellerBuz, and Postbell. Build to optimize and scale your online business.",
-    images: ["/products/og-image.webp"],
+    images: ["/products/og-image.png"],
   },
 };
 

@@ -272,7 +272,7 @@ export default function PostbellPage() {
             "Postbell",
             "social media management",
           ]}
-          ogImage="/products/postbell-og.webp"
+          ogImage="/products/postbell-og.png"
         />
         <BreadcrumbSchema
           items={[

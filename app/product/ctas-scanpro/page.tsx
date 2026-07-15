@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: "/product/ctas-scanpro",
     images: [
       {
-        url: "/products/scanpro-og.webp",
+        url: "/products/scanpro-og.png",
         width: 1200,
         height: 630,
         alt: "CTAS ScanPro Barcode Scanner",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CTAS ScanPro — High-Performance Browser-Based Barcode Scanner",
     description: "CTAS ScanPro delivers 98.2% barcode scanning accuracy for retail, warehouses, and logistics. Real-time browser-based scanning powered by WebAssembly.",
-    images: ["/products/scanpro-og.webp"],
+    images: ["/products/scanpro-og.png"],
   },
 };
 

@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     url: "/product/sellerbuz",
     images: [
       {
-        url: "/products/sellerbuz-og.webp",
+        url: "/products/sellerbuz-og.png",
         width: 1200,
         height: 630,
         alt: "SellerBuz Multi-Channel Selling Platform",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SellerBuz — Unified Multi-Channel Selling Platform",
     description: "A centralized dashboard to manage your e-commerce listings, orders, and pricing. SellerBuz automatically syncs inventory across Amazon, Etsy, and other channels.",
-    images: ["/products/sellerbuz-og.webp"],
+    images: ["/products/sellerbuz-og.png"],
   },
 };
 
