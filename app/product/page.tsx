@@ -1,9 +1,43 @@
+import type { Metadata } from "next";
 import { Scan, RefreshCcw, Store, Share2, ArrowRight, Award, CheckCircle, Zap, Globe, Bot, Shield, Star, Package } from "lucide-react";
 import Link from "next/link";
-import MetaTags from "@/components/MetaTags";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
+
+export const metadata: Metadata = {
+  title: "CTAS Products — E-commerce Automation & Software Suite",
+  description: "Explore our specialized e-commerce automation and software products: ScanPro, Repricer, SellerBuz, and Postbell. Build to optimize and scale your online business.",
+  keywords: [
+    "CTAS products",
+    "barcode scanning software",
+    "Amazon repricer AI",
+    "multi-channel selling platform",
+    "social media automation tool",
+  ],
+  alternates: {
+    canonical: "/product",
+  },
+  openGraph: {
+    title: "CTAS Products — E-commerce Automation & Software Suite",
+    description: "Explore our specialized e-commerce automation and software products: ScanPro, Repricer, SellerBuz, and Postbell. Build to optimize and scale your online business.",
+    url: "/product",
+    images: [
+      {
+        url: "/products/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "CTAS Products Suite",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CTAS Products — E-commerce Automation & Software Suite",
+    description: "Explore our specialized e-commerce automation and software products: ScanPro, Repricer, SellerBuz, and Postbell. Build to optimize and scale your online business.",
+    images: ["/products/og-image.webp"],
+  },
+};
 
 const products = [
   {
@@ -125,12 +159,6 @@ export default function ProductPage() {
       <Navigation />
 
       <main>
-        <MetaTags
-          title="CTAS Products — Innovative Software for eCommerce & Beyond"
-          description="Explore CTAS's product suite: ScanPro (barcode scanning), Repricer (Amazon pricing AI), SellerBuz (multi-channel commerce), and Postbell (social media automation)."
-          keywords={["CTAS products", "barcode scanning software", "Amazon repricer AI", "multi-channel selling platform", "social media automation tool"]}
-          ogImage="/products/og-image.webp"
-        />
         <BreadcrumbSchema
           items={[
             { name: "Home", url: "https://www.ctasis.com" },

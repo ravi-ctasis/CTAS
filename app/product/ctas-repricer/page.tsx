@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   RefreshCcw,
   DollarSign,
@@ -27,10 +28,44 @@ import {
   Box,
 } from "lucide-react";
 import Link from "next/link";
-import MetaTags from "@/components/MetaTags";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
+
+export const metadata: Metadata = {
+  title: "CTAS Repricer — AI-Powered Amazon Repricing Platform",
+  description: "Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers.",
+  keywords: [
+    "Amazon repricer",
+    "Buy Box optimization",
+    "automated pricing",
+    "Amazon seller tools",
+    "CTAS Repricer",
+    "price automation",
+  ],
+  alternates: {
+    canonical: "/product/ctas-repricer",
+  },
+  openGraph: {
+    title: "CTAS Repricer — AI-Powered Amazon Repricing Platform",
+    description: "Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers.",
+    url: "/product/ctas-repricer",
+    images: [
+      {
+        url: "/products/repricer-og.webp",
+        width: 1200,
+        height: 630,
+        alt: "CTAS Repricer AI Pricing Platform",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CTAS Repricer — AI-Powered Amazon Repricing Platform",
+    description: "Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers.",
+    images: ["/products/repricer-og.webp"],
+  },
+};
 
 const features = [
   {
@@ -251,19 +286,6 @@ export default function CTASRepricerPage() {
       <Navigation />
 
       <main>
-        <MetaTags
-          title="CTAS Repricer - AI-Powered Amazon Repricing Platform"
-          description="Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers."
-          keywords={[
-            "Amazon repricer",
-            "Buy Box optimization",
-            "automated pricing",
-            "Amazon seller tools",
-            "CTAS Repricer",
-            "price automation",
-          ]}
-          ogImage="/products/repricer-og.webp"
-        />
         <BreadcrumbSchema
           items={[
             { name: "Home", url: "https://www.ctasis.com" },

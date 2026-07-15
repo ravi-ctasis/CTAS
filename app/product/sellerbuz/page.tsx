@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Store,
   Package,
@@ -16,10 +17,44 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import MetaTags from "@/components/MetaTags";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
+
+export const metadata: Metadata = {
+  title: "SellerBuz — Unified Multi-Channel Selling Platform",
+  description: "A centralized dashboard to manage your e-commerce listings, orders, and pricing. SellerBuz automatically syncs inventory across Amazon, Etsy, and other channels.",
+  keywords: [
+    "multi-channel selling",
+    "inventory management",
+    "Amazon Etsy integration",
+    "order management",
+    "SellerBuz",
+    "catalog management",
+  ],
+  alternates: {
+    canonical: "/product/sellerbuz",
+  },
+  openGraph: {
+    title: "SellerBuz — Unified Multi-Channel Selling Platform",
+    description: "A centralized dashboard to manage your e-commerce listings, orders, and pricing. SellerBuz automatically syncs inventory across Amazon, Etsy, and other channels.",
+    url: "/product/sellerbuz",
+    images: [
+      {
+        url: "/products/sellerbuz-og.webp",
+        width: 1200,
+        height: 630,
+        alt: "SellerBuz Multi-Channel Selling Platform",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SellerBuz — Unified Multi-Channel Selling Platform",
+    description: "A centralized dashboard to manage your e-commerce listings, orders, and pricing. SellerBuz automatically syncs inventory across Amazon, Etsy, and other channels.",
+    images: ["/products/sellerbuz-og.webp"],
+  },
+};
 
 const coreFeatures = [
   {
@@ -136,19 +171,6 @@ export default function SellerBuzPage() {
       <Navigation />
 
       <main>
-        <MetaTags
-          title="SellerBuz - Unified Multi-Channel Selling Platform"
-          description="Sell everywhere. Manage everything in one place. SellerBuz unifies inventory, pricing, orders, and catalog management across Amazon, Etsy, and beyond."
-          keywords={[
-            "multi-channel selling",
-            "inventory management",
-            "Amazon Etsy integration",
-            "order management",
-            "SellerBuz",
-            "catalog management",
-          ]}
-          ogImage="/products/sellerbuz-og.webp"
-        />
         <BreadcrumbSchema
           items={[
             { name: "Home", url: "https://www.ctasis.com" },

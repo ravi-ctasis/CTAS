@@ -171,6 +171,33 @@ const redirects = [
     destination: '/blog',
     permanent: true,
   },
+  
+  // Broken blog redirects for SEO remediation
+  {
+    source: '/blog/amazon-fba-grade-resell-updates-2025',
+    destination: '/blog/amazon-fba-grade-resell-updates',
+    permanent: true,
+  },
+  {
+    source: '/blog/how-to-fix-amazon-sp-api-error-md5',
+    destination: '/blog/amazon-sp-api-integration-playbook',
+    permanent: true,
+  },
+  {
+    source: '/blog/amazon-sp-api-pricing-calculator',
+    destination: '/product/ctas-repricer',
+    permanent: true,
+  },
+  {
+    source: '/blog/sellerbuz-launch-multi-channel',
+    destination: '/product/sellerbuz',
+    permanent: true,
+  },
+  {
+    source: '/blog/postbell-ai-social-automation',
+    destination: '/product/postbell',
+    permanent: true,
+  },
 ];
 
 // Export for use in next.config.js/ts
