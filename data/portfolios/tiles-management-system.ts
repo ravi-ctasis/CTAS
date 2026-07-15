@@ -8,7 +8,7 @@ export const tilesManagementSystemData: PortfolioDetailData = {
     "A centralized, enterprise-grade platform for managing tile production, domestic and international sales, buyers, sellers, and secure workflows with real-time visibility.",
   longDescription:
     "A web-based, scalable system designed to streamline the complete lifecycle of tile sales and distribution across global and domestic markets. The platform enables efficient management of product catalogs, buyer–seller interactions, order processing, invoicing, production tracking, and secure link sharing. With role-based access controls and advanced reporting, it ensures transparency, operational efficiency, and seamless collaboration for manufacturers, distributors, and sales teams.",
-  image: "/tiles-management-system.webp",
+  image: "/portfolio-banners/tiles-management-system.webp",
   technologies: [
     "Node.js",
     "React",
@@ -134,7 +134,7 @@ export const tilesManagementSystemData: PortfolioDetailData = {
     titleLine1: "Tiles Management",
     titleLine2: "System",
     heroImage: {
-      src: "/tiles-management-system.webp",
+      src: "/portfolio-banners/tiles-management-system.webp",
       alt: "Desktop Responsive Website Design",
     },
     heroStats: [

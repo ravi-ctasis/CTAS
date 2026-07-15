@@ -8,7 +8,7 @@ export const automatedSkuIdentifierFrameworkData: PortfolioDetailData = {
     "A unified system for generating global Master SKUs and managing marketplace identifiers (ASIN, EAN, UPC) to ensure consistency across Amazon, Flipkart, Walmart, and more.",
   longDescription:
     "Managing products across multiple marketplaces worldwide (Amazon, Flipkart, Walmart, Cdiscount, Shopify, etc.) requires consistent and standardized identifiers. Each platform uses different identification systems (ASIN, EAN, UPC, ISBN, GTIN, etc.), and without a central management process, product duplication, listing errors, and data mismatches are inevitable. Our system generates globally unique Master SKUs, maps market-specific identifiers, and synchronizes stock, price, and order data, becoming the backbone of global catalog management.",
-  image: "/automatic-sku-generation-img.webp",
+  image: "/portfolio-banners/automated-sku-identifier-framework.webp",
   technologies: ["Amazon SP API", "Angular", "NodeJs", "MongoDB", "Docker"],
   link: "#",
   featured: true,
@@ -122,7 +122,7 @@ export const automatedSkuIdentifierFrameworkData: PortfolioDetailData = {
     titleLine1: "Automated SKU &",
     titleLine2: "Identifier Framework",
     heroImage: {
-      src: "/automatic-sku-generation-img.webp",
+      src: "/portfolio-banners/automated-sku-identifier-framework.webp",
       alt: "Mobile Responsive SKU Management Design",
     },
     heroStats: [

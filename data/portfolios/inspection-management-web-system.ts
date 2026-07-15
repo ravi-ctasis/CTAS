@@ -8,7 +8,7 @@ export const inspectionManagementWebSystemData: PortfolioDetailData = {
     "A centralized inspection management platform that supports real-time and offline operations, report generation, attachment handling, and seamless data synchronization.",
   longDescription:
     "This Inspection Management Web System streamlines the entire inspection lifecycle for manufacturing and logistics operations. It enables inspectors to work online or offline, capture and store attachments, and automatically sync data across systems when connected. With built-in reporting tools, audit trails, and scalable architecture, it ensures accuracy, compliance, and operational efficiency while handling large inspection volumes with ease.",
-  image: "/ikaa-inspection-web-system-dashboard.webp",
+  image: "/portfolio-banners/inspection-management-web-system.webp",
   technologies: ["Node.js", "Next.js", "MongoDB", "IndexedDB", "Tailwind CSS"],
   link: "/portfolios/ikaa-inspection-web-system",
   featured: true,
@@ -111,7 +111,7 @@ export const inspectionManagementWebSystemData: PortfolioDetailData = {
     badgeIcon: "Search",
     titleLine1: "Inspection Management",
     titleLine2: "Web System",
-    heroImage: { src: "/inspection-management-web-system.webp", alt: "Inspection Web System" },
+    heroImage: { src: "/portfolio-banners/inspection-management-web-system.webp", alt: "Inspection Web System" },
     heroStats: [
       { valueKey: "inspections", label: "Inspections Processed" },
       { valueKey: "reports", label: "Reports Generated" },

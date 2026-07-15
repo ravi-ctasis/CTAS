@@ -8,7 +8,7 @@ export const canvaSmartImageUploadKitData: PortfolioDetailData = {
     "Automates fetching, processing, and rendering of keychain order images into structured Canva grids for Amazon sellers.",
   longDescription:
     "The Canva Smart Image Upload Kit streamlines image processing for Amazon keychain orders by automating data retrieval, image cropping, and grid rendering. It integrates with the Amazon SP-API, filters orders by ASIN, and leverages the Canva UI Kit to deliver visually consistent grid templates, reducing manual effort and ensuring accuracy.",
-  image: "/image.webp",
+  image: "/portfolio-banners/canva-smart-image-upload-kit.webp",
   technologies: ["React", "Node.js", "MongoDB", "Canva UI Kit", "Docker"],
   link: "#",
   featured: true,
@@ -84,7 +84,7 @@ export const canvaSmartImageUploadKitData: PortfolioDetailData = {
     badgeIcon: "Zap",
     titleLine1: "Canva Smart Image",
     titleLine2: "Upload Kit",
-    heroImage: { src: "/canva-ui-kit.webp", alt: "Desktop Responsive Image Grid Design" },
+    heroImage: { src: "/portfolio-banners/canva-smart-image-upload-kit.webp", alt: "Desktop Responsive Image Grid Design" },
     heroStats: [
       { valueKey: "efficiency", label: "Efficiency Gain" },
       { valueKey: "accuracy", label: "Accuracy Rate" },

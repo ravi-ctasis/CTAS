@@ -8,7 +8,7 @@ export const bookStoreData: PortfolioDetailData = {
     "A dedicated online bookstore offering an extensive collection of English-language books, optimized for efficient book discovery and purchase across the EU.",
   longDescription:
     "bookstore is a specialized e-commerce platform for books only, designed to simplify browsing, ordering, and tracking across millions of titles. The platform serves book buyers and sellers across the EU zone, offering a fast, precise, and user-friendly experience with ElasticSearch-powered search, full order lifecycle management, EU payment methods, VAT compliance, and automated returns/refunds.",
-  image: "/bookstore-hero.webp",
+  image: "/portfolio-banners/book-store.webp",
   technologies: ["React", "Node.js", "MongoDB", "ElasticSearch", "AWS", "S3", "Docker"],
   link: "#",
   featured: true,
@@ -119,7 +119,7 @@ export const bookStoreData: PortfolioDetailData = {
     badgeIcon: "BookOpen",
     titleLine1: "bookstore",
     titleLine2: "Your Ultimate Online Webshop",
-    heroImage: { src: "/book-setore-img.webp", alt: "bookstore Online Webshop" },
+    heroImage: { src: "/portfolio-banners/book-store.webp", alt: "bookstore Online Webshop" },
     heroStats: [
       { valueKey: "books", label: "Books in Inventory" },
       { valueKey: "orders", label: "Orders Processed" },

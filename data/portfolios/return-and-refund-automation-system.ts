@@ -8,7 +8,7 @@ export const returnAndRefundAutomationSystemData: PortfolioDetailData = {
     "A comprehensive platform for managing Amazon returns, enabling real-time scanning, Safe-T claim filing, reimbursement tracking, and return trend analysis.",
   longDescription:
     "Return & Refund Management System provides a complete warehouse return handling solution. It helps manage Amazon returns effectively by enabling real-time scanning, validation, safeT claim filing, and reimbursement tracking.With this system, businesses can reduce losses, recover reimbursements efficiently, and gain visibility into return trends. Although challenges exist (Amazon policy changes, high return volume, etc.), the benefits—accuracy, speed, financial recovery, and transparency—make it an essential tool for modern eCommerce return management",
-  image: "/return-operations-refund-automation.webp",
+  image: "/portfolio-banners/return-and-refund-automation-system.webp",
   technologies: [
     "Angular",
     "Node.js",
@@ -120,7 +120,7 @@ export const returnAndRefundAutomationSystemData: PortfolioDetailData = {
     titleLine1: "Return & Refund",
     titleLine2: "Automation System",
     heroImage: {
-      src: "/return-operations-refund-automation.webp",
+      src: "/portfolio-banners/return-and-refund-automation-system.webp",
       alt: "Return & Refund Automation System",
     },
     heroStats: [

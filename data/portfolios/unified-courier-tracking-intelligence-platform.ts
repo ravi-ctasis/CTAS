@@ -8,7 +8,7 @@ export const unifiedCourierTrackingIntelligencePlatformData: PortfolioDetailData
     "A unified platform for tracking and managing courier operations efficiently across multiple partners.",
   longDescription:
     "Businesses often work with multiple courier services—DHL, FedEx, UPS, BlueDart, Delhivery, and others. Managing shipments across separate portals is time-consuming, prone to errors, and delays customer satisfaction. This platform centralizes all courier tracking into a single dashboard, providing real-time updates, automated notifications, and streamlined delivery management for improved operational efficiency.",
-  image: "/courier-tracking-simple-compose.webp",
+  image: "/portfolio-banners/unified-courier-tracking-intelligence-platform.webp",
   technologies: [
     "Node.js",
     "React",
@@ -131,7 +131,7 @@ export const unifiedCourierTrackingIntelligencePlatformData: PortfolioDetailData
     titleLine1: "Unified Courier",
     titleLine2: "Tracking & Intelligence Platform",
     heroImage: {
-      src: "/courier-tracking-simple-compose.webp",
+      src: "/portfolio-banners/unified-courier-tracking-intelligence-platform.webp",
       alt: "Lemonmode Courier Sync",
     },
     heroStats: [

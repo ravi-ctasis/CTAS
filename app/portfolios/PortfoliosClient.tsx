@@ -327,7 +327,7 @@ const PortfoliosClient = () => {
                     }`}
                   >
                     <div
-                      className={`relative overflow-hidden bg-[#F6F8FA] ${
+                      className={`relative overflow-hidden bg-white ${
                         viewMode === "list" ? "w-full md:w-64 h-44 md:h-auto shrink-0" : "aspect-[16/10] w-full"
                       }`}
                     >
@@ -335,7 +335,7 @@ const PortfoliosClient = () => {
                         src={portfolio.image}
                         alt={portfolio.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-contain mix-blend-multiply transition-opacity duration-300 ease-in-out opacity-100 z-1"
                         sizes={viewMode === "list" ? "256px" : "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"}
                         loading={index < 6 ? "eager" : "lazy"}
                       />

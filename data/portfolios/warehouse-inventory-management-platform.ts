@@ -8,7 +8,7 @@ export const warehouseInventoryManagementPlatformData: PortfolioDetailData = {
     "An intelligent platform for real-time stock visibility, automated workflows, and seamless warehouse operations to prevent overselling and ensure accuracy.",
   longDescription:
     "Warehousing operations are becoming more complex. Managing inventory manually across multiple warehouses leads to mismatches, errors, and delays. Our system provides real-time stock visibility, automates imports and exports, streamlines order fulfillment, and ensures audit-ready traceability across all operations.",
-  image: "/warehouse-inventory-stock-img.webp",
+  image: "/portfolio-banners/warehouse-inventory-management-platform.webp",
   technologies: ["Node.js", "MongoDB", "Next.js", "Tailwind CSS"],
   link: "/portfolios/warehouse-inventory",
   featured: true,
@@ -104,7 +104,7 @@ export const warehouseInventoryManagementPlatformData: PortfolioDetailData = {
     titleLine1: "Smart Warehouse &",
     titleLine2: "Inventory Management Platform",
     heroImage: {
-      src: "/warehouse-inventory-stock-img.webp",
+      src: "/portfolio-banners/warehouse-inventory-management-platform.webp",
       alt: "Warehouse Inventory & Stock Management System",
     },
     heroStats: [
