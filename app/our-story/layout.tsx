@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Story | Ctas Info Journey, Mission & Vision",
-  description:
-    "Learn the story of Ctas Info Services LLP — our journey, mission, vision, and values that define us as a trusted digital innovation, AI, and e-commerce technology partner.",
+  title: "Our Story | Ctas Info Services Journey, Mission & Vision",
+  description: "Learn the story of Ctas Info Services LLP — our journey, mission, vision, and core values that drive our team forward.",
   keywords: [
     "company founding",
     "IT growth story",
     "technology milestones Ahmedabad",
     "mission and vision",
-    "Ctas Info history",
+    "Ctas Info Services history",
   ],
   openGraph: {
     title: "The Journey of Ctas Info Services | Mission & Innovation",

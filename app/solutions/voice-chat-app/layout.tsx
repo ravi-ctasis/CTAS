@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Voice Chat App Development Services | Ctas Info",
+  title: "Voice Chat App Development Services | Ctas Info Services",
   description:
     "Ctas develops custom voice chat apps: real-time audio communication, group calls, and moderation tools.",
   keywords: [

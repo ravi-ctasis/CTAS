@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Property Finder App Development Services | Ctas Info",
+  title: "Property Finder App Development | Ctas Info Services",
   description:
     "Ctas builds advanced property finder apps: map-based search, virtual tours, agent management, and real estate listings.",
   keywords: [

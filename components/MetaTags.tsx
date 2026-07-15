@@ -12,7 +12,7 @@ interface MetaTagsProps {
 }
 
 const MetaTags = ({
-  title = "Ctas Info – Amazon SP-API, AI & E-commerce Solutions",
+  title = "Ctas Info Services – Amazon SP-API, AI & E-commerce Solutions",
   description = "Ctas Info Services LLP delivers AI/ML, Amazon SP-API, cloud, DevOps, web & mobile apps, and e-commerce automation for global business growth.",
   keywords = [
     "Ctas Info Services LLP",

@@ -1,7 +1,7 @@
 ---
 id: "5"
 slug: "amazon-sp-api-integration-playbook"
-title: "Amazon SP-API Integration Playbook: Architecture, Compliance & ROI"
+title: "Amazon SP-API Integration Playbook"
 excerpt: "A complete guide for engineering and operations teams to integrate Amazon’s SP-API with scalable architecture, strict compliance, and measurable ROI."
 publishDate: "2024-12-12"
 lastModified: "2024-12-12"

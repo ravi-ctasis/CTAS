@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Amazon SP-API Integration Services | Ctas Info",
-  description:
-    "Ctas provides Amazon SP-API integration services to automate product listings, orders, inventory, pricing, and reports for seamless Amazon marketplace management.",
+  title: "Amazon SP-API Integration Services | Ctas Info Services",
+  description: "Amazon SP-API integration services to automate product listings, orders, inventory, pricing, and reporting.",
   keywords: [
     "Amazon SP-API integration",
     "Amazon automation services",

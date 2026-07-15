@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Web Dev, AI & E-commerce | Ctas Info",
+  title: "Portfolio | Web Dev, AI & E-commerce | Ctas Info Services",
   description: "Explore our diverse portfolio of cutting-edge projects including Amazon SP-API integrations, AI web solutions, and e-commerce platforms.",
   keywords: [
     "Ctas portfolio",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Portfolio | Web Dev, AI & E-commerce | Ctas Info",
+    title: "Portfolio | Web Dev, AI & E-commerce | Ctas Info Services",
     description: "Explore our diverse portfolio of cutting-edge projects including Amazon SP-API integrations, AI web solutions, and e-commerce platforms.",
     url: "https://www.ctasis.com/portfolios",
     type: "website",

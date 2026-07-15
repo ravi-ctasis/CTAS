@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Complete Design Packages | Branding, UI/UX & Web | Ctas Info",
+  title: "Complete Design Packages | UI/UX & Web | Ctas Info Services",
   description: "Comprehensive design packages from Ctas: branding, UI/UX, and web design. Complete visual identity solutions for growing businesses.",
   keywords: [
     "complete design packages",

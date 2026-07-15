@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Banking & Fintech Software Development | Ctas Info",
-  description:
-    "Secure banking and finance software development services including fintech solutions, payment processing, financial analytics, compliance systems, and digital banking platforms.",
+  title: "Banking & Fintech Software Development | Ctas Info Services",
+  description: "Secure fintech and banking software development, including payment processing, financial analytics, and compliance systems.",
   keywords: [
     "banking software development",
     "fintech solutions",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Ctas Info",
+  title: "Contact Us | Ctas Info Services",
   description:
     "Get expert consultation on web development, AI solutions, e-commerce, and custom software. Quick response guaranteed.",
   keywords:

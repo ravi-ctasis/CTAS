@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Influencer Marketing App Development Services | Ctas Info",
+  title: "Influencer Marketing App Tech | Ctas Info Services",
   description:
     "Ctas builds custom influencer marketing apps: campaign management, influencer discovery, analytics, and collaboration tools.",
   keywords: [

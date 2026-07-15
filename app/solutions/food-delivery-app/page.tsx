@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Food Delivery App Development | Restaurant SaaS Solutions | Ctas Info',
+  title: 'Food Delivery App Development | Ctas Info Services',
   description: 'On-demand food delivery solutions. We build scalable platforms connecting restaurants, drivers, and customers with real-time GPS tracking.',
   keywords: ['Food delivery app', 'On-demand delivery software', 'Restaurant ordering system', 'Uber Eats clone'],
   alternates: {
     canonical: 'https://www.ctasis.com/solutions/food-delivery-app',
   },
   openGraph: {
-    title: 'Food Delivery App Development | Restaurant SaaS Solutions | Ctas Info',
+    title: 'Food Delivery App Development | Restaurant SaaS Solutions | Ctas Info Services',
     description: 'On-demand food delivery solutions. We build scalable platforms connecting restaurants, drivers, and customers with real-time GPS tracking.',
     url: 'https://www.ctasis.com/solutions/food-delivery-app',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Food Delivery App Development by Ctas Info',
+        alt: 'Food Delivery App Development by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Food Delivery App Development | Restaurant SaaS Solutions | Ctas Info',
+    title: 'Food Delivery App Development | Restaurant SaaS Solutions | Ctas Info Services',
     description: 'On-demand food delivery solutions. We build scalable platforms connecting restaurants, drivers, and customers with real-time GPS tracking.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

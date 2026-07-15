@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Amazon Order Management & Automation System | Ctas Info",
+    title: "Amazon Order Management Automation | Ctas Info Services",
     description: "A next-generation platform that automates Amazon order processing, Seller-Flex handling, and courier integration.",
     keywords: [
         "Amazon order management automation",

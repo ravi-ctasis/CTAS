@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Marketplace Development & Integration Services | Ctas Info',
+  title: 'Marketplace Integration Services | Ctas Info Services',
   description: 'Build your own multi-vendor marketplace or integrate with global platforms. We craft complex marketplace architectures for B2B and B2C.',
   keywords: ['Marketplace development', 'Multi-vendor platform', 'Marketplace integration', 'B2B marketplace software'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/marketplace',
   },
   openGraph: {
-    title: 'Marketplace Development & Integration Services | Ctas Info',
+    title: 'Marketplace Development & Integration Services | Ctas Info Services',
     description: 'Build your own multi-vendor marketplace or integrate with global platforms. We craft complex marketplace architectures for B2B and B2C.',
     url: 'https://www.ctasis.com/services/marketplace',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Marketplace Development & Integration Services by Ctas Info',
+        alt: 'Marketplace Development & Integration Services by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Marketplace Development & Integration Services | Ctas Info',
+    title: 'Marketplace Development & Integration Services | Ctas Info Services',
     description: 'Build your own multi-vendor marketplace or integrate with global platforms. We craft complex marketplace architectures for B2B and B2C.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

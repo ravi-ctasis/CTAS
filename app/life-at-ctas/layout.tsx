@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Life at Ctas Info | Work Culture, Growth & Team Values",
+  title: "Life at Ctas Info Services | Culture & Work Values",
   description:
     "Discover Life at Ctas — a culture built on innovation, learning, collaboration, and growth. Explore how our team works, learns, and builds the future together.",
   alternates: {

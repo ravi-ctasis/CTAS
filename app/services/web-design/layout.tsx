@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web Design Services | Modern & Responsive UI/UX | Ctas Info",
+  title: "Web Design Services | Modern UI/UX | Ctas Info Services",
   description:
     "Professional web design services from Ctas, creating modern, responsive, and high-performing websites tailored for business growth.",
   keywords: [

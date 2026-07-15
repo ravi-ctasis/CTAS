@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'E-Commerce App & Web Solutions | Scalable Retail Platforms | Ctas Info',
+  title: 'E-Commerce App & Web Solutions | Ctas Info Services',
   description: 'Next-generation e-commerce solutions. We build secure, high-traffic retail apps and web platforms with advanced cart and checkout architectures.',
   keywords: ['E-commerce app development', 'Retail software solutions', 'Custom shopping cart', 'B2C e-commerce platform'],
   alternates: {
     canonical: 'https://www.ctasis.com/solutions/e-commerce',
   },
   openGraph: {
-    title: 'E-Commerce App & Web Solutions | Scalable Retail Platforms | Ctas Info',
+    title: 'E-Commerce App & Web Solutions | Scalable Retail Platforms | Ctas Info Services',
     description: 'Next-generation e-commerce solutions. We build secure, high-traffic retail apps and web platforms with advanced cart and checkout architectures.',
     url: 'https://www.ctasis.com/solutions/e-commerce',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'E-Commerce App & Web Solutions by Ctas Info',
+        alt: 'E-Commerce App & Web Solutions by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'E-Commerce App & Web Solutions | Scalable Retail Platforms | Ctas Info',
+    title: 'E-Commerce App & Web Solutions | Scalable Retail Platforms | Ctas Info Services',
     description: 'Next-generation e-commerce solutions. We build secure, high-traffic retail apps and web platforms with advanced cart and checkout architectures.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

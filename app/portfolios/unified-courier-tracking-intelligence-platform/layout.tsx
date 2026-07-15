@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Unified Courier Tracking & Intelligence Platform | Ctas Info",
+    title: "Unified Courier Tracking Platform | Ctas Info Services",
     description: "A unified platform for tracking and managing multi-partner courier operations with real-time intelligence.",
     keywords: [
         "unified courier tracking",

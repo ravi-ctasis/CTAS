@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Parcel Delivery App Development Services | Ctas Info",
+  title: "Parcel Delivery App Development | Ctas Info Services",
   description:
     "Ctas builds custom parcel delivery apps: real-time tracking, route optimization, courier management, and secure payments.",
   keywords: [

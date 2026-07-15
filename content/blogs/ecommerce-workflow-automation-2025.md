@@ -2,7 +2,7 @@
 id: "7"
 slug: "ecommerce-workflow-automation-2025"
 title: "E-commerce Workflow Automation Blueprint for 2025"
-excerpt: "A complete 2025 workflow automation blueprint for modern e-commerce brands. Learn how to automate catalog, inventory, orders, fulfillment, customer support, and finance operations with AI and event-driven systems."
+excerpt: "A complete 2025 workflow automation blueprint for modern e-commerce brands. Learn how to automate catalog, inventory, orders, fulfillment,..."
 publishDate: "2024-12-10"
 lastModified: "2024-12-12"
 category: "Automation"

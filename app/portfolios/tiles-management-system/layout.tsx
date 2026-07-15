@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Tiles Management System | Portfolios | Ctas Info",
+    title: "Tiles Management System | Portfolios | Ctas Info Services",
     description:
         "A centralized platform for managing tile production, domestic and international sales, and secure workflows.",
     keywords: [

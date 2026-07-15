@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How We Work | Ctas Info Services LLP – Process, Workflow & Delivery",
-  description:
-    "Discover how Ctas Info Services LLP works — from discovery and planning to design, development, testing, and on-time project delivery through a transparent, efficient, and quality-driven process.",
+  title: "Our Process & Technical Delivery | Ctas Info Services",
+  description: "Discover how Ctas Info Services LLP delivers transparent, efficient, and quality-driven software solutions on time.",
   alternates: {
     canonical: "https://www.ctasis.com/how-we-work",
     languages: {

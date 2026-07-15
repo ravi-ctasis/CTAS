@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Amazon Marketplace Management Services | Ctas Info',
+  title: 'Amazon Marketplace Management Services | Ctas Info Services',
   description: 'Expert Amazon marketplace management. Optimize product listings, manage inventory, and scale your sales with our comprehensive Amazon seller services.',
   keywords: ['Amazon seller services', 'Amazon marketplace management', 'Amazon FBA automation', 'Amazon listing optimization'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/amazon-services',
   },
   openGraph: {
-    title: 'Amazon Marketplace Management Services | Ctas Info',
+    title: 'Amazon Marketplace Management Services | Ctas Info Services',
     description: 'Expert Amazon marketplace management. Optimize product listings, manage inventory, and scale your sales with our comprehensive Amazon seller services.',
     url: 'https://www.ctasis.com/services/amazon-services',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Amazon Marketplace Management Services by Ctas Info',
+        alt: 'Amazon Marketplace Management Services by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Amazon Marketplace Management Services | Ctas Info',
+    title: 'Amazon Marketplace Management Services | Ctas Info Services',
     description: 'Expert Amazon marketplace management. Optimize product listings, manage inventory, and scale your sales with our comprehensive Amazon seller services.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

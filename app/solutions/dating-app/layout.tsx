@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dating App Development Services | Ctas Info",
+  title: "Dating App Development Services | Ctas Info Services",
   description:
-    "Custom dating app development services by Ctas, including matchmaking algorithms, real-time chat, secure authentication, and modern UI/UX for high-engagement social platforms.",
+    "Custom dating app development services including matchmaking algorithms, real-time chat, secure login, and modern UI/UX for high-engagement platforms.",
   keywords: [
     "dating app development",
     "matchmaking algorithm technology",

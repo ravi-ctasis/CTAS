@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gaming Solutions | Mobile, Web & VR Development | Ctas Info",
+  title: "Gaming & VR Software Development | Ctas Info Services",
   description:
     "Ctas delivers gaming solutions: mobile, web, VR experiences, live ops, analytics, and backend services for game studios.",
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Next-Gen Gaming Tech & Immersive Experiences | Ctas Info",
+    title: "Next-Gen Gaming Tech & Immersive Experiences | Ctas Info Services",
     description: "Launch your next game with elite backend and VR solutions. Expert developers for modern gaming platforms and studios.",
     url: "https://www.ctasis.com/industries/gaming",
   },

@@ -12,7 +12,7 @@ const KnowledgeGraphSchema = () => {
     "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
     "@id": "https://www.ctasis.com/#organization",
     name: "Ctas Info Services LLP",
-    alternateName: ["CTAS", "Ctas Info", "Ctas Info Services"],
+    alternateName: ["CTAS", "Ctas Info Services", "Ctas Info Services"],
     url: "https://www.ctasis.com",
     logo: {
       "@type": "ImageObject",

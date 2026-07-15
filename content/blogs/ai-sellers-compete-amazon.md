@@ -1,8 +1,8 @@
 ---
 id: "9"
 slug: "ai-sellers-compete-amazon"
-title: "AI Sellers Compete on Amazon: How Algorithms Are Winning the Marketplace"
-excerpt: "AI-driven sellers are transforming Amazon with intelligent pricing, faster decision-making, and real-time marketplace insights. Learn how AI tools, automation, and data models are reshaping competitive selling strategies."
+title: "AI Sellers Compete on Amazon"
+excerpt: "AI-driven sellers are transforming Amazon with intelligent pricing, faster decision-making, and real-time marketplace insights."
 publishDate: "2025-01-14"
 lastModified: "2025-01-14"
 category: "Amazon SP-API"

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Amazon FBA & FBM Automation Platform | Ctas Info",
+    title: "Amazon FBA & FBM Automation Platform | Ctas Info Services",
     description:
         "A centralized, web-based platform for managing Amazon FBA and FBM operations: inventory, orders, shipments, and performance analytics.",
     keywords: [

@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Healthcare Software Development | HIPAA Compliant | Ctas Info",
-  description:
-    "Healthcare software development services including HIPAA compliant systems, electronic health records, telemedicine platforms, and medical data security solutions.",
+    "HIPAA Healthcare Software Development | Ctas Info Services",
+  description: "HIPAA-compliant healthcare software development services, including telemedicine platforms and medical data solutions.",
   keywords: [
     "healthcare software development",
     " HIPAA compliant systems",

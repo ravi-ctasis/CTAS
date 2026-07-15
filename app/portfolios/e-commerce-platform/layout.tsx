@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "E-Commerce Platform | Ctas Info",
+    title: "E-Commerce Platform | Ctas Info Services",
     description: "A customer-friendly e-commerce platform designed for speed and scalability, delivering a seamless shopping experience.",
     keywords: [
         "e-commerce platform development",

@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Property Finder & Real Estate App Development | Ctas Info',
+  title: 'Real Estate App Development | Ctas Info Services',
   description: 'Next-gen real estate applications. We build property search platforms with virtual tours, advanced CRM integrations, and IDX/MLS feeds.',
   keywords: ['Real estate app development', 'Property finder software', 'Zillow clone', 'MLS integration'],
   alternates: {
     canonical: 'https://www.ctasis.com/solutions/property-finder-app',
   },
   openGraph: {
-    title: 'Property Finder & Real Estate App Development | Ctas Info',
+    title: 'Property Finder & Real Estate App Development | Ctas Info Services',
     description: 'Next-gen real estate applications. We build property search platforms with virtual tours, advanced CRM integrations, and IDX/MLS feeds.',
     url: 'https://www.ctasis.com/solutions/property-finder-app',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Property Finder & Real Estate App Development by Ctas Info',
+        alt: 'Property Finder & Real Estate App Development by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Property Finder & Real Estate App Development | Ctas Info',
+    title: 'Property Finder & Real Estate App Development | Ctas Info Services',
     description: 'Next-gen real estate applications. We build property search platforms with virtual tours, advanced CRM integrations, and IDX/MLS feeds.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Education & LMS Software Solutions | EdTech | Ctas Info",
+  title: "Education & LMS Software Solutions | Ctas Info Services",
   description:
     "Ctas builds LMS platforms, virtual classrooms, and analytics-powered EdTech solutions for schools, universities, and corporate training.",
   keywords: [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ecommerce & Service Provider Platform | Ctas Info",
+  title: "Ecommerce & Service Provider Platform | Ctas Info Services",
   description:
     "Ctas develops ecommerce and service provider platforms: product/service listings, payment gateways, and vendor management.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Enterprise Ecommerce & Service Provider Success | Ctas Info",
+    title: "Enterprise Ecommerce & Service Provider Success | Ctas Info Services",
     description: "See how we integrated complex service bookings with high-volume retail. A case study in unified digital commerce and vendor management.",
     url: "https://www.ctasis.com/case-studies/ecommerce-and-service-provider-platform",
   },

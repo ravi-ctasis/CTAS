@@ -1,7 +1,7 @@
 ---
 id: "16"
 slug: "how-to-save-ssh-profiles"
-title: "How to Save SSH Profiles on Ubuntu, macOS, and Windows (Git Bash)"
+title: "How to Save SSH Profiles on Ubuntu, macOS, and Windo..."
 excerpt: "Learn how to save and manage SSH profiles using the SSH config file on Ubuntu, macOS, and Windows (Git Bash) to connect to servers quickly with short commands."
 publishDate: "2025-01-22"
 lastModified: "2025-01-22"

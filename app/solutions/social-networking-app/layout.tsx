@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Social Networking App Development Services | Ctas Info",
+  title: "Social Networking App Development | Ctas Info Services",
   description:
     "Ctas develops custom social networking apps: real-time messaging, news feeds, friend connections, and engaging community features.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Build the Next Global Social Media Platform | Ctas Info",
+    title: "Build the Next Global Social Media Platform | Ctas Info Services",
     description:
       "Connect people with high-performance social networking apps. Custom features for news feeds, messaging, and community building.",
     url: "https://www.ctasis.com/solutions/social-networking-app",

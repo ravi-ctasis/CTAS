@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sports Tracking App Development Services | Ctas Info",
+  title: "Sports Tracking App Development | Ctas Info Services",
   description:
     "Ctas develops custom sports tracking apps: real-time activity monitoring, performance analytics, and wearable integrations.",
   keywords: [

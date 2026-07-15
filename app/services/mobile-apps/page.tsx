@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Custom Mobile App Development Services (iOS & Android) | Ctas Info',
+  title: 'Custom Mobile App Development | Ctas Info Services',
   description: 'Native and cross-platform mobile application development. We build intuitive, secure, and robust iOS and Android apps for modern enterprises.',
   keywords: ['Mobile app development', 'iOS developers', 'Android developers', 'React Native apps', 'Flutter development'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/mobile-apps',
   },
   openGraph: {
-    title: 'Custom Mobile App Development Services (iOS & Android) | Ctas Info',
+    title: 'Custom Mobile App Development Services (iOS & Android) | Ctas Info Services',
     description: 'Native and cross-platform mobile application development. We build intuitive, secure, and robust iOS and Android apps for modern enterprises.',
     url: 'https://www.ctasis.com/services/mobile-apps',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Custom Mobile App Development Services (iOS & Android) by Ctas Info',
+        alt: 'Custom Mobile App Development Services (iOS & Android) by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Mobile App Development Services (iOS & Android) | Ctas Info',
+    title: 'Custom Mobile App Development Services (iOS & Android) | Ctas Info Services',
     description: 'Native and cross-platform mobile application development. We build intuitive, secure, and robust iOS and Android apps for modern enterprises.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

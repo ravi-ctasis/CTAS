@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const blogs = [
   {
-    slug: "amazon-sp-api-integration-guide",
+    slug: "amazon-sp-api-integration-playbook",
     category: "Amazon SP-API",
     title: "Complete Guide to Amazon Selling Partner API Integration in 2025",
     excerpt:
@@ -14,10 +14,10 @@ const blogs = [
     imageAlt: "Amazon Selling Partner API integration architecture guide",
     readTime: "9 min read",
     date: "Jun 18, 2025",
-    href: "/blog/amazon-sp-api-guide",
+    href: "/blog/amazon-sp-api-integration-playbook",
   },
   {
-    slug: "ai-ecommerce-automation-workflows",
+    slug: "ecommerce-workflow-automation-2025",
     category: "AI Automation",
     title: "How AI is Transforming E-Commerce Workflow Automation for Mid-Market Sellers",
     excerpt:
@@ -26,19 +26,19 @@ const blogs = [
     imageAlt: "AI e-commerce automation workflow diagram",
     readTime: "7 min read",
     date: "May 29, 2025",
-    href: "/blog/ai-ecommerce-automation",
+    href: "/blog/ecommerce-workflow-automation-2025",
   },
   {
-    slug: "multi-marketplace-integration-architecture",
-    category: "Marketplace Integration",
-    title: "Multi-Marketplace Integration Architecture: Lessons from 35+ Platform Connections",
+    slug: "ai-sellers-compete-amazon",
+    category: "AI Automation",
+    title: "How AI Sellers Compete and Win on Amazon Marketplace",
     excerpt:
-      "Key architectural decisions, common pitfalls and proven patterns for building a resilient multi-marketplace integration platform connecting Amazon, Bol.com, Shopify, Allegro and beyond.",
+      "Explore how machine learning, automated repricing systems, analytics, and intelligent operations allow top sellers to dominate Amazon Buy Box optimization.",
     image: "/enterprise-dashboard.webp",
-    imageAlt: "Multi-marketplace integration architecture diagram",
+    imageAlt: "AI sellers on Amazon marketplace integration",
     readTime: "11 min read",
     date: "May 12, 2025",
-    href: "/blog/multi-marketplace-integration-architecture",
+    href: "/blog/ai-sellers-compete-amazon",
   },
 ];
 

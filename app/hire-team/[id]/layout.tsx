@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!page) {
     return {
-      title: "Hire Developers | Ctas Info",
+      title: "Hire Developers | Ctas Info Services",
       description:
         "Hire expert remote developers for your projects. Scale your team with our dedicated developers.",
       robots: {
@@ -27,14 +27,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  // Extract title from intro data if available, or use a default
-  const introSection = page.sections.find((s) => s.sectionId === "intro");
-  const introData = introSection?.data as any[];
-  const pageTitle = introData?.[0]?.title || `Hire ${id.replace(/-/g, " ")} Developers`;
+  // Normalize role name beautifully
+  const cleanRole = id
+    .replace(/^hire-/, "")
+    .replace(/-developer$/, "")
+    .split("-")
+    .map((w) => {
+      const lower = w.toLowerCase();
+      if (lower === "php") return "PHP";
+      if (lower === "aspnet") return "ASP.NET";
+      if (lower === "mern") return "MERN Stack";
+      if (lower === "mean") return "MEAN Stack";
+      if (lower === "ui") return "UI";
+      if (lower === "ux") return "UX";
+      if (lower === "devops") return "DevOps";
+      if (lower === "api") return "API";
+      if (lower === "seo") return "SEO";
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    })
+    .join(" ");
+
+  const cleanTitle = `Hire Dedicated ${cleanRole} Developers | Ctas Info Services`;
+  const cleanDesc = `Hire dedicated, skilled ${cleanRole} developers for your custom software solutions. Save up to 60% with our 10-day risk-free trial.`;
 
   return {
-    title: `${pageTitle} | Hire Expert Remote Developers | CTAS`,
-    description: `Hire top-tier ${id.replace(/-/g, " ")} developers. Scale your team with our expert remote developers specialized in ${id.replace(/-/g, " ")}. Save up to 60% on development costs.`,
+    title: cleanTitle,
+    description: cleanDesc,
     alternates: {
       canonical: `https://www.ctasis.com/hire-team/${id}`,
       languages: {

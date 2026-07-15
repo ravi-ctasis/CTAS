@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Enterprise Software Solutions | ERP & CRM | Ctas Info",
+  title: "Enterprise ERP & CRM Software | Ctas Info Services",
   description:
     "Enterprise-grade software, ERP, CRM, analytics, and cloud solutions from Ctas tailored for global organizations and large enterprises.",
   keywords: [

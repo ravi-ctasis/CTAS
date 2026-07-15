@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Real Estate Tech Solutions | Digital Property | Ctas Info",
+  title: "Real Estate Tech & Property Software | Ctas Info Services",
   description:
     "Property tech solutions from Ctas: listings, virtual tours, CRM, analytics, and transaction workflows for the real estate market.",
   keywords: [

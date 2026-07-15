@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Custom App Development & Digital Solutions | Ctas Info",
+  title: "Custom App Development Solutions | Ctas Info Services",
   description:
-    "Comprehensive digital solutions including dating apps, e-commerce platforms, mobile wallets, food delivery apps, healthcare solutions, and more. Custom app development for all industries.",
+    "Comprehensive digital solutions including dating apps, e-commerce, mobile wallets, food delivery, and healthcare. Custom app development for all industries.",
   keywords: [
     "app development solutions",
     "custom mobile apps",

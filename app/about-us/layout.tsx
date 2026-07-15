@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Ctas Info Services LLP – AI & E-commerce Solutions",
-  description:
-    "Ctas Info Services LLP is a trusted IT company in India delivering AI-powered web development, Amazon SP-API integration, and scalable e-commerce automation solutions for global businesses.",
+  title: "About Us | AI & E-commerce Solutions | Ctas Info Services",
+  description: "Ctas Info Services LLP delivers AI web development, Amazon SP-API integration, and e-commerce automation solutions globally.",
   keywords: [
     "company history",
     "tech experts Ahmedabad",

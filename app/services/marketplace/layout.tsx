@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Multi-Marketplace Management Services | Ctas Info",
+  title: "Multi-Marketplace Management Services | Ctas Info Services",
   description:
     "Marketplace setup, optimization, and integration services from Ctas for Amazon, eBay, Walmart, and more.",
   keywords: [

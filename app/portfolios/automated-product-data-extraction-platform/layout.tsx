@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Automated Product Data Extraction | Ctas Info",
+    title: "Automated Product Data Extraction | Ctas Info Services",
     description:
         "Automates product data extraction, normalization, and organization from multiple online sources with elite accuracy.",
     keywords: [

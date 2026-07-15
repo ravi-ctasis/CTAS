@@ -1,8 +1,8 @@
 ---
 id: "10"
 slug: "amazon-selling-partner-api-overview"
-title: "Amazon – What You Need to Know About the New Selling Partner API (SP-API)"
-excerpt: "Explore the key features, architecture, compliance requirements, and benefits of the Amazon Selling Partner API (SP-API) — the modern API replacing Amazon MWS for sellers and integrators."
+title: "Amazon – What You Need to Know About the New Selling..."
+excerpt: "Explore the key features, architecture, compliance requirements, and benefits of the Amazon Selling Partner API (SP-API) — the modern API..."
 publishDate: "2025-02-01"
 lastModified: "2025-02-01"
 category: "Amazon SP-API"

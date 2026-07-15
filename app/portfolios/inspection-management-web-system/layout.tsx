@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Inspection Management Web System | Portfolios | Ctas Info",
+    title: "Inspection Management Web System | Ctas Info Services",
     description:
         "A centralized inspection management platform for real-time and offline operations, report generation, and data synchronization.",
     keywords: [

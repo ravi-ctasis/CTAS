@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Amazon Product Management Automation | Ctas Info",
+    title: "Amazon Product Management Automation | Ctas Info Services",
     description:
         "All-in-one Amazon product management automation software: AIrepricing, smart inventory control, and multi-marketplace integration.",
     keywords: [

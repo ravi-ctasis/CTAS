@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NFT Marketplace Development Services | Ctas Info",
+  title: "NFT Marketplace Development Services | Ctas Info Services",
   description:
     "Ctas develops secure and scalable NFT marketplace platforms: minting, wallets, auctions, smart contracts, and multi-chain support.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Launch a Premiere Web3 & NFT Marketplace | Ctas Info",
+    title: "Launch a Premiere Web3 & NFT Marketplace | Ctas Info Services",
     description:
       "Scale your blockchain project with a custom NFT marketplace. Expert smart contract development and multi-chain wallet integrations.",
     url: "https://www.ctasis.com/solutions/nft-marketplace",

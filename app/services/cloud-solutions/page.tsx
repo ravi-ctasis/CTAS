@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Enterprise Cloud Solutions & Migration Services | Ctas Info',
+  title: 'Enterprise Cloud & Migration Services | Ctas Info Services',
   description: 'Modernize your infrastructure with secure cloud computing solutions. We offer AWS, Azure, and Google Cloud deployment, migration, and management.',
   keywords: ['Cloud solutions provider', 'Cloud migration services', 'AWS deployment', 'Azure management', 'Enterprise cloud computing'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/cloud-solutions',
   },
   openGraph: {
-    title: 'Enterprise Cloud Solutions & Migration Services | Ctas Info',
+    title: 'Enterprise Cloud Solutions & Migration Services | Ctas Info Services',
     description: 'Modernize your infrastructure with secure cloud computing solutions. We offer AWS, Azure, and Google Cloud deployment, migration, and management.',
     url: 'https://www.ctasis.com/services/cloud-solutions',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Enterprise Cloud Solutions & Migration Services by Ctas Info',
+        alt: 'Enterprise Cloud Solutions & Migration Services by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Enterprise Cloud Solutions & Migration Services | Ctas Info',
+    title: 'Enterprise Cloud Solutions & Migration Services | Ctas Info Services',
     description: 'Modernize your infrastructure with secure cloud computing solutions. We offer AWS, Azure, and Google Cloud deployment, migration, and management.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

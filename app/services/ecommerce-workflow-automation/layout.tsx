@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ecommerce Automation Services | Ctas Info",
+  title: "Ecommerce Automation Services | Ctas Info Services",
   description: "Streamline your online store with Ctas' E-commerce automation solutions: product listings, inventory management, order processing, and AI-powered workflows.",
   keywords: [
     // Core E-commerce Automation
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     title: "Streamline Your Business with E-commerce Automation | Ctas",
     description: "Boost efficiency and reduce manual work with custom AI-powered workflows. Expert automation for global online stores.",
     url: "/services/ecommerce-workflow-automation",
-    siteName: "Ctas Info",
+    siteName: "Ctas Info Services",
     images: [{
       url: "/images/og/ecommerce-automation.jpg",
       width: 1200,
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ecommerce Automation Services | Ctas Info",
+    title: "Ecommerce Automation Services | Ctas Info Services",
     description: "Streamline your online store with AI-powered automation solutions for inventory, orders, and workflows.",
     images: ["/images/og/ecommerce-automation.jpg"],
   },

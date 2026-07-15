@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fashion Marketplace Web Development | Case Study | Ctas Info",
+  title: "Fashion Marketplace Case Study | Ctas Info Services",
   description:
     "Ctas builds fashion marketplace platforms: product catalogs, vendor management, shopping carts, and secure payments.",
   keywords: [

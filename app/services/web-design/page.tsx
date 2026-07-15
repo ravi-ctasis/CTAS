@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Professional Web Design Services | Responsive & Modern | Ctas Info',
+  title: 'Professional Web Design Services | Ctas Info Services',
   description: 'Cutting-edge web design services tailored to your brand. We design responsive, accessible, and fast-loading websites that convert.',
   keywords: ['Web design services', 'Responsive web design', 'Corporate website design', 'Modern web design'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/web-design',
   },
   openGraph: {
-    title: 'Professional Web Design Services | Responsive & Modern | Ctas Info',
+    title: 'Professional Web Design Services | Responsive & Modern | Ctas Info Services',
     description: 'Cutting-edge web design services tailored to your brand. We design responsive, accessible, and fast-loading websites that convert.',
     url: 'https://www.ctasis.com/services/web-design',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Professional Web Design Services by Ctas Info',
+        alt: 'Professional Web Design Services by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Professional Web Design Services | Responsive & Modern | Ctas Info',
+    title: 'Professional Web Design Services | Responsive & Modern | Ctas Info Services',
     description: 'Cutting-edge web design services tailored to your brand. We design responsive, accessible, and fast-loading websites that convert.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

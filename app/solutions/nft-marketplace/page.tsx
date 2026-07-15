@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'NFT Marketplace Development | Web3 & Blockchain Solutions | Ctas Info',
+  title: 'NFT Marketplace Development | Ctas Info Services',
   description: 'Launch your own NFT marketplace. We provide end-to-end Web3 development, smart contract auditing, and secure digital asset trading platforms.',
   keywords: ['NFT marketplace development', 'Web3 developers', 'Blockchain app development', 'Smart contract deployment'],
   alternates: {
     canonical: 'https://www.ctasis.com/solutions/nft-marketplace',
   },
   openGraph: {
-    title: 'NFT Marketplace Development | Web3 & Blockchain Solutions | Ctas Info',
+    title: 'NFT Marketplace Development | Web3 & Blockchain Solutions | Ctas Info Services',
     description: 'Launch your own NFT marketplace. We provide end-to-end Web3 development, smart contract auditing, and secure digital asset trading platforms.',
     url: 'https://www.ctasis.com/solutions/nft-marketplace',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'NFT Marketplace Development by Ctas Info',
+        alt: 'NFT Marketplace Development by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NFT Marketplace Development | Web3 & Blockchain Solutions | Ctas Info',
+    title: 'NFT Marketplace Development | Web3 & Blockchain Solutions | Ctas Info Services',
     description: 'Launch your own NFT marketplace. We provide end-to-end Web3 development, smart contract auditing, and secure digital asset trading platforms.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

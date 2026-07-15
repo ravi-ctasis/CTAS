@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Event & Ticket Booking App Development | Entertainment Tech | Ctas Info',
+  title: 'Event & Ticket Booking App Development | Ctas Info Services',
   description: 'Scalable ticket booking platforms. We build apps for events, movies, and concerts with interactive seat selection and secure QR code ticketing.',
   keywords: ['Ticket booking app', 'Event software', 'Movie ticketing app', 'QR code ticketing'],
   alternates: {
     canonical: 'https://www.ctasis.com/solutions/ticket-booking-app',
   },
   openGraph: {
-    title: 'Event & Ticket Booking App Development | Entertainment Tech | Ctas Info',
+    title: 'Event & Ticket Booking App Development | Entertainment Tech | Ctas Info Services',
     description: 'Scalable ticket booking platforms. We build apps for events, movies, and concerts with interactive seat selection and secure QR code ticketing.',
     url: 'https://www.ctasis.com/solutions/ticket-booking-app',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Event & Ticket Booking App Development by Ctas Info',
+        alt: 'Event & Ticket Booking App Development by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Event & Ticket Booking App Development | Entertainment Tech | Ctas Info',
+    title: 'Event & Ticket Booking App Development | Entertainment Tech | Ctas Info Services',
     description: 'Scalable ticket booking platforms. We build apps for events, movies, and concerts with interactive seat selection and secure QR code ticketing.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

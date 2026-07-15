@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Wellness & Healthcare Tech Solutions | Ctas Info",
+  title: "Wellness & Healthcare Tech Solutions | Ctas Info Services",
   description:
     "Wellness and healthcare apps, wearables, patient engagement, and analytics solutions delivered by expert developers at Ctas.",
   keywords: [

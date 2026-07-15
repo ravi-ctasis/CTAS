@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Taxi Booking App Development Services | Ctas Info",
+  title: "Taxi Booking App Development Services | Ctas Info Services",
   description:
     "Ctas develops custom taxi booking apps with real-time ride tracking, driver management, secure payments, fare calculation, and seamless passenger experiences.",
   keywords: [

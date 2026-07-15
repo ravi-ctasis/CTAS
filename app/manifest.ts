@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Ctas Info – Amazon SP-API, AI & E-commerce Solutions',
+    name: 'Ctas Info Services – Amazon SP-API, AI & E-commerce Solutions',
     short_name: 'Ctas',
     description: 'India\'s pioneering technology firm specializing in Amazon SP-API integration, AI-powered web solutions, e-commerce automation, and custom IT services for global businesses since 2019.',
     start_url: '/',

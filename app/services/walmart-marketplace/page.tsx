@@ -1,30 +1,30 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Walmart Marketplace Integration & WFS Automation | Ctas Info',
+  title: 'Walmart Marketplace Integration & WFS | Ctas Info Services',
   description: 'Certified Walmart API integration. Seamlessly sync item specs, inventory, orders, and fully automate Walmart Fulfillment Services (WFS).',
   keywords: ['Walmart marketplace integration', 'Walmart API', 'WFS automation', 'Walmart seller integration', 'Walmart item spec'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/walmart-marketplace',
   },
   openGraph: {
-    title: 'Walmart Marketplace Integration & WFS Automation | Ctas Info',
+    title: 'Walmart Marketplace Integration & WFS Automation | Ctas Info Services',
     description: 'Certified Walmart API integration. Seamlessly sync item specs, inventory, orders, and fully automate Walmart Fulfillment Services (WFS).',
     url: 'https://www.ctasis.com/services/walmart-marketplace',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Walmart Integration Services by Ctas Info',
+        alt: 'Walmart Integration Services by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Walmart Marketplace Integration & WFS Automation | Ctas Info',
+    title: 'Walmart Marketplace Integration & WFS Automation | Ctas Info Services',
     description: 'Certified Walmart API integration. Seamlessly sync item specs, inventory, orders, and fully automate Walmart Fulfillment Services (WFS).',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

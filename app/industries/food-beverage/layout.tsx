@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Food & Beverage Tech Solutions | Ctas Info",
+  title: "Food & Beverage Tech Solutions | Ctas Info Services",
   description:
     "Digital solutions for food and beverage: POS, supply chain, online ordering, delivery integrations, and analytics by Ctas.",
   keywords: [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "API Development Services | Scalable & Secure APIs | Ctas Info",
+  title: "API Development Services | Ctas Info Services",
   description: "Ctas builds scalable and secure APIs for web, mobile, and enterprise applications using REST, GraphQL, and microservices architecture.",
   keywords: [
     "custom API development",

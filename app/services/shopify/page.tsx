@@ -1,30 +1,30 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shopify Custom Development & Integration Services | Ctas Info',
+  title: 'Shopify Custom Development | Ctas Info Services',
   description: 'Build, scale, and optimize your Shopify store. Expert React/Next.js custom app development, theme optimization, and multi-channel marketplace automation.',
   keywords: ['Shopify development', 'Shopify integration', 'Shopify custom apps', 'Shopify automation', 'e-commerce development'],
   alternates: {
     canonical: 'https://www.ctasis.com/services/shopify',
   },
   openGraph: {
-    title: 'Shopify Custom Development & Integration Services | Ctas Info',
+    title: 'Shopify Custom Development & Integration Services | Ctas Info Services',
     description: 'Build, scale, and optimize your Shopify store. Expert React/Next.js custom app development, theme optimization, and multi-channel marketplace automation.',
     url: 'https://www.ctasis.com/services/shopify',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Shopify Integration Services by Ctas Info',
+        alt: 'Shopify Integration Services by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shopify Custom Development & Integration Services | Ctas Info',
+    title: 'Shopify Custom Development & Integration Services | Ctas Info Services',
     description: 'Build, scale, and optimize your Shopify store. Expert React/Next.js custom app development, theme optimization, and multi-channel marketplace automation.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },

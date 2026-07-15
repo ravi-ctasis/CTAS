@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Intelligent Repricing System | E-Commerce | Ctas Info",
+    title: "Intelligent Repricing System | Ctas Info Services",
     description:
         "An intelligent repricing engine that optimizes prices across millions of SKUs in real-time for Amazon and other marketplaces.",
     keywords: [

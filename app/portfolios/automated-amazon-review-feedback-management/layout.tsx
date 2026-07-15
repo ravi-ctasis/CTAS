@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Amazon Review Feedback Management | Ctas Info",
+    title: "Amazon Review Feedback Management | Ctas Info Services",
     description: "Automates Amazon customer review requests and feedback management to enhance customer satisfaction and seller reputation.",
     keywords: [
         "Amazon review automation",

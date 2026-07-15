@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MERN Stack Development Services | Ctas Info",
+  title: "MERN Stack Development Services | Ctas Info Services",
   description: "Build modern, scalable, and high-performance web applications with Ctas MERN Stack Development. Expert in MongoDB, Express.js, React, and Node.js.",
   keywords: [
     "MERN stack development services",

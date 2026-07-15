@@ -2,7 +2,7 @@
 id: "18"
 slug: "amazon-fba-grade-resell-updates-2025"
 title: "Amazon FBA Grade & Resell Updates 2025"
-excerpt: "Learn about the latest updates to Amazon's FBA Grade and Resell program, including expanded categories, automatic out-of-stock removal, and ASIN inclusion control."
+excerpt: "Learn about the latest updates to Amazon's FBA Grade and Resell program, including expanded categories, automatic out-of-stock removal, and ASIN..."
 publishDate: "2025-12-22"
 lastModified: "2025-12-22"
 category: "E-commerce"

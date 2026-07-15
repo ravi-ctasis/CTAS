@@ -314,7 +314,7 @@ export default function BlogClient({ blog, relatedPosts }: BlogProps) {
                     [&_td]:p-3 [&_td]:border [&_td]:border-slate-200 [&_td]:text-slate-700
                     [&_img]:rounded-xl [&_img]:shadow-md [&_img]:my-8"
                   style={{ ["--tw-prose-links" as string]: NAVY }}
-                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                  dangerouslySetInnerHTML={{ __html: blog.content.replace(/<h1([^>]*)>/gi, '<h2$1>').replace(/<\/h1>/gi, '</h2>') }}
                 />
                 <div className="mt-10 pt-8 border-t border-slate-100">
                   <p className="text-slate-500 italic">Thanks for reading!</p>

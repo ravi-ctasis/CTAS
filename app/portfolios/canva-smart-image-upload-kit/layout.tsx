@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Canva Smart Image Upload Kit | Portfolios | Ctas Info",
+    title: "Canva Smart Image Upload Kit | Ctas Info Services",
     description:
         "Automates fetching, processing, and rendering of order images into structured Canva grids for Amazon sellers.",
     keywords: [

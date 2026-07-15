@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CTASScanProClientPage from "./client";
 
 export const metadata: Metadata = {
-  title: "CTAS ScanPro — High-Performance Browser-Based Barcode Scanner",
+  title: "CTAS ScanPro — Browser Barcode Scanner",
   description: "CTAS ScanPro delivers 98.2% barcode scanning accuracy for retail, warehouses, and logistics. Real-time browser-based scanning powered by WebAssembly.",
   keywords: [
     "barcode scanner",

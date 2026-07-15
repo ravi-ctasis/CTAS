@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mobile Wallet App Development Services | Ctas Info",
+  title: "Mobile Wallet App Development Services | Ctas Info Services",
   description:
     "Ctas provides secure mobile wallet app development: UPI integration, digital payments, money transfers, and QR scanning.",
   keywords: [

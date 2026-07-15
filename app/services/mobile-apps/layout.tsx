@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mobile App Development Services | Ctas Info",
+  title: "Mobile App Development Services | Ctas Info Services",
   description: "Expert mobile app development: iOS, Android, React Native, Flutter. Native and cross-platform solutions.",
   keywords: [
     "React Native development",

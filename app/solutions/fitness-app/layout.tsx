@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fitness App Development Services | Ctas Info",
+  title: "Fitness App Development Services | Ctas Info Services",
   description:
-    "Ctas offers custom fitness app development with workout tracking, nutrition plans, wearable integrations, activity monitoring, and personalized fitness experiences.",
+    "Custom fitness app development services including workout tracking, nutrition planning, wearable integrations, and personalized fitness experiences.",
   keywords: [
     "fitness app development company",
     "workout tracking software",

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Automated SKU & Identifier Framework | Ctas Info",
+    title: "Automated SKU & Identifier Framework | Ctas Info Services",
     description: "A unified system for generating global Master SKUs and managing identifiers (ASIN, EAN, UPC) across all marketplaces.",
     keywords: [
         "automated SKU generation",

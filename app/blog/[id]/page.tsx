@@ -19,7 +19,7 @@ export async function generateMetadata({
   const blog = await getBlogById(id);
   if (!blog) {
     return {
-      title: "Blog Post Not Found | Ctas Info",
+      title: "Blog Post Not Found | Ctas Info Services",
       description: "The blog post you are looking for could not be found.",
       robots: {
         index: false,

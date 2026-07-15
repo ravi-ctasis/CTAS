@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Smart Production & Inventory Tracking | Ctas Info",
+    title: "Smart Production & Inventory Tracking | Ctas Info Services",
     description:
         "A centralized solution for managing production stages from PI creation to shipments with full audit history.",
     keywords: [

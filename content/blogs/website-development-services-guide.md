@@ -1,7 +1,7 @@
 ---
 id: "10"
 slug: "website-development-services-guide"
-title: "Website Development Services: Building Fast, Secure, and Scalable Websites"
+title: "Website Development Services"
 excerpt: "Professional website development services focused on performance, SEO, security, and scalability. Learn how modern websites are built for growth."
 publishDate: "2025-01-20"
 lastModified: "2025-01-20"

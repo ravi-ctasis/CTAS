@@ -19,7 +19,7 @@ const industries = [
     description:
       "End-to-end marketplace integrations, ERP connectivity, inventory automation and AI-powered product management for online retailers and D2C brands.",
     highlights: ["Marketplace API Integration", "Inventory Sync", "Order Automation"],
-    href: "/industries/ecommerce",
+    href: "/industries/retail",
     color: "blue",
   },
   {
@@ -28,7 +28,7 @@ const industries = [
     description:
       "Production tracking, warehouse management, logistics integration and ERP-connected workflows that streamline factory-to-marketplace operations.",
     highlights: ["ERP Integration", "Production Tracking", "Logistics Automation"],
-    href: "/industries",
+    href: "/industries/enterprise",
     color: "slate",
   },
   {
@@ -37,7 +37,7 @@ const industries = [
     description:
       "Supply chain automation, shipment tracking, last-mile delivery integration and multi-carrier management for distributors and 3PLs.",
     highlights: ["Supply Chain Automation", "Carrier Integration", "Shipment Tracking"],
-    href: "/industries",
+    href: "/industries/transportation",
     color: "slate",
   },
   {
@@ -46,7 +46,7 @@ const industries = [
     description:
       "PCI DSS and GDPR-compliant payment integrations, financial reconciliation, settlement reporting and secure API workflows for financial services.",
     highlights: ["PCI DSS Compliance", "Payment Integration", "Financial Reporting"],
-    href: "/industries",
+    href: "/industries/banking-finance",
     color: "slate",
   },
   {
@@ -55,7 +55,7 @@ const industries = [
     description:
       "HIPAA-compliant healthcare platforms, medical record management, patient portals and secure data exchange solutions for healthcare providers.",
     highlights: ["HIPAA Compliance", "Patient Portals", "Medical Data Exchange"],
-    href: "/industries",
+    href: "/industries/healthcare",
     color: "slate",
   },
   {
@@ -64,7 +64,7 @@ const industries = [
     description:
       "Learning management systems, student portals, course delivery platforms and educational automation tools for institutions and e-learning businesses.",
     highlights: ["LMS Development", "Student Portals", "Course Automation"],
-    href: "/industries",
+    href: "/industries/education",
     color: "slate",
   },
   {
@@ -73,7 +73,7 @@ const industries = [
     description:
       "Digital catalogue management, multi-channel publishing automation, book marketplace integrations for publishers, bookstores and media companies.",
     highlights: ["Catalogue Management", "Multi-Channel Publishing", "Marketplace Sync"],
-    href: "/industries",
+    href: "/industries/enterprise",
     color: "slate",
   },
   {
@@ -82,7 +82,7 @@ const industries = [
     description:
       "B2B portals, bulk order management, pricing tier automation and ERP-connected wholesale platforms for distributors and manufacturers.",
     highlights: ["B2B Portal", "Bulk Order Management", "ERP Connectivity"],
-    href: "/industries",
+    href: "/industries/enterprise",
     color: "slate",
   },
 ];

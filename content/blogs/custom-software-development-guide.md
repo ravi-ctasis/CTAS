@@ -1,8 +1,8 @@
 ---
 id: "21"
 slug: "custom-software-development-guide"
-title: "Custom Software Development: A Complete Guide for Modern Businesses"
-excerpt: "Custom software development helps businesses build scalable, secure, and tailored solutions. Learn benefits, process, costs, and why custom software matters in 2025."
+title: "Custom Software Development"
+excerpt: "Custom software development helps businesses build scalable, secure, and tailored solutions. Learn benefits, process, costs, and why custom..."
 publishDate: "2025-01-20"
 lastModified: "2025-01-20"
 category: "Software Development"

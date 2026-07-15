@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Travel App Development Services | Ctas Info",
+  title: "Travel App Development Services | Ctas Info Services",
   description:
     "Ctas develops custom travel apps: flight and hotel bookings, itinerary management, and seamless travel planning.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Global Travel & Hospitality App Solutions | Ctas Info",
+    title: "Global Travel & Hospitality App Solutions | Ctas Info Services",
     description:
       "Modernize travel planning with custom mobile apps. Expert developers for flight, hotel, and itinerary management systems.",
     url: "https://www.ctasis.com/solutions/travel-app",

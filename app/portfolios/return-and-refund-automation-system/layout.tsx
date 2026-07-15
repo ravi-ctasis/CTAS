@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Return Operations & Refund Automation System | Ctas Info",
+    title: "Return Operations & Refund Automation | Ctas Info Services",
     description: "A comprehensive platform for managing Amazon returns, real-time scanning, and refund automation.",
     keywords: [
         "return management automation",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IT Services | Web Dev, AI & E-commerce | Ctas Info",
+  title: "IT Services | Web Dev, AI & E-commerce | Ctas Info Services",
   description:
     "Comprehensive IT services: web development, mobile apps, AI/ML solutions, cloud computing, DevOps, UI/UX design, and e-commerce solutions.",
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "AI, SP-API & Web Development Services | Ctas Info",
+    title: "AI, SP-API & Web Development Services | Ctas Info Services",
     description:
       "Ctas Info Services LLP delivers AI/ML, Amazon SP-API, cloud, DevOps, web & mobile apps, and e-commerce automation for global business growth.",
     type: "website",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI, SP-API & Web Development Services | Ctas Info",
+    title: "AI, SP-API & Web Development Services | Ctas Info Services",
     description:
       "Ctas Info Services LLP delivers AI/ML, Amazon SP-API, cloud, DevOps, web & mobile apps, and e-commerce automation for global business growth.",
     images: ["https://www.ctasis.com/assets/images/logo-icon.webp"],

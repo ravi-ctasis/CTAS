@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Amazon Order Automation Platform | Case Study | Ctas Info",
+  title: "Amazon Order Automation Case Study | Ctas Info Services",
   description:
     "Ctas provides Amazon order automation solutions: streamline order processing, inventory updates, and reporting.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Streamlined Amazon Order Automation - Case Study | Ctas Info",
+    title: "Streamlined Amazon Order Automation - Case Study | Ctas Info Services",
     description: "Learn how we revolutionized order processing and inventory updates for high-volume Amazon sellers. Real-time automation results.",
     url: "https://www.ctasis.com/case-studies/amazon-order-automation-platform",
   },

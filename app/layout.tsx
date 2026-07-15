@@ -35,11 +35,10 @@ const rubik = Rubik({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ctas Info Services - Amazon SP-API, AI & E-commerce Web Solutions",
+    default: "Ctas Info Services - Amazon SP-API & E-commerce Solutions",
     template: "%s | Ctas Info Services LLP",
   },
-  description:
-    "India’s pioneering Ctas Info Services LLP delivers AI web solutions, SP-API integration, e-commerce automation & IT services for global growth. 200+ projects delivered across retail, healthcare, and finance.",
+  description: "Ctas Info Services LLP delivers AI web development, SP-API integration, e-commerce automation & IT services for global business growth.",
   keywords: [
     "Ctas Info Services LLP",
     "Amazon SP API integration",
@@ -73,12 +72,12 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
+      name: "Ctas Info Services – Amazon SP-API & E-commerce Solutions",
       url: "https://www.ctasis.com",
     },
   ],
-  creator: "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
-  publisher: "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
+  creator: "Ctas Info Services LLP",
+  publisher: "Ctas Info Services LLP",
   formatDetection: {
     email: false,
     address: false,
@@ -113,8 +112,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.ctasis.com",
-    siteName: "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
-    title: "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
+    siteName: "Ctas Info Services LLP",
+    title: "Ctas Info Services – Amazon SP-API & E-commerce Solutions",
     description:
       "India's pioneering technology firm specializing in Amazon SP-API integration, AI-powered web solutions, e-commerce automation, and custom IT services for global businesses since 2019.",
     images: [
@@ -131,10 +130,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ctasinfoservices",
     creator: "@ctasinfoservices",
-    title: "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
+    title: "Ctas Info Services – Amazon SP-API & E-commerce Solutions",
     description:
       "India's pioneering technology firm specializing in Amazon SP-API integration, AI-powered web solutions, e-commerce automation, and custom IT services for global businesses since 2019.",
-    // images: ["https://ctasis.com/assets/images/twitter-card.jpg"],
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
   verification: {
     google: "4843sqAFjwrPjde6AKJZWXP2vQismaEdFg7-4d6jUmI",
@@ -153,7 +152,7 @@ export const metadata: Metadata = {
     "geo.placename": "Ahmedabad",
     "geo.position": "23.0225;72.5714",
     ICBM: "23.0225, 72.5714",
-    "DC.title": "Ctas Info – Amazon SP-API, AI & E-commerce Web Solutions",
+    "DC.title": "Ctas Info Services – Amazon SP-API & E-commerce Solutions",
     "DC.creator": "Ctas Info Services LLP",
     "DC.subject": "Technology, Amazon SP-API, AI, e-commerce, Web Development",
     "DC.description":

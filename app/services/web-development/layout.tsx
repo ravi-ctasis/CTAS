@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Custom Web Development Services | Ctas Info",
+  title: "Custom Web Development Services | Ctas Info Services",
   description:
     "Expert web development: custom websites, web applications, React, Next.js, Node.js. Professional developers delivering modern, scalable solutions.",
   keywords: [

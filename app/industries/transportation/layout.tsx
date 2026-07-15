@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Transportation & Logistics Tech | Ctas Info",
+  title: "Transportation & Logistics Tech | Ctas Info Services",
   description:
     "Transportation and logistics software by Ctas: fleet management, TMS, route optimization, telematics, and real-time visibility.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Advanced Logistics & Transportation Software | Ctas Info",
+    title: "Advanced Logistics & Transportation Software | Ctas Info Services",
     description: "Optimize your fleet and logistics with real-time tracking and route intelligence. Expert solutions for the transportation industry.",
     url: "https://www.ctasis.com/industries/transportation",
   },

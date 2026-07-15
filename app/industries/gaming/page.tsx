@@ -2,31 +2,31 @@ import type { Metadata } from 'next';
 import Client from './client';
 
 export const metadata: Metadata = {
-  title: 'Software & IT Solutions for Gaming Industry | Ctas Info',
-  description: 'Ctas Info provides specialized tech solutions for the Gaming sector. Increase operational efficiency and player engagement with custom enterprise software.',
-  keywords: ['Gaming software solutions', 'Gaming tech', 'Game development IT', 'Enterprise gaming software', 'Ctas Info Gaming'],
+  title: 'Software & IT for Gaming Industry | Ctas Info Services',
+  description: 'Ctas Info Services offers gaming tech solutions to increase operational efficiency and player engagement with custom enterprise software.',
+  keywords: ['Gaming software solutions', 'Gaming tech', 'Game development IT', 'Enterprise gaming software', 'Ctas Info Services Gaming'],
   alternates: {
     canonical: 'https://www.ctasis.com/industries/gaming',
   },
   openGraph: {
-    title: 'Software & IT Solutions for Gaming Industry | Ctas Info',
-    description: 'Ctas Info provides specialized tech solutions for the Gaming sector. Increase operational efficiency and player engagement with custom enterprise software.',
+    title: 'Software & IT Solutions for Gaming Industry | Ctas Info Services',
+    description: 'Ctas Info Services provides specialized tech solutions for the Gaming sector. Increase operational efficiency and player engagement with custom enterprise software.',
     url: 'https://www.ctasis.com/industries/gaming',
-    siteName: 'Ctas Info',
+    siteName: 'Ctas Info Services',
     type: 'website',
     images: [
       {
         url: 'https://www.ctasis.com/assets/images/logo-icon.webp',
         width: 1200,
         height: 630,
-        alt: 'Software & IT Solutions for Gaming Industry by Ctas Info',
+        alt: 'Software & IT Solutions for Gaming Industry by Ctas Info Services',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Software & IT Solutions for Gaming Industry | Ctas Info',
-    description: 'Ctas Info provides specialized tech solutions for the Gaming sector. Increase operational efficiency and player engagement with custom enterprise software.',
+    title: 'Software & IT Solutions for Gaming Industry | Ctas Info Services',
+    description: 'Ctas Info Services provides specialized tech solutions for the Gaming sector. Increase operational efficiency and player engagement with custom enterprise software.',
     images: ['https://www.ctasis.com/assets/images/logo-icon.webp'],
   },
   robots: {

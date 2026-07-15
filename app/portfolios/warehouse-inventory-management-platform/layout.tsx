@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Smart Warehouse Management Platform | Ctas Info",
+    title: "Smart Warehouse Management Platform | Ctas Info Services",
     description:
         "An intelligent platform for real-time stock visibility and warehouse operations to prevent overselling.",
     keywords: [

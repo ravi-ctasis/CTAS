@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Restaurant App Development Services | Ctas Info",
+  title: "Restaurant App Development Services | Ctas Info Services",
   description:
     "Ctas builds advanced restaurant apps with online ordering, table management, kitchen display systems, and seamless dining experiences.",
   keywords: [

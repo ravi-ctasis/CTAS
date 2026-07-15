@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Multi-Vendor Marketplace Platform | Case Study | Ctas Info",
+    title: "Marketplace Platform Case Study | Ctas Info Services",
     description:
         "Ctas develops multi-vendor marketplace platforms: buyers and sellers connect seamlessly with advanced ecommerce capabilities.",
     keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Scale Your Multi-Vendor Marketplace - Case Study | Ctas Info",
+        title: "Scale Your Multi-Vendor Marketplace - Case Study | Ctas Info Services",
         description: "Connect buyers and sellers with a high-performance marketplace platform. A case study in advanced vendor management and booking tech.",
         url: "https://www.ctasis.com/case-studies/marketplace-service",
     },

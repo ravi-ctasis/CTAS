@@ -1,8 +1,8 @@
 ---
 id: "2"
 slug: "building-scalable-ecommerce-solutions"
-title: "Building Scalable E-commerce Solutions: Architecture, Performance, and Growth"
-excerpt: "Learn how to design and build scalable e-commerce platforms that can handle growth, ensure reliability, and deliver seamless shopping experiences for modern consumers."
+title: "Building Scalable E-commerce Solutions"
+excerpt: "Learn how to design and build scalable e-commerce platforms that can handle growth, ensure reliability, and deliver seamless shopping experiences..."
 publishDate: "2024-03-12"
 lastModified: "2024-03-15"
 category: "E-commerce"
