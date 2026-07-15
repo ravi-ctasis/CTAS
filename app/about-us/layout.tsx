@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | AI & E-commerce Solutions | Ctas Info Services",
+  title: "About Our Team & Vision",
   description: "Ctas Info Services LLP delivers AI web development, Amazon SP-API integration, and e-commerce automation solutions globally.",
   keywords: [
     "company history",
@@ -32,6 +32,20 @@ export const metadata: Metadata = {
       "Ctas Info Services LLP is a trusted IT company in India delivering AI-powered web development, Amazon SP-API integration, and scalable e-commerce automation solutions for global businesses.",
     url: "https://www.ctasis.com/about-us",
     type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logo-icon.webp",
+        width: 1200,
+        height: 630,
+        alt: "About Ctas Info Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Ctas Info Services LLP",
+    description: "Ctas Info Services LLP is a trusted IT company in India delivering AI-powered web development and SP-API integration.",
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
 };
 

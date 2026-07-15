@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Web Dev, AI & E-commerce | Ctas Info Services",
+  title: "Our E-Commerce & Tech Projects",
   description: "Explore our diverse portfolio of cutting-edge projects including Amazon SP-API integrations, AI web solutions, and e-commerce platforms.",
   keywords: [
     "Ctas portfolio",
@@ -20,10 +20,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Portfolio | Web Dev, AI & E-commerce | Ctas Info Services",
+    title: "Our E-Commerce & Tech Projects",
     description: "Explore our diverse portfolio of cutting-edge projects including Amazon SP-API integrations, AI web solutions, and e-commerce platforms.",
     url: "https://www.ctasis.com/portfolios",
     type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logo-icon.webp",
+        width: 1200,
+        height: 630,
+        alt: "Our E-Commerce & Tech Projects",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our E-Commerce & Tech Projects",
+    description: "Explore our diverse portfolio of cutting-edge projects including Amazon SP-API integrations, AI web solutions, and e-commerce platforms.",
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
 };
 

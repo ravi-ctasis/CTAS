@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Intelligent Repricing Engine - Case Study | CTAS",
-        description: "Maximize margins with our real-time repricing system. Explore how we automate price optimization for millions of SKUs.",
-        url: "https://www.ctasis.com/portfolios/intelligent-repricing-system",
-    },
+    title: "Intelligent Repricing System | Ctas Info Services",
+    description: "An intelligent repricing engine that optimizes prices across millions of SKUs in real-time for Amazon and other marketplaces.",
+    url: "https://www.ctasis.com/portfolios/intelligent-repricing-system",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/intelligent-repricing-system.webp",
+        width: 1200,
+        height: 630,
+        alt: "Intelligent Repricing System | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Intelligent Repricing System | Ctas Info Services",
+    description: "An intelligent repricing engine that optimizes prices across millions of SKUs in real-time for Amazon and other marketplaces.",
+    images: ["https://www.ctasis.com/portfolio-banners/intelligent-repricing-system.webp"],
+  },
 };
 
 export default function IntelligentRepricingSystemLayout({

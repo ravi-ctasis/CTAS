@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Industries We Serve | Digital Tech | Ctas Info Services",
+  title: "Industries We Serve",
   description: "Explore the industries Ctas Info Services LLP helps catalog. We build custom software, API integrations, and ecommerce tools for dynamic growth.",
   alternates: {
     canonical: "https://www.ctasis.com/industries",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Industries We Serve | Digital Solutions | Ctas Info Services",
+    title: "Industries We Serve",
     description: "Explore the industries Ctas Info Services LLP helps catalog. We build custom software, API integrations, and ecommerce tools for dynamic growth.",
     url: "https://www.ctasis.com/industries",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industries We Serve | Digital Solutions | Ctas Info Services",
+    title: "Industries We Serve",
     description: "Explore the industries Ctas Info Services LLP helps catalog. We build custom software, API integrations, and ecommerce tools for dynamic growth.",
     images: ["https://www.ctasis.com/logo-icon.webp"],
   },

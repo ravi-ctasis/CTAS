@@ -8,7 +8,7 @@ export default function IndustriesIndexPage() {
     <div className="min-h-screen bg-[#F6F8FA]">
       <Navigation />
       <main id="main-content" className="pt-20">
-        <IndustriesSection />
+        <IndustriesSection headerTag="h1" />
       </main>
       <FooterSection />
     </div>

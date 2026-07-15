@@ -20,10 +20,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Amazon Review & Feedback Management Automation | CTAS",
-        description: "Boost your Amazon seller rating with automated feedback management. Scale your customer service with data-driven insights.",
-        url: "https://www.ctasis.com/portfolios/automated-amazon-review-feedback-management",
-    },
+    title: "Amazon Review Feedback Management | Ctas Info Services",
+    description: "Automates Amazon customer review requests and feedback management to enhance customer satisfaction and seller reputation.",
+    url: "https://www.ctasis.com/portfolios/automated-amazon-review-feedback-management",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/automated-amazon-review-feedback-management.webp",
+        width: 1200,
+        height: 630,
+        alt: "Amazon Review Feedback Management | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Amazon Review Feedback Management | Ctas Info Services",
+    description: "Automates Amazon customer review requests and feedback management to enhance customer satisfaction and seller reputation.",
+    images: ["https://www.ctasis.com/portfolio-banners/automated-amazon-review-feedback-management.webp"],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

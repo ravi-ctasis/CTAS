@@ -100,7 +100,12 @@ const colorMap: Record<string, { bg: string; icon: string; highlight: string }> 
   },
 };
 
-const IndustriesSection = () => {
+interface IndustriesSectionProps {
+  headerTag?: "h1" | "h2";
+}
+
+const IndustriesSection = ({ headerTag = "h2" }: IndustriesSectionProps) => {
+  const Heading = headerTag;
   return (
     <section
       className="py-10 sm:py-12 lg:py-14 bg-white"
@@ -114,9 +119,9 @@ const IndustriesSection = () => {
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Industries
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+          <Heading className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             Helping Every Industry <span className="text-blue-600">Go Digital</span>
-          </h2>
+          </Heading>
           <p className="text-slate-500 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
             From ecommerce startups to multinational manufacturers, we build digital ecosystems
             that automate complex operations and drive measurable growth.

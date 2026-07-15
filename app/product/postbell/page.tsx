@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import PostbellPage from "./client";
 
 export const metadata: Metadata = {
-  title: "Postbell — AI-Powered Social Media Automation Platform",
+  title: {
+    absolute: "Postbell: Amazon Multi-Channel Order Alerts"
+  },
   description: "Create, schedule, and publish content automatically across 9+ social media channels with Postbell. Generate engaging marketing copy and visuals using AI.",
   keywords: [
     "social media automation",

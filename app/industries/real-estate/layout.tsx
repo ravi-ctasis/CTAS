@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Innovative PropTech & Real Estate Software Solutions | Ctas",
-    description: "Modernize property management and sales with custom tech. Expert developers for the real estate industry.",
+    title: "Real Estate Tech & Property Software | Ctas Info Services",
+    description: "Property tech solutions from Ctas: listings, virtual tours, CRM, analytics, and transaction workflows for the real estate market.",
     url: "https://www.ctasis.com/industries/real-estate",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logo-icon.webp",
+        width: 1200,
+        height: 630,
+        alt: "Real Estate Tech & Property Software | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Estate Tech & Property Software | Ctas Info Services",
+    description: "Property tech solutions from Ctas: listings, virtual tours, CRM, analytics, and transaction workflows for the real estate market.",
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
 };
 

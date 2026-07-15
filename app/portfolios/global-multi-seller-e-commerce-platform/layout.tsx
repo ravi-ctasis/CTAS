@@ -20,10 +20,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Global Multi-Seller E-Commerce - Case Study | CTAS",
-        description: "Scale your global marketplace with our custom multi-seller platform. Intelligent search and optimized listings for world-class selling.",
-        url: "https://www.ctasis.com/portfolios/global-multi-seller-e-commerce-platform",
-    },
+    title: "Global Multi-Seller E-Commerce Platform | Ctas Info Services",
+    description: "A scalable, user-friendly platform connecting sellers and customers worldwide with intelligent search and listings.",
+    url: "https://www.ctasis.com/portfolios/global-multi-seller-e-commerce-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/global-multi-seller-e-commerce-platform.webp",
+        width: 1200,
+        height: 630,
+        alt: "Global Multi-Seller E-Commerce Platform | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Global Multi-Seller E-Commerce Platform | Ctas Info Services",
+    description: "A scalable, user-friendly platform connecting sellers and customers worldwide with intelligent search and listings.",
+    images: ["https://www.ctasis.com/portfolio-banners/global-multi-seller-e-commerce-platform.webp"],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

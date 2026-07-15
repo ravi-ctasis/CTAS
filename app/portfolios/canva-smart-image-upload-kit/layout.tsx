@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Automated Canva Workflow & Image Upload Kit | CTAS",
-        description: "Drastically reduce design time with our smart Canva integration. Auto-process and grid images for high-volume Amazon selling.",
-        url: "https://www.ctasis.com/portfolios/canva-smart-image-upload-kit",
-    },
+    title: "Canva Smart Image Upload Kit | Ctas Info Services",
+    description: "Automates fetching, processing, and rendering of order images into structured Canva grids for Amazon sellers.",
+    url: "https://www.ctasis.com/portfolios/canva-smart-image-upload-kit",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/canva-smart-image-upload-kit.webp",
+        width: 1200,
+        height: 630,
+        alt: "Canva Smart Image Upload Kit | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Canva Smart Image Upload Kit | Ctas Info Services",
+    description: "Automates fetching, processing, and rendering of order images into structured Canva grids for Amazon sellers.",
+    images: ["https://www.ctasis.com/portfolio-banners/canva-smart-image-upload-kit.webp"],
+  },
 };
 
 export default function CanvaSmartImageUploadKitLayout({

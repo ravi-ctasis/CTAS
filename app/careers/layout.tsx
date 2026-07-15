@@ -14,6 +14,21 @@ export const metadata: Metadata = {
     title: "Careers at Ctas Info Services | Grow with Us",
     description: "Build the future of AI and E-commerce. Join our team of expert developers and innovators.",
     url: "https://www.ctasis.com/careers",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/hiring.webp",
+        width: 1200,
+        height: 630,
+        alt: "Careers at Ctas Info Services | Join Our Team",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Careers at Ctas Info Services | Grow with Us",
+    description: "Build the future of AI and E-commerce. Join our team of expert developers and innovators.",
+    images: ["https://www.ctasis.com/hiring.webp"],
   },
   alternates: {
     canonical: "https://www.ctasis.com/careers",

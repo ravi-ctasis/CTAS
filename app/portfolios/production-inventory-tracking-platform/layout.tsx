@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Smart Production & Inventory Tracking System | CTAS",
-        description: "Maintain full visibility across your production cycle. Explore our custom inventory tracking and audit history platform.",
-        url: "https://www.ctasis.com/portfolios/production-inventory-tracking-platform",
-    },
+    title: "Smart Production & Inventory Tracking | Ctas Info Services",
+    description: "A centralized solution for managing production stages from PI creation to shipments with full audit history.",
+    url: "https://www.ctasis.com/portfolios/production-inventory-tracking-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/production-inventory-tracking-platform.webp",
+        width: 1200,
+        height: 630,
+        alt: "Smart Production & Inventory Tracking | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Smart Production & Inventory Tracking | Ctas Info Services",
+    description: "A centralized solution for managing production stages from PI creation to shipments with full audit history.",
+    images: ["https://www.ctasis.com/portfolio-banners/production-inventory-tracking-platform.webp"],
+  },
 };
 
 export default function ProductionInventoryTrackingPlatformLayout({

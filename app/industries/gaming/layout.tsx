@@ -26,9 +26,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Next-Gen Gaming Tech & Immersive Experiences | Ctas Info Services",
-    description: "Launch your next game with elite backend and VR solutions. Expert developers for modern gaming platforms and studios.",
+    title: "Gaming & VR Software Development | Ctas Info Services",
+    description: "Ctas delivers gaming solutions: mobile, web, VR experiences, live ops, analytics, and backend services for game studios.",
     url: "https://www.ctasis.com/industries/gaming",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logo-icon.webp",
+        width: 1200,
+        height: 630,
+        alt: "Gaming & VR Software Development | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gaming & VR Software Development | Ctas Info Services",
+    description: "Ctas delivers gaming solutions: mobile, web, VR experiences, live ops, analytics, and backend services for game studios.",
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
 };
 

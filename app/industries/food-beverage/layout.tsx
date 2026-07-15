@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Innovative Digital Solutions for Food & Beverage | Ctas",
-    description: "Modernize your restaurant or food business with custom POS and ordering systems. Expert tech for the F&B industry.",
+    title: "Food & Beverage Tech Solutions | Ctas Info Services",
+    description: "Digital solutions for food and beverage: POS, supply chain, online ordering, delivery integrations, and analytics by Ctas.",
     url: "https://www.ctasis.com/industries/food-beverage",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logo-icon.webp",
+        width: 1200,
+        height: 630,
+        alt: "Food & Beverage Tech Solutions | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Food & Beverage Tech Solutions | Ctas Info Services",
+    description: "Digital solutions for food and beverage: POS, supply chain, online ordering, delivery integrations, and analytics by Ctas.",
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
 };
 

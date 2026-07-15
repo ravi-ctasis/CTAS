@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Custom App Development Solutions | Ctas Info Services",
+  title: "Dynamic E-Commerce Solutions",
   description:
     "Comprehensive digital solutions including dating apps, e-commerce, mobile wallets, food delivery, and healthcare. Custom app development for all industries.",
   keywords: [
@@ -25,27 +25,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Our Solutions | Custom App Development & Digital Solutions | Ctas",
+    title: "Dynamic E-Commerce Solutions",
     description:
       "Comprehensive digital solutions including dating apps, e-commerce platforms, mobile wallets, food delivery apps, healthcare solutions, and more.",
     type: "website",
     url: "https://www.ctasis.com/solutions",
     images: [
       {
-        url: "https://www.ctasis.com/assets/images/solutions-og-image.jpg",
+        url: "/service-banners/e-commerce-solutions.webp",
         width: 1200,
         height: 630,
-        alt: "Ctas Custom App Development Solutions",
+        alt: "Ctas Custom E-Commerce Solutions",
       },
     ],
     siteName: "Ctas Info Services LLP",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Solutions | Custom App Development & Digital Solutions | Ctas",
+    title: "Dynamic E-Commerce Solutions",
     description:
       "Comprehensive digital solutions including dating apps, e-commerce platforms, mobile wallets, food delivery apps, healthcare solutions, and more.",
-    images: ["https://www.ctasis.com/assets/images/solutions-twitter-card.jpg"],
+    images: ["/service-banners/e-commerce-solutions.webp"],
     site: "@ctasinfoservices",
   },
 };

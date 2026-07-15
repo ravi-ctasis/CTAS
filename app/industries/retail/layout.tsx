@@ -20,9 +20,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Transforming Retail with Omnichannel & Tech Solutions | Ctas",
-    description: "Scale your retail business with integrated digital solutions. Expert developers for POS, inventory, and logistics.",
+    title: "Retail & E-commerce Solutions | Ctas Info Services",
+    description: "Retail and e-commerce technology by Ctas: omnichannel platforms, POS, inventory, logistics, and supply chain analytics.",
     url: "https://www.ctasis.com/industries/retail",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/service-banners/e-commerce-solutions.webp",
+        width: 1200,
+        height: 630,
+        alt: "Retail & E-commerce Solutions | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Retail & E-commerce Solutions | Ctas Info Services",
+    description: "Retail and e-commerce technology by Ctas: omnichannel platforms, POS, inventory, logistics, and supply chain analytics.",
+    images: ["https://www.ctasis.com/service-banners/e-commerce-solutions.webp"],
   },
 };
 

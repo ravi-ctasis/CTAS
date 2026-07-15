@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Ctas Info Services LLP",
+  title: "Cookie Policy & Privacy",
   description: "Learn how Ctas Info Services LLP uses cookies and web beacons on our website to enhance visitor and client user experiences.",
   alternates: {
     canonical: "https://www.ctasis.com/cookie-policy",

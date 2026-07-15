@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "High-Accuracy Automated Data Extraction Platform | CTAS",
-        description: "Transform raw web data into actionable business intelligence. Explore our custom extraction and normalization platform.",
-        url: "https://www.ctasis.com/portfolios/automated-product-data-extraction-platform",
-    },
+    title: "Automated Product Data Extraction | Ctas Info Services",
+    description: "Automates product data extraction, normalization, and organization from multiple online sources with elite accuracy.",
+    url: "https://www.ctasis.com/portfolios/automated-product-data-extraction-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/automated-product-data-extraction-platform.webp",
+        width: 1200,
+        height: 630,
+        alt: "Automated Product Data Extraction | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automated Product Data Extraction | Ctas Info Services",
+    description: "Automates product data extraction, normalization, and organization from multiple online sources with elite accuracy.",
+    images: ["https://www.ctasis.com/portfolio-banners/automated-product-data-extraction-platform.webp"],
+  },
 };
 
 export default function AutomatedProductDataExtractionPlatformLayout({

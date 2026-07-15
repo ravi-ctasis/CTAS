@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Scale Your Multi-Vendor Marketplace - Case Study | Ctas Info Services",
-        description: "Connect buyers and sellers with a high-performance marketplace platform. A case study in advanced vendor management and booking tech.",
-        url: "https://www.ctasis.com/case-studies/marketplace-service",
-    },
+    title: "Marketplace Platform Case Study | Ctas Info Services",
+    description: "Ctas develops multi-vendor marketplace platforms: buyers and sellers connect seamlessly with advanced ecommerce capabilities.",
+    url: "https://www.ctasis.com/case-studies/marketplace-service",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/marketplace-service.webp",
+        width: 1200,
+        height: 630,
+        alt: "Marketplace Platform Case Study | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Marketplace Platform Case Study | Ctas Info Services",
+    description: "Ctas develops multi-vendor marketplace platforms: buyers and sellers connect seamlessly with advanced ecommerce capabilities.",
+    images: ["https://www.ctasis.com/marketplace-service.webp"],
+  },
 };
 
 export default function MarketplaceServiceLayout({

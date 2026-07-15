@@ -33,7 +33,9 @@ import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
-  title: "CTAS Repricer — AI-Powered Amazon Repricing Platform",
+  title: {
+    absolute: "Ctas Repricer: Amazon Buy Box Repricing Tool"
+  },
   description: "Automate pricing, protect profits, and win more Buy Boxes with CTAS Repricer. AI-driven Amazon repricing platform for modern sellers.",
   keywords: [
     "Amazon repricer",

@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Enterprise Smart Warehouse & Inventory Management | CTAS",
-        description: "Eliminate overselling and optimize stock with our intelligent warehouse platform. Real-time visibility for complex e-commerce operations.",
-        url: "https://www.ctasis.com/portfolios/warehouse-inventory-management-platform",
-    },
+    title: "Smart Warehouse Management Platform | Ctas Info Services",
+    description: "An intelligent platform for real-time stock visibility and warehouse operations to prevent overselling.",
+    url: "https://www.ctasis.com/portfolios/warehouse-inventory-management-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/warehouse-inventory-management-platform.webp",
+        width: 1200,
+        height: 630,
+        alt: "Smart Warehouse Management Platform | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Smart Warehouse Management Platform | Ctas Info Services",
+    description: "An intelligent platform for real-time stock visibility and warehouse operations to prevent overselling.",
+    images: ["https://www.ctasis.com/portfolio-banners/warehouse-inventory-management-platform.webp"],
+  },
 };
 
 export default function WarehouseInventoryManagementPlatformLayout({

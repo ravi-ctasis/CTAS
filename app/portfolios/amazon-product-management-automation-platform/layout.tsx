@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Amazon Product Management Automation - Case Study | CTAS",
-        description: "Scale your Amazon business with AI-driven repricing and smart inventory. Explore our custom multi-marketplace management platform.",
-        url: "https://www.ctasis.com/portfolios/amazon-product-management-automation-platform",
-    },
+    title: "Amazon Product Management Automation | Ctas Info Services",
+    description: "All-in-one Amazon product management automation software: AIrepricing, smart inventory control, and multi-marketplace integration.",
+    url: "https://www.ctasis.com/portfolios/amazon-product-management-automation-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/amazon-product-management-automation-platform.webp",
+        width: 1200,
+        height: 630,
+        alt: "Amazon Product Management Automation | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Amazon Product Management Automation | Ctas Info Services",
+    description: "All-in-one Amazon product management automation software: AIrepricing, smart inventory control, and multi-marketplace integration.",
+    images: ["https://www.ctasis.com/portfolio-banners/amazon-product-management-automation-platform.webp"],
+  },
 };
 
 export default function AmazonProductManagementAutomationPlatformLayout({

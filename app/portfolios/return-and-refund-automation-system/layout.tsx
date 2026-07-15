@@ -20,10 +20,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Advanced Return & Refund Automation System | CTAS",
-        description: "Optimise your Amazon return operations. Automated Safe-T claims and refund tracking for elite e-commerce sellers.",
-        url: "https://www.ctasis.com/portfolios/return-and-refund-automation-system",
-    },
+    title: "Return Operations & Refund Automation | Ctas Info Services",
+    description: "A comprehensive platform for managing Amazon returns, real-time scanning, and refund automation.",
+    url: "https://www.ctasis.com/portfolios/return-and-refund-automation-system",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/return-and-refund-automation-system.webp",
+        width: 1200,
+        height: 630,
+        alt: "Return Operations & Refund Automation | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Return Operations & Refund Automation | Ctas Info Services",
+    description: "A comprehensive platform for managing Amazon returns, real-time scanning, and refund automation.",
+    images: ["https://www.ctasis.com/portfolio-banners/return-and-refund-automation-system.webp"],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

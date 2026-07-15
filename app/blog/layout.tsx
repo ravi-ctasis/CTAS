@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Insights on Amazon SP-API, AI & E-commerce",
+  title: "E-Commerce & SP-API Blog",
   description: "Explore our latest articles on Amazon Selling Partner API, AI automation, and e-commerce growth strategies.",
   keywords: [
     "Amazon SP-API blog",
@@ -31,6 +31,12 @@ export const metadata: Metadata = {
         alt: "Ctas Info Services Blog",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Commerce & Technology Insights Blog | Ctas Info Services",
+    description: "Deep dives into Amazon SP-API, Artificial Intelligence, and the future of e-commerce automation.",
+    images: ["/blog-banner.jpg"],
   },
 };
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Ctas Info Services LLP",
+  title: "Privacy Policy & GDPR",
   description: "Read the Privacy Policy of Ctas Info Services LLP to understand how we collect, use, and protect your personal information.",
   alternates: {
     canonical: "https://www.ctasis.com/privacy-policy",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Privacy Policy | Ctas Info Services LLP",
+    title: "Privacy Policy & GDPR",
     description: "Read the Privacy Policy of Ctas Info Services LLP to understand how we collect, use, and protect your personal information.",
     url: "https://www.ctasis.com/privacy-policy",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | Ctas Info Services LLP",
+    title: "Privacy Policy & GDPR",
     description: "Read the Privacy Policy of Ctas Info Services LLP to understand how we collect, use, and protect your personal information.",
     images: ["https://www.ctasis.com/logo-icon.webp"],
   },

@@ -22,4 +22,5 @@ export type BlogPost = {
             github?: string;
         };
     };
+    lastModified?: string;
 };

@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Premium Fashion Marketplace Web Solutions - Case Study | Ctas",
-    description: "Scale your fashion brand with a high-performance multi-vendor marketplace. Expert developers for the global fashion retail industry.",
+    title: "Fashion Marketplace Case Study | Ctas Info Services",
+    description: "Ctas builds fashion marketplace platforms: product catalogs, vendor management, shopping carts, and secure payments.",
     url: "https://www.ctasis.com/case-studies/fashion-marketplace-web",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/fashion-marketplace-web.webp",
+        width: 1200,
+        height: 630,
+        alt: "Fashion Marketplace Case Study | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fashion Marketplace Case Study | Ctas Info Services",
+    description: "Ctas builds fashion marketplace platforms: product catalogs, vendor management, shopping carts, and secure payments.",
+    images: ["https://www.ctasis.com/fashion-marketplace-web.webp"],
   },
 };
 

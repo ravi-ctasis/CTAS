@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Advanced Logistics & Transportation Software | Ctas Info Services",
-    description: "Optimize your fleet and logistics with real-time tracking and route intelligence. Expert solutions for the transportation industry.",
+    title: "Transportation & Logistics Tech | Ctas Info Services",
+    description: "Transportation and logistics software by Ctas: fleet management, TMS, route optimization, telematics, and real-time visibility.",
     url: "https://www.ctasis.com/industries/transportation",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logistics.webp",
+        width: 1200,
+        height: 630,
+        alt: "Transportation & Logistics Tech | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Transportation & Logistics Tech | Ctas Info Services",
+    description: "Transportation and logistics software by Ctas: fleet management, TMS, route optimization, telematics, and real-time visibility.",
+    images: ["https://www.ctasis.com/logistics.webp"],
   },
 };
 

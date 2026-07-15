@@ -46,8 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return w.charAt(0).toUpperCase() + w.slice(1);
     })
     .join(" ");
+  
+  const introSection = page.sections.find((s) => s.sectionId === "intro");
+  const introData = introSection?.data?.[0] as any;
+  const ogImageUrl = introData?.imageSrc || "/logo-icon.webp";
 
-  const cleanTitle = `Hire Dedicated ${cleanRole} Developers | Ctas Info Services`;
+  const cleanTitle = `Hire ${cleanRole} Developers`;
   const cleanDesc = `Hire dedicated, skilled ${cleanRole} developers for your custom software solutions. Save up to 60% with our 10-day risk-free trial.`;
 
   return {
@@ -60,6 +64,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "en-IN": `https://www.ctasis.com/hire-team/${id}`,
         "x-default": `https://www.ctasis.com/hire-team/${id}`,
       },
+    },
+    openGraph: {
+      title: cleanTitle,
+      description: cleanDesc,
+      url: `https://www.ctasis.com/hire-team/${id}`,
+      type: "website",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: cleanTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: cleanTitle,
+      description: cleanDesc,
+      images: [ogImageUrl],
     },
     robots: {
       index: true,

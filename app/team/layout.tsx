@@ -14,6 +14,21 @@ export const metadata: Metadata = {
     title: "Meet the Expert Team Behind Ctas Info Services",
     description: "Highly skilled developers and innovators dedicated to delivering elite technology solutions.",
     url: "https://www.ctasis.com/team",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/life-at-ctas-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Meet the Expert Team Behind Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Meet the Expert Team Behind Ctas Info Services",
+    description: "Highly skilled developers and innovators dedicated to delivering elite technology solutions.",
+    images: ["https://www.ctasis.com/life-at-ctas-banner.jpg"],
   },
   alternates: {
     canonical: "https://www.ctasis.com/team",

@@ -46,6 +46,12 @@ export async function generateMetadata({
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.excerpt,
+      images: [blog.image],
+    },
     alternates: {
       canonical: `https://www.ctasis.com/blog/${blog.slug}`,
       languages: {

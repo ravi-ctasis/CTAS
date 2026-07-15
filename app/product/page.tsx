@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
-  title: "CTAS Products — E-commerce Automation & Software Suite",
+  title: "E-Commerce Software Products",
   description: "Explore our specialized e-commerce automation products: ScanPro, Repricer, SellerBuz, and Postbell to optimize and scale your online business.",
   keywords: [
     "CTAS products",

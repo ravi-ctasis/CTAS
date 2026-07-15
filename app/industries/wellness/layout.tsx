@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Revolutionizing Wellness & Healthcare with Digital Tech | Ctas",
-    description: "Build robust patient engagement and health monitoring tools. Expert developers for the wellness and healthcare sector.",
+    title: "Wellness & Healthcare Tech Solutions | Ctas Info Services",
+    description: "Wellness and healthcare apps, wearables, patient engagement, and analytics solutions delivered by expert developers at Ctas.",
     url: "https://www.ctasis.com/industries/wellness",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/logo-icon.webp",
+        width: 1200,
+        height: 630,
+        alt: "Wellness & Healthcare Tech Solutions | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wellness & Healthcare Tech Solutions | Ctas Info Services",
+    description: "Wellness and healthcare apps, wearables, patient engagement, and analytics solutions delivered by expert developers at Ctas.",
+    images: ["https://www.ctasis.com/logo-icon.webp"],
   },
 };
 

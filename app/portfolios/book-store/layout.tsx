@@ -20,10 +20,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Modern Online Bookstore & E-commerce Solution | CTAS",
-        description: "Experience seamless book discovery and shopping. Our custom e-commerce solution for the literary and publishing industry.",
-        url: "https://www.ctasis.com/portfolios/book-store",
-    },
+    title: "Bookstore – Online E-Commerce Shop | Ctas Info Services",
+    description: "A dedicated online bookstore offering an extensive collection of English books, optimized for discovery and purchase in the EU.",
+    url: "https://www.ctasis.com/portfolios/book-store",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/book-store.webp",
+        width: 1200,
+        height: 630,
+        alt: "Bookstore – Online E-Commerce Shop | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bookstore – Online E-Commerce Shop | Ctas Info Services",
+    description: "A dedicated online bookstore offering an extensive collection of English books, optimized for discovery and purchase in the EU.",
+    images: ["https://www.ctasis.com/portfolio-banners/book-store.webp"],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

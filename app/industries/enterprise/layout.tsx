@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Robust Enterprise Solutions & Digital Transformation | Ctas",
-    description: "Scale your organization with elite enterprise-grade software. Custom ERP, CRM, and cloud-driven business analytics.",
+    title: "Enterprise ERP & CRM Software | Ctas Info Services",
+    description: "Enterprise-grade software, ERP, CRM, analytics, and cloud solutions from Ctas tailored for global organizations and large enterprises.",
     url: "https://www.ctasis.com/industries/enterprise",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/enterprise-dashboard.webp",
+        width: 1200,
+        height: 630,
+        alt: "Enterprise ERP & CRM Software | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Enterprise ERP & CRM Software | Ctas Info Services",
+    description: "Enterprise-grade software, ERP, CRM, analytics, and cloud solutions from Ctas tailored for global organizations and large enterprises.",
+    images: ["https://www.ctasis.com/enterprise-dashboard.webp"],
   },
 };
 

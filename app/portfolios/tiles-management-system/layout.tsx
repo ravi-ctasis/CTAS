@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Enterprise Tiles Production & Sales Management | CTAS",
-        description: "Centralize your tiles business with our custom ERP. Full visibility into production and international sales workflows.",
-        url: "https://www.ctasis.com/portfolios/tiles-management-system",
-    },
+    title: "Tiles Management System | Portfolios | Ctas Info Services",
+    description: "A centralized platform for managing tile production, domestic and international sales, and secure workflows.",
+    url: "https://www.ctasis.com/portfolios/tiles-management-system",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/tiles-management-system.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tiles Management System | Portfolios | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tiles Management System | Portfolios | Ctas Info Services",
+    description: "A centralized platform for managing tile production, domestic and international sales, and secure workflows.",
+    images: ["https://www.ctasis.com/portfolio-banners/tiles-management-system.webp"],
+  },
 };
 
 export default function TilesManagementSystemLayout({

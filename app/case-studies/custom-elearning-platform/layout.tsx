@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Innovative Custom eLearning Solutions - Case Study | Ctas",
-    description: "Explore our robust EdTech platform with seamless video streaming and interactive quizzes. A success story in digital education.",
+    title: "Custom eLearning Platform Development | Ctas",
+    description: "Ctas develops custom eLearning platforms: course management, video streaming, quizzes, and progress tracking.",
     url: "https://www.ctasis.com/case-studies/custom-elearning-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/custom-e-learning.webp",
+        width: 1200,
+        height: 630,
+        alt: "Custom eLearning Platform Development | Ctas",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Custom eLearning Platform Development | Ctas",
+    description: "Ctas develops custom eLearning platforms: course management, video streaming, quizzes, and progress tracking.",
+    images: ["https://www.ctasis.com/custom-e-learning.webp"],
   },
 };
 

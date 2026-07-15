@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Ctas Info Services LLP",
+  title: "Terms and Conditions",
   description: "Review the terms and conditions for using the website, services, and software tools provided by Ctas Info Services LLP.",
   alternates: {
     canonical: "https://www.ctasis.com/terms",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Terms and Conditions | Ctas Info Services LLP",
+    title: "Terms and Conditions",
     description: "Review the terms and conditions for using the website, services, and software tools provided by Ctas Info Services LLP.",
     url: "https://www.ctasis.com/terms",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms and Conditions | Ctas Info Services LLP",
+    title: "Terms and Conditions",
     description: "Review the terms and conditions for using the website, services, and software tools provided by Ctas Info Services LLP.",
     images: ["https://www.ctasis.com/logo-icon.webp"],
   },

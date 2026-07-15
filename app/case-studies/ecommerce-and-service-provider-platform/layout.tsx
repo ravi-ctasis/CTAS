@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Enterprise Ecommerce & Service Provider Success | Ctas Info Services",
-    description: "See how we integrated complex service bookings with high-volume retail. A case study in unified digital commerce and vendor management.",
+    title: "Ecommerce & Service Provider Platform | Ctas Info Services",
+    description: "Ctas develops ecommerce and service provider platforms: product/service listings, payment gateways, and vendor management.",
     url: "https://www.ctasis.com/case-studies/ecommerce-and-service-provider-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/ecommerce-and-service-provider-platform-img.webp",
+        width: 1200,
+        height: 630,
+        alt: "Ecommerce & Service Provider Platform | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ecommerce & Service Provider Platform | Ctas Info Services",
+    description: "Ctas develops ecommerce and service provider platforms: product/service listings, payment gateways, and vendor management.",
+    images: ["https://www.ctasis.com/ecommerce-and-service-provider-platform-img.webp"],
   },
 };
 

@@ -22,11 +22,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Banking & Finance Software Development | Fintech Solutions | Ctas Info Services LLP",
-    description:
-      "Secure banking and finance software development services including fintech solutions, payment processing, financial analytics, and compliance systems.",
-    type: "website",
+    title: "Banking & Fintech Software Development | Ctas Info Services",
+    description: "Secure fintech and banking software development, including payment processing, financial analytics, and compliance systems.",
     url: "https://www.ctasis.com/industries/banking-finance",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/banking-finance.webp",
+        width: 1200,
+        height: 630,
+        alt: "Banking & Fintech Software Development | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Banking & Fintech Software Development | Ctas Info Services",
+    description: "Secure fintech and banking software development, including payment processing, financial analytics, and compliance systems.",
+    images: ["https://www.ctasis.com/banking-finance.webp"],
   },
 };
 

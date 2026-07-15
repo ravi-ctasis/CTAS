@@ -22,7 +22,9 @@ import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
 
 export const metadata: Metadata = {
-  title: "SellerBuz — Unified Multi-Channel Selling Platform",
+  title: {
+    absolute: "Sellerbuz: Multi-Channel Inventory Platform"
+  },
   description: "Centralized dashboard managing your e-commerce listings, orders, and pricing. SellerBuz automatically syncs inventory across Amazon, Etsy, and global channels.",
   keywords: [
     "multi-channel selling",

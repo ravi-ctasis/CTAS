@@ -21,9 +21,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Streamlined Amazon Order Automation - Case Study | Ctas Info Services",
-    description: "Learn how we revolutionized order processing and inventory updates for high-volume Amazon sellers. Real-time automation results.",
+    title: "Amazon Order Automation Case Study | Ctas Info Services",
+    description: "Ctas provides Amazon order automation solutions: streamline order processing, inventory updates, and reporting.",
     url: "https://www.ctasis.com/case-studies/amazon-order-automation-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/amazon-auto-ordering-order-management.webp",
+        width: 1200,
+        height: 630,
+        alt: "Amazon Order Automation Case Study | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Amazon Order Automation Case Study | Ctas Info Services",
+    description: "Ctas provides Amazon order automation solutions: streamline order processing, inventory updates, and reporting.",
+    images: ["https://www.ctasis.com/amazon-auto-ordering-order-management.webp"],
   },
 };
 

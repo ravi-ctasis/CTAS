@@ -21,10 +21,25 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Amazon FBA & FBM Automation Platform - Case Study | CTAS",
-        description: "Explore our centralized platform for scaling Amazon selling operations. Automated inventory, orders, and performance tracking.",
-        url: "https://www.ctasis.com/portfolios/amazon-fbm-fba-operations-automation-platform",
-    },
+    title: "Amazon FBA & FBM Automation Platform | Ctas Info Services",
+    description: "A centralized, web-based platform for managing Amazon FBA and FBM operations: inventory, orders, shipments, and performance analytics.",
+    url: "https://www.ctasis.com/portfolios/amazon-fbm-fba-operations-automation-platform",
+    type: "website",
+    images: [
+      {
+        url: "https://www.ctasis.com/portfolio-banners/amazon-fbm-fba-operations-automation-platform.webp",
+        width: 1200,
+        height: 630,
+        alt: "Amazon FBA & FBM Automation Platform | Ctas Info Services",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Amazon FBA & FBM Automation Platform | Ctas Info Services",
+    description: "A centralized, web-based platform for managing Amazon FBA and FBM operations: inventory, orders, shipments, and performance analytics.",
+    images: ["https://www.ctasis.com/portfolio-banners/amazon-fbm-fba-operations-automation-platform.webp"],
+  },
 };
 
 export default function AmazonFbaFbmOperationsAutomationPlatformLayout({
