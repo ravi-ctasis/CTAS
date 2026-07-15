@@ -24,7 +24,6 @@ import {
   Monitor,
   Bell,
   RadioReceiver,
-  ArrowRight,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";

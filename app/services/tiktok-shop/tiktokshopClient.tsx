@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Package, BarChart3, Truck, Zap, TrendingUp, Users, Smartphone,
-  Settings, CheckCircle, Globe, Video, ArrowRight, DollarSign,
+  Package, BarChart3, Truck, Zap, Users, Smartphone, CheckCircle, Video, ArrowRight,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
@@ -195,7 +194,7 @@ export default function TikTokShopClient() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#FE2C55]/20 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#25F4EE]/20 rounded-full blur-3xl" />
               <h2 className="text-3xl font-bold mb-4 relative z-10">Ready to Conquer TikTok Shop?</h2>
-              <p className="text-gray-300 mb-8 max-w-lg mx-auto relative z-10">Don't let backend operations hold back your sales potential. Let our experts build a robust, scalable TikTok integration for your brand.</p>
+              <p className="text-gray-300 mb-8 max-w-lg mx-auto relative z-10">Don&apos;t let backend operations hold back your sales potential. Let our experts build a robust, scalable TikTok integration for your brand.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                 <Link href="/contact-us" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#FE2C55] text-white font-semibold hover:bg-[#e02047] transition-colors">
                   Get Free Consultation <ArrowRight className="w-4 h-4" />

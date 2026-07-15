@@ -24,9 +24,6 @@ import {
   Send,
   Bookmark,
   MoreHorizontal,
-  TrendingUp,
-  ThumbsUp,
-  Eye,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -654,7 +651,7 @@ function HeroDashboardMockup() {
           <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-100">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold text-gray-700">
-                Today's Auto-Publish Queue
+                Today&apos;s Auto-Publish Queue
               </span>
               <Calendar className="w-3.5 h-3.5 text-gray-400" />
             </div>
@@ -1046,7 +1043,7 @@ function DiwaliPosterCard() {
             SPECIAL DIWALI OFFERS
           </div>
           <div className="text-[7px] text-gray-700 flex justify-between">
-            <span>Smart LED TV 43"</span>
+            <span>Smart LED TV 43&quot;</span>
             <span>Rs 21,999 onwards</span>
           </div>
           <div className="text-[7px] text-gray-700 flex justify-between">

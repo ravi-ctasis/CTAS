@@ -10,7 +10,6 @@ import {
   Zap,
   ArrowRight,
   Play,
-  Code,
   Database,
   Cloud,
   Smartphone,

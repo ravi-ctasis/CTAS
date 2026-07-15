@@ -3,10 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Package, BarChart3, Truck, DollarSign, Search, TrendingUp, Zap,
-  RotateCcw, Shield, Users, FileText, CheckCircle, Globe, Star, ArrowRight,
-  ShoppingCart
-} from "lucide-react";
+  Package, Truck, DollarSign, TrendingUp,
+  RotateCcw, Shield, Users, FileText, CheckCircle, Star, ArrowRight} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
 
@@ -89,7 +87,7 @@ export default function WalmartClient() {
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
                   Scale on <span className="text-[#FFC220]">Walmart Marketplace</span>
                 </h1>
-                <p className="text-blue-100/90 text-lg mb-8 max-w-xl">Harness the power of the US's fastest-growing retail marketplace. Certified API integration for items, orders, inventory, and WFS fulfillment.</p>
+                <p className="text-blue-100/90 text-lg mb-8 max-w-xl">Harness the power of the US&apos;s fastest-growing retail marketplace. Certified API integration for items, orders, inventory, and WFS fulfillment.</p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact-us" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#FFC220] text-[#0071CE] font-bold hover:bg-[#e5a810] transition-colors shadow-lg">
                     Get Free Consultation <ArrowRight className="w-4 h-4" />
@@ -139,7 +137,7 @@ export default function WalmartClient() {
             <div className="text-center mb-12">
               <span className="inline-block mb-3 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-[#0071CE] border border-blue-200">Our Services</span>
               <h2 className="text-3xl font-bold text-slate-900 mb-3">Walmart <span className="text-[#FFC220]">Certified Integration</span></h2>
-              <p className="text-slate-500 max-w-2xl mx-auto">Robust API integration meeting Walmart's strict performance standards for latency, reliability, and data accuracy.</p>
+              <p className="text-slate-500 max-w-2xl mx-auto">Robust API integration meeting Walmart&apos;s strict performance standards for latency, reliability, and data accuracy.</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((f, i) => {
@@ -181,7 +179,7 @@ export default function WalmartClient() {
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">Enterprise Tech Stack Compatibility</h2>
-            <p className="text-slate-500 mb-8">We bridge the gap between Walmart's APIs and your internal systems seamlessly.</p>
+            <p className="text-slate-500 mb-8">We bridge the gap between Walmart&apos;s APIs and your internal systems seamlessly.</p>
             <div className="flex flex-wrap gap-3 justify-center">
               {integrations.map((name) => (<span key={name} className="px-4 py-2 bg-white border border-slate-200 rounded-full text-sm text-slate-700 font-medium shadow-sm">{name}</span>))}
             </div>

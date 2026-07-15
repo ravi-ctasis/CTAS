@@ -10,9 +10,7 @@ import {
   Palette,
   Globe,
   Zap,
-  Shield,
   TrendingUp,
-  Settings,
   Star,
   CheckCircle,
 } from "lucide-react";

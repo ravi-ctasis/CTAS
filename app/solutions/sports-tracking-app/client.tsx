@@ -20,7 +20,6 @@ import {
   BarChart3,
   User,
   Bell,
-  ArrowRight,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";
@@ -425,7 +424,7 @@ export default function SportsTrackingAppPage() {
             role="list"
             aria-label="Platform statistics"
           >
-            {bottomStats.map((stat, i) => (
+            {bottomStats.map((stat) => (
               <div key={stat.label} className="text-center" role="listitem">
                 <div className={`${fraunces.className} text-2xl sm:text-3xl font-medium mb-1`} style={{ color: NAVY }}>
                   {stat.number.match(/^[\d.$]+/) ? <AnimatedStat value={stat.number} /> : stat.number}

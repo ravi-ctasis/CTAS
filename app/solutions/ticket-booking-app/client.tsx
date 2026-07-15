@@ -21,7 +21,6 @@ import {
   TrendingUp,
   Plane,
   Hotel,
-  ArrowRight,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";

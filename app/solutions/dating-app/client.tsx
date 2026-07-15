@@ -12,7 +12,6 @@ import {
   Shield,
   Zap,
   Globe,
-  ArrowRight,
   Play,
   Code,
   Database,
@@ -20,7 +19,6 @@ import {
   Smartphone,
   Monitor,
   Server,
-  CheckCircle2,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";

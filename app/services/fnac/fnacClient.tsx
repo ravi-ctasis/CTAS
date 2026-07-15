@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Package, BarChart3, Truck, DollarSign, TrendingUp,
-  RotateCcw, Users, FileText, CheckCircle, Globe, Star, ArrowRight, Zap, Search, Palette, Code,
+import { BarChart3, Truck, DollarSign, TrendingUp,
+  RotateCcw, Users, FileText, CheckCircle, Globe, Star, ArrowRight, Zap,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
@@ -88,7 +87,7 @@ export default function FnacClient() {
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
                   Sell Across <span className="text-orange-300">Fnac</span> Marketplace
                 </h1>
-                <p className="text-orange-100/70 text-lg mb-8 max-w-xl">France, Spain, Portugal & Belgium's premium marketplace with 10M+ loyal shoppers. We automate your Fnac presence — from catalog to fulfilment.</p>
+                <p className="text-orange-100/70 text-lg mb-8 max-w-xl">France, Spain, Portugal & Belgium&apos;s premium marketplace with 10M+ loyal shoppers. We automate your Fnac presence — from catalog to fulfilment.</p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact-us" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#7f4000] font-semibold hover:bg-orange-50 transition-colors shadow-lg">
                     Get Free Consultation <ArrowRight className="w-4 h-4" />

@@ -14,7 +14,6 @@ import {
   Server,
   Cpu,
   Network,
-  Star,
   Wallet,
   HardDrive,
   DollarSign,
@@ -23,8 +22,6 @@ import {
   Clock,
   ArrowRight,
   ArrowUpRight,
-  Trophy,
-  CheckCircle2,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";

@@ -741,7 +741,7 @@ export const portfoliosData: Portfolio[] = [
       "An automated synchronization engine connecting Google Sheets directly with marketplace APIs (Amazon SP-API, eBay, etc.) for real-time inventory and pricing management.",
     longDescription:
       "An enterprise-grade solution that connects Google Sheets directly with marketplace APIs, enabling merchants to manage bulk changes (price, stock, details) inside Google Sheets. The synchronization engine monitors sheet edits, validates structural data, and calls Amazon SP-API and other marketplace endpoints with built-in rate-limiting compliance. It handles secure OAuth 2.0 multi-account seller auth, processes updates in queues, and updates sheet status rows upon completion.",
-    image: "/google-sheets-integration-img.png",
+    image: "/portfolio-banners/google-sheets-integration.png",
     technologies: ["Google Sheets API", "Amazon SP-API", "OAuth 2.0", "Node.js", "React", "MongoDB"],
     link: "/portfolios/google-sheets-integration-marketplace-synchronization",
     year: "2025",
@@ -773,7 +773,7 @@ export const portfoliosData: Portfolio[] = [
       "A next-generation AI architecture utilizing the Model Context Protocol (MCP) to interact directly with any enterprise database or REST API, enabling natural language command execution, data analysis, and system management.",
     longDescription:
       "This scalable AI server architecture leverages the Model Context Protocol (MCP) to bridge the gap between advanced foundation LLMs and secure internal business APIs (CRMs, ERPs, custom software). By using MCP, the AI assistant dynamically discovers and uses registered tools to query proprietary databases, generate reports, and safely trigger system actions via natural language instructions. It features complex prompt security, SQL-injection prevention, LLM context-window token compression, and dual-layer authorization validation hooks for sensitive operations.",
-    image: "/mcp-api-integration-img.png",
+    image: "/portfolio-banners/mcp-api-integration.png",
     technologies: ["Model Context Protocol (MCP)", "LLM Orchestration", "Enterprise REST APIs", "Node.js", "TypeScript"],
     link: "/portfolios/ai-powered-marketplace-api-integration-mcp",
     year: "2026",

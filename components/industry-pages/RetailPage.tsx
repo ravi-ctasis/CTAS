@@ -2,7 +2,7 @@
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
 import { PageShell, PageHero, PageCTA } from "@/components/page-design";
-import { Button } from "@/components/ui/button";
+import {} from "@/components/ui/button";
 
 import {
   Shield,
@@ -24,11 +24,9 @@ import {
   Cloud,
   HardDrive,
   Monitor,
-  ArrowRight,
   Star,
 } from "lucide-react";
 import { useMemo } from "react";
-import Link from "next/link";
 
 const RetailPage = () => {
   // Memoize data to prevent unnecessary re-renders

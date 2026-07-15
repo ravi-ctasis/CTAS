@@ -18,7 +18,6 @@ import {
   Heart,
   Award,
   Globe,
-  ArrowRight,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";

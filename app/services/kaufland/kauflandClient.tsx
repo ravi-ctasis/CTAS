@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Package, BarChart3, Truck, DollarSign, TrendingUp,
-  RotateCcw, Shield, Users, FileText, CheckCircle, Globe, Star, ArrowRight, Zap, Search,
+  Package, BarChart3, DollarSign, TrendingUp,
+  RotateCcw, Users, FileText, CheckCircle, Globe, Star, ArrowRight, Zap,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
@@ -88,7 +88,7 @@ export default function KauflandClient() {
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
                   Grow Fast on <span className="text-red-300">Kaufland</span> Marketplace
                 </h1>
-                <p className="text-red-100/70 text-lg mb-8 max-w-xl">Germany's fastest-growing marketplace with 32M+ monthly visitors. Full automation from product feed to order fulfilment — built for ambitious sellers.</p>
+                <p className="text-red-100/70 text-lg mb-8 max-w-xl">Germany&apos;s fastest-growing marketplace with 32M+ monthly visitors. Full automation from product feed to order fulfilment — built for ambitious sellers.</p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact-us" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#7f0000] font-semibold hover:bg-red-50 transition-colors shadow-lg">
                     Get Free Consultation <ArrowRight className="w-4 h-4" />

@@ -3,7 +3,6 @@ import {
   Package,
   ShoppingCart,
   Zap,
-  Users,
   Shield,
   ArrowRight,
   Award,
@@ -14,7 +13,6 @@ import {
   Bot,
   Settings,
   Upload,
-  TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

@@ -1,4 +1,4 @@
-import { Scan, RefreshCcw, Store, Share2, ArrowRight, Award, Clock, CheckCircle, Zap, Globe, Bot, BarChart3, Shield, Star, Package } from "lucide-react";
+import { Scan, RefreshCcw, Store, Share2, ArrowRight, Award, CheckCircle, Zap, Globe, Bot, Shield, Star, Package } from "lucide-react";
 import Link from "next/link";
 import MetaTags from "@/components/MetaTags";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";

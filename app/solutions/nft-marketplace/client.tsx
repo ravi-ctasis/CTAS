@@ -21,7 +21,6 @@ import {
   Network,
   Star,
   CheckCircle2,
-  ArrowRight,
   Cloud,
 } from "lucide-react";
 

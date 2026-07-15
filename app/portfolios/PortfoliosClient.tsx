@@ -339,18 +339,20 @@ const PortfoliosClient = () => {
                         sizes={viewMode === "list" ? "256px" : "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"}
                         loading={index < 6 ? "eager" : "lazy"}
                       />
-                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-xs font-semibold text-slate-800 shadow-sm">
-                        <CategoryIcon className="w-3.5 h-3.5" style={{ color: CYAN }} />
-                        {portfolio.category}
-                      </div>
                     </div>
                     <div className="flex flex-col flex-1 p-4 sm:p-5">
-                      <div className="flex items-center justify-between mb-2.5 text-xs">
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EAF3F8] font-medium" style={{ color: NAVY }}>
-                          <IndustryIcon className="w-3.5 h-3.5" />
-                          <span>{portfolio.industry}</span>
+                      <div className="flex flex-wrap items-center gap-2 mb-2.5 text-xs">
+                        {portfolio.industry && (
+                          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EAF3F8] font-medium" style={{ color: NAVY }}>
+                            <IndustryIcon className="w-3.5 h-3.5" />
+                            <span>{portfolio.industry}</span>
+                          </div>
+                        )}
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 font-medium text-slate-700">
+                          <CategoryIcon className="w-3.5 h-3.5" style={{ color: CYAN }} />
+                          <span>{portfolio.category}</span>
                         </div>
-                        <span className="text-slate-400 font-mono">{portfolio.year}</span>
+                        <span className="ml-auto text-slate-400 font-mono">{portfolio.year}</span>
                       </div>
                       <h3 className={`${fraunces.className} text-lg font-medium text-slate-900 mb-1.5 line-clamp-2 group-hover:text-[#13345A] transition-colors`}>
                         {portfolio.title}

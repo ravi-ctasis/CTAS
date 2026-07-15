@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Package, BarChart3, Truck, DollarSign, Search, TrendingUp, Zap,
-  RotateCcw, Shield, Users, FileText, Settings, CheckCircle,
-  Globe, Clock, Star, ArrowRight, ChevronRight,
+  Package, BarChart3, Truck, DollarSign, Search, TrendingUp,
+  RotateCcw, Users, CheckCircle,
+  Globe, Star, ArrowRight,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
@@ -92,7 +92,7 @@ export default function BolComClient() {
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
                   Dominate the <span className="text-blue-300">Bol.com</span> Marketplace
                 </h1>
-                <p className="text-blue-100/70 text-lg mb-8 max-w-xl">Netherlands & Belgium's #1 marketplace with 15M+ active buyers. We handle full automation — from catalog to fulfilment — so you can focus on growth.</p>
+                <p className="text-blue-100/70 text-lg mb-8 max-w-xl">Netherlands & Belgium&apos;s #1 marketplace with 15M+ active buyers. We handle full automation — from catalog to fulfilment — so you can focus on growth.</p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact-us" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#249BCA] text-white font-semibold hover:bg-[#1a85b0] transition-colors shadow-lg">
                     Get Free Consultation <ArrowRight className="w-4 h-4" />

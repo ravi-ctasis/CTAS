@@ -6,7 +6,6 @@ import {
   Users,
   BarChart3,
   TrendingUp,
-  CheckCircle,
   Globe,
   Smartphone,
   Database,
@@ -20,9 +19,7 @@ import {
   Camera,
   ChartBar,
   CreditCard,
-  Star,
   Building,
-  Trophy,
   Map as MapIcon,
   CheckCircle2,
 } from "lucide-react";

@@ -8,7 +8,7 @@ export const googleSheetsSyncData: PortfolioDetailData = {
     "An automated synchronization engine connecting Google Sheets directly with marketplace APIs (Amazon SP-API, eBay, etc.) for real-time inventory and pricing management.",
   longDescription:
     "An enterprise-grade solution that connects Google Sheets directly with marketplace APIs, enabling merchants to manage bulk changes (price, stock, details) inside Google Sheets. The synchronization engine monitors sheet edits, validates structural data, and calls Amazon SP-API and other marketplace endpoints with built-in rate-limiting compliance. It handles secure OAuth 2.0 multi-account seller auth, processes updates in queues, and updates sheet status rows upon completion.",
-  image: "/google-sheets-integration-img.png",
+  image: "/portfolio-banners/google-sheets-integration.png",
   technologies: ["Google Sheets API", "Amazon SP-API", "OAuth 2.0", "Node.js", "React", "MongoDB"],
   link: "#",
   featured: true,
@@ -97,7 +97,7 @@ export const googleSheetsSyncData: PortfolioDetailData = {
     titleLine1: "Google Sheets Marketplace",
     titleLine2: "API Synchronization",
     heroImage: {
-      src: "/google-sheets-integration-img.png",
+      src: "/portfolio-banners/google-sheets-integration.png",
       alt: "Google Sheets Integration Dashboard Interface",
     },
     heroStats: [

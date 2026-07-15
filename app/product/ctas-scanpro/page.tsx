@@ -9,7 +9,6 @@ import {
   Cpu,
   Globe,
   ArrowRight,
-  Award,
   Camera,
   Droplet,
   Scissors,

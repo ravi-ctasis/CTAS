@@ -8,7 +8,7 @@ export const aiMarketplaceMcpData: PortfolioDetailData = {
     "A next-generation AI architecture utilizing the Model Context Protocol (MCP) to interact directly with any enterprise database or REST API, enabling natural language command execution, data analysis, and system management.",
   longDescription:
     "This scalable AI server architecture leverages the Model Context Protocol (MCP) to bridge the gap between advanced foundation LLMs and secure internal business APIs (CRMs, ERPs, custom software). By using MCP, the AI assistant dynamically discovers and uses registered tools to query proprietary databases, generate reports, and safely trigger system actions via natural language instructions. It features complex prompt security, SQL-injection prevention, LLM context-window token compression, and dual-layer authorization validation hooks for sensitive operations.",
-  image: "/mcp-api-integration-img.png",
+  image: "/portfolio-banners/mcp-api-integration.png",
   technologies: ["Model Context Protocol (MCP)", "LLM Orchestration", "Enterprise REST APIs", "Node.js", "TypeScript"],
   link: "#",
   featured: true,
@@ -96,7 +96,7 @@ export const aiMarketplaceMcpData: PortfolioDetailData = {
     titleLine1: "AI-Powered Enterprise Systems",
     titleLine2: "MCP Server Integration",
     heroImage: {
-      src: "/mcp-api-integration-img.png",
+      src: "/portfolio-banners/mcp-api-integration.png",
       alt: "AI-Powered Enterprise Systems MCP Interface Architecture",
     },
     heroStats: [

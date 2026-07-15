@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Package, BarChart3, Truck, DollarSign, Settings,
+  Package, BarChart3, Truck, DollarSign,
   RotateCcw, Shield, FileText, CheckCircle, Smartphone, ArrowRight,
-  Monitor, Headphones, Activity
+  Monitor, Activity
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FooterSection from "@/components/FooterSection";
@@ -139,7 +139,7 @@ export default function WortenClient() {
             <div className="text-center mb-12">
               <span className="inline-block mb-3 px-3 py-1 rounded-full text-xs font-semibold bg-red-50 text-[#E30613] border border-red-200">Our Services</span>
               <h2 className="text-3xl font-bold text-slate-900 mb-3">Complete <span className="text-[#E30613]">Mirakl-Based</span> Integration</h2>
-              <p className="text-slate-500 max-w-2xl mx-auto">We navigate the complexities of Worten's Mirakl architecture to provide you with seamless, hands-free automation.</p>
+              <p className="text-slate-500 max-w-2xl mx-auto">We navigate the complexities of Worten&apos;s Mirakl architecture to provide you with seamless, hands-free automation.</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map((f, i) => {
@@ -193,7 +193,7 @@ export default function WortenClient() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-[#E30613] to-[#ff4d4d] rounded-3xl p-12 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">Start Your Worten Integration</h2>
-              <p className="text-white/90 mb-8 max-w-lg mx-auto">Don't miss out on the Iberian peninsula's most lucrative tech marketplace. Let's build your integration today.</p>
+              <p className="text-white/90 mb-8 max-w-lg mx-auto">Don&apos;t miss out on the Iberian peninsula&apos;s most lucrative tech marketplace. Let&apos;s build your integration today.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact-us" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-black text-white font-bold hover:bg-gray-900 transition-colors">
                   Get Free Consultation <ArrowRight className="w-4 h-4" />

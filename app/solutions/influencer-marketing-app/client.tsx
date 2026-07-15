@@ -19,7 +19,6 @@ import {
   Database,
   Cloud,
   Brain,
-  ArrowRight,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";

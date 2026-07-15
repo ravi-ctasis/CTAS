@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Package, BarChart3, Truck, DollarSign, Search, TrendingUp,
-  RotateCcw, Shield, CheckCircle, Globe, Star, ArrowRight,
+  Package, Truck, DollarSign, Search, Shield, CheckCircle, ArrowRight,
   Gift, Users, Server, Globe2
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -181,7 +180,7 @@ export default function RakutenClient() {
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">Enterprise Tech Compatibility</h2>
-            <p className="text-slate-500 mb-8">Connect your existing tech stack to Rakuten's API endpoints globally.</p>
+            <p className="text-slate-500 mb-8">Connect your existing tech stack to Rakuten&apos;s API endpoints globally.</p>
             <div className="flex flex-wrap gap-3 justify-center">
               {integrations.map((name) => (<span key={name} className="px-4 py-2 bg-white border border-slate-200 rounded-full text-sm text-slate-700 font-medium shadow-sm">{name}</span>))}
             </div>
@@ -193,7 +192,7 @@ export default function RakutenClient() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-[#BF0000] to-[#e60000] rounded-3xl p-12 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">Ready to Expand Globally?</h2>
-              <p className="text-white/90 mb-8 max-w-lg mx-auto">Don't let language barriers and complex backend architectures stop your growth. Let our Rakuten integration experts handle the technical heavy lifting.</p>
+              <p className="text-white/90 mb-8 max-w-lg mx-auto">Don&apos;t let language barriers and complex backend architectures stop your growth. Let our Rakuten integration experts handle the technical heavy lifting.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact-us" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-black text-white font-bold hover:bg-gray-900 transition-colors">
                   Get Free Consultation <ArrowRight className="w-4 h-4" />

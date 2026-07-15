@@ -19,7 +19,6 @@ import {
   Smartphone,
   Monitor,
   Settings,
-  ArrowRight,
   Play,
   Code,
   Database,
